@@ -10,9 +10,9 @@
 
 #include <avr/pgmspace.h>
 
-enum RF24LogLevel
+enum RF24LogLevel : uint8_t
 {
-   ERROR = 0, WARN = 1, INFO = 2, DEBUG = 3, TRACE = 4
+   ERROR = 0, WARN, INFO, DEBUG, TRACE
 };
 
 #endif /* LIBRARIES_RF24LOG_SRC_RF24LOGLEVEL_H_ */

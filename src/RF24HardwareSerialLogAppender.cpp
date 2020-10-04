@@ -27,8 +27,15 @@ RF24HardwareSerialLogAppender::RF24HardwareSerialLogAppender(
 void RF24HardwareSerialLogAppender::append(RF24LogLevel logLevel,
       const __FlashStringHelper *vendorId, const char *message)
 {
-   //Serial.println(logLevel);
-   //this->serial->print((const __FlashStringHelper*) rf24LogLevels[logLevel]);
+   Serial.println(logLevel); // print log level on the serial console
+   uint8_t asd = (uint8_t) logLevel;
+   Serial.println((const __FlashStringHelper*) (rf24LogLevels[0])); // this works fine
+   Serial.println((const __FlashStringHelper*) (rf24LogLevels[1])); // this works fine
+   Serial.println((const __FlashStringHelper*) (rf24LogLevels[2])); // this works fine
+   Serial.println((const __FlashStringHelper*) (rf24LogLevels[3])); // this works fine
+   Serial.println((const __FlashStringHelper*) (rf24LogLevels[4])); // this works fine
+   Serial.println((const __FlashStringHelper*) (rf24LogLevels[asd])); // this wdoesn't work
+
    char c[12];
    sprintf(c, "%10lu ", millis());
    this->serial->print(c);
@@ -36,19 +43,19 @@ void RF24HardwareSerialLogAppender::append(RF24LogLevel logLevel,
 
    switch (logLevel)
    {
-      case ERROR:
+      case RF24LogLevel::ERROR:
          this->serial->print((const __FlashStringHelper*) rf24logLevelError);
          break;
-      case WARN:
+      case RF24LogLevel::WARN:
          this->serial->print((const __FlashStringHelper*) rf24logLevelWarn);
          break;
-      case INFO:
+      case RF24LogLevel::INFO:
          this->serial->print((const __FlashStringHelper*) rf24logLevelInfo);
          break;
-      case DEBUG:
+      case RF24LogLevel::DEBUG:
          this->serial->print((const __FlashStringHelper*) rf24logLevelDebug);
          break;
-      case TRACE:
+      case RF24LogLevel::TRACE:
          this->serial->print((const __FlashStringHelper*) rf24logLevelTrace);
          break;
    }
@@ -68,19 +75,19 @@ void RF24HardwareSerialLogAppender::append(RF24LogLevel logLevel,
 
    switch (logLevel)
    {
-      case ERROR:
+      case RF24LogLevel::ERROR:
          this->serial->print((const __FlashStringHelper*) rf24logLevelError);
          break;
-      case WARN:
+      case RF24LogLevel::WARN:
          this->serial->print((const __FlashStringHelper*) rf24logLevelWarn);
          break;
-      case INFO:
+      case RF24LogLevel::INFO:
          this->serial->print((const __FlashStringHelper*) rf24logLevelInfo);
          break;
-      case DEBUG:
+      case RF24LogLevel::DEBUG:
          this->serial->print((const __FlashStringHelper*) rf24logLevelDebug);
          break;
-      case TRACE:
+      case RF24LogLevel::TRACE:
          this->serial->print((const __FlashStringHelper*) rf24logLevelTrace);
          break;
    }
