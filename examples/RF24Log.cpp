@@ -10,7 +10,7 @@ RF24HardwareSerialLogAppender serialLogAppender(&Serial);
 // define global vendor id (it is stored in flash memory)
 const char vendorID[] PROGMEM = "RF24LogExample";
 const char textFromFlash[] PROGMEM
-      = "******************************************";
+= "******************************************";
 
 void setup()
 {
@@ -46,6 +46,17 @@ void loop()
          "Log as debug message");
    rf24Logger.trace((const __FlashStringHelper*) vendorID,
          "Log as trace message");
+
+   rf24Logger.info((const __FlashStringHelper*) vendorID,
+            "info log with string RAM argument   : %s", "RAM text");
+
+   rf24Logger.info((const __FlashStringHelper*) vendorID,
+         "info log with string flash global argument   : %S", vendorID);
+   rf24Logger.info((const __FlashStringHelper*) vendorID,
+         "info log with string flash local argument   : %S", flashText);
+
+   rf24Logger.info((const __FlashStringHelper*) vendorID,
+            "info log with unknown format   : %p", flashText);
 
    delay(5000);
 }

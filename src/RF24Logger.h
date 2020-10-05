@@ -36,9 +36,9 @@ public:
       appender->append(RF24LogLevel::WARN, vendorId, message);
    }
 
-   template<class T> void info(const __FlashStringHelper *vendorId, T message)
+   template<class T, typename... Args> void info(const __FlashStringHelper *vendorId, T message, Args...args)
    {
-      appender->append(RF24LogLevel::INFO, vendorId, message);
+      appender->append(RF24LogLevel::INFO, vendorId, message, args...);
    }
 
    template<class T> void debug(const __FlashStringHelper *vendorId, T message)

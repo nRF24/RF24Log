@@ -24,7 +24,7 @@ RF24HardwareSerialLogAppender::RF24HardwareSerialLogAppender(
 }
 
 void RF24HardwareSerialLogAppender::append(RF24LogLevel logLevel,
-      const __FlashStringHelper *vendorId, const char *message)
+      const __FlashStringHelper *vendorId, const char *message, ...)
 {
    // print timestamp
    char c[12];
@@ -41,11 +41,16 @@ void RF24HardwareSerialLogAppender::append(RF24LogLevel logLevel,
    this->serial->print(" ");
 
    // print message
-   this->serial->println(message);
+   va_list args;
+   va_start(args, message);
+   this->serial->print("bla");
+   appendFormattedMessage(message, args);
+   this->serial->println("");
 }
 
 void RF24HardwareSerialLogAppender::append(RF24LogLevel logLevel,
-      const __FlashStringHelper *vendorId, const __FlashStringHelper *message)
+      const __FlashStringHelper *vendorId, const __FlashStringHelper *message,
+      ...)
 {
    // print timestamp
    char c[12];
@@ -62,6 +67,50 @@ void RF24HardwareSerialLogAppender::append(RF24LogLevel logLevel,
    this->serial->print(" ");
 
    // print message
+   va_list args;
+   va_start(args, message);
+   //appendFormattedMessage(message, args);
    this->serial->println(message);
 }
 
+void RF24HardwareSerialLogAppender::appendFormattedMessage(const char *format,
+      va_list args)
+{
+   for (; *format != 0; ++format)
+   {
+      if (*format == '%')
+      {
+         ++format;
+         appendFormat(*format, &args);
+      }
+      else
+      {
+         serial->print(*format);
+      }
+   }
+}
+
+void RF24HardwareSerialLogAppender::appendFormat(const char format,
+      va_list *args)
+{
+   if (format == 's')
+   {
+      // print text from RAM
+      register char *s = (char*) va_arg(*args, int);
+      serial->print(s);
+
+      return;
+   }
+
+   if (format == 'S')
+   {
+      // print text from FLASH
+      register __FlashStringHelper *s = (__FlashStringHelper*) va_arg(*args,
+            int);
+      serial->print(s);
+
+      return;
+   }
+
+   serial->print(format);
+}
