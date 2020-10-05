@@ -15,10 +15,11 @@
 class RF24LogAppender
 {
 public:
-   virtual void append(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
-         const char *message);
+   virtual void append(RF24LogLevel logLevel,
+         const __FlashStringHelper *vendorId, const char *message);
 
-   virtual void append(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
+   virtual void append(RF24LogLevel logLevel,
+         const __FlashStringHelper *vendorId,
          const __FlashStringHelper *message);
 };
 
