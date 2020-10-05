@@ -17,10 +17,10 @@ private:
    HardwareSerial *serial;
 public:
    RF24HardwareSerialLogAppender(HardwareSerial *serial);
-   void append(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
+   void append(uint8_t logLevel, const __FlashStringHelper *vendorId,
          const char *message);
 
-   void append(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
+   void append(uint8_t logLevel, const __FlashStringHelper *vendorId,
          const __FlashStringHelper *message);
 };
 

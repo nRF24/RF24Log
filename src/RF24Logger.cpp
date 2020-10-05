@@ -5,7 +5,6 @@
  *      Author: wmarkowski
  */
 #include "RF24Logger.h"
-#include "RF24LogLevel.h"
 #include "RF24TrashLogAppender.h"
 
 RF24Logger::RF24Logger(RF24LogAppender *appender)

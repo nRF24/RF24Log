@@ -37,11 +37,11 @@ void loop()
    rf24Logger.info((const __FlashStringHelper*) vendorID, flashText);
 
    rf24Logger.error((const __FlashStringHelper*) vendorID,
-         "Log as info message");
+         "Log as error message");
    rf24Logger.warn((const __FlashStringHelper*) vendorID,
          "Log as warning message");
    rf24Logger.info((const __FlashStringHelper*) vendorID,
-         "Log as error message");
+         "Log as info message");
    rf24Logger.debug((const __FlashStringHelper*) vendorID,
          "Log as debug message");
    rf24Logger.trace((const __FlashStringHelper*) vendorID,
