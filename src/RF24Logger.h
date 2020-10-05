@@ -26,14 +26,14 @@ private:
 public:
    RF24Logger(RF24LogAppender *appender);
    void setAppender(RF24LogAppender *appender);
-   template<class T> void error(const __FlashStringHelper *vendorId, T message)
+   template<class T, typename... Args> void error(const __FlashStringHelper *vendorId, T message, Args...args)
    {
-      appender->append(RF24LogLevel::ERROR, vendorId, message);
+      appender->append(RF24LogLevel::ERROR, vendorId, message, args...);
    }
 
-   template<class T> void warn(const __FlashStringHelper *vendorId, T message)
+   template<class T, typename... Args> void warn(const __FlashStringHelper *vendorId, T message, Args...args)
    {
-      appender->append(RF24LogLevel::WARN, vendorId, message);
+      appender->append(RF24LogLevel::WARN, vendorId, message, args...);
    }
 
    template<class T, typename... Args> void info(const __FlashStringHelper *vendorId, T message, Args...args)
@@ -41,14 +41,14 @@ public:
       appender->append(RF24LogLevel::INFO, vendorId, message, args...);
    }
 
-   template<class T> void debug(const __FlashStringHelper *vendorId, T message)
+   template<class T, typename... Args> void debug(const __FlashStringHelper *vendorId, T message, Args...args)
    {
-      appender->append(RF24LogLevel::DEBUG, vendorId, message);
+      appender->append(RF24LogLevel::DEBUG, vendorId, message, args...);
    }
 
-   template<class T> void trace(const __FlashStringHelper *vendorId, T message)
+   template<class T, typename... Args> void trace(const __FlashStringHelper *vendorId, T message, Args...args)
    {
-      appender->append(RF24LogLevel::TRACE, vendorId, message);
+      appender->append(RF24LogLevel::TRACE, vendorId, message, args...);
    }
 };
 

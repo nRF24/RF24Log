@@ -40,10 +40,9 @@ void RF24HardwareSerialLogAppender::append(RF24LogLevel logLevel,
    this->serial->print(vendorId);
    this->serial->print(" ");
 
-   // print message
+   // print formatted message
    va_list args;
    va_start(args, message);
-   this->serial->print("bla");
    appendFormattedMessage(message, args);
    this->serial->println("");
 }
@@ -66,7 +65,7 @@ void RF24HardwareSerialLogAppender::append(RF24LogLevel logLevel,
    this->serial->print(vendorId);
    this->serial->print(" ");
 
-   // print message
+   // print formatted message
    va_list args;
    va_start(args, message);
    //appendFormattedMessage(message, args);
