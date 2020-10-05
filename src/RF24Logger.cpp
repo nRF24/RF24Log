@@ -12,35 +12,12 @@ RF24Logger::RF24Logger(RF24LogAppender *appender)
    this->appender = appender;
 }
 
-//void RF24Logger::error(const __FlashStringHelper *vendorId, char *message)
-//{
-//   appender->append(ERROR, vendorId, message);
-//}
-
-//void RF24Logger::warn(const __FlashStringHelper *vendorId, char *message)
-//{
-//   appender->append(WARN, vendorId, message);
-//}
-
-//void RF24Logger::info(const char *vendorId, char *message)
-//{
-//   appender->append(INFO, vendorId, message);
-//}
-
-//void RF24Logger::debug(const __FlashStringHelper *vendorId, char *message)
-//{
-//   appender->append(DEBUG, vendorId, message);
-//}
-
-//void RF24Logger::trace(const __FlashStringHelper *vendorId, char *message)
-//{
-//   appender->append(TRACE, vendorId, message);
-//}
-
 void RF24Logger::setAppender(RF24LogAppender *appender)
 {
    this->appender = appender;
 }
 
+// default global appender instance: it is trash log appender
 RF24TrashLogAppender rf24TrashLogAppender;
+// default logger instance
 RF24Logger rf24Logger(&rf24TrashLogAppender);

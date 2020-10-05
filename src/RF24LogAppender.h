@@ -20,7 +20,6 @@ public:
 
    virtual void append(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
          const __FlashStringHelper *message);
-
 };
 
 #endif /* LIBRARIES_RF24LOG_SRC_RF24LOGAPPENDER_H_ */
