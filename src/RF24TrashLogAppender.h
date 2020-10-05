@@ -5,8 +5,8 @@
  *      Author: wmarkowski
  */
 
-#ifndef LIBRARIES_RF24LOG_SRC_RF24TRASHLOGAPPENDER_H_
-#define LIBRARIES_RF24LOG_SRC_RF24TRASHLOGAPPENDER_H_
+#ifndef SRC_RF24TRASHLOGAPPENDER_H_
+#define SRC_RF24TRASHLOGAPPENDER_H_
 
 #include "RF24LogAppender.h"
 
@@ -21,4 +21,4 @@ public:
          const __FlashStringHelper *message);
 };
 
-#endif /* LIBRARIES_RF24LOG_SRC_RF24TRASHLOGAPPENDER_H_ */
+#endif /* SRC_RF24TRASHLOGAPPENDER_H_ */

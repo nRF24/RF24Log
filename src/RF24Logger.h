@@ -5,8 +5,8 @@
  *      Author: wmarkowski
  */
 
-#ifndef LIBRARIES_RF24LOG_SRC_RF24LOGGER_H_
-#define LIBRARIES_RF24LOG_SRC_RF24LOGGER_H_
+#ifndef SRC_RF24LOGGER_H_
+#define SRC_RF24LOGGER_H_
 
 #include <WString.h>
 #include "RF24LogLevel.h"
@@ -53,4 +53,4 @@ public:
 };
 
 extern RF24Logger rf24Logger;
-#endif /* LIBRARIES_RF24LOG_SRC_RF24LOGGER_H_ */
+#endif /* SRC_RF24LOGGER_H_ */

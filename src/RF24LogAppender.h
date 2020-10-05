@@ -5,8 +5,8 @@
  *      Author: wmarkowski
  */
 
-#ifndef LIBRARIES_RF24LOG_SRC_RF24LOGAPPENDER_H_
-#define LIBRARIES_RF24LOG_SRC_RF24LOGAPPENDER_H_
+#ifndef SRC_RF24LOGAPPENDER_H_
+#define SRC_RF24LOGAPPENDER_H_
 
 #include <WString.h>
 #include <stdint.h>
@@ -22,4 +22,4 @@ public:
          const __FlashStringHelper *message);
 };
 
-#endif /* LIBRARIES_RF24LOG_SRC_RF24LOGAPPENDER_H_ */
+#endif /* SRC_RF24LOGAPPENDER_H_ */
