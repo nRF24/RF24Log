@@ -23,7 +23,7 @@ RF24HardwareSerialLogAppender::RF24HardwareSerialLogAppender(
    this->serial = serial;
 }
 
-void RF24HardwareSerialLogAppender::append(uint8_t logLevel,
+void RF24HardwareSerialLogAppender::append(RF24LogLevel logLevel,
       const __FlashStringHelper *vendorId, const char *message)
 {
 //   Serial.println(logLevel); // print log level on the serial console
@@ -64,7 +64,7 @@ void RF24HardwareSerialLogAppender::append(uint8_t logLevel,
    this->serial->println(message);
 }
 
-void RF24HardwareSerialLogAppender::append(uint8_t logLevel,
+void RF24HardwareSerialLogAppender::append(RF24LogLevel logLevel,
       const __FlashStringHelper *vendorId, const __FlashStringHelper *message)
 {
    char c[12];

@@ -9,6 +9,7 @@
 #define LIBRARIES_RF24LOG_SRC_RF24LOGGER_H_
 
 #include <WString.h>
+#include "RF24LogLevel.h"
 #include "RF24LogAppender.h"
 
 #define RF24_LOG_LEVEL_ERROR 0
@@ -28,30 +29,30 @@ public:
 //   void error(const __FlashStringHelper *vendorId, char *message);
    template<class T> void error(const __FlashStringHelper *vendorId, T message)
    {
-      appender->append(RF24_LOG_LEVEL_ERROR, vendorId, message);
+      appender->append(RF24LogLevel::ERROR, vendorId, message);
    }
 
 //   void warn(const __FlashStringHelper *vendorId, char *message);
    template<class T> void warn(const __FlashStringHelper *vendorId, T message)
    {
-      appender->append(RF24_LOG_LEVEL_WARN, vendorId, message);
+      appender->append(RF24LogLevel::WARN, vendorId, message);
    }
 
    template<class T> void info(const __FlashStringHelper *vendorId, T message)
    {
-      appender->append(RF24_LOG_LEVEL_INFO, vendorId, message);
+      appender->append(RF24LogLevel::INFO, vendorId, message);
    }
 
 //   void debug(const __FlashStringHelper *vendorId, char *message);
    template<class T> void debug(const __FlashStringHelper *vendorId, T message)
    {
-      appender->append(RF24_LOG_LEVEL_DEBUG, vendorId, message);
+      appender->append(RF24LogLevel::DEBUG, vendorId, message);
    }
 
 //   void trace(const __FlashStringHelper *vendorId, char *message);
    template<class T> void trace(const __FlashStringHelper *vendorId, T message)
    {
-      appender->append(RF24_LOG_LEVEL_TRACE, vendorId, message);
+      appender->append(RF24LogLevel::TRACE, vendorId, message);
    }
 };
 
