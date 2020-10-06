@@ -68,8 +68,8 @@ void RF24HardwareSerialLogAppender::append(RF24LogLevel logLevel,
    // print formatted message
    va_list args;
    va_start(args, message);
-   //appendFormattedMessage(message, args);
-   this->serial->println(message);
+   appendFormattedMessage(message, args);
+   this->serial->println("");
 }
 
 void RF24HardwareSerialLogAppender::appendFormattedMessage(const char *format,
@@ -85,6 +85,25 @@ void RF24HardwareSerialLogAppender::appendFormattedMessage(const char *format,
       else
       {
          serial->print(*format);
+      }
+   }
+}
+
+void RF24HardwareSerialLogAppender::appendFormattedMessage(
+      const __FlashStringHelper *format, va_list args)
+{
+   PGM_P p = reinterpret_cast<PGM_P>(format);
+   char c = pgm_read_byte(p++);
+   for (; c != 0; c = pgm_read_byte(p++))
+   {
+      if (c == '%')
+      {
+         c = pgm_read_byte(p++);
+         appendFormat(c, &args);
+      }
+      else
+      {
+         serial->print(c);
       }
    }
 }

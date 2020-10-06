@@ -11,6 +11,8 @@ RF24HardwareSerialLogAppender rf24SerialLogAppender(&Serial);
 const char vendorID[] PROGMEM = "RF24LogExample";
 const char globalProgmemText[] PROGMEM
 = "global PROGMEM message";
+const char globalProgmemMessageWithRamString[] PROGMEM
+= "PROGMEM message with %s";
 
 // Need to remember that backslash must be escaped in the string text
 // Banner generated with https://devops.datenkollektiv.de/banner.txt/index.html
@@ -46,6 +48,7 @@ void logSimpleFMacroMessage();
 void logRamMessageWithRamStringArgument();
 void logRamMessageWithProgmemStringArgument();
 void logRamMessageWithFMacroStringArgument();
+void logProgmemMessageWithRamStringArgument();
 void logMessageWithAdditionalTagAtTheBeginning();
 void logMessageWithUnknownFormat();
 
@@ -57,6 +60,7 @@ void loop()
    logRamMessageWithRamStringArgument();
    logRamMessageWithProgmemStringArgument();
    logRamMessageWithFMacroStringArgument();
+   logProgmemMessageWithRamStringArgument();
    logMessageWithAdditionalTagAtTheBeginning();
    logMessageWithUnknownFormat();
 
@@ -155,6 +159,27 @@ void logRamMessageWithFMacroStringArgument()
          "RAM message with %S", F("F macro string 4"));
    rf24Logger.trace((const __FlashStringHelper*) vendorID,
          "RAM message with %S", F("F macro string 5"));
+
+   Serial.println();
+}
+
+void logProgmemMessageWithRamStringArgument()
+{
+   rf24Logger.error((const __FlashStringHelper*) vendorID,
+         (const __FlashStringHelper*) globalProgmemMessageWithRamString,
+         "RAM string 1");
+   rf24Logger.warn((const __FlashStringHelper*) vendorID,
+         (const __FlashStringHelper*) globalProgmemMessageWithRamString,
+         "RAM string 2");
+   rf24Logger.info((const __FlashStringHelper*) vendorID,
+         (const __FlashStringHelper*) globalProgmemMessageWithRamString,
+         "RAM string 3");
+   rf24Logger.debug((const __FlashStringHelper*) vendorID,
+         (const __FlashStringHelper*) globalProgmemMessageWithRamString,
+         "RAM string 4");
+   rf24Logger.trace((const __FlashStringHelper*) vendorID,
+         (const __FlashStringHelper*) globalProgmemMessageWithRamString,
+         "RAM string 5");
 
    Serial.println();
 }

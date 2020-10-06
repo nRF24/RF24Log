@@ -25,6 +25,7 @@ public:
 
 protected:
    void appendFormattedMessage(const char *format, va_list args);
+   void appendFormattedMessage(const __FlashStringHelper *format, va_list args);
    void appendFormat(const char format, va_list *args);
 };
 
