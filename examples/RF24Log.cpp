@@ -31,13 +31,13 @@ void setup()
    rf24Logger.info((const __FlashStringHelper*) vendorID,
          (const __FlashStringHelper*) banner0);
    rf24Logger.info((const __FlashStringHelper*) vendorID,
-            (const __FlashStringHelper*) banner1);
+         (const __FlashStringHelper*) banner1);
    rf24Logger.info((const __FlashStringHelper*) vendorID,
-            (const __FlashStringHelper*) banner2);
+         (const __FlashStringHelper*) banner2);
    rf24Logger.info((const __FlashStringHelper*) vendorID,
-            (const __FlashStringHelper*) banner3);
+         (const __FlashStringHelper*) banner3);
    rf24Logger.info((const __FlashStringHelper*) vendorID,
-            (const __FlashStringHelper*) banner4);
+         (const __FlashStringHelper*) banner4);
 }
 
 void logSimpleRamMessage();
@@ -46,6 +46,8 @@ void logSimpleFMacroMessage();
 void logRamMessageWithRamStringArgument();
 void logRamMessageWithProgmemStringArgument();
 void logRamMessageWithFMacroStringArgument();
+void logMessageWithAdditionalTagAtTheBeginning();
+void logMessageWithUnknownFormat();
 
 void loop()
 {
@@ -55,16 +57,8 @@ void loop()
    logRamMessageWithRamStringArgument();
    logRamMessageWithProgmemStringArgument();
    logRamMessageWithFMacroStringArgument();
-
-   //__FlashStringHelper cannot be declared oustide a function
-   const __FlashStringHelper *flashText = F("this is a flash text");
-   rf24Logger.info((const __FlashStringHelper*) vendorID,
-         "info log with string flash global argument   : %S", vendorID);
-   rf24Logger.info((const __FlashStringHelper*) vendorID,
-         "info log with string flash local argument   : %S", flashText);
-
-   rf24Logger.info((const __FlashStringHelper*) vendorID,
-         "info log with unknown format   : %p", flashText);
+   logMessageWithAdditionalTagAtTheBeginning();
+   logMessageWithUnknownFormat();
 
    delay(5000);
 }
@@ -161,6 +155,22 @@ void logRamMessageWithFMacroStringArgument()
          "RAM message with %S", F("F macro string 4"));
    rf24Logger.trace((const __FlashStringHelper*) vendorID,
          "RAM message with %S", F("F macro string 5"));
+
+   Serial.println();
+}
+
+void logMessageWithAdditionalTagAtTheBeginning()
+{
+   rf24Logger.info((const __FlashStringHelper*) vendorID,
+         "%S info log with additional tag at the beginning", F("RF24Log.cpp"));
+
+   Serial.println();
+}
+
+void logMessageWithUnknownFormat()
+{
+   rf24Logger.info((const __FlashStringHelper*) vendorID,
+         "info log with unknown format   : %p", F("flash text"));
 
    Serial.println();
 }
