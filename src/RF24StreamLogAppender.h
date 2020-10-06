@@ -15,6 +15,10 @@ class RF24StreamLogAppender : public RF24LogAppender
 {
 private:
    Stream *stream;
+   void appendTimestamp();
+   void appendLogLevel(RF24LogLevel logLevel);
+   void appendVendorId(const __FlashStringHelper *vendorId);
+
 public:
    RF24StreamLogAppender(Stream *stream);
    void append(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,

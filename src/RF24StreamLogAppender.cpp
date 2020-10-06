@@ -26,19 +26,9 @@ RF24StreamLogAppender::RF24StreamLogAppender(Stream *stream)
 void RF24StreamLogAppender::append(RF24LogLevel logLevel,
       const __FlashStringHelper *vendorId, const char *message, ...)
 {
-   // print timestamp
-   char c[12];
-   sprintf(c, "%10lu ", millis());
-   stream->print(c);
-   stream->print(" ");
-
-   // print log level
-   stream->print(rf24LogLevels[logLevel]);
-   stream->print(" ");
-
-   // print vendor id
-   stream->print(vendorId);
-   stream->print(" ");
+   appendTimestamp();
+   appendLogLevel(logLevel);
+   appendVendorId(vendorId);
 
    // print formatted message
    va_list args;
@@ -51,19 +41,9 @@ void RF24StreamLogAppender::append(RF24LogLevel logLevel,
       const __FlashStringHelper *vendorId, const __FlashStringHelper *message,
       ...)
 {
-   // print timestamp
-   char c[12];
-   sprintf(c, "%10lu ", millis());
-   stream->print(c);
-   stream->print(" ");
-
-   // print log level
-   stream->print(rf24LogLevels[logLevel]);
-   stream->print(" ");
-
-   // print vendor id
-   stream->print(vendorId);
-   stream->print(" ");
+   appendTimestamp();
+   appendLogLevel(logLevel);
+   appendVendorId(vendorId);
 
    // print formatted message
    va_list args;
@@ -130,4 +110,24 @@ void RF24StreamLogAppender::appendFormat(const char format, va_list *args)
    }
 
    stream->print(format);
+}
+
+void RF24StreamLogAppender::appendTimestamp()
+{
+   char c[12];
+   sprintf(c, "%10lu ", millis());
+   stream->print(c);
+   stream->print(" ");
+}
+
+void RF24StreamLogAppender::appendLogLevel(RF24LogLevel logLevel)
+{
+   stream->print(rf24LogLevels[logLevel]);
+   stream->print(" ");
+}
+
+void RF24StreamLogAppender::appendVendorId(const __FlashStringHelper *vendorId)
+{
+   stream->print(vendorId);
+   stream->print(" ");
 }
