@@ -1,22 +1,22 @@
 /*
- * RF24SerialPortLogAppender.h
+ * RF24StreamtLogAppender.h
  *
  *  Created on: 3 paź 2020
  *      Author: wmarkowski
  */
 
-#ifndef SRC_RF24HARDWARESERIALLOGAPPENDER_H_
-#define SRC_RF24HARDWARESERIALLOGAPPENDER_H_
+#ifndef SRC_RF24STREAMLOGAPPENDER_H_
+#define SRC_RF24STREAMLOGAPPENDER_H_
 
-#include <HardwareSerial.h>
+#include <Stream.h>
 #include "RF24LogAppender.h"
 
-class RF24HardwareSerialLogAppender : public RF24LogAppender
+class RF24StreamLogAppender : public RF24LogAppender
 {
 private:
-   HardwareSerial *serial;
+   Stream *stream;
 public:
-   RF24HardwareSerialLogAppender(HardwareSerial *serial);
+   RF24StreamLogAppender(Stream *stream);
    void append(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
          const char *message, ...);
 
@@ -29,4 +29,4 @@ protected:
    void appendFormat(const char format, va_list *args);
 };
 
-#endif /* SRC_RF24HARDWARESERIALLOGAPPENDER_H_ */
+#endif /* SRC_RF24STREAMLOGAPPENDER_H_ */

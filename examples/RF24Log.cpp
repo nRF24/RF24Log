@@ -2,10 +2,10 @@
 #include <string.h>
 
 #include "../src/RF24Logger.h"
-#include "../src/RF24HardwareSerialLogAppender.h"
+#include "../src/RF24StreamLogAppender.h"
 
 // create hardware serial port log appender
-RF24HardwareSerialLogAppender rf24SerialLogAppender(&Serial);
+RF24StreamLogAppender rf24SerialLogAppender(&Serial);
 
 // define global vendor id (it is stored in flash memory)
 const char vendorID[] PROGMEM = "RF24LogExample";

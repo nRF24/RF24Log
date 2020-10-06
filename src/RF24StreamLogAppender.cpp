@@ -1,11 +1,12 @@
 /*
- * RF24SerialPortLogAppender.cpp
+ * RF24StreamLogAppender.cpp
  *
  *  Created on: 3 paź 2020
  *      Author: wmarkowski
  */
 #include <Arduino.h>
-#include "RF24HardwareSerialLogAppender.h"
+
+#include "RF24StreamLogAppender.h"
 
 const char rf24logLevelError[] = "ERROR";
 const char rf24logLevelWarn[] = " WARN";
@@ -17,62 +18,61 @@ const char *const rf24LogLevels[] =
 { rf24logLevelError, rf24logLevelWarn, rf24logLevelInfo, rf24logLevelDebug,
       rf24logLevelTrace };
 
-RF24HardwareSerialLogAppender::RF24HardwareSerialLogAppender(
-      HardwareSerial *serial)
+RF24StreamLogAppender::RF24StreamLogAppender(Stream *stream)
 {
-   this->serial = serial;
+   this->stream = stream;
 }
 
-void RF24HardwareSerialLogAppender::append(RF24LogLevel logLevel,
+void RF24StreamLogAppender::append(RF24LogLevel logLevel,
       const __FlashStringHelper *vendorId, const char *message, ...)
 {
    // print timestamp
    char c[12];
    sprintf(c, "%10lu ", millis());
-   this->serial->print(c);
-   this->serial->print(" ");
+   stream->print(c);
+   stream->print(" ");
 
    // print log level
-   this->serial->print(rf24LogLevels[logLevel]);
-   this->serial->print(" ");
+   stream->print(rf24LogLevels[logLevel]);
+   stream->print(" ");
 
    // print vendor id
-   this->serial->print(vendorId);
-   this->serial->print(" ");
+   stream->print(vendorId);
+   stream->print(" ");
 
    // print formatted message
    va_list args;
    va_start(args, message);
    appendFormattedMessage(message, args);
-   this->serial->println("");
+   stream->println("");
 }
 
-void RF24HardwareSerialLogAppender::append(RF24LogLevel logLevel,
+void RF24StreamLogAppender::append(RF24LogLevel logLevel,
       const __FlashStringHelper *vendorId, const __FlashStringHelper *message,
       ...)
 {
    // print timestamp
    char c[12];
    sprintf(c, "%10lu ", millis());
-   this->serial->print(c);
-   this->serial->print(" ");
+   stream->print(c);
+   stream->print(" ");
 
    // print log level
-   this->serial->print(rf24LogLevels[logLevel]);
-   this->serial->print(" ");
+   stream->print(rf24LogLevels[logLevel]);
+   stream->print(" ");
 
    // print vendor id
-   this->serial->print(vendorId);
-   this->serial->print(" ");
+   stream->print(vendorId);
+   stream->print(" ");
 
    // print formatted message
    va_list args;
    va_start(args, message);
    appendFormattedMessage(message, args);
-   this->serial->println("");
+   stream->println("");
 }
 
-void RF24HardwareSerialLogAppender::appendFormattedMessage(const char *format,
+void RF24StreamLogAppender::appendFormattedMessage(const char *format,
       va_list args)
 {
    for (; *format != 0; ++format)
@@ -84,12 +84,12 @@ void RF24HardwareSerialLogAppender::appendFormattedMessage(const char *format,
       }
       else
       {
-         serial->print(*format);
+         stream->print(*format);
       }
    }
 }
 
-void RF24HardwareSerialLogAppender::appendFormattedMessage(
+void RF24StreamLogAppender::appendFormattedMessage(
       const __FlashStringHelper *format, va_list args)
 {
    PGM_P p = reinterpret_cast<PGM_P>(format);
@@ -103,19 +103,18 @@ void RF24HardwareSerialLogAppender::appendFormattedMessage(
       }
       else
       {
-         serial->print(c);
+         stream->print(c);
       }
    }
 }
 
-void RF24HardwareSerialLogAppender::appendFormat(const char format,
-      va_list *args)
+void RF24StreamLogAppender::appendFormat(const char format, va_list *args)
 {
    if (format == 's')
    {
       // print text from RAM
       register char *s = (char*) va_arg(*args, int);
-      serial->print(s);
+      stream->print(s);
 
       return;
    }
@@ -125,10 +124,10 @@ void RF24HardwareSerialLogAppender::appendFormat(const char format,
       // print text from FLASH
       register __FlashStringHelper *s = (__FlashStringHelper*) va_arg(*args,
             int);
-      serial->print(s);
+      stream->print(s);
 
       return;
    }
 
-   serial->print(format);
+   stream->print(format);
 }
