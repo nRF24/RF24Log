@@ -5,11 +5,10 @@
  *      Author: wmarkowski
  */
 #include "RF24Logger.h"
-#include "RF24TrashLogAppender.h"
 
-RF24Logger::RF24Logger(RF24LogAppender *appender)
+RF24Logger::RF24Logger()
 {
-   this->appender = appender;
+   this->appender = NULL;
 }
 
 void RF24Logger::setAppender(RF24LogAppender *appender)
@@ -17,7 +16,5 @@ void RF24Logger::setAppender(RF24LogAppender *appender)
    this->appender = appender;
 }
 
-// default global appender instance: it is trash log appender
-RF24TrashLogAppender rf24TrashLogAppender;
 // default logger instance
-RF24Logger rf24Logger(&rf24TrashLogAppender);
+RF24Logger rf24Logger;
