@@ -109,6 +109,14 @@ void RF24StreamLogAppender::appendFormat(const char format, va_list *args)
       return;
    }
 
+   if (format == 'D' || format == 'F')
+   {
+      // print as double
+      stream->print(va_arg(*args, double));
+
+      return;
+   }
+
    stream->print(format);
 }
 

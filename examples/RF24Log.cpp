@@ -51,6 +51,7 @@ void logRamMessageWithFMacroStringArgument();
 void logProgmemMessageWithRamStringArgument();
 void logMessageWithAdditionalTagAtTheBeginning();
 void logMessageWithUnknownFormat();
+void logFloatNumber();
 
 void loop()
 {
@@ -63,6 +64,7 @@ void loop()
    logProgmemMessageWithRamStringArgument();
    logMessageWithAdditionalTagAtTheBeginning();
    logMessageWithUnknownFormat();
+   logFloatNumber();
 
    delay(5000);
 }
@@ -196,6 +198,34 @@ void logMessageWithUnknownFormat()
 {
    rf24Logger.info((const __FlashStringHelper*) vendorID,
          "info log with unknown format   : %p", F("flash text"));
+
+   Serial.println();
+}
+
+void logFloatNumber()
+{
+   rf24Logger.info((const __FlashStringHelper*) vendorID,
+         " info log with double value %D", 3.14);
+
+   Serial.println();
+
+   rf24Logger.warn((const __FlashStringHelper*) vendorID,
+         " warn log with double value %D", 3.14);
+
+   Serial.println();
+
+   rf24Logger.error((const __FlashStringHelper*) vendorID,
+         "error log with double value %D", 3.14);
+
+   Serial.println();
+
+   rf24Logger.debug((const __FlashStringHelper*) vendorID,
+         "debug log with double value %F", 2.71);
+
+   Serial.println();
+
+   rf24Logger.trace((const __FlashStringHelper*) vendorID,
+         "trace log with double value %F", 2.71);
 
    Serial.println();
 }
