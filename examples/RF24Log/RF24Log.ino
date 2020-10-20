@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <string.h>
 
-#include "../src/RF24Logger.h"
-#include "../src/RF24StreamLogAppender.h"
+#include <RF24Logger.h>
+#include <RF24StreamLogAppender.h>
 
 // create hardware serial port log appender
 RF24StreamLogAppender rf24SerialLogAppender(&Serial);
