@@ -4,11 +4,14 @@
 #include <RF24Logger.h>
 #include <RF24StreamLogAppender.h>
 
-// create hardware serial port log appender
+// Create hardware serial port log appender
 RF24StreamLogAppender rf24SerialLogAppender(&Serial);
 
-// define global vendor id (it is stored in flash memory)
+// Define global vendor id (it is stored in flash memory)
 const char vendorID[] PROGMEM = "RF24LogExample";
+
+
+// Define some test messages stored in EEPROM
 const char globalProgmemText[] PROGMEM
 = "global PROGMEM message";
 const char globalProgmemMessageWithRamString[] PROGMEM
