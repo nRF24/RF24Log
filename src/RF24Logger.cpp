@@ -4,7 +4,9 @@
  * Created on: 2 paź 2020
  *     Author: wmarkowski
  *
- * Copyright (C) 2020 Witold Markowski (wmarkow)
+ * Copyright (C)
+ *    2020        Witold Markowski (wmarkow)
+ *    2021        Brendan Doherty (2bndy5)
  *
  * This General Public License does not permit incorporating your program into
  * proprietary programs.  If your program is a subroutine library, you may

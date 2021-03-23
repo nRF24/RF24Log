@@ -4,7 +4,9 @@
  * Created on: 2 paź 2020
  *     Author: wmarkowski
  *
- * Copyright (C) 2020 Witold Markowski (wmarkow)
+ * Copyright (C)
+ *    2020        Witold Markowski (wmarkow)
+ *    2021        Brendan Doherty (2bndy5)
  *
  * This General Public License does not permit incorporating your program into
  * proprietary programs.  If your program is a subroutine library, you may
@@ -37,11 +39,15 @@ public:
 
    /**
     * set the instance's appender
+    * @param appender The stream for which messages will be directed for output.
     */
    void setAppender(RF24LogAppender *appender);
 
    /**
     * ouput an ERROR message
+    * @param vendorId A scoping identity of the message's origin
+    * @param message The message to output
+    * @param args consumable arguments
     */
    template<class T, typename ... Args> void error(
          const __FlashStringHelper *vendorId, T message, Args ...args)
@@ -55,6 +61,9 @@ public:
 
    /**
     * output a message to WARN the reader
+    * @param vendorId A scoping identity of the message's origin
+    * @param message The message to output
+    * @param args consumable arguments
     */
    template<class T, typename ... Args> void warn(
          const __FlashStringHelper *vendorId, T message, Args ...args)
@@ -68,6 +77,9 @@ public:
 
    /**
     * output an INFO message
+    * @param vendorId A scoping identity of the message's origin
+    * @param message The message to output
+    * @param args consumable arguments
     */
    template<class T, typename ... Args> void info(
          const __FlashStringHelper *vendorId, T message, Args ...args)
@@ -81,6 +93,9 @@ public:
 
    /**
     * output a message to help developers DEBUG their source code
+    * @param vendorId A scoping identity of the message's origin
+    * @param message The message to output
+    * @param args consumable arguments
     */
    template<class T, typename ... Args> void debug(
          const __FlashStringHelper *vendorId, T message, Args ...args)
@@ -94,6 +109,9 @@ public:
 
    /**
     * output a TRACE message that points to an event's instigator
+    * @param vendorId A scoping identity of the message's origin
+    * @param message The message to output
+    * @param args consumable arguments
     */
    template<class T, typename ... Args> void trace(
          const __FlashStringHelper *vendorId, T message, Args ...args)
@@ -114,13 +132,13 @@ extern RF24Logger rf24Logger;
 #endif /* SRC_RF24LOGGER_H_ */
 
 /**
- * @example examples/BasicSerialLogger/BasicSerialLogger.ino
+ * @example{lineno} BasicSerialLogger.ino
  *
  * A Basic usage of RF24Logger on the Arduino IDE's Serial Monitor.
  */
 
 /**
- * @example examples/EmptyLogger/EmptyLogger.ino
+ * @example{lineno} EmptyLogger.ino
  *
  * In contrast to the BasicSerialLogger example this demonstrates
  * how to dissable logging entirely.

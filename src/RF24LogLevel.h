@@ -4,7 +4,9 @@
  * Created on: 2 paź 2020
  *     Author: wmarkowski
  *
- * Copyright (C) 2020 Witold Markowski (wmarkow)
+ * Copyright (C)
+ *    2020        Witold Markowski (wmarkow)
+ *    2021        Brendan Doherty (2bndy5)
  *
  * This General Public License does not permit incorporating your program into
  * proprietary programs.  If your program is a subroutine library, you may
@@ -18,12 +20,18 @@
 
 #include <avr/pgmspace.h>
 
+/** the predefined logging levels */
 enum RF24LogLevel : uint8_t
 {
+   /** the level to specify an error message */
    ERROR = 0,
+   /** the level to specify an warning message */
    WARN,
+   /** the level to specify an informational message */
    INFO,
+   /** the level to specify an debugging message */
    DEBUG,
+   /** the level to specify an traceback message */
    TRACE
 };
 
