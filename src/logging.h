@@ -80,8 +80,8 @@ template <typename StreamType>
 class RF24Logger
 {
 private:
-    StreamType* handler;
-    uint8_t level;
+    StreamType* handler; /** the output stream */
+    uint8_t level; /** the leevel that all messages are filtered with */
 
 #ifdef ARDUINO
     String name;
@@ -121,7 +121,7 @@ public:
      * Set the handler to which all logging messages are directed.
      * @param stream The output stream to be used as the handler.
      */
-    void sethandler(S &stream) { handler = stream; }
+    void sethandler(StreamType &stream) { handler = stream; }
 
     /**
      * Set the logging level that's to filter logging messages passed to log()
