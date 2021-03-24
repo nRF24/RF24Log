@@ -2,30 +2,35 @@
 #define LOGGING_H
 
 /* macros for testing
-#define ARDUINO
+#define ARDUINO // tricking Intellisense
  */
 
 #ifndef ARDUINO
 
-#include <cstdint> // datatypes (uint8_t)
-#include <string>  // datatype (std::string) and other useful coversion functions
-#include <ostream> // for building an output stream (includes cout)
-#include <ctime>   // for creating timestamps
+#include <cstdint> // uint8_t
+#include <string>  // std::string
+#include <ostream> // std::ostream, std::endl
+#include <ctime>   // time_t, time(), ctime()
 
-#ifndef PROGMEM
-#define PROGMEM
-#endif
+#define Stream_t std::ostream
+#define str_t std::string
+#define endl std::endl
 
 #else // defined(ARDUINO)
 
 #ifndef ARDUINO_API_VERSION
-#include "Arduino.h"
+#include "Arduino.h"       // PROGMEM
+#include "WString.h"       // for String datatype
+
 #else // defined(ARDUINO_API_VERSION)
 #include "api/AruinoAPI.h"
+#include "String.h"        // for String datatype
 #endif // defined(ARDUINO_API_VERSION)
 
-#include "String.h"
-#include "Print.h"
+#include "Print.h" // doesn't use pgmspace.h if defined(ARDUINO_API_VERSION)
+
+#define Stream_t Print
+#define str_t String
 
 // To use `Serial.print(data);` as `Serial << data;`
 template <class T>
@@ -37,6 +42,7 @@ inline Print &operator <<(Print &obj, T arg)
 
 enum _EndLineCode { endl };
 
+// To use `Serial.println();` as `Serial << endl;`
 inline Print &operator <<(Print &obj, _EndLineCode arg)
 {
     obj.println();
@@ -45,8 +51,12 @@ inline Print &operator <<(Print &obj, _EndLineCode arg)
 
 #endif // defined(ARDUINO)
 
+#ifndef PROGMEM
+#define PROGMEM
+#endif
 
-#define rf24_max(a, b) (a > b ? a : b)
+#define rf24_min(a, b) (a < b ? a : b)
+
 /**
  * @defgroup logLevels Logging Levels
  * These values are used in magnitudes of 10
@@ -72,6 +82,7 @@ inline Print &operator <<(Print &obj, _EndLineCode arg)
  */
 #define StreamType
 #endif // defined(DOXYGEN_FORCED)
+
 /**@}
  * A templated class for implementing a single logging object.
  * Copied logging (using RF24Logger(RF24Logger*)) objects will re-use the original handler and level.
@@ -81,13 +92,8 @@ class RF24Logger
 {
 private:
     StreamType* handler; /** the output stream */
-    uint8_t level; /** the leevel that all messages are filtered with */
-
-#ifdef ARDUINO
-    String name;
-#else
-    std::string name;
-#endif
+    uint8_t level; /** the logging level used to filter logging messages */
+    str_t _name; /** the logger instance's name */
 
     const PROGMEM char levelDesc0[] = "NOT_SET";
     const PROGMEM char levelDesc1[] = "DEBUG";
@@ -103,19 +109,20 @@ private:
 public:
 
     /** Empty constructor. level defaults to NOT_SET, and instance has no handler.  */
-    RF24Logger() : level(NOT_SET) { handler = nullptr; }
+    RF24Logger() : level(NOT_SET), handler(nullptr) { _name = str_t(""); }
 
     /**
      * Instance constructor. level defaults to NOT_SET, and instance's handler is initialized.
      * @param stream The handler to which all logging output will be directed.
+     * @param name The origin's name of the logger's messages.
      */
-    RF24Logger(StreamType* stream) : level(NOT_SET) { handler = stream; }
+    RF24Logger(StreamType* stream, str_t name) : level(NOT_SET), handler(stream) { _name = str_t(name); }
 
     /**
      * Copy constructor. Instance's log level and handler are set to @p obj instance's corresponding values.
      * @param obj An instantiated RF24Logger object from which values are copied from.
      */
-    RF24Logger(RF24Logger* obj) { handler = obj->handler; level = obj->level; }
+    RF24Logger(RF24Logger* obj) : handler(obj->handler), level(obj->level) { _name = str_t(""); }
 
     /**
      * Set the handler to which all logging messages are directed.
@@ -127,7 +134,14 @@ public:
      * Set the logging level that's to filter logging messages passed to log()
      * @param lvl The logging level must be in range [0, 60).
      */
-    void setLevel(uint8_t lvl) { level = rf24_max(lvl, ERROR * 10 + 9); }
+    void setLevel(uint8_t lvl) { level = rf24_min(lvl, ERROR * 10 + 9); }
+
+    /**
+     * @brief Set a default @p name for the instance
+     *
+     * This will be used in calls to log(uint8_t lvl, Ts msg...)
+     */
+    void setName(str_t name) { _name = name; }
 
     /**
      * Returns the logging handler that was configured with RF24Logger(S*) or setHandler()
@@ -146,7 +160,7 @@ public:
      * @param msg The specified message.
      */
     template <typename... Ts>
-    void log(uint8_t lvl, Ts msg...) { log(lvl, name, msg); }
+    void log(uint8_t lvl, Ts... msg) { log(lvl, name, msg...); }
 
     /**
      * @brief Log a message
@@ -155,7 +169,7 @@ public:
      * @param msg The specified message.
      */
     template <typename... Ts>
-    void log(uint8_t lvl, std:string vendorId, Ts msg...)
+    void log(uint8_t lvl, str_t vendorId, Ts... msg)
     {
         if (lvl < level || handler == nullptr)
             return;
@@ -168,28 +182,28 @@ public:
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void info(TS msg...) { log(INFO * 10, msg); }
+    void info(TS... msg) { log(INFO * 10, name, msg...); }
 
     /**
      * @brief output a @ref DEBUG level message
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void degub(TS msg...) { log(DEBUG * 10, msg); }
+    void debug(TS... msg) { log(DEBUG * 10, name, msg...); }
 
     /**
      * @brief output a @ref WARN level message
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void warn(TS msg...) { log(WARN * 10, msg); }
+    void warn(TS... msg) { log(WARN * 10, name, msg...); }
 
     /**
      * @brief output a @ref ERROR level message
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void error(TS msg...) { log(ERROR * 10, msg); }
+    void error(TS... msg) { log(ERROR * 10, name, msg...); }
 
 protected:
 
@@ -223,7 +237,7 @@ protected:
      * This is our base case for parameter unpacking
      * @param data The data to output
      */
-    template <typename Tdata, typename... Rest>
+    template <typename Tdata>
     StreamType* outputData(Tdata data)
     {
         handler << data;
@@ -246,14 +260,8 @@ protected:
 
 };
 
-#ifdef ARDUINO
-extern RF24Logger<Print> logging;
-
-#else // !defined(ARDUINO)
 /** @brief A convenient singleton to get started quickly */
-extern RF24Logger<std::ostream> logging;
-#endif // !defined(ARDUINO)
-
+extern RF24Logger<Stream_t> logging;
 
 #endif // LOGGING_H
 

@@ -8,3 +8,32 @@
  * A basic logging example using RF24Log library
  */
 #include "logging.h"
+
+void setup() {
+
+    Serial.begin(115200);
+
+    // set output stream to Serial object
+    logging.sethandler(&Serial);
+
+    // print an origin agnostic message
+    logging.getLogger() << "Starting BasicLogger Example" << endl;
+
+    // set a default origin name for all messages
+    logging.setName("RF24Log");
+
+    // by default, messages for all logging levels are output
+    logging.setLevel(DEBUG); // set to debug level
+}
+
+void loop() {
+    logging.debug("This is a DEBUG message");
+    logging.info("This is an INFO message");
+    logging.warn("This is a WARN message");
+    logging.error("This is an ERROR message");
+    logging.log(11, "This is a message for a custom DEBUG sublevel");
+    logging.log(12, "SimonSays", "This is a message from a specific code block");
+    logging.log(20, "This is an INFO message");
+    logging.log(21, "End:of:Loop", "This is a message for a custom INFO sublevel");
+    delay(2000); // slow down loop for readability
+}
