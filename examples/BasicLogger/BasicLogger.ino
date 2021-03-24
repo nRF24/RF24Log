@@ -12,18 +12,21 @@
 void setup() {
 
     Serial.begin(115200);
+    while (!Serial) {} // wait for native usb supported devices
 
+    Ardout ardout(&Serial);
     // set output stream to Serial object
-    logging.sethandler(&Serial);
+    logging.sethandler(&ardout);
 
     // print an origin agnostic message
     logging.getLogger() << "Starting BasicLogger Example" << endl;
-
     // set a default origin name for all messages
     logging.setName("RF24Log");
+    Serial.println("name set");
 
     // by default, messages for all logging levels are output
     logging.setLevel(DEBUG); // set to debug level
+    Serial.println("level set");
 }
 
 void loop() {

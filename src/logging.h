@@ -1,3 +1,16 @@
+/**
+ * @file logging.h
+ *
+ * Copyright (C)
+ *  2021        Brendan Doherty (2bndy5)
+ *
+ * This General Public License does not permit incorporating your program into
+ * proprietary programs.  If your program is a subroutine library, you may
+ * consider it more useful to permit linking proprietary applications with the
+ * library.  If this is what you want to do, use the GNU Lesser General
+ * Public License instead of this License.
+ */
+
 #ifndef LOGGING_H
 #define LOGGING_H
 
@@ -17,31 +30,7 @@
 #define endl std::endl
 
 #else // defined(ARDUINO)
-
-#ifndef ARDUINO_API_VERSION
-#include "Arduino.h"       // PROGMEM
-#include "WString.h"       // for String datatype
-
-#else // defined(ARDUINO_API_VERSION)
-#include "api/AruinoAPI.h"
-#include "String.h"        // for String datatype
-#endif // defined(ARDUINO_API_VERSION)
-
-#include "Print.h" // doesn't use pgmspace.h if defined(ARDUINO_API_VERSION)
-
-#define Stream_t Print
-#define str_t String
-
-static const PROGMEM char endl[] = "\n";
-
-// To use `Serial.print(data);` as `Serial << data;`
-template <class T>
-inline Stream_t &operator <<(Stream_t &obj, T arg)
-{
-    obj.print(arg);
-    return obj;
-}
-
+#include "ardout.h"
 #endif // defined(ARDUINO)
 
 #ifndef PROGMEM
@@ -55,13 +44,11 @@ static const PROGMEM char levelDesc1[] = "DEBUG";
 static const PROGMEM char levelDesc2[] = "INFO";
 static const PROGMEM char levelDesc3[] = "WARN";
 static const PROGMEM char levelDesc4[] = "ERROR";
-static const PROGMEM char * const levelDesc[] = {
-    levelDesc0,
-    levelDesc1,
-    levelDesc2,
-    levelDesc3,
-    levelDesc4
-};
+static const PROGMEM char * const levelDesc[] = {levelDesc0,
+                                                 levelDesc1,
+                                                 levelDesc2,
+                                                 levelDesc3,
+                                                 levelDesc4};
 
 /**
  * @defgroup logLevels Logging Levels
@@ -71,13 +58,13 @@ static const PROGMEM char * const levelDesc[] = {
 /** This level is the default and will output messages of any level */
 #define NOT_SET 0
 /** This level is for debugging outputs and will output messages of DEBUG, INFO, WARN, & ERROR levels */
-#define DEBUG   1
+#define DEBUG   10
 /** This level is for informative outputs and will output messages of INFO, WARN, & ERROR levels */
-#define INFO    2
+#define INFO    20
 /** This level is for warning outputs and will output messages of WARN & ERROR levels */
-#define WARN    3
+#define WARN    30
 /** This level is for error outputs and will output messages of only ERROR levels */
-#define ERROR   4
+#define ERROR   40
 
 #ifdef DOXYGEN_FORCED
 /**@}
@@ -98,8 +85,8 @@ class RF24Logger
 {
 private:
 
-    StreamType* handler; /** the output stream */
     uint8_t level; /** the logging level used to filter logging messages */
+    StreamType* handler; /** the output stream */
     str_t _name; /** the logger instance's name */
 
 public:
@@ -118,7 +105,7 @@ public:
      * Copy constructor. Instance's log level and handler are set to @p obj instance's corresponding values.
      * @param obj An instantiated RF24Logger object from which values are copied from.
      */
-    RF24Logger(RF24Logger* obj) : handler(obj->handler), level(obj->level) { _name = str_t(""); }
+    RF24Logger(RF24Logger* obj) : level(obj->level), handler(obj->handler){ _name = str_t(""); }
 
     /**
      * Set the handler to which all logging messages are directed.
@@ -130,7 +117,7 @@ public:
      * Set the logging level that's to filter logging messages passed to log()
      * @param lvl The logging level must be in range [0, 60).
      */
-    void setLevel(uint8_t lvl) { level = rf24_min(lvl, ERROR * 10 + 9); }
+    void setLevel(uint8_t lvl) { level = rf24_min(lvl, ERROR + 9); }
 
     /**
      * @brief Set a default @p name for the instance
@@ -148,7 +135,7 @@ public:
      * @endcode
      * would ouput "a string of text 0:1.0" with a trailing line feed.
      */
-    StreamType* getLogger() { return handler; }
+    StreamType &getLogger() { return *handler; }
 
     /**
      * Log a message
@@ -170,7 +157,10 @@ public:
         if (lvl < level || handler == nullptr)
             return;
 
-        outputTimestamp() << ':' << outputLoglevel() << ':' <<  outputData(vendorId) << '=' << outputData(msg...) << endl;
+        outputTimestamp() << ':';
+        outputLoglevel() << ':';
+        outputData(vendorId) << '=';
+        outputData(msg...) << endl;
     }
 
     /**
@@ -178,35 +168,35 @@ public:
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void info(Ts... msg) { log(INFO * 10, _name, msg...); }
+    void info(Ts... msg) { log(INFO, _name, msg...); }
 
     /**
      * @brief output a @ref DEBUG level message
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void debug(Ts... msg) { log(DEBUG * 10, _name, msg...); }
+    void debug(Ts... msg) { log(DEBUG, _name, msg...); }
 
     /**
      * @brief output a @ref WARN level message
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void warn(Ts... msg) { log(WARN * 10, _name, msg...); }
+    void warn(Ts... msg) { log(WARN, _name, msg...); }
 
     /**
      * @brief output a @ref ERROR level message
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void error(Ts... msg) { log(ERROR * 10, _name, msg...); }
+    void error(Ts... msg) { log(ERROR, _name, msg...); }
 
 protected:
 
     /**
      * @brief output a timestamp for the proceeding message
      */
-    StreamType* outputTimestamp()
+    StreamType &outputTimestamp()
     {
 #ifndef ARDUINO
         time_t now;
@@ -221,15 +211,15 @@ protected:
     /**
      * @brief output an appropriate log level for the proceeding message
      */
-    StreamType* outputLoglevel()
+    StreamType &outputLoglevel()
     {
         if (level % 10 == 0) {
-            handler << levelDesc[level / 10];
+            getLogger() << levelDesc[level / 10];
         }
         else if (level < ERROR * 10 + 9) {
-            handler << "Level " << level;
+            getLogger() << "Level " << level;
         }
-        return handler;
+        return getLogger();
     }
 
     /**
@@ -239,10 +229,10 @@ protected:
      * @param data The data to output
      */
     template <typename Tdata>
-    StreamType* outputData(Tdata data)
+    StreamType &outputData(Tdata data)
     {
-        handler << data;
-        return handler;
+        getLogger() << data;
+        return getLogger();
     }
 
     /**
@@ -253,16 +243,16 @@ protected:
      * @param rest the pack of sequential parameters
      */
     template <typename Tdata, typename... Rest>
-    StreamType* outputData(Tdata data, Rest... rest)
+    StreamType &outputData(Tdata data, Rest... rest)
     {
-        handler << data;
+        getLogger() << data;
         return outputData(rest...);
     }
 
 };
 
 /** @brief A convenient singleton to get started quickly */
-extern RF24Logger<Stream_t> logging;
+RF24Logger<Stream_t> logging;
 
 #endif // LOGGING_H
 
