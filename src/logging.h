@@ -32,20 +32,13 @@
 #define Stream_t Print
 #define str_t String
 
+static const PROGMEM char endl[] = "\n";
+
 // To use `Serial.print(data);` as `Serial << data;`
 template <class T>
-inline Print &operator <<(Print &obj, T arg)
+inline Stream_t &operator <<(Stream_t &obj, T arg)
 {
     obj.print(arg);
-    return obj;
-}
-
-enum _EndLineCode { endl };
-
-// To use `Serial.println();` as `Serial << endl;`
-inline Print &operator <<(Print &obj, _EndLineCode arg)
-{
-    obj.println();
     return obj;
 }
 
@@ -56,6 +49,19 @@ inline Print &operator <<(Print &obj, _EndLineCode arg)
 #endif
 
 #define rf24_min(a, b) (a < b ? a : b)
+
+static const PROGMEM char levelDesc0[] = "NOT_SET";
+static const PROGMEM char levelDesc1[] = "DEBUG";
+static const PROGMEM char levelDesc2[] = "INFO";
+static const PROGMEM char levelDesc3[] = "WARN";
+static const PROGMEM char levelDesc4[] = "ERROR";
+static const PROGMEM char * const levelDesc[] = {
+    levelDesc0,
+    levelDesc1,
+    levelDesc2,
+    levelDesc3,
+    levelDesc4
+};
 
 /**
  * @defgroup logLevels Logging Levels
@@ -91,20 +97,10 @@ template <typename StreamType>
 class RF24Logger
 {
 private:
+
     StreamType* handler; /** the output stream */
     uint8_t level; /** the logging level used to filter logging messages */
     str_t _name; /** the logger instance's name */
-
-    const PROGMEM char levelDesc0[] = "NOT_SET";
-    const PROGMEM char levelDesc1[] = "DEBUG";
-    const PROGMEM char levelDesc2[] = "INFO";
-    const PROGMEM char levelDesc3[] = "WARN";
-    const PROGMEM char levelDesc4[] = "ERROR";
-    const PROGMEM char *levelDesc[] = {levelDesc0,
-                                       levelDesc1,
-                                       levelDesc2,
-                                       levelDesc3,
-                                       levelDesc4};
 
 public:
 
@@ -128,7 +124,7 @@ public:
      * Set the handler to which all logging messages are directed.
      * @param stream The output stream to be used as the handler.
      */
-    void sethandler(StreamType &stream) { handler = stream; }
+    void sethandler(StreamType* stream) { handler = stream; }
 
     /**
      * Set the logging level that's to filter logging messages passed to log()
@@ -160,7 +156,7 @@ public:
      * @param msg The specified message.
      */
     template <typename... Ts>
-    void log(uint8_t lvl, Ts... msg) { log(lvl, name, msg...); }
+    void log(uint8_t lvl, Ts... msg) { log(lvl, _name, msg...); }
 
     /**
      * @brief Log a message
@@ -174,7 +170,7 @@ public:
         if (lvl < level || handler == nullptr)
             return;
 
-        outputTimestamp() << ':' << outputLoglevel() << ':' <<  outputData(vendorId) << '=' << outputData(msg) << endl;
+        outputTimestamp() << ':' << outputLoglevel() << ':' <<  outputData(vendorId) << '=' << outputData(msg...) << endl;
     }
 
     /**
@@ -182,28 +178,28 @@ public:
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void info(TS... msg) { log(INFO * 10, name, msg...); }
+    void info(Ts... msg) { log(INFO * 10, _name, msg...); }
 
     /**
      * @brief output a @ref DEBUG level message
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void debug(TS... msg) { log(DEBUG * 10, name, msg...); }
+    void debug(Ts... msg) { log(DEBUG * 10, _name, msg...); }
 
     /**
      * @brief output a @ref WARN level message
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void warn(TS... msg) { log(WARN * 10, name, msg...); }
+    void warn(Ts... msg) { log(WARN * 10, _name, msg...); }
 
     /**
      * @brief output a @ref ERROR level message
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void error(TS... msg) { log(ERROR * 10, name, msg...); }
+    void error(Ts... msg) { log(ERROR * 10, _name, msg...); }
 
 protected:
 
@@ -212,9 +208,14 @@ protected:
      */
     StreamType* outputTimestamp()
     {
+#ifndef ARDUINO
         time_t now;
         time(&now);
-        return outputData(ctime(now));
+        str_t stamp = ctime(now);
+#else // !defined(ARDUINO)
+        unsigned long stamp = millis();
+#endif // !defined(ARDUINO)
+        return outputData(stamp);
     }
 
     /**
