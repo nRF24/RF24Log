@@ -37,18 +37,22 @@
 #define PROGMEM
 #endif
 
+#ifndef pgm_read_ptr
+#define pgm_read_ptr(p) (*(p))
+#endif
+
 #define rf24_min(a, b) (a < b ? a : b)
 
-static const PROGMEM char levelDesc0[] = "NOT_SET";
+static const PROGMEM char levelDesc0[] = "NOT SET";
 static const PROGMEM char levelDesc1[] = "DEBUG";
 static const PROGMEM char levelDesc2[] = "INFO";
 static const PROGMEM char levelDesc3[] = "WARN";
 static const PROGMEM char levelDesc4[] = "ERROR";
-static const PROGMEM char * const levelDesc[] = {levelDesc0,
-                                                 levelDesc1,
-                                                 levelDesc2,
-                                                 levelDesc3,
-                                                 levelDesc4};
+static const PROGMEM char* const levelDesc[] = {levelDesc0,
+                                                levelDesc1,
+                                                levelDesc2,
+                                                levelDesc3,
+                                                levelDesc4};
 
 /**
  * @defgroup logLevels Logging Levels
@@ -143,7 +147,7 @@ public:
      * @param msg The specified message.
      */
     template <typename... Ts>
-    void log(uint8_t lvl, Ts... msg) { log(lvl, _name, msg...); }
+    void log(uint8_t lvl, Ts... msg) { logOrigin(lvl, _name, msg...); }
 
     /**
      * @brief Log a message
@@ -151,15 +155,26 @@ public:
      * @param vendorId The orgin of the message.
      * @param msg The specified message.
      */
-    template <typename... Ts>
-    void log(uint8_t lvl, str_t vendorId, Ts... msg)
+    template <typename St, typename... Ts>
+    void logOrigin(uint8_t lvl, St origin, Ts... msg)
     {
-        if (lvl < level || handler == nullptr)
+        if ((lvl < level && level) || handler == nullptr)
             return;
 
-        outputTimestamp() << ':';
-        outputLoglevel() << ':';
-        outputData(vendorId) << '=';
+        getLogger()
+#ifdef ARDUINO
+        << millis()
+#else // !defined(ARDUINO)
+        << timestamp()
+#endif // !defined(ARDUINO)
+        << ':';
+
+        if (lvl % 10 == 0)
+            getLogger() << (char*)pgm_read_ptr(&levelDesc[lvl / 10]) << ':';
+        else
+            getLogger() << "Level " << lvl << ':';
+
+        getLogger() << origin << '=';
         outputData(msg...) << endl;
     }
 
@@ -193,34 +208,18 @@ public:
 
 protected:
 
+#ifndef ARDUINO
     /**
      * @brief output a timestamp for the proceeding message
+     * @note this is for non-Arduino platforms
      */
-    StreamType &outputTimestamp()
+    str_t timestamp()
     {
-#ifndef ARDUINO
         time_t now;
         time(&now);
-        str_t stamp = ctime(now);
-#else // !defined(ARDUINO)
-        unsigned long stamp = millis();
-#endif // !defined(ARDUINO)
-        return outputData(stamp);
+        return ctime(now);
     }
-
-    /**
-     * @brief output an appropriate log level for the proceeding message
-     */
-    StreamType &outputLoglevel()
-    {
-        if (level % 10 == 0) {
-            getLogger() << levelDesc[level / 10];
-        }
-        else if (level < ERROR * 10 + 9) {
-            getLogger() << "Level " << level;
-        }
-        return getLogger();
-    }
+#endif
 
     /**
      * @brief output an arbitrary type of data
