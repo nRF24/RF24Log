@@ -14,34 +14,11 @@
 #ifndef LOGGING_H
 #define LOGGING_H
 
+#include "RF24Log_config.h"
+
 /* macros for testing
 #define ARDUINO // tricking Intellisense
  */
-
-#ifndef ARDUINO
-
-#include <cstdint> // uint8_t
-#include <string>  // std::string
-#include <ostream> // std::ostream, std::endl
-#include <ctime>   // time_t, time(), ctime()
-
-#define Stream_t std::ostream
-#define str_t std::string
-#define endl std::endl
-
-#else // defined(ARDUINO)
-#include "ardout.h"
-#endif // defined(ARDUINO)
-
-#ifndef PROGMEM
-#define PROGMEM
-#endif
-
-#ifndef pgm_read_ptr
-#define pgm_read_ptr(p) (*(p))
-#endif
-
-#define rf24_min(a, b) (a < b ? a : b)
 
 static const PROGMEM char levelDesc0[] = "NOT SET";
 static const PROGMEM char levelDesc1[] = "DEBUG";
@@ -115,7 +92,7 @@ public:
      * Set the handler to which all logging messages are directed.
      * @param stream The output stream to be used as the handler.
      */
-    void sethandler(StreamType* stream) { handler = stream; }
+    void setHandler(StreamType* stream) { handler = stream; }
 
     /**
      * Set the logging level that's to filter logging messages passed to log()

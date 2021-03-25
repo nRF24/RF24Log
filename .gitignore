@@ -58,9 +58,20 @@ dkms.conf
 .project
 .settings
 
-
-# local-specific working dir
+# Visual Studio local files
 .vscode/
+.vs/
+CppProperties.json
+*.vcxproj*
+*.sln
+
+# cmake Specific
+out/
+build/
+
+# doxygen output
 docs/html/
 docs/xml/
+
+# macOS specific
 DS_Store/

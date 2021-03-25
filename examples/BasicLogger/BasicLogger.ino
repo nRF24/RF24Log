@@ -7,7 +7,7 @@
 /**
  * A basic logging example using RF24Log library
  */
-#include "logging.h"
+#include "RF24Log.h"
 
 void setup() {
 
@@ -16,7 +16,7 @@ void setup() {
 
     Ardout ardout(&Serial);
     // set output stream to Serial object
-    logging.sethandler(&ardout);
+    logging.setHandler(&ardout);
 
     // print an origin agnostic message
     logging.getLogger() << "Starting BasicLogger Example" << 1 << endl;
