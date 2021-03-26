@@ -181,7 +181,7 @@ protected:
      * @brief output a timestamp for the proceeding message
      * @note this is for non-Arduino platforms
      */
-    str_t timestamp()
+    char* timestamp()
     {
         time_t now;
         time(&now);

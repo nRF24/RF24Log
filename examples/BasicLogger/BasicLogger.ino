@@ -21,7 +21,7 @@ void setup() {
 
   // print an origin agnostic message
   logging.getLogger() << endl << "Starting BasicLogger Example" << endl;
-  // which is equivalent to
+  // which is usably equivalent to the following
   ardout << "A prompt without using the logging object" << endl << endl;
 
   // set a default origin name for all messages

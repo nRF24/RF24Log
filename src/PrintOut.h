@@ -42,7 +42,7 @@ inline Print &operator <<(Print &obj, T arg)
  * @brief A wrapper class that inherits from `Print` class.
  *
  * This class implements C++ `cout` output operator (`<<`) for any Arduino API that
- * inherit from the `Print` class (like the popular `Serial`objects).
+ * inherit from the `Print` class (like the popular `Serial` objects).
  */
 class PrintOut : public Print
 {
