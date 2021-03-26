@@ -29,6 +29,7 @@ jobs:
     - name: overwrite doxygen tags
       run: |
         touch doxygenAction
+        echo "WARN_AS_ERROR  = YES" >> doxygenAction
         echo "PROJECT_NUMBER = ${{ steps.latest_ver.outputs.release }}" >> doxygenAction
         echo "@INCLUDE = doxygenAction" >> Doxyfile
     - name: build doxygen

@@ -24,7 +24,7 @@ static const PROGMEM char* const levelDesc[4] = {"DEBUG", "INFO", "WARN", "ERROR
 
 /**
  * @defgroup logLevels Logging Levels
- * These values are used in magnitudes of 10
+ * These values are used to delimit certain levels of logging messages
  * @{
  */
 /** This level is the default and will output messages of any level */
@@ -38,19 +38,12 @@ static const PROGMEM char* const levelDesc[4] = {"DEBUG", "INFO", "WARN", "ERROR
 /** This level is for error outputs and will output messages of only ERROR levels */
 #define ERROR   40
 
-#ifdef DOXYGEN_FORCED
-/**@}
- * @defgroup streamTypeDoc StreamType
- * This is just a placeholder for documenting the datatype of the output stream that will be
- * used by the instance of a RF24Logger.
- * @{
- */
-#define StreamType
-#endif // defined(DOXYGEN_FORCED)
-
-/**@}
+/**
+ * @}
  * A templated class for implementing a single logging object.
- * Copied logging (using RF24Logger(RF24Logger*)) objects will re-use the original handler and level.
+ * Copied @ref logging objects (using RF24Logger(RF24Logger*)) will re-use
+ * the original handler and level.
+ * @see the pre-instantiated @ref logging variable
  */
 template <typename StreamType>
 class RF24Logger
@@ -94,7 +87,7 @@ public:
     /**
      * @brief Set a default @p name for the instance
      *
-     * This will be used in calls to log(uint8_t lvl, Ts msg...)
+     * @param name This will be used in calls to log(uint8_t lvl, Ts msg...)
      */
     void setName(const char* name) { strcpy(_name, name); }
 
@@ -106,6 +99,7 @@ public:
      * logging.getLogger() << "a string of text " << 0 << ':' << 1.0 << endl;
      * @endcode
      * would ouput "a string of text 0:1.0" with a trailing line feed.
+     * @returns The instantiated output stream object passed to setHandler()
      */
     StreamType &getLogger() { return *handler; }
 
@@ -129,7 +123,7 @@ public:
         if ((lvl < level && level) || handler == nullptr)
             return;
 
-        this->getLogger()
+        getLogger()
 #ifdef ARDUINO
         << millis()
 #else // !defined(ARDUINO)
@@ -138,11 +132,11 @@ public:
         << ':';
 
         if (lvl % 10 == 0)
-            this->getLogger() << (char*)pgm_read_ptr(&levelDesc[lvl / 10 - 1]) << ':';
+            getLogger() << (char*)pgm_read_ptr(&levelDesc[lvl / 10 - 1]) << ':';
         else
-            this->getLogger() << "Lvl " << lvl << ':';
+            getLogger() << "Lvl " << lvl << ':';
 
-        this->getLogger() << origin << ": ";
+        getLogger() << origin << ": ";
         outputData(msg...) << endl;
     }
 
@@ -180,6 +174,7 @@ protected:
     /**
      * @brief output a timestamp for the proceeding message
      * @note this is for non-Arduino platforms
+     * @returns A c-string of the current time
      */
     char* timestamp()
     {
@@ -194,6 +189,7 @@ protected:
      *
      * This is our base case for parameter unpacking
      * @param data The data to output
+     * @returns The instantiated output stream object passed to setHandler()
      */
     template <typename Tdata>
     StreamType &outputData(Tdata data)
@@ -208,6 +204,7 @@ protected:
      * This is our recursive scenario for parameter unpacking
      * @param data The data to output
      * @param rest the pack of sequential parameters
+     * @returns The instantiated output stream object passed to setHandler()
      */
     template <typename Tdata, typename... Rest>
     StreamType &outputData(Tdata data, Rest... rest)
@@ -218,7 +215,7 @@ protected:
 
 };
 
-/** @brief A convenient singleton to get started quickly */
+/** @brief A convenient variable to get started quickly on supported platforms */
 RF24Logger<Stream_t> logging;
 
 #endif // LOGGING_H
