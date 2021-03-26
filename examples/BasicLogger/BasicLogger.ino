@@ -9,24 +9,26 @@
  */
 #include "RF24Log.h"
 
+PrintOut ardout(&Serial);
+
 void setup() {
 
   Serial.begin(115200);
   while (!Serial) {} // wait for native usb supported devices
 
-  Ardout ardout(&Serial);
   // set output stream to Serial object
   logging.setHandler(&ardout);
 
   // print an origin agnostic message
-  logging.getLogger() << "Starting BasicLogger Example" << endl;
+  logging.getLogger() << endl << "Starting BasicLogger Example" << endl;
+  // which is equivalent to
+  ardout << "A prompt without using the logging object" << endl << endl;
 
   // set a default origin name for all messages
   logging.setName("RF24Log");
 
   // by default, messages for all logging levels are disabled
   logging.setLevel(DEBUG); // set to debug level (0 will disable logging messages)
-
 }
 
 void loop() {

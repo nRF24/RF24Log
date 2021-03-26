@@ -26,7 +26,7 @@
 #define endl std::endl
 
 #else // defined(ARDUINO)
-#include "ardout.h"
+#include "PrintOut.h"
 #endif // defined(ARDUINO)
 
 #ifndef PROGMEM

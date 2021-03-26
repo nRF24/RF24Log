@@ -129,7 +129,7 @@ public:
         if ((lvl < level && level) || handler == nullptr)
             return;
 
-        getLogger()
+        this->getLogger()
 #ifdef ARDUINO
         << millis()
 #else // !defined(ARDUINO)
@@ -138,11 +138,11 @@ public:
         << ':';
 
         if (lvl % 10 == 0)
-            getLogger() << (char*)pgm_read_ptr(&levelDesc[lvl / 10 - 1]) << ':';
+            this->getLogger() << (char*)pgm_read_ptr(&levelDesc[lvl / 10 - 1]) << ':';
         else
-            getLogger() << "Lvl " << lvl << ':';
+            this->getLogger() << "Lvl " << lvl << ':';
 
-        getLogger() << origin << ": ";
+        this->getLogger() << origin << ": ";
         outputData(msg...) << endl;
     }
 

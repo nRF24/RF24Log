@@ -44,7 +44,7 @@ inline Print &operator <<(Print &obj, T arg)
  * This class implements C++ `cout` output operator (`<<`) for any Arduino API that
  * inherit from the `Print` class (like the popular `Serial`objects).
  */
-class Ardout : public Print
+class PrintOut : public Print
 {
 
 private:
@@ -53,14 +53,14 @@ private:
 
 public:
     /** Empty contructor; output stream is uninitialized. */
-    Ardout() : out_stream(nullptr) {}
+    PrintOut() : out_stream(nullptr) {}
 
     /**
      * Instance constructor; initialize the output stream.
      * @note `Serial` objects still require `begin()` to be called prior to instantiation.
      * @param outStream The output stream to wrap
      */
-    Ardout(Print* outStream) : out_stream(outStream) {}
+    PrintOut(Print* outStream) : out_stream(outStream) {}
 
     /**
      * set or reconfigure the outputStream
