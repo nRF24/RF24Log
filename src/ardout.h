@@ -13,30 +13,20 @@
 
 #ifndef ARDOUT_H
 #define ARDOUT_H
-
-#ifndef ARDUINO_API_VERSION
-#include "Arduino.h"       // PROGMEM
-#include "WString.h"       // for String datatype
-
-#else // defined(ARDUINO_API_VERSION)
-#include "api/AruinoAPI.h"
-#include "String.h"        // for String datatype
-#endif // defined(ARDUINO_API_VERSION)
-
-#include "stdlib.h" // size_t
-#include "stdint.h" // uint8_t
-// #include "stddef.h" // nullptr
-#include "Print.h"  // doesn't use pgmspace.h if defined(ARDUINO_API_VERSION)
+#pragma once
+#include "Arduino.h" // PROGMEM
+// #include "stdlib.h"  // size_t
+// #include "stdint.h"  // uint8_t
+#include "Print.h"   // doesn't use pgmspace.h if defined(ARDUINO_API_VERSION)
 
 #define Stream_t Print
-#define str_t String
 
 enum _LineFeed { endl };
 
 // To use `Serial.println();` as `Serial << endl;`
 inline Print &operator <<(Print &obj, _LineFeed arg)
 {
-    if (!arg) obj.println();
+    if (!arg) { obj.println(); }
     return obj;
 }
 
@@ -56,39 +46,40 @@ inline Print &operator <<(Print &obj, T arg)
  */
 class Ardout : public Print
 {
+
 private:
     /** a pointer to the specified output stream */
-    Print* printer;
+    Print* out_stream;
+
 public:
     /** Empty contructor; output stream is uninitialized. */
-    Ardout() : printer(nullptr) {}
+    Ardout() : out_stream(nullptr) {}
 
     /**
      * Instance constructor; initialize the output stream.
      * @note `Serial` objects still require `begin()` to be called prior to instantiation.
      * @param outStream The output stream to wrap
      */
-    Ardout(Print* outStream) : printer(outStream) {}
+    Ardout(Print* outStream) : out_stream(outStream) {}
 
     /**
      * set or reconfigure the outputStream
      * @param outStream The output stream to wrap
      * @note `Serial` objects still require `begin()` to be called prior to instantiation.
      */
-    void setStream(Print* outStream) { printer = outStream; }
+    void setStream(Print* outStream) { out_stream = outStream; }
 
     /** get the reference to the output stream */
-    Print& get() { return *printer; }
+    Print& get() { return *out_stream; }
 
     template <class T>
     friend inline Print &operator <<(Print &obj, T arg);
 
     friend inline Print &operator <<(Print &obj, _LineFeed arg);
 
-
     // the following methods are overiden virtual functions that default to their parents' behavior
     // I'm not documenting these
-    virtual size_t write(uint8_t chr) { return printer ? printer->write(chr) : 0; }
-    virtual size_t write(const uint8_t* buf, size_t len) { return printer ? printer->write(buf, len) : 0; }
+    virtual size_t write(uint8_t chr) { return out_stream ? out_stream->write(chr) : 0; }
+    virtual size_t write(const uint8_t* buf, size_t len) { return out_stream ? out_stream->write(buf, len) : 0; }
 };
 #endif // ARDOUT_H

@@ -67,7 +67,7 @@ CppProperties.json
 
 # cmake Specific
 out/
-build/
+**build/
 
 # doxygen output
 docs/html/

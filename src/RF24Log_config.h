@@ -1,3 +1,16 @@
+/**
+ * @file RF24Log_config.h
+ *
+ * Copyright (C)
+ *  2021        Brendan Doherty (2bndy5)
+ *
+ * This General Public License does not permit incorporating your program into
+ * proprietary programs.  If your program is a subroutine library, you may
+ * consider it more useful to permit linking proprietary applications with the
+ * library.  If this is what you want to do, use the GNU Lesser General
+ * Public License instead of this License.
+ */
+
 #define RF24Log_VERSION_MAJOR @RF24Log_VERSION_MAJOR@
 #define RF24Log_VERSION_MINOR @RF24Log_VERSION_MINOR@
 #define RF24Log_VERSION_PATCH @RF24Log_VERSION_PATCH@
@@ -10,7 +23,6 @@
 #include <ctime>   // time_t, time(), ctime()
 
 #define Stream_t std::ostream
-#define str_t std::string
 #define endl std::endl
 
 #else // defined(ARDUINO)

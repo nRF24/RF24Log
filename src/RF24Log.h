@@ -1,5 +1,5 @@
 /**
- * @file logging.h
+ * @file RF24Log.h
  *
  * Copyright (C)
  *  2021        Brendan Doherty (2bndy5)
@@ -20,16 +20,7 @@
 #define ARDUINO // tricking Intellisense
  */
 
-static const PROGMEM char levelDesc0[] = "NOT SET";
-static const PROGMEM char levelDesc1[] = "DEBUG";
-static const PROGMEM char levelDesc2[] = "INFO";
-static const PROGMEM char levelDesc3[] = "WARN";
-static const PROGMEM char levelDesc4[] = "ERROR";
-static const PROGMEM char* const levelDesc[] = {levelDesc0,
-                                                levelDesc1,
-                                                levelDesc2,
-                                                levelDesc3,
-                                                levelDesc4};
+static const PROGMEM char* const levelDesc[4] = {"DEBUG", "INFO", "WARN", "ERROR"};
 
 /**
  * @defgroup logLevels Logging Levels
@@ -68,25 +59,25 @@ private:
 
     uint8_t level; /** the logging level used to filter logging messages */
     StreamType* handler; /** the output stream */
-    str_t _name; /** the logger instance's name */
+    char _name[40]; /** the logger instance's name (max of 39 characters)*/
 
 public:
 
     /** Empty constructor. level defaults to NOT_SET, and instance has no handler.  */
-    RF24Logger() : level(NOT_SET), handler(nullptr) { _name = str_t(""); }
+    RF24Logger() : level(NOT_SET), handler(nullptr) {}
 
     /**
      * Instance constructor. level defaults to NOT_SET, and instance's handler is initialized.
      * @param stream The handler to which all logging output will be directed.
      * @param name The origin's name of the logger's messages.
      */
-    RF24Logger(StreamType* stream, str_t name) : level(NOT_SET), handler(stream) { _name = str_t(name); }
+    RF24Logger(StreamType* stream, const char* name) : level(NOT_SET), handler(stream) { strcpy(_name, name); }
 
     /**
      * Copy constructor. Instance's log level and handler are set to @p obj instance's corresponding values.
      * @param obj An instantiated RF24Logger object from which values are copied from.
      */
-    RF24Logger(RF24Logger* obj) : level(obj->level), handler(obj->handler){ _name = str_t(""); }
+    RF24Logger(RF24Logger* obj) : level(obj->level), handler(obj->handler) {}
 
     /**
      * Set the handler to which all logging messages are directed.
@@ -105,7 +96,7 @@ public:
      *
      * This will be used in calls to log(uint8_t lvl, Ts msg...)
      */
-    void setName(str_t name) { _name = name; }
+    void setName(const char* name) { strcpy(_name, name); }
 
     /**
      * Returns the logging handler that was configured with RF24Logger(S*) or setHandler()
@@ -129,7 +120,7 @@ public:
     /**
      * @brief Log a message
      * @param lvl The logging level used for the specified message.
-     * @param vendorId The orgin of the message.
+     * @param origin The orgin of the message.
      * @param msg The specified message.
      */
     template <typename St, typename... Ts>
@@ -147,11 +138,11 @@ public:
         << ':';
 
         if (lvl % 10 == 0)
-            getLogger() << (char*)pgm_read_ptr(&levelDesc[lvl / 10]) << ':';
+            getLogger() << (char*)pgm_read_ptr(&levelDesc[lvl / 10 - 1]) << ':';
         else
-            getLogger() << "Level " << lvl << ':';
+            getLogger() << "Lvl " << lvl << ':';
 
-        getLogger() << origin << '=';
+        getLogger() << origin << ": ";
         outputData(msg...) << endl;
     }
 
@@ -160,28 +151,28 @@ public:
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void info(Ts... msg) { log(INFO, _name, msg...); }
+    void info(Ts... msg) { log(INFO, msg...); }
 
     /**
      * @brief output a @ref DEBUG level message
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void debug(Ts... msg) { log(DEBUG, _name, msg...); }
+    void debug(Ts... msg) { log(DEBUG, msg...); }
 
     /**
      * @brief output a @ref WARN level message
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void warn(Ts... msg) { log(WARN, _name, msg...); }
+    void warn(Ts... msg) { log(WARN, msg...); }
 
     /**
      * @brief output a @ref ERROR level message
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void error(Ts... msg) { log(ERROR, _name, msg...); }
+    void error(Ts... msg) { log(ERROR, msg...); }
 
 protected:
 
