@@ -224,3 +224,11 @@ RF24Logger<Stream_t> logging;
  * @example BasicLogger.ino
  * A basic logging example using RF24Log library
  */
+
+/**
+ * @example MultipleLoggers.ino
+ * A example using RF24Log library to log multiple "libraries" (basic class structures
+ * in this example). We expect that only 1 of the libraries will actually print
+ * something during `loop()` because we filter out the logging from the MyLib2 object
+ * using a different/higher logging level (specifically set by the MyLib2 class' c'tor).
+ */

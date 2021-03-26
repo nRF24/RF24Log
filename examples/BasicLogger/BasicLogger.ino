@@ -1,5 +1,5 @@
 /**
- * Documentation is hosted at https://2bndy5.github.io/Rf24Log
+ * Documentation is hosted at https://nRF24.github.io/RF24Log
  * See License information at root directory of this library
  * Author: Brendan Doherty (2bndy5)
  */
