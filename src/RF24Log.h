@@ -27,15 +27,15 @@ static const PROGMEM char* const levelDesc[4] = {"DEBUG", "INFO", "WARN", "ERROR
  * These values are used to delimit certain levels of logging messages
  * @{
  */
-/** This level is the default and will output messages of any level */
+/** This level is the default and will output **no** messages of any level */
 #define NOT_SET 0
-/** This level is for debugging outputs and will output messages of DEBUG, INFO, WARN, & ERROR levels */
+/** This level is for debugging outputs and will output messages of @ref DEBUG, @ref INFO, @ref WARN, & @ref ERROR levels */
 #define DEBUG   10
-/** This level is for informative outputs and will output messages of INFO, WARN, & ERROR levels */
+/** This level is for informative outputs and will output messages of @ref INFO, @ref WARN, & @ref ERROR levels */
 #define INFO    20
-/** This level is for warning outputs and will output messages of WARN & ERROR levels */
+/** This level is for warning outputs and will output messages of @ref WARN & @ref ERROR levels */
 #define WARN    30
-/** This level is for error outputs and will output messages of only ERROR levels */
+/** This level is for error outputs and will output messages of only @ref ERROR levels */
 #define ERROR   40
 
 /**
@@ -56,43 +56,65 @@ private:
 
 public:
 
-    /** Empty constructor. level defaults to NOT_SET, and instance has no handler.  */
-    RF24Logger() : level(NOT_SET), handler(nullptr) {}
+    /** Empty constructor. level defaults to @ref NOT_SET, and instance has no handler. */
+    RF24Logger() : level(NOT_SET), handler(nullptr)
+    {
+        _name[0] = 0;
+    }
 
     /**
-     * Instance constructor. level defaults to NOT_SET, and instance's handler is initialized.
+     * Instance constructor. The , and the instance's
+     * handler is initialized.
      * @param stream The handler to which all logging output will be directed.
      * @param name The origin's name of the logger's messages.
+     * @param lvl The instance's logging level defaults to @ref NOT_SET if not specified.
      */
-    RF24Logger(StreamType* stream, const char* name) : level(NOT_SET), handler(stream) { strcpy(_name, name); }
+    RF24Logger(StreamType* stream, const char* name, uin8_t lvl = NOT_SET) : level(lvl), handler(stream)
+    {
+        strcpy(_name, name);
+    }
 
     /**
-     * Copy constructor. Instance's log level and handler are set to @p obj instance's corresponding values.
+     * Copy constructor. Instance's log level and handler are set to @p obj instance's
+     * corresponding values.
      * @param obj An instantiated RF24Logger object from which values are copied from.
      */
-    RF24Logger(RF24Logger* obj) : level(obj->level), handler(obj->handler) {}
+    RF24Logger(RF24Logger* obj) : level(obj->level), handler(obj->handler)
+    {
+        _name[0] = 0;
+    }
 
     /**
      * Set the handler to which all logging messages are directed.
      * @param stream The output stream to be used as the handler.
      */
-    void setHandler(StreamType* stream) { handler = stream; }
+    void setHandler(StreamType* stream)
+    {
+        handler = stream;
+    }
 
     /**
      * Set the logging level that's to filter logging messages passed to log()
      * @param lvl The logging level must be in range [0, 60).
      */
-    void setLevel(uint8_t lvl) { level = rf24_min(lvl, ERROR + 9); }
+    void setLevel(uint8_t lvl)
+    {
+        level = rf24_min(lvl, ERROR + 9);
+    }
 
     /**
      * @brief Set a default @p name for the instance
      *
      * @param name This will be used in calls to log(uint8_t lvl, Ts msg...)
      */
-    void setName(const char* name) { strcpy(_name, name); }
+    void setName(const char* name)
+    {
+        strcpy(_name, name);
+    }
 
     /**
-     * Returns the logging handler that was configured with RF24Logger(S*) or setHandler()
+     * Returns the logging handler that was configured with RF24Logger(RF24Logger*),
+     * RF24Logger(StreamType*, const char*) or setHandler()
      *
      * Example usage:
      * @code
@@ -101,7 +123,10 @@ public:
      * would ouput "a string of text 0:1.0" with a trailing line feed.
      * @returns The instantiated output stream object passed to setHandler()
      */
-    StreamType &getLogger() { return *handler; }
+    StreamType &getLogger()
+    {
+        return *handler;
+    }
 
     /**
      * Log a message
@@ -109,7 +134,10 @@ public:
      * @param msg The specified message.
      */
     template <typename... Ts>
-    void log(uint8_t lvl, Ts... msg) { logOrigin(lvl, _name, msg...); }
+    void log(uint8_t lvl, Ts... msg)
+    {
+        logOrigin(lvl, _name, msg...);
+    }
 
     /**
      * @brief Log a message
@@ -145,28 +173,40 @@ public:
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void info(Ts... msg) { log(INFO, msg...); }
+    void info(Ts... msg)
+    {
+        log(INFO, msg...);
+    }
 
     /**
      * @brief output a @ref DEBUG level message
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void debug(Ts... msg) { log(DEBUG, msg...); }
+    void debug(Ts... msg)
+    {
+        log(DEBUG, msg...);
+    }
 
     /**
      * @brief output a @ref WARN level message
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void warn(Ts... msg) { log(WARN, msg...); }
+    void warn(Ts... msg)
+    {
+        log(WARN, msg...);
+    }
 
     /**
      * @brief output a @ref ERROR level message
      * @param msg The message to output.
      */
     template <typename... Ts>
-    void error(Ts... msg) { log(ERROR, msg...); }
+    void error(Ts... msg)
+    {
+        log(ERROR, msg...);
+    }
 
 protected:
 

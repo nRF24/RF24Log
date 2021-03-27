@@ -33,9 +33,9 @@
  */
 /** @brief a privately used global enum */
 enum _LineFeed { endl /** A zero value variable */ };
-/** @} */
 
 /**
+ * @}
  * Operator overload to implement using `Serial.println()` as `Serial << endl`
  * @param obj The reference to instantiated output stream obj
  * @param arg Due to the use of @ref _LineFeed, this parameter can only be 0.
@@ -64,7 +64,7 @@ inline Print &operator <<(Print &obj, T arg)
  * @brief A wrapper class that inherits from `Print` class.
  *
  * This class implements C++ `cout` output operator (`<<`) for any Arduino API that
- * inherit from the `Print` class (like the popular `Serial` objects).
+ * inherits from the `Print` class (like the popular `Serial` objects).
  */
 class PrintOut : public Print
 {
@@ -79,7 +79,7 @@ public:
 
     /**
      * Instance constructor; initialize the output stream.
-     * @note `Serial` objects still require `begin()` to be called prior to instantiation.
+     * @note `Serial` objects still require `Serial.begin()` to be called separately.
      * @param outStream The output stream to wrap
      */
     PrintOut(Print* outStream) : out_stream(outStream) {}
@@ -87,15 +87,21 @@ public:
     /**
      * set or reconfigure the outputStream
      * @param outStream The output stream to wrap
-     * @note `Serial` objects still require `begin()` to be called prior to instantiation.
+     * @note `Serial` objects still require `Serial.begin()` to be called separately.
      */
-    void setStream(Print* outStream) { out_stream = outStream; }
+    void setStream(Print* outStream)
+    {
+        out_stream = outStream;
+    }
 
     /**
-     * Get the reference to the output stream
+     * Get a reference to the output stream
      * @returns The instantiated output stream passed to setStream()
      */
-    Print& get() { return *out_stream; }
+    Print& getStream()
+    {
+        return *out_stream;
+    }
 
     template <class T>
     friend inline Print &operator <<(Print &obj, T arg);
@@ -104,17 +110,23 @@ public:
 
     /**
      * A virtual function overide that default to its parents' behavior
-     * @param chr A byte to write to the outpput stream
+     * @param chr A byte to write to the output stream
      * @returns the amount of bytes written to the output stream
      */
-    virtual size_t write(uint8_t chr) { return out_stream ? out_stream->write(chr) : 0; }
+    virtual size_t write(uint8_t chr)
+    {
+        return out_stream ? out_stream->write(chr) : 0;
+    }
 
     /**
      * A virtual function overide that default to its parents' behavior
-     * @param buf A byte array to write to the outpput stream
+     * @param buf A byte array to write to the output stream
      * @param len The length of @p buf
      * @returns the amount of bytes written to the output stream
      */
-    virtual size_t write(const uint8_t* buf, size_t len) { return out_stream ? out_stream->write(buf, len) : 0; }
+    virtual size_t write(const uint8_t* buf, size_t len)
+    {
+        return out_stream ? out_stream->write(buf, len) : 0;
+    }
 };
 #endif // ARDOUT_H
