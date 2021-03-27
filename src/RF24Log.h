@@ -69,7 +69,7 @@ public:
      * @param name The origin's name of the logger's messages.
      * @param lvl The instance's logging level defaults to @ref NOT_SET if not specified.
      */
-    RF24Logger(StreamType* stream, const char* name, uin8_t lvl = NOT_SET) : level(lvl), handler(stream)
+    RF24Logger(StreamType* stream, const char* name, uint8_t lvl = NOT_SET) : level(lvl), handler(stream)
     {
         strcpy(_name, name);
     }

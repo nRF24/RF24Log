@@ -38,7 +38,7 @@ void loop() {
   logging.error("This is an ERROR message");
   logging.log(11, "This is a message for a custom DEBUG sublevel");
   logging.logOrigin(12, "SimonSays", "This is a message from a specific code block");
-  logging.log(20, "This is an INFO message");
+  logging.log(20, "The number ", 64, " is ", String(64, HEX), " in hexadecimal");
   logging.logOrigin(21, "End:of:Loop", "This is a message for a custom INFO sublevel");
   delay(1000); // slow down loop for readability
 }
