@@ -2,6 +2,8 @@
 *.d
 
 # Object files
+*.slo
+*.lo
 *.o
 *.ko
 *.obj
@@ -55,3 +57,10 @@ dkms.conf
 .cproject
 .project
 .settings
+
+
+# local-specific working dir
+.vscode/
+docs/html/
+docs/xml/
+DS_Store/
