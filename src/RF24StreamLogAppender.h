@@ -1,7 +1,7 @@
 /**
  * @file RF24StreamLogAppender.h
  *
- * Created on: 2 paź 2020
+ * Created on: 2 Oct 2020
  *     Author: wmarkowski
  *
  * Copyright (C) 2020 Witold Markowski (wmarkow)
