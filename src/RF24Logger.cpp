@@ -18,12 +18,12 @@
 
 RF24Logger::RF24Logger()
 {
-   this->appender = nullptr;
+   this->handler = nullptr;
 }
 
-void RF24Logger::setAppender(RF24LogAppender *appender)
+void RF24Logger::setHandler(RF24LogHandler *handler)
 {
-   this->appender = appender;
+   this->handler = handler;
 }
 
 // default logger instance

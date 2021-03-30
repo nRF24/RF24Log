@@ -18,13 +18,13 @@
 #include <string.h>
 
 #include <RF24Logger.h>
-#include <RF24StreamLogAppender.h>
+#include <RF24StreamLogHandler.h>
 
 // Define global vendor id (it is stored in flash memory)
 const char vendorID[] PROGMEM = "RF24LogExample";
 
 // DO NOT create hardware serial port log appender
-// RF24StreamLogAppender rf24SerialLogAppender(&Serial);
+// RF24StreamLogHandler rf24SerialLogHandler(&Serial);
 
 // Need to remember that backslash must be escaped in the string text
 // Banner generated with https://devops.datenkollektiv.de/banner.txt/index.html

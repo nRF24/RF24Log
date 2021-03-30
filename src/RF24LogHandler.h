@@ -1,5 +1,5 @@
 /**
- * @file RF24LogAppender.h
+ * @file RF24LogHandler.h
  *
  * Created on: 2 Oct 2020
  *     Author: Witold Markowski (wmarkow)
@@ -15,8 +15,8 @@
  * Public License instead of this License.
  */
 
-#ifndef SRC_RF24LOGAPPENDER_H_
-#define SRC_RF24LOGAPPENDER_H_
+#ifndef SRC_RF24LOGHANDLER_H_
+#define SRC_RF24LOGHANDLER_H_
 
 #include <WString.h>
 #include <stdint.h>
@@ -24,32 +24,32 @@
 #include "RF24LogLevel.h"
 
 /**
- * A base class for delegating messages to a stream.
+ * A base class for handling log messages.
  */
-class RF24LogAppender
+class RF24LogHandler
 {
 public:
       /**
-       * direct messages to a stream.
+       * log message.
        * @param logLevel the level of the logging message
        * @param vendorId The prefixed origin of the message
        * @param message The message
        */
-      virtual void append(RF24LogLevel logLevel,
+      virtual void log(RF24LogLevel logLevel,
                           const __FlashStringHelper *vendorId,
                           const char *message,
                           ...);
 
       /**
-       * direct messages to a stream.
+       * log message.
        * @param logLevel the level of the logging message
        * @param vendorId The prefixed origin of the message
        * @param message The message
        */
-      virtual void append(RF24LogLevel logLevel,
+      virtual void log(RF24LogLevel logLevel,
                           const __FlashStringHelper *vendorId,
                           const __FlashStringHelper *message,
                           ...);
 };
 
-#endif /* SRC_RF24LOGAPPENDER_H_ */
+#endif /* SRC_RF24LOGHANDLER_H_ */

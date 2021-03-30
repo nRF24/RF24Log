@@ -14,13 +14,16 @@
  * Public License instead of this License.
  */
 
-#ifndef SRC_RF24STREAMLOGAPPENDER_H_
-#define SRC_RF24STREAMLOGAPPENDER_H_
+#ifndef SRC_RF24STREAMLOGHANDLER_H_
+#define SRC_RF24STREAMLOGHANDLER_H_
 
+#include <RF24LogHandler.h>
 #include <Stream.h>
-#include "RF24LogAppender.h"
 
-class RF24StreamLogAppender : public RF24LogAppender
+/**
+ * A log handler implementation which outputs log messages to a stream.
+ */
+class RF24StreamLogHandler : public RF24LogHandler
 {
 private:
    Stream *stream;
@@ -29,11 +32,11 @@ private:
    void appendVendorId(const __FlashStringHelper *vendorId);
 
 public:
-   RF24StreamLogAppender(Stream *stream);
-   void append(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
+   RF24StreamLogHandler(Stream *stream);
+   void log(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
          const char *message, ...);
 
-   void append(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
+   void log(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
          const __FlashStringHelper *message, ...);
 
 protected:
@@ -42,4 +45,4 @@ protected:
    void appendFormat(const char format, va_list *args);
 };
 
-#endif /* SRC_RF24STREAMLOGAPPENDER_H_ */
+#endif /* SRC_RF24STREAMLOGHANDLER_H_ */

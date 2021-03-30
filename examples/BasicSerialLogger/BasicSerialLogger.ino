@@ -18,10 +18,10 @@
 #include <string.h>
 
 #include <RF24Logger.h>
-#include <RF24StreamLogAppender.h>
+#include <RF24StreamLogHandler.h>
 
 // Create hardware serial port log appender
-RF24StreamLogAppender rf24SerialLogAppender(&Serial);
+RF24StreamLogHandler rf24SerialLogHandler(&Serial);
 
 // Define global vendor id (it is stored in flash memory)
 const char vendorID[] PROGMEM = "RF24LogExample";
@@ -46,7 +46,7 @@ void setup()
    // configure serial port baudrate
    Serial.begin(115200);
    // set serial port appender
-   rf24Logger.setAppender(&rf24SerialLogAppender);
+   rf24Logger.setHandler(&rf24SerialLogHandler);
 
    // display banner
    for (uint8_t i = 0; i < 5; ++i)

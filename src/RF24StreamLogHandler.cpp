@@ -15,7 +15,7 @@
  */
 #include <Arduino.h>
 
-#include "RF24StreamLogAppender.h"
+#include <RF24StreamLogHandler.h>
 
 const char rf24logLevelError[] = "ERROR";
 const char rf24logLevelWarn[] = " WARN";
@@ -29,12 +29,12 @@ const char *const rf24LogLevels[] = {rf24logLevelError,
                                      rf24logLevelDebug,
                                      rf24logLevelTrace};
 
-RF24StreamLogAppender::RF24StreamLogAppender(Stream *stream)
+RF24StreamLogHandler::RF24StreamLogHandler(Stream *stream)
 {
    this->stream = stream;
 }
 
-void RF24StreamLogAppender::append(RF24LogLevel logLevel,
+void RF24StreamLogHandler::log(RF24LogLevel logLevel,
                                    const __FlashStringHelper *vendorId,
                                    const char *message,
                                    ...)
@@ -50,7 +50,7 @@ void RF24StreamLogAppender::append(RF24LogLevel logLevel,
    stream->println("");
 }
 
-void RF24StreamLogAppender::append(RF24LogLevel logLevel,
+void RF24StreamLogHandler::log(RF24LogLevel logLevel,
                                    const __FlashStringHelper *vendorId,
                                    const __FlashStringHelper *message,
                                    ...)
@@ -66,7 +66,7 @@ void RF24StreamLogAppender::append(RF24LogLevel logLevel,
    stream->println("");
 }
 
-void RF24StreamLogAppender::appendFormattedMessage(const char *format, va_list args)
+void RF24StreamLogHandler::appendFormattedMessage(const char *format, va_list args)
 {
    for (; *format != 0; ++format)
    {
@@ -82,7 +82,7 @@ void RF24StreamLogAppender::appendFormattedMessage(const char *format, va_list a
    }
 }
 
-void RF24StreamLogAppender::appendFormattedMessage(const __FlashStringHelper *format, va_list args)
+void RF24StreamLogHandler::appendFormattedMessage(const __FlashStringHelper *format, va_list args)
 {
    PGM_P p = reinterpret_cast<PGM_P>(format);
    char c = pgm_read_byte(p++);
@@ -100,7 +100,7 @@ void RF24StreamLogAppender::appendFormattedMessage(const __FlashStringHelper *fo
    }
 }
 
-void RF24StreamLogAppender::appendFormat(const char format, va_list *args)
+void RF24StreamLogHandler::appendFormat(const char format, va_list *args)
 {
    if (format == 's')
    {
@@ -131,7 +131,7 @@ void RF24StreamLogAppender::appendFormat(const char format, va_list *args)
    stream->print(format);
 }
 
-void RF24StreamLogAppender::appendTimestamp()
+void RF24StreamLogHandler::appendTimestamp()
 {
    char c[12];
    sprintf(c, "%10lu ", millis());
@@ -139,13 +139,13 @@ void RF24StreamLogAppender::appendTimestamp()
    stream->print(" ");
 }
 
-void RF24StreamLogAppender::appendLogLevel(RF24LogLevel logLevel)
+void RF24StreamLogHandler::appendLogLevel(RF24LogLevel logLevel)
 {
    stream->print(rf24LogLevels[logLevel]);
    stream->print(" ");
 }
 
-void RF24StreamLogAppender::appendVendorId(const __FlashStringHelper *vendorId)
+void RF24StreamLogHandler::appendVendorId(const __FlashStringHelper *vendorId)
 {
    stream->print(vendorId);
    stream->print(" ");

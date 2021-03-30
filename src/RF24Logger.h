@@ -20,15 +20,15 @@
 
 #include <WString.h>
 #include "RF24LogLevel.h"
-#include "RF24LogAppender.h"
+#include "RF24LogHandler.h"
 
 /**
- * This is the end-user's acces point into the world of logging messages.
+ * This is the end-user's access point into the world of logging messages.
  */
 class RF24Logger
 {
 private:
-   RF24LogAppender *appender;
+   RF24LogHandler *handler;
 
 public:
 
@@ -38,10 +38,10 @@ public:
    RF24Logger();
 
    /**
-    * set the instance's appender
-    * @param appender The stream for which messages will be directed for output.
+    * set the instance's handler
+    * @param handler The log handler where the messages will be redirected.
     */
-   void setAppender(RF24LogAppender *appender);
+   void setHandler(RF24LogHandler *handler);
 
    /**
     * ouput an ERROR message
@@ -52,11 +52,11 @@ public:
    template<class T, typename ... Args> void error(
          const __FlashStringHelper *vendorId, T message, Args ...args)
    {
-      if (appender == nullptr)
+      if (handler == nullptr)
       {
          return;
       }
-      appender->append(RF24LogLevel::ERROR, vendorId, message, args...);
+      handler->log(RF24LogLevel::ERROR, vendorId, message, args...);
    }
 
    /**
@@ -68,11 +68,11 @@ public:
    template<class T, typename ... Args> void warn(
          const __FlashStringHelper *vendorId, T message, Args ...args)
    {
-      if (appender == nullptr)
+      if (handler == nullptr)
       {
          return;
       }
-      appender->append(RF24LogLevel::WARN, vendorId, message, args...);
+      handler->log(RF24LogLevel::WARN, vendorId, message, args...);
    }
 
    /**
@@ -84,11 +84,11 @@ public:
    template<class T, typename ... Args> void info(
          const __FlashStringHelper *vendorId, T message, Args ...args)
    {
-      if (appender == nullptr)
+      if (handler == nullptr)
       {
          return;
       }
-      appender->append(RF24LogLevel::INFO, vendorId, message, args...);
+      handler->log(RF24LogLevel::INFO, vendorId, message, args...);
    }
 
    /**
@@ -100,11 +100,11 @@ public:
    template<class T, typename ... Args> void debug(
          const __FlashStringHelper *vendorId, T message, Args ...args)
    {
-      if (appender == nullptr)
+      if (handler == nullptr)
       {
          return;
       }
-      appender->append(RF24LogLevel::DEBUG, vendorId, message, args...);
+      handler->log(RF24LogLevel::DEBUG, vendorId, message, args...);
    }
 
    /**
@@ -116,11 +116,11 @@ public:
    template<class T, typename ... Args> void trace(
          const __FlashStringHelper *vendorId, T message, Args ...args)
    {
-      if (appender == nullptr)
+      if (handler == nullptr)
       {
          return;
       }
-      appender->append(RF24LogLevel::TRACE, vendorId, message, args...);
+      handler->log(RF24LogLevel::TRACE, vendorId, message, args...);
    }
 };
 
