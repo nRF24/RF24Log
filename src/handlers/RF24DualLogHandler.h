@@ -33,10 +33,10 @@ public:
    RF24DualLogHandler(RF24LogHandler *handler1, RF24LogHandler *handler2);
 
    void log(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
-         const char *message, va_list args);
+         const char *message, va_list *args);
 
    void log(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
-         const __FlashStringHelper *message, va_list args);
+         const __FlashStringHelper *message, va_list *args);
 };
 
 

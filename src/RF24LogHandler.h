@@ -38,7 +38,7 @@ public:
       virtual void log(RF24LogLevel logLevel,
                           const __FlashStringHelper *vendorId,
                           const char *message,
-                          va_list args);
+                          va_list *args);
 
       /**
        * log message.
@@ -49,7 +49,7 @@ public:
       virtual void log(RF24LogLevel logLevel,
                           const __FlashStringHelper *vendorId,
                           const __FlashStringHelper *message,
-                          va_list args);
+                          va_list *args);
 };
 
 #endif /* SRC_RF24LOGHANDLER_H_ */

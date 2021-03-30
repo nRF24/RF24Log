@@ -34,14 +34,14 @@ private:
 public:
    RF24StreamLogHandler(Stream *stream);
    void log(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
-         const char *message, va_list args);
+         const char *message, va_list *args);
 
    void log(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
-         const __FlashStringHelper *message, va_list args);
+         const __FlashStringHelper *message, va_list *args);
 
 protected:
-   void appendFormattedMessage(const char *format, va_list args);
-   void appendFormattedMessage(const __FlashStringHelper *format, va_list args);
+   void appendFormattedMessage(const char *format, va_list *args);
+   void appendFormattedMessage(const __FlashStringHelper *format, va_list *args);
    void appendFormat(const char format, va_list *args);
 };
 

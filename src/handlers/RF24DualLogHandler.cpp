@@ -26,17 +26,26 @@ RF24DualLogHandler::RF24DualLogHandler(RF24LogHandler *handler1,
 }
 
 void RF24DualLogHandler::log(RF24LogLevel logLevel,
-      const __FlashStringHelper *vendorId, const char *message, va_list args)
+      const __FlashStringHelper *vendorId, const char *message, va_list *args)
 {
+   // va_list can be iterated only once.
+   // Since we have here two handlers, we need to copy arguments.
+   va_list args2;
+   va_copy(args2, *args);
 
    handler1->log(logLevel, vendorId, message, args);
-   handler2->log(logLevel, vendorId, message, args);
+   handler2->log(logLevel, vendorId, message, &args2);
 }
 
 void RF24DualLogHandler::log(RF24LogLevel logLevel,
       const __FlashStringHelper *vendorId, const __FlashStringHelper *message,
-      va_list args)
+      va_list *args)
 {
+   // va_list can be iterated only once.
+   // Since we have here two handlers, we need to copy arguments.
+   va_list args2;
+   va_copy(args2, *args);
+
    handler1->log(logLevel, vendorId, message, args);
-   handler2->log(logLevel, vendorId, message, args);
+   handler2->log(logLevel, vendorId, message, &args2);
 }

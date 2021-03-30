@@ -58,7 +58,7 @@ public:
       }
       va_list args;
       va_start(args, message);
-      handler->log(RF24LogLevel::ERROR, vendorId, message, args);
+      handler->log(RF24LogLevel::ERROR, vendorId, message, &args);
    }
 
    /**
@@ -76,7 +76,7 @@ public:
       }
       va_list args;
       va_start(args, message);
-      handler->log(RF24LogLevel::WARN, vendorId, message, args);
+      handler->log(RF24LogLevel::WARN, vendorId, message, &args);
    }
 
    /**
@@ -94,7 +94,7 @@ public:
       }
       va_list args;
       va_start(args, message);
-      handler->log(RF24LogLevel::INFO, vendorId, message, args);
+      handler->log(RF24LogLevel::INFO, vendorId, message, &args);
    }
 
    /**
@@ -112,7 +112,7 @@ public:
       }
       va_list args;
       va_start(args, message);
-      handler->log(RF24LogLevel::DEBUG, vendorId, message, args);
+      handler->log(RF24LogLevel::DEBUG, vendorId, message, &args);
    }
 
    /**
@@ -130,7 +130,7 @@ public:
       }
       va_list args;
       va_start(args, message);
-      handler->log(RF24LogLevel::TRACE, vendorId, message, args);
+      handler->log(RF24LogLevel::TRACE, vendorId, message, &args);
    }
 };
 
