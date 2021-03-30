@@ -2,7 +2,7 @@
  * @file RF24Logger.cpp
  *
  * Created on: 2 Oct 2020
- *     Author: wmarkowski
+ *     Author: Witold Markowski (wmarkow)
  *
  * Copyright (C)
  *    2020        Witold Markowski (wmarkow)

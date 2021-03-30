@@ -2,9 +2,10 @@
  * @file RF24StreamLogAppender.cpp
  *
  * Created on: 2 Oct 2020
- *     Author: wmarkowski
+ *     Author: Witold Markowski (wmarkow)
  *
- * Copyright (C) 2020 Witold Markowski (wmarkow)
+ * Copyright (C)
+ *    2020        Witold Markowski (wmarkow)
  *
  * This General Public License does not permit incorporating your program into
  * proprietary programs.  If your program is a subroutine library, you may
