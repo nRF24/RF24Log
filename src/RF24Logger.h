@@ -49,14 +49,16 @@ public:
     * @param message The message to output
     * @param args consumable arguments
     */
-   template<class T, typename ... Args> void error(
-         const __FlashStringHelper *vendorId, T message, Args ...args)
+   template<class T> void error(
+         const __FlashStringHelper *vendorId, T message, ...)
    {
       if (handler == nullptr)
       {
          return;
       }
-      handler->log(RF24LogLevel::ERROR, vendorId, message, args...);
+      va_list args;
+      va_start(args, message);
+      handler->log(RF24LogLevel::ERROR, vendorId, message, args);
    }
 
    /**
@@ -65,14 +67,16 @@ public:
     * @param message The message to output
     * @param args consumable arguments
     */
-   template<class T, typename ... Args> void warn(
-         const __FlashStringHelper *vendorId, T message, Args ...args)
+   template<class T> void warn(
+         const __FlashStringHelper *vendorId, T message, ...)
    {
       if (handler == nullptr)
       {
          return;
       }
-      handler->log(RF24LogLevel::WARN, vendorId, message, args...);
+      va_list args;
+      va_start(args, message);
+      handler->log(RF24LogLevel::WARN, vendorId, message, args);
    }
 
    /**
@@ -81,14 +85,16 @@ public:
     * @param message The message to output
     * @param args consumable arguments
     */
-   template<class T, typename ... Args> void info(
-         const __FlashStringHelper *vendorId, T message, Args ...args)
+   template<class T> void info(
+         const __FlashStringHelper *vendorId, T message, ...)
    {
       if (handler == nullptr)
       {
          return;
       }
-      handler->log(RF24LogLevel::INFO, vendorId, message, args...);
+      va_list args;
+      va_start(args, message);
+      handler->log(RF24LogLevel::INFO, vendorId, message, args);
    }
 
    /**
@@ -97,14 +103,16 @@ public:
     * @param message The message to output
     * @param args consumable arguments
     */
-   template<class T, typename ... Args> void debug(
-         const __FlashStringHelper *vendorId, T message, Args ...args)
+   template<class T> void debug(
+         const __FlashStringHelper *vendorId, T message, ...)
    {
       if (handler == nullptr)
       {
          return;
       }
-      handler->log(RF24LogLevel::DEBUG, vendorId, message, args...);
+      va_list args;
+      va_start(args, message);
+      handler->log(RF24LogLevel::DEBUG, vendorId, message, args);
    }
 
    /**
@@ -113,14 +121,16 @@ public:
     * @param message The message to output
     * @param args consumable arguments
     */
-   template<class T, typename ... Args> void trace(
-         const __FlashStringHelper *vendorId, T message, Args ...args)
+   template<class T> void trace(
+         const __FlashStringHelper *vendorId, T message, ...)
    {
       if (handler == nullptr)
       {
          return;
       }
-      handler->log(RF24LogLevel::TRACE, vendorId, message, args...);
+      va_list args;
+      va_start(args, message);
+      handler->log(RF24LogLevel::TRACE, vendorId, message, args);
    }
 };
 

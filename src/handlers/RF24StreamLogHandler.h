@@ -1,5 +1,5 @@
 /**
- * @file RF24StreamLogAppender.h
+ * @file RF24StreamLogHandler.h
  *
  * Created on: 2 Oct 2020
  *     Author: Witold Markowski (wmarkow)
@@ -34,10 +34,10 @@ private:
 public:
    RF24StreamLogHandler(Stream *stream);
    void log(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
-         const char *message, ...);
+         const char *message, va_list args);
 
    void log(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
-         const __FlashStringHelper *message, ...);
+         const __FlashStringHelper *message, va_list args);
 
 protected:
    void appendFormattedMessage(const char *format, va_list args);

@@ -1,5 +1,5 @@
 /**
- * @file RF24StreamLogAppender.cpp
+ * @file RF24StreamLogHandler.cpp
  *
  * Created on: 2 Oct 2020
  *     Author: Witold Markowski (wmarkow)
@@ -37,15 +37,13 @@ RF24StreamLogHandler::RF24StreamLogHandler(Stream *stream)
 void RF24StreamLogHandler::log(RF24LogLevel logLevel,
                                    const __FlashStringHelper *vendorId,
                                    const char *message,
-                                   ...)
+                                   va_list args)
 {
    appendTimestamp();
    appendLogLevel(logLevel);
    appendVendorId(vendorId);
 
    // print formatted message
-   va_list args;
-   va_start(args, message);
    appendFormattedMessage(message, args);
    stream->println("");
 }
@@ -53,15 +51,13 @@ void RF24StreamLogHandler::log(RF24LogLevel logLevel,
 void RF24StreamLogHandler::log(RF24LogLevel logLevel,
                                    const __FlashStringHelper *vendorId,
                                    const __FlashStringHelper *message,
-                                   ...)
+                                   va_list args)
 {
    appendTimestamp();
    appendLogLevel(logLevel);
    appendVendorId(vendorId);
 
    // print formatted message
-   va_list args;
-   va_start(args, message);
    appendFormattedMessage(message, args);
    stream->println("");
 }
