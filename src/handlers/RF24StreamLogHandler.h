@@ -14,8 +14,8 @@
  * Public License instead of this License.
  */
 
-#ifndef SRC_RF24STREAMLOGHANDLER_H_
-#define SRC_RF24STREAMLOGHANDLER_H_
+#ifndef SRC_HANDLERS_RF24STREAMLOGHANDLER_H_
+#define SRC_HANDLERS_RF24STREAMLOGHANDLER_H_
 
 #include <RF24LogHandler.h>
 #include <Stream.h>
@@ -45,4 +45,4 @@ protected:
    void appendFormat(const char format, va_list *args);
 };
 
-#endif /* SRC_RF24STREAMLOGHANDLER_H_ */
+#endif /* SRC_HANDLERS_RF24STREAMLOGHANDLER_H_ */

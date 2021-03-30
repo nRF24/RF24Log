@@ -18,7 +18,7 @@
 #include <string.h>
 
 #include <RF24Logger.h>
-#include <RF24StreamLogHandler.h>
+#include <handlers/RF24StreamLogHandler.h>
 
 // Create hardware serial port log appender
 RF24StreamLogHandler rf24SerialLogHandler(&Serial);

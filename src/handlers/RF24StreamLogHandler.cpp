@@ -15,7 +15,7 @@
  */
 #include <Arduino.h>
 
-#include <RF24StreamLogHandler.h>
+#include "RF24StreamLogHandler.h"
 
 const char rf24logLevelError[] = "ERROR";
 const char rf24logLevelWarn[] = " WARN";

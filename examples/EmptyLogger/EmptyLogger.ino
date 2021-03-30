@@ -18,7 +18,7 @@
 #include <string.h>
 
 #include <RF24Logger.h>
-#include <RF24StreamLogHandler.h>
+#include <handlers/RF24StreamLogHandler.h>
 
 // Define global vendor id (it is stored in flash memory)
 const char vendorID[] PROGMEM = "RF24LogExample";
