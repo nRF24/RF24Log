@@ -23,16 +23,20 @@
 /** the predefined logging levels */
 enum RF24LogLevel : uint8_t
 {
+   /** the level to disable all log messages */
+     OFF = 0b0000000,
    /** the level to specify an error message */
    ERROR = 0b00001000,
    /** the level to specify an warning message */
     WARN = 0b00010000,
    /** the level to specify an informational message */
-    INFO = 0b00100000,
+    INFO = 0b00011000,
    /** the level to specify an debugging message */
-   DEBUG = 0b01000000,
+   DEBUG = 0b00100000,
    /** the level to specify an traceback message */
-   TRACE = 0b10000000
+   TRACE = 0b00101000,
+   /** the level to enable all log messages */
+     ALL = 0b11111111
 };
 
 #endif /* SRC_RF24LOGLEVEL_H_ */

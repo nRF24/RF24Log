@@ -45,6 +45,9 @@ void setup()
 {
    // configure serial port baudrate
    Serial.begin(115200);
+
+   // set maximal log level to ALL
+   rf24SerialLogHandler.setLogLevel(RF24LogLevel::ALL);
    // set serial port appender
    rf24Logger.setHandler(&rf24SerialLogHandler);
 
@@ -65,6 +68,7 @@ void logProgmemMessageWithRamStringArgument();
 void logMessageWithAdditionalTagAtTheBeginning();
 void logMessageWithUnknownFormat();
 void logFloatNumber();
+void logCustomLogLevels();
 
 void loop()
 {
@@ -78,6 +82,11 @@ void loop()
    logMessageWithAdditionalTagAtTheBeginning();
    logMessageWithUnknownFormat();
    logFloatNumber();
+   logCustomLogLevels();
+
+   Serial.println();
+   Serial.println("--------------------------------------------------");
+   Serial.println();
 
    delay(5000);
 }
@@ -241,4 +250,13 @@ void logFloatNumber()
          "trace log with double value %F", 2.71);
 
    Serial.println();
+}
+
+void logCustomLogLevels()
+{
+   rf24Logger.log(RF24LogLevel::INFO + 1, (const __FlashStringHelper*) vendorID,
+            "INFO + 1 message defined in RAM");
+
+   rf24Logger.log(RF24LogLevel::WARN + 1, (const __FlashStringHelper*) vendorID,
+               F("WARN + 1 message defined in FLASH"));
 }

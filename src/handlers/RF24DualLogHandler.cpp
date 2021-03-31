@@ -49,3 +49,9 @@ void RF24DualLogHandler::log(uint8_t logLevel,
    handler1->log(logLevel, vendorId, message, args);
    handler2->log(logLevel, vendorId, message, &args2);
 }
+
+void RF24DualLogHandler::setLogLevel(uint8_t logLevel)
+{
+   handler1->setLogLevel(logLevel);
+   handler2->setLogLevel(logLevel);
+}

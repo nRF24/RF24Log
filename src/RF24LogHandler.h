@@ -50,6 +50,12 @@ public:
                           const __FlashStringHelper *vendorId,
                           const __FlashStringHelper *message,
                           va_list *args);
+
+      /**
+       * Set the maximal level of the logged messages.
+       * @param logLevel the level of the logged message
+       */
+      virtual void setLogLevel(uint8_t logLevel);
 };
 
 #endif /* SRC_RF24LOGHANDLER_H_ */

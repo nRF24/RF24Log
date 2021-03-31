@@ -132,6 +132,18 @@ public:
       va_start(args, message);
       handler->log(RF24LogLevel::TRACE, vendorId, message, &args);
    }
+
+   template<class T> void log(
+            uint8_t logLevel, const __FlashStringHelper *vendorId, T message, ...)
+      {
+         if (handler == nullptr)
+         {
+            return;
+         }
+         va_list args;
+         va_start(args, message);
+         handler->log(logLevel, vendorId, message, &args);
+      }
 };
 
 /**

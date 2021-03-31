@@ -51,7 +51,6 @@ void setup()
 }
 
 void logSimpleRamMessage();
-void logFloatNumber();
 
 void loop()
 {

@@ -32,6 +32,7 @@ const char *const rf24LogLevels[] = {rf24logLevelError,
 RF24StreamLogHandler::RF24StreamLogHandler(Stream *stream)
 {
    this->stream = stream;
+   this->logLevel = RF24LogLevel::INFO;
 }
 
 void RF24StreamLogHandler::log(uint8_t logLevel,
@@ -39,6 +40,11 @@ void RF24StreamLogHandler::log(uint8_t logLevel,
                                    const char *message,
                                    va_list *args)
 {
+   if(logLevel > this->logLevel)
+   {
+      return;
+   }
+
    appendTimestamp();
    appendLogLevel(logLevel);
    appendVendorId(vendorId);
@@ -53,6 +59,11 @@ void RF24StreamLogHandler::log(uint8_t logLevel,
                                    const __FlashStringHelper *message,
                                    va_list *args)
 {
+   if(logLevel > this->logLevel)
+   {
+      return;
+   }
+
    appendTimestamp();
    appendLogLevel(logLevel);
    appendVendorId(vendorId);
@@ -60,6 +71,11 @@ void RF24StreamLogHandler::log(uint8_t logLevel,
    // print formatted message
    appendFormattedMessage(message, args);
    stream->println("");
+}
+
+void RF24StreamLogHandler::setLogLevel(uint8_t logLevel)
+{
+   this->logLevel = logLevel;
 }
 
 void RF24StreamLogHandler::appendFormattedMessage(const char *format, va_list *args)
@@ -138,26 +154,52 @@ void RF24StreamLogHandler::appendTimestamp()
 void RF24StreamLogHandler::appendLogLevel(uint8_t logLevel)
 {
    uint8_t logMainLevel = logLevel & 0b11111000;
+   uint8_t subLevel = logLevel & 0b00000111;
+
    switch(logMainLevel)
    {
       case RF24LogLevel::ERROR:
+      {
          stream->print(rf24LogLevels[0]);
          break;
+      }
       case RF24LogLevel::WARN:
+      {
          stream->print(rf24LogLevels[1]);
          break;
+      }
       case RF24LogLevel::INFO:
+      {
          stream->print(rf24LogLevels[2]);
          break;
+      }
       case RF24LogLevel::DEBUG:
+      {
          stream->print(rf24LogLevels[3]);
          break;
-      default:
-         // fallbacks to TRACE
+      }
+      case RF24LogLevel::TRACE:
+      {
          stream->print(rf24LogLevels[4]);
+         break;
+      }
+      default:
+      {
+         // unknown
+         stream->print("-----   ");
+         return;
+      }
    }
 
-   stream->print(" ");
+   if(subLevel == 0)
+   {
+      stream->print("   ");
+   } else
+   {
+      stream->print(":");
+      stream->print(subLevel);
+      stream->print(" ");
+   }
 }
 
 void RF24StreamLogHandler::appendVendorId(const __FlashStringHelper *vendorId)

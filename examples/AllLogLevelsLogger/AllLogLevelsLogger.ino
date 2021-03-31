@@ -1,7 +1,7 @@
 /**
- * @file DualLogger.ino
+ * @file AllLogLevelsLogger.ino
  *
- * Created on: 30 Mar 2021
+ * Created on: 31 Mar 2021
  *     Author: Witold Markowski (wmarkow)
  *
  * Copyright (C)
@@ -19,25 +19,13 @@
 
 #include <RF24Logger.h>
 #include <handlers/RF24StreamLogHandler.h>
-#include <handlers/RF24DualLogHandler.h>
 
-// Create first hardware serial port log appender
-RF24StreamLogHandler rf24SerialLogHandler1(&Serial);
-
-// Create second hardware serial port log appender
-RF24StreamLogHandler rf24SerialLogHandler2(&Serial);
-
-RF24DualLogHandler rf24DualLogHandler(&rf24SerialLogHandler1, &rf24SerialLogHandler2);
+// Create hardware serial port log appender
+RF24StreamLogHandler rf24SerialLogHandler(&Serial);
 
 // Define global vendor id (it is stored in flash memory)
-const char vendorID[] PROGMEM = "RF24 Dual Log";
+const char vendorID[] PROGMEM = "RF24LogLevelExample";
 
-
-// Define some test messages stored in EEPROM
-const char globalProgmemText[] PROGMEM
-= "global PROGMEM message";
-const char globalProgmemMessageWithRamString[] PROGMEM
-= "PROGMEM message with %s";
 
 // Need to remember that backslash must be escaped in the string text
 // Banner generated with https://devops.datenkollektiv.de/banner.txt/index.html
@@ -53,9 +41,9 @@ void setup()
    Serial.begin(115200);
 
    // set maximal log level to ALL
-   rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
+   rf24SerialLogHandler.setLogLevel(RF24LogLevel::ALL);
    // set serial port appender
-   rf24Logger.setHandler(&rf24DualLogHandler);
+   rf24Logger.setHandler(&rf24SerialLogHandler);
 
    // display banner
    for (uint8_t i = 0; i < 5; ++i)
@@ -66,7 +54,13 @@ void setup()
 
 void loop()
 {
-   rf24Logger.info((const __FlashStringHelper*) vendorID, F("This message should be logged %s."), "twice");
+   for(uint16_t logLevel = 0 ; logLevel <= 255 ; logLevel ++)
+   {
+      rf24Logger.log((uint8_t)logLevel, (const __FlashStringHelper*)vendorID, F("This is a log message with level %F"), (float)logLevel);
+   }
 
+   Serial.println("");
    delay(5000);
 }
+
+

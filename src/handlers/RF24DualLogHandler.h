@@ -37,6 +37,8 @@ public:
 
    void log(uint8_t logLevel, const __FlashStringHelper *vendorId,
          const __FlashStringHelper *message, va_list *args);
+
+   void setLogLevel(uint8_t logLevel);
 };
 
 
