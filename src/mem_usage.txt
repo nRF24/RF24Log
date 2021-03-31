@@ -23,3 +23,13 @@ Release/RF24Log.elf:     file format elf32-avr
 0080010c l     O .data	00000006 _ZL16rf24logLevelInfo
 00800112 l     O .data	00000006 _ZL16rf24logLevelWarn
 00800118 l     O .data	00000006 _ZL17rf24logLevelError
+
+Core:
+.bss  0x002
+.data 0x00a
+.text 0x320
+
+Stream handler:
+.bss  0x004
+.data 0x026
+.text 0x424
