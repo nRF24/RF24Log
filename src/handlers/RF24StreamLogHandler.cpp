@@ -140,6 +140,14 @@ void RF24StreamLogHandler::appendFormat(const char format, va_list *args)
       return;
    }
 
+   if (format == 'd' || format == 'i')
+   {
+      // print as integer
+      stream->print(va_arg(*args, int), DEC);
+
+      return;
+   }
+
    stream->print(format);
 }
 

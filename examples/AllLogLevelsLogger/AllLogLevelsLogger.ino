@@ -56,7 +56,7 @@ void loop()
 {
    for(uint16_t logLevel = 0 ; logLevel <= 255 ; logLevel ++)
    {
-      rf24Logger.log((uint8_t)logLevel, (const __FlashStringHelper*)vendorID, F("This is a log message with level %F"), (float)logLevel);
+      rf24Logger.log((uint8_t)logLevel, (const __FlashStringHelper*)vendorID, F("This is a log message with level %d"), logLevel);
    }
 
    Serial.println("");
