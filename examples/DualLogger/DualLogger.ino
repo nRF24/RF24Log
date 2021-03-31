@@ -30,7 +30,7 @@ RF24StreamLogHandler rf24SerialLogHandler2(&Serial);
 RF24DualLogHandler rf24DualLogHandler(&rf24SerialLogHandler1, &rf24SerialLogHandler2);
 
 // Define global vendor id (it is stored in flash memory)
-const char vendorID[] PROGMEM = "RF24 Dual Log";
+const char vendorID[] PROGMEM = "RF24LogExample";
 
 
 // Define some test messages stored in EEPROM
@@ -38,14 +38,6 @@ const char globalProgmemText[] PROGMEM
 = "global PROGMEM message";
 const char globalProgmemMessageWithRamString[] PROGMEM
 = "PROGMEM message with %s";
-
-// Need to remember that backslash must be escaped in the string text
-// Banner generated with https://devops.datenkollektiv.de/banner.txt/index.html
-const PROGMEM char banner[5][46]  = { "   ___    ____   ___   ____   __             ",
-                                    "  / _ \\  / __/  |_  | / / /  / /  ___   ___ _",
-                                    " / , _/ / _/   / __/ /_  _/ / /__/ _ \\ / _ `/",
-                                    "/_/|_| /_/    /____/  /_/  /____/\\___/ \\_, / ",
-                                    "                                      /___/  "};
 
 void setup()
 {
@@ -57,11 +49,7 @@ void setup()
    // set serial port appender
    rf24Logger.setHandler(&rf24DualLogHandler);
 
-   // display banner
-   for (uint8_t i = 0; i < 5; ++i)
-   {
-      rf24Logger.info((const __FlashStringHelper*) vendorID, (const __FlashStringHelper*) banner[i]);
-   }
+   rf24Logger.info((const __FlashStringHelper*) vendorID, F("RF24Log/examples/DualLogger"));
 }
 
 void loop()

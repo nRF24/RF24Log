@@ -26,14 +26,6 @@ const char vendorID[] PROGMEM = "RF24LogExample";
 // DO NOT create hardware serial port log appender
 // RF24StreamLogHandler rf24SerialLogHandler(&Serial);
 
-// Need to remember that backslash must be escaped in the string text
-// Banner generated with https://devops.datenkollektiv.de/banner.txt/index.html
-const PROGMEM char banner[5][46]  = { "   ___    ____   ___   ____   __             ",
-                                    "  / _ \\  / __/  |_  | / / /  / /  ___   ___ _",
-                                    " / , _/ / _/   / __/ /_  _/ / /__/ _ \\ / _ `/",
-                                    "/_/|_| /_/    /____/  /_/  /____/\\___/ \\_, / ",
-                                    "                                      /___/  "};
-
 void setup()
 {
    // configure serial port baudrate
@@ -43,11 +35,7 @@ void setup()
 
    Serial.println("There is no appender defined. Nothing should be logged.");
 
-   // display banner
-   for (uint8_t i = 0; i < 5; ++i)
-   {
-      rf24Logger.info((const __FlashStringHelper*) vendorID, (const __FlashStringHelper*) banner[i]);
-   }
+   rf24Logger.info((const __FlashStringHelper*) vendorID, F("RF24Log/examples/EmptyLogger"));
 }
 
 void logSimpleRamMessage();
