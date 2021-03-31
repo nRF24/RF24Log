@@ -34,7 +34,7 @@ RF24StreamLogHandler::RF24StreamLogHandler(Stream *stream)
    this->stream = stream;
 }
 
-void RF24StreamLogHandler::log(RF24LogLevel logLevel,
+void RF24StreamLogHandler::log(uint8_t logLevel,
                                    const __FlashStringHelper *vendorId,
                                    const char *message,
                                    va_list *args)
@@ -48,7 +48,7 @@ void RF24StreamLogHandler::log(RF24LogLevel logLevel,
    stream->println("");
 }
 
-void RF24StreamLogHandler::log(RF24LogLevel logLevel,
+void RF24StreamLogHandler::log(uint8_t logLevel,
                                    const __FlashStringHelper *vendorId,
                                    const __FlashStringHelper *message,
                                    va_list *args)
@@ -135,9 +135,28 @@ void RF24StreamLogHandler::appendTimestamp()
    stream->print(" ");
 }
 
-void RF24StreamLogHandler::appendLogLevel(RF24LogLevel logLevel)
+void RF24StreamLogHandler::appendLogLevel(uint8_t logLevel)
 {
-   stream->print(rf24LogLevels[logLevel]);
+   uint8_t logMainLevel = logLevel & 0b11111000;
+   switch(logMainLevel)
+   {
+      case RF24LogLevel::ERROR:
+         stream->print(rf24LogLevels[0]);
+         break;
+      case RF24LogLevel::WARN:
+         stream->print(rf24LogLevels[1]);
+         break;
+      case RF24LogLevel::INFO:
+         stream->print(rf24LogLevels[2]);
+         break;
+      case RF24LogLevel::DEBUG:
+         stream->print(rf24LogLevels[3]);
+         break;
+      default:
+         // fallbacks to TRACE
+         stream->print(rf24LogLevels[4]);
+   }
+
    stream->print(" ");
 }
 

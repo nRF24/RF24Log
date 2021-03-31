@@ -24,15 +24,15 @@
 enum RF24LogLevel : uint8_t
 {
    /** the level to specify an error message */
-   ERROR = 0,
+   ERROR = 0b00001000,
    /** the level to specify an warning message */
-   WARN,
+    WARN = 0b00010000,
    /** the level to specify an informational message */
-   INFO,
+    INFO = 0b00100000,
    /** the level to specify an debugging message */
-   DEBUG,
+   DEBUG = 0b01000000,
    /** the level to specify an traceback message */
-   TRACE
+   TRACE = 0b10000000
 };
 
 #endif /* SRC_RF24LOGLEVEL_H_ */

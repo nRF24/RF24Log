@@ -35,7 +35,7 @@ public:
        * @param vendorId The prefixed origin of the message
        * @param message The message
        */
-      virtual void log(RF24LogLevel logLevel,
+      virtual void log(uint8_t logLevel,
                           const __FlashStringHelper *vendorId,
                           const char *message,
                           va_list *args);
@@ -46,7 +46,7 @@ public:
        * @param vendorId The prefixed origin of the message
        * @param message The message
        */
-      virtual void log(RF24LogLevel logLevel,
+      virtual void log(uint8_t logLevel,
                           const __FlashStringHelper *vendorId,
                           const __FlashStringHelper *message,
                           va_list *args);

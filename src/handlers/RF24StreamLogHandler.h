@@ -28,15 +28,15 @@ class RF24StreamLogHandler : public RF24LogHandler
 private:
    Stream *stream;
    void appendTimestamp();
-   void appendLogLevel(RF24LogLevel logLevel);
+   void appendLogLevel(uint8_t logLevel);
    void appendVendorId(const __FlashStringHelper *vendorId);
 
 public:
    RF24StreamLogHandler(Stream *stream);
-   void log(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
+   void log(uint8_t logLevel, const __FlashStringHelper *vendorId,
          const char *message, va_list *args);
 
-   void log(RF24LogLevel logLevel, const __FlashStringHelper *vendorId,
+   void log(uint8_t logLevel, const __FlashStringHelper *vendorId,
          const __FlashStringHelper *message, va_list *args);
 
 protected:
