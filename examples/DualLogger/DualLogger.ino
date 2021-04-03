@@ -54,7 +54,13 @@ void setup()
 
 void loop()
 {
+   rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
    rf24Logger.info((const __FlashStringHelper*) vendorID, F("This message should be logged %s."), "twice");
+
+   rf24DualLogHandler.setLogLevel(RF24LogLevel::INFO);
+   rf24Logger.warn((const __FlashStringHelper*) vendorID, F("This warn message should be logged %s."), "twice");
+   rf24Logger.info((const __FlashStringHelper*) vendorID, F("This info message should be logged %s."), "twice");
+   rf24Logger.debug((const __FlashStringHelper*) vendorID, F("This debug message should NOT be logged %s."));
 
    delay(5000);
 }

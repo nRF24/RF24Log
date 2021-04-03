@@ -32,13 +32,14 @@ private:
 public:
    RF24DualLogHandler(RF24LogHandler *handler1, RF24LogHandler *handler2);
 
-   void log(uint8_t logLevel, const __FlashStringHelper *vendorId,
+   void setLogLevel(uint8_t logLevel);
+
+protected:
+   void log0(uint8_t logLevel, const __FlashStringHelper *vendorId,
          const char *message, va_list *args);
 
-   void log(uint8_t logLevel, const __FlashStringHelper *vendorId,
+   void log0(uint8_t logLevel, const __FlashStringHelper *vendorId,
          const __FlashStringHelper *message, va_list *args);
-
-   void setLogLevel(uint8_t logLevel);
 };
 
 

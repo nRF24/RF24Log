@@ -35,10 +35,10 @@ public:
        * @param vendorId The prefixed origin of the message
        * @param message The message
        */
-      virtual void log(uint8_t logLevel,
+      void log(uint8_t logLevel,
                           const __FlashStringHelper *vendorId,
                           const char *message,
-                          va_list *args) = 0;
+                          va_list *args);
 
       /**
        * log message.
@@ -46,16 +46,43 @@ public:
        * @param vendorId The prefixed origin of the message
        * @param message The message
        */
-      virtual void log(uint8_t logLevel,
+      void log(uint8_t logLevel,
                           const __FlashStringHelper *vendorId,
                           const __FlashStringHelper *message,
+                          va_list *args);
+
+      /**
+       * set the maximal level of the logged messages.
+       * @param logLevel maximal level of the logged message
+       */
+      void setLogLevel(uint8_t logLevel);
+
+protected:
+      uint8_t logLevel;
+
+      RF24LogHandler();
+
+      /**
+       * Internal log message.
+       * @param logLevel the level of the logging message
+       * @param vendorId The prefixed origin of the message
+       * @param message The message
+       */
+      virtual void log0(uint8_t logLevel,
+                          const __FlashStringHelper *vendorId,
+                          const char *message,
                           va_list *args) = 0;
 
       /**
-       * Set the maximal level of the logged messages.
-       * @param logLevel the level of the logged message
+       * Internal log message.
+       * @param logLevel the level of the logging message
+       * @param vendorId The prefixed origin of the message
+       * @param message The message
        */
-      virtual void setLogLevel(uint8_t logLevel) = 0;
+      virtual void log0(uint8_t logLevel,
+                          const __FlashStringHelper *vendorId,
+                          const __FlashStringHelper *message,
+                          va_list *args) = 0;
 };
 
 #endif /* SRC_RF24LOGHANDLER_H_ */

@@ -25,7 +25,13 @@ RF24DualLogHandler::RF24DualLogHandler(RF24LogHandler *handler1,
    this->handler2 = handler2;
 }
 
-void RF24DualLogHandler::log(uint8_t logLevel,
+void RF24DualLogHandler::setLogLevel(uint8_t logLevel)
+{
+   handler1->setLogLevel(logLevel);
+   handler2->setLogLevel(logLevel);
+}
+
+void RF24DualLogHandler::log0(uint8_t logLevel,
       const __FlashStringHelper *vendorId, const char *message, va_list *args)
 {
    // va_list can be iterated only once.
@@ -37,7 +43,7 @@ void RF24DualLogHandler::log(uint8_t logLevel,
    handler2->log(logLevel, vendorId, message, &args2);
 }
 
-void RF24DualLogHandler::log(uint8_t logLevel,
+void RF24DualLogHandler::log0(uint8_t logLevel,
       const __FlashStringHelper *vendorId, const __FlashStringHelper *message,
       va_list *args)
 {
@@ -48,10 +54,4 @@ void RF24DualLogHandler::log(uint8_t logLevel,
 
    handler1->log(logLevel, vendorId, message, args);
    handler2->log(logLevel, vendorId, message, &args2);
-}
-
-void RF24DualLogHandler::setLogLevel(uint8_t logLevel)
-{
-   handler1->setLogLevel(logLevel);
-   handler2->setLogLevel(logLevel);
 }

@@ -32,19 +32,13 @@ const char *const rf24LogLevels[] = {rf24logLevelError,
 RF24StreamLogHandler::RF24StreamLogHandler(Stream *stream)
 {
    this->stream = stream;
-   this->logLevel = RF24LogLevel::INFO;
 }
 
-void RF24StreamLogHandler::log(uint8_t logLevel,
+void RF24StreamLogHandler::log0(uint8_t logLevel,
                                    const __FlashStringHelper *vendorId,
                                    const char *message,
                                    va_list *args)
 {
-   if(logLevel > this->logLevel)
-   {
-      return;
-   }
-
    appendTimestamp();
    appendLogLevel(logLevel);
    appendVendorId(vendorId);
@@ -54,16 +48,11 @@ void RF24StreamLogHandler::log(uint8_t logLevel,
    stream->println("");
 }
 
-void RF24StreamLogHandler::log(uint8_t logLevel,
+void RF24StreamLogHandler::log0(uint8_t logLevel,
                                    const __FlashStringHelper *vendorId,
                                    const __FlashStringHelper *message,
                                    va_list *args)
 {
-   if(logLevel > this->logLevel)
-   {
-      return;
-   }
-
    appendTimestamp();
    appendLogLevel(logLevel);
    appendVendorId(vendorId);
@@ -71,11 +60,6 @@ void RF24StreamLogHandler::log(uint8_t logLevel,
    // print formatted message
    appendFormattedMessage(message, args);
    stream->println("");
-}
-
-void RF24StreamLogHandler::setLogLevel(uint8_t logLevel)
-{
-   this->logLevel = logLevel;
 }
 
 void RF24StreamLogHandler::appendFormattedMessage(const char *format, va_list *args)
