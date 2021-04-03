@@ -14,8 +14,6 @@
  * Public License instead of this License.
  */
 
-#include <Arduino.h>
-
 #include <handlers/RF24DualLogHandler.h>
 
 RF24DualLogHandler::RF24DualLogHandler(RF24LogHandler *handler1,
@@ -25,13 +23,7 @@ RF24DualLogHandler::RF24DualLogHandler(RF24LogHandler *handler1,
    this->handler2 = handler2;
 }
 
-void RF24DualLogHandler::setLogLevel(uint8_t logLevel)
-{
-   handler1->setLogLevel(logLevel);
-   handler2->setLogLevel(logLevel);
-}
-
-void RF24DualLogHandler::log0(uint8_t logLevel,
+void RF24DualLogHandler::log(uint8_t logLevel,
       const __FlashStringHelper *vendorId, const char *message, va_list *args)
 {
    // va_list can be iterated only once.
@@ -39,11 +31,12 @@ void RF24DualLogHandler::log0(uint8_t logLevel,
    va_list args2;
    va_copy(args2, *args);
 
+   // redirect logs to wrapped handlers
    handler1->log(logLevel, vendorId, message, args);
    handler2->log(logLevel, vendorId, message, &args2);
 }
 
-void RF24DualLogHandler::log0(uint8_t logLevel,
+void RF24DualLogHandler::log(uint8_t logLevel,
       const __FlashStringHelper *vendorId, const __FlashStringHelper *message,
       va_list *args)
 {
@@ -52,6 +45,25 @@ void RF24DualLogHandler::log0(uint8_t logLevel,
    va_list args2;
    va_copy(args2, *args);
 
+   // redirect logs to wrapped handlers
    handler1->log(logLevel, vendorId, message, args);
    handler2->log(logLevel, vendorId, message, &args2);
+}
+
+void RF24DualLogHandler::setLogLevel(uint8_t logLevel)
+{
+   handler1->setLogLevel(logLevel);
+   handler2->setLogLevel(logLevel);
+}
+
+void RF24DualLogHandler::write(uint8_t logLevel, const __FlashStringHelper *vendorId,
+         const char *message, va_list *args)
+{
+   // no implementation needed; log messages are redirected to handlers in custom log() method
+}
+
+void RF24DualLogHandler::write(uint8_t logLevel, const __FlashStringHelper *vendorId,
+         const __FlashStringHelper *message, va_list *args)
+{
+   // no implementation needed; log messages are redirected to handlers in custom log() method
 }

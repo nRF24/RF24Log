@@ -36,7 +36,7 @@ void RF24LogHandler::log(uint8_t logLevel,
       return;
    }
 
-   log0(logLevel, vendorId, message, args);
+   write(logLevel, vendorId, message, args);
 }
 
 void RF24LogHandler::log(uint8_t logLevel,
@@ -49,5 +49,5 @@ void RF24LogHandler::log(uint8_t logLevel,
       return;
    }
 
-   log0(logLevel, vendorId, message, args);
+   write(logLevel, vendorId, message, args);
 }

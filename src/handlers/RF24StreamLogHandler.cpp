@@ -29,12 +29,12 @@ const char *const rf24LogLevels[] = {rf24logLevelError,
                                      rf24logLevelDebug,
                                      rf24logLevelTrace};
 
-RF24StreamLogHandler::RF24StreamLogHandler(Stream *stream)
+RF24StreamLogHandler::RF24StreamLogHandler(Print *stream)
 {
    this->stream = stream;
 }
 
-void RF24StreamLogHandler::log0(uint8_t logLevel,
+void RF24StreamLogHandler::write(uint8_t logLevel,
                                    const __FlashStringHelper *vendorId,
                                    const char *message,
                                    va_list *args)
@@ -48,7 +48,7 @@ void RF24StreamLogHandler::log0(uint8_t logLevel,
    stream->println("");
 }
 
-void RF24StreamLogHandler::log0(uint8_t logLevel,
+void RF24StreamLogHandler::write(uint8_t logLevel,
                                    const __FlashStringHelper *vendorId,
                                    const __FlashStringHelper *message,
                                    va_list *args)
