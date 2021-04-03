@@ -31,23 +31,21 @@ private:
     RF24LogHandler *handler;
 
 public:
-    /**
-    * @brief Initializes the appender to nullptr
-    */
+    /** @brief Initializes the appender to nullptr */
     RF24Logger();
 
     /**
-    * @brief set the instance's handler
-    * @param handler The log handler where the messages will be redirected.
-    */
+     * @brief set the instance's handler
+     * @param handler The log handler where the messages will be redirected.
+     */
     void setHandler(RF24LogHandler *handler);
 
     /**
-    * @brief ouput an ERROR message
-    * @param vendorId A scoping identity of the message's origin
-    * @param message The message to output
-    * @param args consumable arguments
-    */
+     * @brief ouput an ERROR message
+     * @param vendorId A scoping identity of the message's origin
+     * @param message The message to output
+     * @param args consumable arguments
+     */
     template <class T>
     void error(const __FlashStringHelper *vendorId, T message, ...)
     {
@@ -61,11 +59,11 @@ public:
     }
 
     /**
-    * @brief output a message to WARN the reader
-    * @param vendorId A scoping identity of the message's origin
-    * @param message The message to output
-    * @param args consumable arguments
-    */
+     * @brief output a message to WARN the reader
+     * @param vendorId A scoping identity of the message's origin
+     * @param message The message to output
+     * @param args consumable arguments
+     */
     template <class T>
     void warn(const __FlashStringHelper *vendorId, T message, ...)
     {
@@ -79,11 +77,11 @@ public:
     }
 
     /**
-    * @brief output an INFO message
-    * @param vendorId A scoping identity of the message's origin
-    * @param message The message to output
-    * @param args consumable arguments
-    */
+     * @brief output an INFO message
+     * @param vendorId A scoping identity of the message's origin
+     * @param message The message to output
+     * @param args consumable arguments
+     */
     template <class T>
     void info(const __FlashStringHelper *vendorId, T message, ...)
     {
@@ -97,11 +95,11 @@ public:
     }
 
     /**
-    * @brief output a message to help developers DEBUG their source code
-    * @param vendorId A scoping identity of the message's origin
-    * @param message The message to output
-    * @param args consumable arguments
-    */
+     * @brief output a message to help developers DEBUG their source code
+     * @param vendorId A scoping identity of the message's origin
+     * @param message The message to output
+     * @param args consumable arguments
+     */
     template <class T>
     void debug(const __FlashStringHelper *vendorId, T message, ...)
     {
@@ -115,11 +113,11 @@ public:
     }
 
     /**
-    * @brief output a log message of any level
-    * @param vendorId A scoping identity of the message's origin
-    * @param message The message to output
-    * @param args consumable arguments
-    */
+     * @brief output a log message of any level
+     * @param vendorId A scoping identity of the message's origin
+     * @param message The message to output
+     * @param args consumable arguments
+     */
     template <class T>
     void log(uint8_t logLevel, const __FlashStringHelper *vendorId, T message, ...)
     {
