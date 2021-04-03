@@ -26,24 +26,28 @@
 class RF24StreamLogHandler : public RF24AbstractLogHandler
 {
 protected:
-   Print *stream;
+    Print *stream;
 
 public:
-   RF24StreamLogHandler(Print *stream);
+    RF24StreamLogHandler(Print *stream);
 
 protected:
-   void write(uint8_t logLevel, const __FlashStringHelper *vendorId,
-         const char *message, va_list *args);
+    void write(uint8_t logLevel,
+               const __FlashStringHelper *vendorId,
+               const char *message,
+               va_list *args);
 
-   void write(uint8_t logLevel, const __FlashStringHelper *vendorId,
-         const __FlashStringHelper *message, va_list *args);
+    void write(uint8_t logLevel,
+               const __FlashStringHelper *vendorId,
+               const __FlashStringHelper *message,
+               va_list *args);
 
-   void appendTimestamp();
-   void appendLogLevel(uint8_t logLevel);
-   void appendVendorId(const __FlashStringHelper *vendorId);
-   void appendFormattedMessage(const char *format, va_list *args);
-   void appendFormattedMessage(const __FlashStringHelper *format, va_list *args);
-   void appendFormat(const char format, va_list *args);
+    void appendTimestamp();
+    void appendLogLevel(uint8_t logLevel);
+    void appendVendorId(const __FlashStringHelper *vendorId);
+    void appendFormattedMessage(const char *format, va_list *args);
+    void appendFormattedMessage(const __FlashStringHelper *format, va_list *args);
+    void appendFormat(const char format, va_list *args);
 };
 
 #endif /* SRC_HANDLERS_RF24STREAMLOGHANDLER_H_ */

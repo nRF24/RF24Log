@@ -58,7 +58,6 @@ dkms.conf
 .project
 .settings
 
-
 # local-specific working dir
 .vscode/
 docs/html/

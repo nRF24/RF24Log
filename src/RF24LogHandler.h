@@ -5,8 +5,8 @@
  *     Author: Witold Markowski (wmarkow)
  *
  * Copyright (C)
- *    2020        Witold Markowski (wmarkow)
- *    2021        Brendan Doherty (2bndy5)
+ *      2020        Witold Markowski (wmarkow)
+ *      2021        Brendan Doherty (2bndy5)
  *
  * This General Public License does not permit incorporating your program into
  * proprietary programs.  If your program is a subroutine library, you may
@@ -29,27 +29,27 @@
 class RF24LogHandler
 {
 public:
-      /**
-       * log message.
-       * @param logLevel the level of the logging message
-       * @param vendorId The prefixed origin of the message
-       * @param message The message
-       */
-      virtual void log(uint8_t logLevel,
-                          const __FlashStringHelper *vendorId,
-                          const char *message,
-                          va_list *args);
+    /**
+     * @brief log a message.
+     * @param logLevel the level of the logging message
+     * @param vendorId The prefixed origin of the message
+     * @param message The message
+     */
+    virtual void log(uint8_t logLevel,
+                     const __FlashStringHelper *vendorId,
+                     const char *message,
+                     va_list *args);
 
-      /**
-       * log message.
-       * @param logLevel the level of the logging message
-       * @param vendorId The prefixed origin of the message
-       * @param message The message
-       */
-      virtual void log(uint8_t logLevel,
-                          const __FlashStringHelper *vendorId,
-                          const __FlashStringHelper *message,
-                          va_list *args);
+    /**
+     * @brief log a message.
+     * @param logLevel the level of the logging message
+     * @param vendorId The prefixed origin of the message
+     * @param message The message
+     */
+    virtual void log(uint8_t logLevel,
+                     const __FlashStringHelper *vendorId,
+                     const __FlashStringHelper *message,
+                     va_list *args);
 
       /**
        * set the maximal level of the logged messages.

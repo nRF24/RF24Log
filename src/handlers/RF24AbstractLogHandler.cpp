@@ -18,36 +18,36 @@
 
 RF24AbstractLogHandler::RF24AbstractLogHandler()
 {
-   this->logLevel = RF24LogLevel::INFO;
+    this->logLevel = RF24LogLevel::INFO;
 }
 
 void RF24AbstractLogHandler::setLogLevel(uint8_t logLevel)
 {
-   this->logLevel = logLevel;
+    this->logLevel = logLevel;
 }
 
-void RF24AbstractLogHandler::log(uint8_t logLevel,
-              const __FlashStringHelper *vendorId,
-              const char *message,
-              va_list *args)
+void RF24LogHandler::log(uint8_t logLevel,
+                         const __FlashStringHelper *vendorId,
+                         const char *message,
+                         va_list *args)
 {
-   if(logLevel > this->logLevel)
-   {
-      return;
-   }
+    if (logLevel > this->logLevel)
+    {
+        return;
+    }
 
-   write(logLevel, vendorId, message, args);
+    write(logLevel, vendorId, message, args);
 }
 
-void RF24AbstractLogHandler::log(uint8_t logLevel,
-              const __FlashStringHelper *vendorId,
-              const __FlashStringHelper *message,
-              va_list *args)
+void RF24LogHandler::log(uint8_t logLevel,
+                         const __FlashStringHelper *vendorId,
+                         const __FlashStringHelper *message,
+                         va_list *args)
 {
-   if(logLevel > this->logLevel)
-   {
-      return;
-   }
+    if (logLevel > this->logLevel)
+    {
+        return;
+    }
 
-   write(logLevel, vendorId, message, args);
+    write(logLevel, vendorId, message, args);
 }
