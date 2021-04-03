@@ -24,7 +24,7 @@
 RF24StreamLogHandler rf24SerialLogHandler(&Serial);
 
 // Define global vendor id (it is stored in flash memory)
-const char vendorID[] PROGMEM = "RF24LogExample";
+const char PROGMEM vendorID[] = "RF24LogExample";
 
 
 void logSimpleRamMessage();

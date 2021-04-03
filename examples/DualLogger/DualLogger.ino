@@ -30,14 +30,12 @@ RF24StreamLogHandler rf24SerialLogHandler2(&Serial);
 RF24DualLogHandler rf24DualLogHandler(&rf24SerialLogHandler1, &rf24SerialLogHandler2);
 
 // Define global vendor id (it is stored in flash memory)
-const char vendorID[] PROGMEM = "RF24LogExample";
+const char PROGMEM vendorID[] = "RF24LogExample";
 
 
 // Define some test messages stored in EEPROM
-const char globalProgmemText[] PROGMEM
-  = "global PROGMEM message";
-const char globalProgmemMessageWithRamString[] PROGMEM
-  = "PROGMEM message with %s";
+const char PROGMEM globalProgmemText[] = "global PROGMEM message";
+const char PROGMEM globalProgmemMessageWithRamString[] = "PROGMEM message with %s";
 
 void setup()
 {

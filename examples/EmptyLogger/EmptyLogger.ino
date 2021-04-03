@@ -21,7 +21,7 @@
 #include <handlers/RF24StreamLogHandler.h>
 
 // Define global vendor id (it is stored in flash memory)
-const char vendorID[] PROGMEM = "RF24LogExample";
+const char PROGMEM vendorID[] = "RF24LogExample";
 
 // DO NOT create hardware serial port log appender
 // RF24StreamLogHandler rf24SerialLogHandler(&Serial);
