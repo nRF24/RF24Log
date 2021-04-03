@@ -18,16 +18,18 @@
 #define SRC_HANDLERS_RF24STREAMLOGHANDLER_H_
 
 #include <RF24LogHandler.h>
-#include <Stream.h>
+#include <Print.h>
 
 /**
  * A log handler implementation which outputs log messages to a stream.
  */
 class RF24StreamLogHandler : public RF24LogHandler
 {
-private:
+protected:
    Stream *stream;
    uint8_t logLevel;
+
+private:
    void appendTimestamp();
    void appendLogLevel(uint8_t logLevel);
    void appendVendorId(const __FlashStringHelper *vendorId);

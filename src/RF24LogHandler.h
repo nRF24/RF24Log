@@ -38,7 +38,7 @@ public:
       virtual void log(uint8_t logLevel,
                           const __FlashStringHelper *vendorId,
                           const char *message,
-                          va_list *args);
+                          va_list *args) = 0;
 
       /**
        * log message.
@@ -49,13 +49,13 @@ public:
       virtual void log(uint8_t logLevel,
                           const __FlashStringHelper *vendorId,
                           const __FlashStringHelper *message,
-                          va_list *args);
+                          va_list *args) = 0;
 
       /**
        * Set the maximal level of the logged messages.
        * @param logLevel the level of the logged message
        */
-      virtual void setLogLevel(uint8_t logLevel);
+      virtual void setLogLevel(uint8_t logLevel) = 0;
 };
 
 #endif /* SRC_RF24LOGHANDLER_H_ */

@@ -161,8 +161,8 @@ void RF24StreamLogHandler::appendTimestamp()
 
 void RF24StreamLogHandler::appendLogLevel(uint8_t logLevel)
 {
-   uint8_t logMainLevel = logLevel & 0b11111000;
-   uint8_t subLevel = logLevel & 0b00000111;
+   uint8_t logMainLevel = logLevel & 0xF8;
+   uint8_t subLevel = logLevel & 0x07;
 
    switch(logMainLevel)
    {
@@ -194,7 +194,18 @@ void RF24StreamLogHandler::appendLogLevel(uint8_t logLevel)
       default:
       {
          // unknown
-         stream->print("-----   ");
+         if(logLevel < 10)
+         {
+            stream->print("Lvl   ");
+         } else if (logLevel < 100)
+         {
+            stream->print("Lvl  ");
+         } else
+         {
+            stream->print("Lvl ");
+         }
+         stream->print(logLevel);
+         stream->print(" ");
          return;
       }
    }
