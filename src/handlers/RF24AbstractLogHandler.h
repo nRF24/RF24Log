@@ -38,9 +38,9 @@ public:
        * @param message The message
        */
       void log(uint8_t logLevel,
-                          const __FlashStringHelper *vendorId,
-                          const char *message,
-                          va_list *args);
+               const __FlashStringHelper *vendorId,
+               const char *message,
+               va_list *args);
 
       /**
        * log message.
@@ -49,9 +49,9 @@ public:
        * @param message The message
        */
       void log(uint8_t logLevel,
-                          const __FlashStringHelper *vendorId,
-                          const __FlashStringHelper *message,
-                          va_list *args);
+               const __FlashStringHelper *vendorId,
+               const __FlashStringHelper *message,
+               va_list *args);
 
       /**
        * set the maximal level of the logged messages.

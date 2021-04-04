@@ -28,122 +28,107 @@
 class RF24Logger
 {
 private:
-   RF24LogHandler *handler;
+    RF24LogHandler *handler;
 
 public:
+    /** @brief Initializes the appender to nullptr */
+    RF24Logger();
 
-   /**
-    * Initializes the appender to nullptr
-    */
-   RF24Logger();
+    /**
+     * @brief set the instance's handler
+     * @param handler The log handler where the messages will be redirected.
+     */
+    void setHandler(RF24LogHandler *handler);
 
-   /**
-    * set the instance's handler
-    * @param handler The log handler where the messages will be redirected.
-    */
-   void setHandler(RF24LogHandler *handler);
-
-   /**
-    * ouput an ERROR message
-    * @param vendorId A scoping identity of the message's origin
-    * @param message The message to output
-    * @param args consumable arguments
-    */
-   template<class T> void error(
-         const __FlashStringHelper *vendorId, T message, ...)
-   {
-      if (handler == nullptr)
-      {
-         return;
-      }
-      va_list args;
-      va_start(args, message);
-      handler->log(RF24LogLevel::ERROR, vendorId, message, &args);
-   }
-
-   /**
-    * output a message to WARN the reader
-    * @param vendorId A scoping identity of the message's origin
-    * @param message The message to output
-    * @param args consumable arguments
-    */
-   template<class T> void warn(
-         const __FlashStringHelper *vendorId, T message, ...)
-   {
-      if (handler == nullptr)
-      {
-         return;
-      }
-      va_list args;
-      va_start(args, message);
-      handler->log(RF24LogLevel::WARN, vendorId, message, &args);
-   }
-
-   /**
-    * output an INFO message
-    * @param vendorId A scoping identity of the message's origin
-    * @param message The message to output
-    * @param args consumable arguments
-    */
-   template<class T> void info(
-         const __FlashStringHelper *vendorId, T message, ...)
-   {
-      if (handler == nullptr)
-      {
-         return;
-      }
-      va_list args;
-      va_start(args, message);
-      handler->log(RF24LogLevel::INFO, vendorId, message, &args);
-   }
-
-   /**
-    * output a message to help developers DEBUG their source code
-    * @param vendorId A scoping identity of the message's origin
-    * @param message The message to output
-    * @param args consumable arguments
-    */
-   template<class T> void debug(
-         const __FlashStringHelper *vendorId, T message, ...)
-   {
-      if (handler == nullptr)
-      {
-         return;
-      }
-      va_list args;
-      va_start(args, message);
-      handler->log(RF24LogLevel::DEBUG, vendorId, message, &args);
-   }
-
-   /**
-    * output a TRACE message that points to an event's instigator
-    * @param vendorId A scoping identity of the message's origin
-    * @param message The message to output
-    * @param args consumable arguments
-    */
-   template<class T> void trace(
-         const __FlashStringHelper *vendorId, T message, ...)
-   {
-      if (handler == nullptr)
-      {
-         return;
-      }
-      va_list args;
-      va_start(args, message);
-      handler->log(RF24LogLevel::TRACE, vendorId, message, &args);
-   }
-
-   template<class T> void log(
-            uint8_t logLevel, const __FlashStringHelper *vendorId, T message, ...)
-      {
-         if (handler == nullptr)
-         {
+    /**
+     * @brief ouput an ERROR message
+     * @param vendorId A scoping identity of the message's origin
+     * @param message The message to output
+     * @param args consumable arguments
+     */
+    template <class T>
+    void error(const __FlashStringHelper *vendorId, T message, ...)
+    {
+        if (handler == nullptr)
+        {
             return;
-         }
-         va_list args;
-         va_start(args, message);
-         handler->log(logLevel, vendorId, message, &args);
-      }
+        }
+        va_list args;
+        va_start(args, message);
+        handler->log(RF24LogLevel::ERROR, vendorId, message, &args);
+    }
+
+    /**
+     * @brief output a message to WARN the reader
+     * @param vendorId A scoping identity of the message's origin
+     * @param message The message to output
+     * @param args consumable arguments
+     */
+    template <class T>
+    void warn(const __FlashStringHelper *vendorId, T message, ...)
+    {
+        if (handler == nullptr)
+        {
+            return;
+        }
+        va_list args;
+        va_start(args, message);
+        handler->log(RF24LogLevel::WARN, vendorId, message, &args);
+    }
+
+    /**
+     * @brief output an INFO message
+     * @param vendorId A scoping identity of the message's origin
+     * @param message The message to output
+     * @param args consumable arguments
+     */
+    template <class T>
+    void info(const __FlashStringHelper *vendorId, T message, ...)
+    {
+        if (handler == nullptr)
+        {
+            return;
+        }
+        va_list args;
+        va_start(args, message);
+        handler->log(RF24LogLevel::INFO, vendorId, message, &args);
+    }
+
+    /**
+     * @brief output a message to help developers DEBUG their source code
+     * @param vendorId A scoping identity of the message's origin
+     * @param message The message to output
+     * @param args consumable arguments
+     */
+    template <class T>
+    void debug(const __FlashStringHelper *vendorId, T message, ...)
+    {
+        if (handler == nullptr)
+        {
+            return;
+        }
+        va_list args;
+        va_start(args, message);
+        handler->log(RF24LogLevel::DEBUG, vendorId, message, &args);
+    }
+
+    /**
+     * @brief output a log message of any level
+     * @param vendorId A scoping identity of the message's origin
+     * @param message The message to output
+     * @param args consumable arguments
+     */
+    template <class T>
+    void log(uint8_t logLevel, const __FlashStringHelper *vendorId, T message, ...)
+    {
+        if (handler == nullptr)
+        {
+            return;
+        }
+        va_list args;
+        va_start(args, message);
+        handler->log(logLevel, vendorId, message, &args);
+    }
 };
 
 /**

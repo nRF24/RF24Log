@@ -18,12 +18,12 @@
 
 RF24Logger::RF24Logger()
 {
-   this->handler = nullptr;
+    this->handler = nullptr;
 }
 
 void RF24Logger::setHandler(RF24LogHandler *handler)
 {
-   this->handler = handler;
+    this->handler = handler;
 }
 
 // default logger instance
