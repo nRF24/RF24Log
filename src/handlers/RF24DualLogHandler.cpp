@@ -55,15 +55,3 @@ void RF24DualLogHandler::setLogLevel(uint8_t logLevel)
    handler1->setLogLevel(logLevel);
    handler2->setLogLevel(logLevel);
 }
-
-void RF24DualLogHandler::write(uint8_t logLevel, const __FlashStringHelper *vendorId,
-         const char *message, va_list *args)
-{
-   // no implementation needed; log messages are redirected to handlers in custom log() method
-}
-
-void RF24DualLogHandler::write(uint8_t logLevel, const __FlashStringHelper *vendorId,
-         const __FlashStringHelper *message, va_list *args)
-{
-   // no implementation needed; log messages are redirected to handlers in custom log() method
-}

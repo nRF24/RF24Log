@@ -17,13 +17,13 @@
 #ifndef SRC_HANDLERS_RF24STREAMLOGHANDLER_H_
 #define SRC_HANDLERS_RF24STREAMLOGHANDLER_H_
 
-#include <RF24LogHandler.h>
+#include <handlers/RF24AbstractLogHandler.h>
 #include <Print.h>
 
 /**
  * A log handler implementation which outputs log messages to a stream.
  */
-class RF24StreamLogHandler : public RF24LogHandler
+class RF24StreamLogHandler : public RF24AbstractLogHandler
 {
 protected:
    Print *stream;

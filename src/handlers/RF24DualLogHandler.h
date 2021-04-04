@@ -18,7 +18,6 @@
 #define SRC_HANDLERS_RF24DUALLOGHANDLER_H_
 
 #include <RF24LogHandler.h>
-#include "RF24StreamLogHandler.h"
 
 /**
  * A log handler implementation which redirects log messages to a two other log handlers.
@@ -43,13 +42,6 @@ public:
                        va_list *args);
 
    void setLogLevel(uint8_t logLevel);
-
-protected:
-   void write(uint8_t logLevel, const __FlashStringHelper *vendorId,
-         const char *message, va_list *args);
-
-   void write(uint8_t logLevel, const __FlashStringHelper *vendorId,
-         const __FlashStringHelper *message, va_list *args);
 };
 
 

@@ -56,33 +56,6 @@ public:
        * @param logLevel maximal level of the logged message
        */
       virtual void setLogLevel(uint8_t logLevel);
-
-protected:
-      uint8_t logLevel;
-
-      RF24LogHandler();
-
-      /**
-       * write log message to its destination
-       * @param logLevel the level of the logging message
-       * @param vendorId The prefixed origin of the message
-       * @param message The message
-       */
-      virtual void write(uint8_t logLevel,
-                          const __FlashStringHelper *vendorId,
-                          const char *message,
-                          va_list *args) = 0;
-
-      /**
-       * write log message to its destination
-       * @param logLevel the level of the logging message
-       * @param vendorId The prefixed origin of the message
-       * @param message The message
-       */
-      virtual void write(uint8_t logLevel,
-                          const __FlashStringHelper *vendorId,
-                          const __FlashStringHelper *message,
-                          va_list *args) = 0;
 };
 
 #endif /* SRC_RF24LOGHANDLER_H_ */

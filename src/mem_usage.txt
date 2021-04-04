@@ -1,7 +1,7 @@
 Release/RF24Log.elf:     file format elf32-avr
-00000252 l     F .text	00000006 _ZN14RF24LogHandler11setLogLevelEh
-000004c8 l     F .text	00000022 _ZN14RF24LogHandler3logEhPK19__FlashStringHelperS2_PPv
-000004ea l     F .text	00000022 _ZN14RF24LogHandler3logEhPK19__FlashStringHelperPKcPPv
+00000252 l     F .text	00000006 _ZN22RF24AbstractLogHandler11setLogLevelEh
+000004c8 l     F .text	00000022 _ZN22RF24AbstractLogHandler3logEhPK19__FlashStringHelperS2_PPv
+000004ea l     F .text	00000022 _ZN22RF24AbstractLogHandler3logEhPK19__FlashStringHelperPKcPPv
 0000050c l     F .text	00000050 _ZN10RF24Logger4infoIPK19__FlashStringHelperEEvS3_T_z.constprop.15
 00800451 l     O .bss	00000002 rf24Logger
 0000055c l     F .text	00000050 _ZN10RF24Logger5errorIPKcEEvPK19__FlashStringHelperT_z.constprop.14
@@ -25,16 +25,16 @@ Release/RF24Log.elf:     file format elf32-avr
 00000cd6 l     F .text	00000090 _ZN20RF24StreamLogHandler15appendTimestampEv
 00000d66 l     F .text	0000009e _ZN20RF24StreamLogHandler5writeEhPK19__FlashStringHelperS2_PPv
 00000e04 l     F .text	0000008e _ZN20RF24StreamLogHandler5writeEhPK19__FlashStringHelperPKcPPv
-00000fd6 l     F .text	00000080 _GLOBAL__I_65535_0_RF24DualLogHandler.cpp.o.1933
+00000fd6 l     F .text	00000080 _GLOBAL__I_65535_0_RF24AbstractLogHandler.cpp.o.1923
 0080044c l     O .bss	00000005 rf24SerialLogHandler
 00800130 l     O .data	0000000e _ZTV20RF24StreamLogHandler
 
 Core:
 .bss  0x002
 .data 0x000
-.text 0x40A
+.text 0x3C0
 
 Stream handler:
 .bss  0x005
 .data 0x02C
-.text 0x4D0
+.text 0x59A
