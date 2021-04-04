@@ -26,10 +26,10 @@ void RF24AbstractLogHandler::setLogLevel(uint8_t logLevel)
     this->logLevel = logLevel;
 }
 
-void RF24LogHandler::log(uint8_t logLevel,
-                         const __FlashStringHelper *vendorId,
-                         const char *message,
-                         va_list *args)
+void RF24AbstractLogHandler::log(uint8_t logLevel,
+                                 const __FlashStringHelper *vendorId,
+                                 const char *message,
+                                 va_list *args)
 {
     if (logLevel > this->logLevel)
     {
@@ -39,10 +39,10 @@ void RF24LogHandler::log(uint8_t logLevel,
     write(logLevel, vendorId, message, args);
 }
 
-void RF24LogHandler::log(uint8_t logLevel,
-                         const __FlashStringHelper *vendorId,
-                         const __FlashStringHelper *message,
-                         va_list *args)
+void RF24AbstractLogHandler::log(uint8_t logLevel,
+                                 const __FlashStringHelper *vendorId,
+                                 const __FlashStringHelper *message,
+                                 va_list *args)
 {
     if (logLevel > this->logLevel)
     {
