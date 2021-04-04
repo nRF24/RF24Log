@@ -2,6 +2,8 @@
 *.d
 
 # Object files
+*.slo
+*.lo
 *.o
 *.ko
 *.obj
@@ -50,3 +52,14 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+/sloeber.ino.cpp
+/Release/
+.cproject
+.project
+.settings
+
+# local-specific working dir
+.vscode/
+docs/html/
+docs/xml/
+DS_Store/
