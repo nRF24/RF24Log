@@ -1,5 +1,5 @@
 /**
- * @file RF24LogHandler.h
+ * @file RF24AbstractLogHandler.cpp
  *
  * Created on: 3 Apr 2021
  *     Author: Witold Markowski (wmarkow)
