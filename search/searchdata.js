@@ -3,8 +3,8 @@ var indexSectionsWithContent =
   0: "acdeilorsw",
   1: "r",
   2: "r",
-  3: "deilrsw",
-  4: "r",
+  3: "adeilrsw",
+  4: "lrs",
   5: "r",
   6: "adeiow",
   7: "cr"

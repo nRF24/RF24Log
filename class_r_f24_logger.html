@@ -77,7 +77,7 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aff3589cfd19931ce88370d42f20ac613"><td class="memItemLeft" align="right" valign="top"><a id="aff3589cfd19931ce88370d42f20ac613"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_logger.html#aff3589cfd19931ce88370d42f20ac613">RF24Logger</a> ()</td></tr>
-<tr class="memdesc:aff3589cfd19931ce88370d42f20ac613"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the appender to nullptr. <br /></td></tr>
+<tr class="memdesc:aff3589cfd19931ce88370d42f20ac613"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the handler to nullptr. <br /></td></tr>
 <tr class="separator:aff3589cfd19931ce88370d42f20ac613"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b6d6098ff3862c5aa46694dfa1457f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_logger.html#a2b6d6098ff3862c5aa46694dfa1457f2">setHandler</a> (<a class="el" href="class_r_f24_log_handler.html">RF24LogHandler</a> *handler)</td></tr>
 <tr class="memdesc:a2b6d6098ff3862c5aa46694dfa1457f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the instance's handler  <a href="class_r_f24_logger.html#a2b6d6098ff3862c5aa46694dfa1457f2">More...</a><br /></td></tr>
@@ -154,15 +154,15 @@ template&lt;class T &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">vendorId</td><td>A scoping identity of the message's origin </td></tr>
-    <tr><td class="paramname">message</td><td>The message to output </td></tr>
-    <tr><td class="paramname">args</td><td>consumable arguments </td></tr>
+    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf spcifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>f</code> for floats). </td></tr>
+    <tr><td class="paramname">...</td><td>the sequence of variables used to replace the format specifiers in the same order for which they appear in the <code>message</code> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#a6">BasicSerialLogger.ino</a>, and <a class="el" href="_empty_logger_8ino-example.html#a4">EmptyLogger.ino</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#a8">BasicSerialLogger.ino</a>, and <a class="el" href="_empty_logger_8ino-example.html#a4">EmptyLogger.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_logger_8h_source.html#l00104">104</a> of file <a class="el" href="_r_f24_logger_8h_source.html">RF24Logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_logger_8h_source.html#l00113">113</a> of file <a class="el" href="_r_f24_logger_8h_source.html">RF24Logger.h</a>.</p>
 
 </div>
 </div>
@@ -212,15 +212,15 @@ template&lt;class T &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">vendorId</td><td>A scoping identity of the message's origin </td></tr>
-    <tr><td class="paramname">message</td><td>The message to output </td></tr>
-    <tr><td class="paramname">args</td><td>consumable arguments </td></tr>
+    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf spcifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>f</code> for floats). </td></tr>
+    <tr><td class="paramname">...</td><td>the sequence of variables used to replace the format specifiers in the same order for which they appear in the <code>message</code> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#a4">BasicSerialLogger.ino</a>, and <a class="el" href="_empty_logger_8ino-example.html#a2">EmptyLogger.ino</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#a6">BasicSerialLogger.ino</a>, and <a class="el" href="_empty_logger_8ino-example.html#a2">EmptyLogger.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_logger_8h_source.html#l00050">50</a> of file <a class="el" href="_r_f24_logger_8h_source.html">RF24Logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_logger_8h_source.html#l00053">53</a> of file <a class="el" href="_r_f24_logger_8h_source.html">RF24Logger.h</a>.</p>
 
 </div>
 </div>
@@ -270,15 +270,15 @@ template&lt;class T &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">vendorId</td><td>A scoping identity of the message's origin </td></tr>
-    <tr><td class="paramname">message</td><td>The message to output </td></tr>
-    <tr><td class="paramname">args</td><td>consumable arguments </td></tr>
+    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf spcifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>f</code> for floats). </td></tr>
+    <tr><td class="paramname">...</td><td>the sequence of variables used to replace the format specifiers in the same order for which they appear in the <code>message</code> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#a3">BasicSerialLogger.ino</a>, and <a class="el" href="_empty_logger_8ino-example.html#a1">EmptyLogger.ino</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#a5">BasicSerialLogger.ino</a>, and <a class="el" href="_empty_logger_8ino-example.html#a1">EmptyLogger.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_logger_8h_source.html#l00086">86</a> of file <a class="el" href="_r_f24_logger_8h_source.html">RF24Logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_logger_8h_source.html#l00093">93</a> of file <a class="el" href="_r_f24_logger_8h_source.html">RF24Logger.h</a>.</p>
 
 </div>
 </div>
@@ -333,16 +333,17 @@ template&lt;class T &gt; </div>
 <p>output a log message of any level </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">logLevel</td><td>the level of the logging message </td></tr>
     <tr><td class="paramname">vendorId</td><td>A scoping identity of the message's origin </td></tr>
-    <tr><td class="paramname">message</td><td>The message to output </td></tr>
-    <tr><td class="paramname">args</td><td>consumable arguments </td></tr>
+    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf spcifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>f</code> for floats). </td></tr>
+    <tr><td class="paramname">...</td><td>the sequence of variables used to replace the format specifiers in the same order for which they appear in the <code>message</code> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#a7">BasicSerialLogger.ino</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#a9">BasicSerialLogger.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_logger_8h_source.html#l00122">122</a> of file <a class="el" href="_r_f24_logger_8h_source.html">RF24Logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_logger_8h_source.html#l00134">134</a> of file <a class="el" href="_r_f24_logger_8h_source.html">RF24Logger.h</a>.</p>
 
 </div>
 </div>
@@ -369,7 +370,7 @@ template&lt;class T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#a2">BasicSerialLogger.ino</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#a4">BasicSerialLogger.ino</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="_r_f24_logger_8cpp_source.html#l00024">24</a> of file <a class="el" href="_r_f24_logger_8cpp_source.html">RF24Logger.cpp</a>.</p>
@@ -422,15 +423,15 @@ template&lt;class T &gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">vendorId</td><td>A scoping identity of the message's origin </td></tr>
-    <tr><td class="paramname">message</td><td>The message to output </td></tr>
-    <tr><td class="paramname">args</td><td>consumable arguments </td></tr>
+    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf spcifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>f</code> for floats). </td></tr>
+    <tr><td class="paramname">...</td><td>the sequence of variables used to replace the format specifiers in the same order for which they appear in the <code>message</code> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#a5">BasicSerialLogger.ino</a>, and <a class="el" href="_empty_logger_8ino-example.html#a3">EmptyLogger.ino</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#a7">BasicSerialLogger.ino</a>, and <a class="el" href="_empty_logger_8ino-example.html#a3">EmptyLogger.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_logger_8h_source.html#l00068">68</a> of file <a class="el" href="_r_f24_logger_8h_source.html">RF24Logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_logger_8h_source.html#l00073">73</a> of file <a class="el" href="_r_f24_logger_8h_source.html">RF24Logger.h</a>.</p>
 
 </div>
 </div>

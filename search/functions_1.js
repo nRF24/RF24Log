@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['error_30',['error',['../class_r_f24_logger.html#a050e89bac4d701bdeba5fd22616c469b',1,'RF24Logger']]]
+  ['debug_61',['debug',['../class_r_f24_logger.html#aa542a411df157f699dcc47f4d7acc718',1,'RF24Logger']]]
 ];

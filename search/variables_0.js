@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rf24logger_37',['rf24Logger',['../_r_f24_logger_8cpp.html#a69c6af0be57a4a9868d516ef55e843f0',1,'rf24Logger():&#160;RF24Logger.cpp'],['../_r_f24_logger_8h.html#a69c6af0be57a4a9868d516ef55e843f0',1,'rf24Logger():&#160;RF24Logger.cpp']]]
+  ['loglevel_72',['logLevel',['../class_r_f24_abstract_log_handler.html#a92a1db4a5a2c7d999378c963c0d7a2e4',1,'RF24AbstractLogHandler']]]
 ];

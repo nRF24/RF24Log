@@ -72,6 +72,17 @@ $(function() {
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="_r_f24_log_handler_8h_source.html">RF24LogHandler.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for RF24LogHandler:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_r_f24_log_handler.png" usemap="#RF24LogHandler_map" alt=""/>
+  <map id="RF24LogHandler_map" name="RF24LogHandler_map">
+<area href="class_r_f24_abstract_log_handler.html" alt="RF24AbstractLogHandler" shape="rect" coords="0,56,155,80"/>
+<area href="class_r_f24_dual_log_handler.html" alt="RF24DualLogHandler" shape="rect" coords="165,56,320,80"/>
+<area href="class_r_f24_stream_log_handler.html" alt="RF24StreamLogHandler" shape="rect" coords="0,112,155,136"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -140,10 +151,13 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">logLevel</td><td>the level of the logging message </td></tr>
     <tr><td class="paramname">vendorId</td><td>The prefixed origin of the message </td></tr>
-    <tr><td class="paramname">message</td><td>The message </td></tr>
+    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf spcifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>f</code> for floats). </td></tr>
+    <tr><td class="paramname">args</td><td>the sequence of variables used to replace the format specifiers in the same order for which they appear in the <code>message</code> </td></tr>
   </table>
   </dd>
 </dl>
+
+<p>Reimplemented in <a class="el" href="class_r_f24_dual_log_handler.html#a83807f1c19a1d84f9ba029ad2adc8951">RF24DualLogHandler</a>, and <a class="el" href="class_r_f24_abstract_log_handler.html#a4fc28846864dec8980d1c7b553651c61">RF24AbstractLogHandler</a>.</p>
 
 </div>
 </div>
@@ -198,10 +212,13 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">logLevel</td><td>the level of the logging message </td></tr>
     <tr><td class="paramname">vendorId</td><td>The prefixed origin of the message </td></tr>
-    <tr><td class="paramname">message</td><td>The message </td></tr>
+    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf spcifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>f</code> for floats). </td></tr>
+    <tr><td class="paramname">args</td><td>the sequence of variables used to replace the format specifiers in the same order for which they appear in the <code>message</code> </td></tr>
   </table>
   </dd>
 </dl>
+
+<p>Reimplemented in <a class="el" href="class_r_f24_dual_log_handler.html#ac51188bcdb388074cafee883435e9837">RF24DualLogHandler</a>, and <a class="el" href="class_r_f24_abstract_log_handler.html#ade3cb63a0b3c0af7f57a30e19f649933">RF24AbstractLogHandler</a>.</p>
 
 </div>
 </div>
@@ -230,10 +247,13 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>set the maximal level of the logged messages. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">logLevel</td><td>maximal level of the logged message </td></tr>
+    <tr><td class="paramname">logLevel</td><td>The verbosity level used to filter which of the logged messages are output. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section see"><dt>See also</dt><dd>Review the descriptions in the <a class="el" href="_r_f24_log_level_8h.html#acc30ca4b505e752d787a523d1007a5b0">RF24LogLevel</a> </dd></dl>
+
+<p>Reimplemented in <a class="el" href="class_r_f24_dual_log_handler.html#ad81db68291bcdf1fa253ca1fdf700901">RF24DualLogHandler</a>, and <a class="el" href="class_r_f24_abstract_log_handler.html#a3f45dfbd8c56151d8d8322bc5fefee90">RF24AbstractLogHandler</a>.</p>
 
 </div>
 </div>
