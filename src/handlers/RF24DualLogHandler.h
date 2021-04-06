@@ -29,6 +29,12 @@ private:
     RF24LogHandler *handler2;
 
 public:
+
+    /**
+     * @brief Instance constructor
+     * @param handler1 An output stream handler
+     * @param handler2 An output stream handler
+     */
     RF24DualLogHandler(RF24LogHandler *handler1, RF24LogHandler *handler2);
 
     void log(uint8_t logLevel,

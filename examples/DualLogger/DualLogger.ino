@@ -1,6 +1,4 @@
 /**
- * @file DualLogger.ino
- *
  * Created on: 30 Mar 2021
  *     Author: Witold Markowski (wmarkow)
  *
