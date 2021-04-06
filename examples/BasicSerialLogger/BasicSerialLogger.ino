@@ -205,7 +205,7 @@ void logFloatNumber()
                    "error log with double value %D", 3.14);
 
   rf24Logger.debug((const __FlashStringHelper*) vendorID,
-                   "debug log with double value %F", 2.71);
+                   "debug log with double value %%f", 2.71);
 
   Serial.println();
 }

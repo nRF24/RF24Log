@@ -34,7 +34,7 @@ public:
      * @param logLevel the level of the logging message
      * @param vendorId The prefixed origin of the message
      * @param message The message format string. Review [the printf spcifiers](https://www.cplusplus.com/reference/cstdio/printf/),
-     * but note that not all are supported on certain MCU architectures (eg `%f` for floats).
+     * but note that not all are supported on certain MCU architectures (eg `%%f` for floats).
      * @param args the sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
      */
@@ -48,7 +48,7 @@ public:
      * @param logLevel the level of the logging message
      * @param vendorId The prefixed origin of the message
      * @param message The message format string. Review [the printf spcifiers](https://www.cplusplus.com/reference/cstdio/printf/),
-     * but note that not all are supported on certain MCU architectures (eg `%f` for floats).
+     * but note that not all are supported on certain MCU architectures (eg `%%f` for floats).
      * @param args the sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
      */
