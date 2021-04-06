@@ -1,6 +1,4 @@
 /**
- * @file BasicSerialLogger.ino
- *
  * Created on: 2 Oct 2020
  *     Author: Witold Markowski (wmarkow)
  *

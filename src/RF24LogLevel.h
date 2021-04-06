@@ -20,7 +20,18 @@
 
 #include <stdint.h>
 
-/** the predefined logging levels */
+/**
+ * @brief the predefined logging levels
+ *
+ * These named levels are the base or parent levels. They increment in in octal counts of `010`.
+ * Each base level can have up to 7 additional sublevels. <br>For example:
+ * - a level of 031 is the first sublevel of @ref INFO verbosity
+ * - a level of 037 is the last sublevel of @ref INFO verbosity
+ *
+ * If the log level is configured for a verbosty of `020` prevents outputting all messages designated for
+ * any log level greater than `020`.
+ * @note the @ref DEBUG base level is the only level that allows 223 additional sublevels.
+ */
 enum RF24LogLevel : uint8_t
 {
     /** the level to disable all log messages */

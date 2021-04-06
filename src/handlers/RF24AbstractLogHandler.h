@@ -31,60 +31,50 @@
 class RF24AbstractLogHandler : public RF24LogHandler
 {
 public:
-      /**
-       * log message.
-       * @param logLevel the level of the logging message
-       * @param vendorId The prefixed origin of the message
-       * @param message The message
-       */
-      void log(uint8_t logLevel,
-               const __FlashStringHelper *vendorId,
-               const char *message,
-               va_list *args);
+    void log(uint8_t logLevel,
+             const __FlashStringHelper *vendorId,
+             const char *message,
+             va_list *args);
 
-      /**
-       * log message.
-       * @param logLevel the level of the logging message
-       * @param vendorId The prefixed origin of the message
-       * @param message The message
-       */
-      void log(uint8_t logLevel,
-               const __FlashStringHelper *vendorId,
-               const __FlashStringHelper *message,
-               va_list *args);
+    void log(uint8_t logLevel,
+             const __FlashStringHelper *vendorId,
+             const __FlashStringHelper *message,
+             va_list *args);
 
-      /**
-       * set the maximal level of the logged messages.
-       * @param logLevel maximal level of the logged message
-       */
-      void setLogLevel(uint8_t logLevel);
+    void setLogLevel(uint8_t logLevel);
 
 protected:
-      uint8_t logLevel;
 
-      RF24AbstractLogHandler();
+    /** The configured log level used to filter which messages are output. */
+    uint8_t logLevel;
 
-      /**
-       * write log message to its destination
-       * @param logLevel the level of the logging message
-       * @param vendorId The prefixed origin of the message
-       * @param message The message
-       */
-      virtual void write(uint8_t logLevel,
-                          const __FlashStringHelper *vendorId,
-                          const char *message,
-                          va_list *args) = 0;
+    RF24AbstractLogHandler();
 
-      /**
-       * write log message to its destination
-       * @param logLevel the level of the logging message
-       * @param vendorId The prefixed origin of the message
-       * @param message The message
-       */
-      virtual void write(uint8_t logLevel,
-                          const __FlashStringHelper *vendorId,
-                          const __FlashStringHelper *message,
-                          va_list *args) = 0;
+    /**
+     * write log message to its destination
+     * @param logLevel the level of the logging message
+     * @param vendorId The prefixed origin of the message
+     * @param message The message
+     * @param args the sequence of variables used to replace the format specifiers in the
+     * same order for which they appear in the @p message
+     */
+    virtual void write(uint8_t logLevel,
+                       const __FlashStringHelper *vendorId,
+                       const char *message,
+                       va_list *args) = 0;
+
+    /**
+     * write log message to its destination
+     * @param logLevel the level of the logging message
+     * @param vendorId The prefixed origin of the message
+     * @param message The message
+     * @param args the sequence of variables used to replace the format specifiers in the
+     * same order for which they appear in the @p message
+     */
+    virtual void write(uint8_t logLevel,
+                       const __FlashStringHelper *vendorId,
+                       const __FlashStringHelper *message,
+                       va_list *args) = 0;
 };
 
 #endif /* SRC_HANDLERS_RF24ABSTRACTLOGHANDLER_H_ */

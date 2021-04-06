@@ -26,9 +26,16 @@
 class RF24StreamLogHandler : public RF24AbstractLogHandler
 {
 protected:
+
+    /** The output stream */
     Print *stream;
 
 public:
+
+    /**
+     * @brief instance constructor
+     * @param stream The output stream to which logging messages are directed.
+     */
     RF24StreamLogHandler(Print *stream);
 
 protected:
@@ -42,11 +49,40 @@ protected:
                const __FlashStringHelper *message,
                va_list *args);
 
+    /** @brief output a timestamp */
     void appendTimestamp();
+
+    /**
+     * @brief output a description of the log level
+     * @param logLevel The level to describe.
+     */
     void appendLogLevel(uint8_t logLevel);
+
+    /**
+     * @brief output a origin of the message
+     * @param vendorId The origin name.
+     */
     void appendVendorId(const __FlashStringHelper *vendorId);
+
+    /**
+     * @brief output a message with the specifiers replaced with values from the sequence of @p args
+     * @param format the format of the message
+     * @param args the sequence of args
+     */
     void appendFormattedMessage(const char *format, va_list *args);
+
+    /**
+     * @brief output a message with the specifiers replaced with values from the sequence of @p args
+     * @param format the format of the message
+     * @param args the sequence of args
+     */
     void appendFormattedMessage(const __FlashStringHelper *format, va_list *args);
+
+    /**
+     * @brief output a message with the specifiers replaced with values from the sequence of @p args
+     * @param format the format of the message
+     * @param args the sequence of args
+     */
     void appendFormat(const char format, va_list *args);
 };
 

@@ -33,7 +33,10 @@ public:
      * @brief log a message.
      * @param logLevel the level of the logging message
      * @param vendorId The prefixed origin of the message
-     * @param message The message
+     * @param message The message format string. Review [the printf spcifiers](https://www.cplusplus.com/reference/cstdio/printf/),
+     * but note that not all are supported on certain MCU architectures (eg `%f` for floats).
+     * @param args the sequence of variables used to replace the format specifiers in the
+     * same order for which they appear in the @p message
      */
     virtual void log(uint8_t logLevel,
                      const __FlashStringHelper *vendorId,
@@ -44,18 +47,23 @@ public:
      * @brief log a message.
      * @param logLevel the level of the logging message
      * @param vendorId The prefixed origin of the message
-     * @param message The message
+     * @param message The message format string. Review [the printf spcifiers](https://www.cplusplus.com/reference/cstdio/printf/),
+     * but note that not all are supported on certain MCU architectures (eg `%f` for floats).
+     * @param args the sequence of variables used to replace the format specifiers in the
+     * same order for which they appear in the @p message
      */
     virtual void log(uint8_t logLevel,
                      const __FlashStringHelper *vendorId,
                      const __FlashStringHelper *message,
                      va_list *args);
 
-      /**
-       * set the maximal level of the logged messages.
-       * @param logLevel maximal level of the logged message
-       */
-      virtual void setLogLevel(uint8_t logLevel);
+    /**
+     * set the maximal level of the logged messages.
+     * @param logLevel The verbosity level used to filter which of the logged messages
+     * are output.
+     * @see Review the descriptions in the @ref RF24LogLevel
+     */
+    virtual void setLogLevel(uint8_t logLevel);
 };
 
 #endif /* SRC_RF24LOGHANDLER_H_ */

@@ -1,6 +1,4 @@
 /**
- * @file AllLogLevelsLogger.ino
- *
  * Created on: 31 Mar 2021
  *     Author: Witold Markowski (wmarkow)
  *

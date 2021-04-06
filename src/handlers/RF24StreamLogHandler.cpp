@@ -18,11 +18,15 @@
 
 #include "RF24StreamLogHandler.h"
 
+/** description of the @ref ERROR base level */
 const char rf24logLevelError[] = "ERROR";
+/** description of the @ref WARN base level */
 const char rf24logLevelWarn[] = " WARN";
+/** description of the @ref INFO base level */
 const char rf24logLevelInfo[] = " INFO";
+/** description of the @ref DEBUG base level */
 const char rf24logLevelDebug[] = "DEBUG";
-
+/** collection of the base level descriptions */
 const char *const rf24LogLevels[] = {rf24logLevelError,
                                      rf24logLevelWarn,
                                      rf24logLevelInfo,
