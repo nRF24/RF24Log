@@ -90,7 +90,7 @@ $(function() {
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  Serial.begin(115200);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="comment">// set maximal log level to ALL</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  rf24SerialLogHandler.<a class="code" href="class_r_f24_abstract_log_handler.html#a3f45dfbd8c56151d8d8322bc5fefee90">setLogLevel</a>(<a class="code" href="_r_f24_log_level_8h.html#acc30ca4b505e752d787a523d1007a5b0ab1d5eac4b1dca480c8056eaea7663b7a">RF24LogLevel::ALL</a>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  rf24SerialLogHandler.<a class="code" href="class_r_f24_abstract_log_handler.html#a3f45dfbd8c56151d8d8322bc5fefee90">setLogLevel</a>(<a class="code" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0ab1d5eac4b1dca480c8056eaea7663b7a">RF24LogLevel::ALL</a>);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="comment">// set serial port appender</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="_r_f24_logger_8cpp.html#a69c6af0be57a4a9868d516ef55e843f0">rf24Logger</a>.<a class="code" href="class_r_f24_logger.html#a2b6d6098ff3862c5aa46694dfa1457f2">setHandler</a>(&amp;rf24SerialLogHandler);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
@@ -107,7 +107,6 @@ $(function() {
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  Serial.println(<span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  delay(5000);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
-<div class="ttc" id="a_r_f24_log_level_8h_html_acc30ca4b505e752d787a523d1007a5b0ab1d5eac4b1dca480c8056eaea7663b7a"><div class="ttname"><a href="_r_f24_log_level_8h.html#acc30ca4b505e752d787a523d1007a5b0ab1d5eac4b1dca480c8056eaea7663b7a">ALL</a></div><div class="ttdeci">@ ALL</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_level_8h_source.html#l00049">RF24LogLevel.h:48</a></div></div>
 <div class="ttc" id="a_r_f24_logger_8cpp_html_a69c6af0be57a4a9868d516ef55e843f0"><div class="ttname"><a href="_r_f24_logger_8cpp.html#a69c6af0be57a4a9868d516ef55e843f0">rf24Logger</a></div><div class="ttdeci">RF24Logger rf24Logger</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_logger_8cpp_source.html#l00030">RF24Logger.cpp:30</a></div></div>
 <div class="ttc" id="a_r_f24_logger_8h_html"><div class="ttname"><a href="_r_f24_logger_8h.html">RF24Logger.h</a></div></div>
 <div class="ttc" id="a_r_f24_stream_log_handler_8h_html"><div class="ttname"><a href="_r_f24_stream_log_handler_8h.html">RF24StreamLogHandler.h</a></div></div>
@@ -116,6 +115,7 @@ $(function() {
 <div class="ttc" id="aclass_r_f24_logger_html_a2b6d6098ff3862c5aa46694dfa1457f2"><div class="ttname"><a href="class_r_f24_logger.html#a2b6d6098ff3862c5aa46694dfa1457f2">RF24Logger::setHandler</a></div><div class="ttdeci">void setHandler(RF24LogHandler *handler)</div><div class="ttdoc">set the instance's handler</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_logger_8cpp_source.html#l00024">RF24Logger.cpp:24</a></div></div>
 <div class="ttc" id="aclass_r_f24_logger_html_a5682dca5812185ca49e38808f862fd9c"><div class="ttname"><a href="class_r_f24_logger.html#a5682dca5812185ca49e38808f862fd9c">RF24Logger::log</a></div><div class="ttdeci">void log(uint8_t logLevel, const __FlashStringHelper *vendorId, T message,...)</div><div class="ttdoc">output a log message of any level</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_logger_8h_source.html#l00134">RF24Logger.h:134</a></div></div>
 <div class="ttc" id="aclass_r_f24_stream_log_handler_html"><div class="ttname"><a href="class_r_f24_stream_log_handler.html">RF24StreamLogHandler</a></div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_stream_log_handler_8h_source.html#l00026">RF24StreamLogHandler.h:27</a></div></div>
+<div class="ttc" id="agroup__log_levels_html_ggacc30ca4b505e752d787a523d1007a5b0ab1d5eac4b1dca480c8056eaea7663b7a"><div class="ttname"><a href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0ab1d5eac4b1dca480c8056eaea7663b7a">ALL</a></div><div class="ttdeci">@ ALL</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_level_8h_source.html#l00052">RF24LogLevel.h:51</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
