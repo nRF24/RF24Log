@@ -59,7 +59,7 @@ public:
      * set the maximal level of the logged messages.
      * @param logLevel The verbosity level used to filter which of the logged messages
      * are output.
-     * @see Review the descriptions in the @ref RF24LogLevel
+     * @see Review the descriptions in the @ref logLevels
      */
     virtual void setLogLevel(uint8_t logLevel);
 };

@@ -19,7 +19,10 @@
 #define SRC_RF24LOGLEVEL_H_
 
 #include <stdint.h>
-
+/**
+ * @defgroup logLevels Log Levels
+ * @{
+ */
 /**
  * @brief the predefined logging levels
  *
@@ -28,24 +31,24 @@
  * - a level of 031 is the first sublevel of @ref INFO verbosity
  * - a level of 037 is the last sublevel of @ref INFO verbosity
  *
- * If the log level is configured for a verbosty of `020` prevents outputting all messages designated for
+ * If the log level is configured (using RF24LogHandler::setLogLevel()) for a verbosty of `020` prevents outputting all messages designated for
  * any log level greater than `020`.
  * @note the @ref DEBUG base level is the only level that allows 223 additional sublevels.
  */
 enum RF24LogLevel : uint8_t
 {
-    /** the level to disable all log messages */
-    OFF = 0x00,
-    /** the level to specify an error message */
-    ERROR = 0x08,
-    /** the level to specify an warning message */
-    WARN = 0x10,
-    /** the level to specify an informational message */
-    INFO = 0x18,
-    /** the level to specify an debugging message */
-    DEBUG = 0x20,
-    /** the level to enable all log messages (disables filtering of levels) */
+    /** (`0`) the level to disable all log messages */
+    OFF = 0,
+    /** (`010`) the level to specify an error message */
+    ERROR = 010,
+    /** (`020`) the level to specify an warning message */
+    WARN = 020,
+    /** (`030`) the level to specify an informational message */
+    INFO = 030,
+    /** (`040`) the level to specify an debugging message */
+    DEBUG = 040,
+    /** (`0377` or `0xFF`) the level to enable all log messages (disables filtering of levels) */
     ALL = 0xFF
 };
-
+/**@} */
 #endif /* SRC_RF24LOGLEVEL_H_ */
