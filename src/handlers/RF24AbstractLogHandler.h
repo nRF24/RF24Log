@@ -52,10 +52,10 @@ protected:
 
     /**
      * write log message to its destination
-     * @param logLevel the level of the logging message
+     * @param logLevel The level of the logging message
      * @param vendorId The prefixed origin of the message
      * @param message The message
-     * @param args the sequence of variables used to replace the format specifiers in the
+     * @param args The sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
      */
     virtual void write(uint8_t logLevel,
@@ -65,10 +65,10 @@ protected:
 
     /**
      * write log message to its destination
-     * @param logLevel the level of the logging message
+     * @param logLevel The level of the logging message
      * @param vendorId The prefixed origin of the message
      * @param message The message
-     * @param args the sequence of variables used to replace the format specifiers in the
+     * @param args The sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
      */
     virtual void write(uint8_t logLevel,
