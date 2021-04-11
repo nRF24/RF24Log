@@ -153,45 +153,45 @@ void RF24StreamLogHandler::appendLogLevel(uint8_t logLevel)
 
     switch (logMainLevel)
     {
-    case RF24LogLevel::ERROR:
-    {
-        stream->print(rf24LogLevels[0]);
-        break;
-    }
-    case RF24LogLevel::WARN:
-    {
-        stream->print(rf24LogLevels[1]);
-        break;
-    }
-    case RF24LogLevel::INFO:
-    {
-        stream->print(rf24LogLevels[2]);
-        break;
-    }
-    case RF24LogLevel::DEBUG:
-    {
-        stream->print(rf24LogLevels[3]);
-        break;
-    }
-    default:
-    {
-        // unknown
-        if (logLevel < 10)
+        case RF24LogLevel::ERROR:
         {
-            stream->print("Lvl   ");
+            stream->print(rf24LogLevels[0]);
+            break;
         }
-        else if (logLevel < 100)
+        case RF24LogLevel::WARN:
         {
-            stream->print("Lvl  ");
+            stream->print(rf24LogLevels[1]);
+            break;
         }
-        else
+        case RF24LogLevel::INFO:
         {
-            stream->print("Lvl ");
+            stream->print(rf24LogLevels[2]);
+            break;
         }
-        stream->print(logLevel);
-        stream->print(" ");
-        return;
-    }
+        case RF24LogLevel::DEBUG:
+        {
+            stream->print(rf24LogLevels[3]);
+            break;
+        }
+        default:
+        {
+            // unknown
+            if (logLevel < 10)
+            {
+                stream->print("Lvl   ");
+            }
+            else if (logLevel < 100)
+            {
+                stream->print("Lvl  ");
+            }
+            else
+            {
+                stream->print("Lvl ");
+            }
+            stream->print(logLevel);
+            stream->print(" ");
+            return;
+        }
     }
 
     if (subLevel == 0)
