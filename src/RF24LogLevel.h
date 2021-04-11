@@ -33,7 +33,6 @@
  *
  * If the log level is configured (using RF24LogHandler::setLogLevel()) for a verbosty of `020` prevents outputting all messages designated for
  * any log level greater than `020`.
- * @note the @ref DEBUG base level is the only level that allows 223 additional sublevels.
  */
 enum RF24LogLevel : uint8_t
 {
