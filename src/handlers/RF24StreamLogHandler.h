@@ -66,22 +66,22 @@ protected:
 
     /**
      * @brief output a message with the specifiers replaced with values from the sequence of @p args
-     * @param format the format of the message
-     * @param args the sequence of args
+     * @param format The format of the message
+     * @param args The sequence of args
      */
     void appendFormattedMessage(const char *format, va_list *args);
 
     /**
      * @brief output a message with the specifiers replaced with values from the sequence of @p args
-     * @param format the format of the message
-     * @param args the sequence of args
+     * @param format The format of the message
+     * @param args The sequence of args
      */
     void appendFormattedMessage(const __FlashStringHelper *format, va_list *args);
 
     /**
      * @brief output a message with the specifiers replaced with values from the sequence of @p args
-     * @param format the format of the message
-     * @param args the sequence of args
+     * @param format The format of the message
+     * @param args The sequence of args
      */
     void appendFormat(const char format, va_list *args);
 };
