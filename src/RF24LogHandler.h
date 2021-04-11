@@ -31,11 +31,10 @@ class RF24LogHandler
 public:
     /**
      * @brief log a message.
-     * @param logLevel the level of the logging message
+     * @param logLevel The level of the logging message
      * @param vendorId The prefixed origin of the message
-     * @param message The message format string. Review [the printf spcifiers](https://www.cplusplus.com/reference/cstdio/printf/),
-     * but note that not all are supported on certain MCU architectures (eg `%%f` for floats).
-     * @param args the sequence of variables used to replace the format specifiers in the
+     * @param message The message format string. Review [the supported printf spcifiers](md_docs_supported_specifiers.html).
+     * @param args The sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
      */
     virtual void log(uint8_t logLevel,
@@ -45,11 +44,10 @@ public:
 
     /**
      * @brief log a message.
-     * @param logLevel the level of the logging message
+     * @param logLevel The level of the logging message
      * @param vendorId The prefixed origin of the message
-     * @param message The message format string. Review [the printf spcifiers](https://www.cplusplus.com/reference/cstdio/printf/),
-     * but note that not all are supported on certain MCU architectures (eg `%%f` for floats).
-     * @param args the sequence of variables used to replace the format specifiers in the
+     * @param message The message format string. Review [the supported printf spcifiers](md_docs_supported_specifiers.html).
+     * @param args The sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
      */
     virtual void log(uint8_t logLevel,
