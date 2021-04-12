@@ -43,8 +43,13 @@ void RF24StreamLogHandler::write(uint8_t logLevel,
                                  va_list *args)
 {
     appendTimestamp();
+    stream->print(";");
+
     appendLogLevel(logLevel);
+    stream->print(";");
+
     appendVendorId(vendorId);
+    stream->print(";");
 
     // print formatted message
     appendFormattedMessage(message, args);
@@ -57,8 +62,13 @@ void RF24StreamLogHandler::write(uint8_t logLevel,
                                  va_list *args)
 {
     appendTimestamp();
+    stream->print(";");
+
     appendLogLevel(logLevel);
+    stream->print(";");
+
     appendVendorId(vendorId);
+    stream->print(";");
 
     // print formatted message
     appendFormattedMessage(message, args);
@@ -141,73 +151,47 @@ void RF24StreamLogHandler::appendFormat(const char format, va_list *args)
 void RF24StreamLogHandler::appendTimestamp()
 {
     char c[12];
-    sprintf(c, "%10lu ", millis());
+    sprintf(c, "%10lu", millis());
     stream->print(c);
-    stream->print(" ");
 }
 
 void RF24StreamLogHandler::appendLogLevel(uint8_t logLevel)
 {
-    uint8_t logMainLevel = logLevel & 0xF8;
     uint8_t subLevel = logLevel & 0x07;
 
-    switch (logMainLevel)
+    if (logLevel >= RF24LogLevel::ERROR && logLevel <= RF24LogLevel::DEBUG + 7)
     {
-        case RF24LogLevel::ERROR:
+        uint8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
+        stream->print(rf24LogLevels[logIndex]);
+
+        if(subLevel == 0)
         {
-            stream->print(rf24LogLevels[0]);
-            break;
-        }
-        case RF24LogLevel::WARN:
+            stream->print("  ");
+        } else
         {
-            stream->print(rf24LogLevels[1]);
-            break;
+            stream->print(":");
+            stream->print(subLevel);
         }
-        case RF24LogLevel::INFO:
-        {
-            stream->print(rf24LogLevels[2]);
-            break;
-        }
-        case RF24LogLevel::DEBUG:
-        {
-            stream->print(rf24LogLevels[3]);
-            break;
-        }
-        default:
-        {
-            // unknown
-            if (logLevel < 10)
-            {
-                stream->print("Lvl   ");
-            }
-            else if (logLevel < 100)
-            {
-                stream->print("Lvl  ");
-            }
-            else
-            {
-                stream->print("Lvl ");
-            }
-            stream->print(logLevel);
-            stream->print(" ");
-            return;
-        }
+
+        return;
     }
 
-    if (subLevel == 0)
+    if (logLevel < 10)
     {
-        stream->print("   ");
+        stream->print("Lvl   ");
+    }
+    else if (logLevel < 100)
+    {
+        stream->print("Lvl  ");
     }
     else
     {
-        stream->print(":");
-        stream->print(subLevel);
-        stream->print(" ");
+        stream->print("Lvl ");
     }
+    stream->print(logLevel);
 }
 
 void RF24StreamLogHandler::appendVendorId(const __FlashStringHelper *vendorId)
 {
     stream->print(vendorId);
-    stream->print(" ");
 }
