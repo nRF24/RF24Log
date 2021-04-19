@@ -44,7 +44,7 @@ void RF24DualLogHandler::setLogLevel(uint8_t logLevel)
     handler2->setLogLevel(logLevel);
 }
 
-#ifdef ARDUINO_ARCH_AVR
+#if defined (ARDUINO_ARCH_AVR)
 void RF24DualLogHandler::log(uint8_t logLevel,
                              const __FlashStringHelper *vendorId,
                              const __FlashStringHelper *message,

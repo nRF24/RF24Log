@@ -177,7 +177,7 @@ void RF24StreamLogHandler::appendFormat(const char format, va_list *args)
     stream->print(format);
 }
 
-#ifdef ARDUINO_ARCH_AVR
+#if defined (ARDUINO_ARCH_AVR)
 void RF24StreamLogHandler::write(uint8_t logLevel,
                                  const __FlashStringHelper *vendorId,
                                  const __FlashStringHelper *message,

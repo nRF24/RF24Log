@@ -38,7 +38,7 @@ public:
 
     void setLogLevel(uint8_t logLevel);
 
-#ifdef ARDUINO_ARCH_AVR
+#if defined (ARDUINO_ARCH_AVR)
     void log(uint8_t logLevel,
              const __FlashStringHelper *vendorId,
              const __FlashStringHelper *message,
@@ -65,7 +65,7 @@ protected:
                        const char *message,
                        va_list *args) = 0;
 
-#ifdef ARDUINO_ARCH_AVR
+#if defined (ARDUINO_ARCH_AVR)
     /**
      * write log message to its destination
      * @param logLevel The level of the logging message

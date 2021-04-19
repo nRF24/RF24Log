@@ -44,7 +44,7 @@ public:
 
     void setLogLevel(uint8_t logLevel);
 
-#ifdef ARDUINO_ARCH_AVR
+#if defined (ARDUINO_ARCH_AVR)
     void log(uint8_t logLevel,
              const __FlashStringHelper *vendorId,
              const __FlashStringHelper *message,

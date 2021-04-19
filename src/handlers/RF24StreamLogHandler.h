@@ -73,7 +73,7 @@ protected:
      */
     void appendFormat(const char format, va_list *args);
 
-#ifdef ARDUINO_ARCH_AVR
+#if defined (ARDUINO_ARCH_AVR)
     void write(uint8_t logLevel,
                const __FlashStringHelper *vendorId,
                const __FlashStringHelper *message,

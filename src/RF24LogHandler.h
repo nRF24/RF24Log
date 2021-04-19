@@ -42,7 +42,7 @@ public:
                      const char *message,
                      va_list *args);
 
-#ifdef ARDUINO_ARCH_AVR
+#if defined (ARDUINO_ARCH_AVR)
     /**
      * @brief log a message.
      * @param logLevel The level of the logging message

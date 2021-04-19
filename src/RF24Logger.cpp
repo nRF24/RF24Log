@@ -81,7 +81,7 @@ void RF24Logger::log(uint8_t logLevel, const char *vendorId, const char *message
     handler->log(logLevel, vendorId, message, &args);
 }
 
-#ifdef ARDUINO_ARCH_AVR
+#if defined (ARDUINO_ARCH_AVR)
     void RF24Logger::error(const __FlashStringHelper *vendorId, const __FlashStringHelper *message, ...)
     {
         if (handler == nullptr)
