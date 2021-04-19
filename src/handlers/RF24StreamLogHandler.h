@@ -40,13 +40,8 @@ public:
 
 protected:
     void write(uint8_t logLevel,
-               const __FlashStringHelper *vendorId,
+               const char *vendorId,
                const char *message,
-               va_list *args);
-
-    void write(uint8_t logLevel,
-               const __FlashStringHelper *vendorId,
-               const __FlashStringHelper *message,
                va_list *args);
 
     /** @brief output a timestamp */
@@ -62,7 +57,7 @@ protected:
      * @brief output a origin of the message
      * @param vendorId The origin name.
      */
-    void appendVendorId(const __FlashStringHelper *vendorId);
+    void appendVendorId(const char *vendorId);
 
     /**
      * @brief output a message with the specifiers replaced with values from the sequence of @p args
@@ -76,14 +71,28 @@ protected:
      * @param format The format of the message
      * @param args The sequence of args
      */
-    void appendFormattedMessage(const __FlashStringHelper *format, va_list *args);
+    void appendFormat(const char format, va_list *args);
+
+#ifdef ARDUINO_ARCH_AVR
+    void write(uint8_t logLevel,
+               const __FlashStringHelper *vendorId,
+               const __FlashStringHelper *message,
+               va_list *args);
+
+    /**
+     * @brief output a origin of the message
+     * @param vendorId The origin name.
+     */
+    void appendVendorId(const __FlashStringHelper *vendorId);
 
     /**
      * @brief output a message with the specifiers replaced with values from the sequence of @p args
      * @param format The format of the message
      * @param args The sequence of args
      */
-    void appendFormat(const char format, va_list *args);
+    void appendFormattedMessage(const __FlashStringHelper *format, va_list *args);
+#endif
+
 };
 
 #endif /* SRC_HANDLERS_RF24STREAMLOGHANDLER_H_ */

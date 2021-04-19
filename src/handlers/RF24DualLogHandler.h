@@ -38,16 +38,19 @@ public:
     RF24DualLogHandler(RF24LogHandler *handler1, RF24LogHandler *handler2);
 
     void log(uint8_t logLevel,
-             const __FlashStringHelper *vendorId,
+             const char *vendorId,
              const char *message,
              va_list *args);
 
+    void setLogLevel(uint8_t logLevel);
+
+#ifdef ARDUINO_ARCH_AVR
     void log(uint8_t logLevel,
              const __FlashStringHelper *vendorId,
              const __FlashStringHelper *message,
              va_list *args);
+#endif
 
-   void setLogLevel(uint8_t logLevel);
 };
 
 #endif /* SRC_HANDLERS_RF24DUALLOGHANDLER_H_ */

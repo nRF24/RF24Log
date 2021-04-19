@@ -38,7 +38,7 @@ RF24StreamLogHandler::RF24StreamLogHandler(Print *stream)
 }
 
 void RF24StreamLogHandler::write(uint8_t logLevel,
-                                 const __FlashStringHelper *vendorId,
+                                 const char *vendorId,
                                  const char *message,
                                  va_list *args)
 {
@@ -56,23 +56,52 @@ void RF24StreamLogHandler::write(uint8_t logLevel,
     stream->println("");
 }
 
-void RF24StreamLogHandler::write(uint8_t logLevel,
-                                 const __FlashStringHelper *vendorId,
-                                 const __FlashStringHelper *message,
-                                 va_list *args)
+void RF24StreamLogHandler::appendTimestamp()
 {
-    appendTimestamp();
-    stream->print(";");
+    char c[12];
+    sprintf(c, "%10lu", millis());
+    stream->print(c);
+}
 
-    appendLogLevel(logLevel);
-    stream->print(";");
+void RF24StreamLogHandler::appendLogLevel(uint8_t logLevel)
+{
+    uint8_t subLevel = logLevel & 0x07;
 
-    appendVendorId(vendorId);
-    stream->print(";");
+    if (logLevel >= RF24LogLevel::ERROR && logLevel <= RF24LogLevel::DEBUG + 7)
+    {
+        uint8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
+        stream->print(rf24LogLevels[logIndex]);
 
-    // print formatted message
-    appendFormattedMessage(message, args);
-    stream->println("");
+        if(subLevel == 0)
+        {
+            stream->print("  ");
+        } else
+        {
+            stream->print(":");
+            stream->print(subLevel);
+        }
+
+        return;
+    }
+
+    if (logLevel < 10)
+    {
+        stream->print("Lvl   ");
+    }
+    else if (logLevel < 100)
+    {
+        stream->print("Lvl  ");
+    }
+    else
+    {
+        stream->print("Lvl ");
+    }
+    stream->print(logLevel);
+}
+
+void RF24StreamLogHandler::appendVendorId(const char *vendorId)
+{
+    stream->print(vendorId);
 }
 
 void RF24StreamLogHandler::appendFormattedMessage(const char *format, va_list *args)
@@ -148,50 +177,28 @@ void RF24StreamLogHandler::appendFormat(const char format, va_list *args)
     stream->print(format);
 }
 
-void RF24StreamLogHandler::appendTimestamp()
+#ifdef ARDUINO_ARCH_AVR
+void RF24StreamLogHandler::write(uint8_t logLevel,
+                                 const __FlashStringHelper *vendorId,
+                                 const __FlashStringHelper *message,
+                                 va_list *args)
 {
-    char c[12];
-    sprintf(c, "%10lu", millis());
-    stream->print(c);
-}
+    appendTimestamp();
+    stream->print(";");
 
-void RF24StreamLogHandler::appendLogLevel(uint8_t logLevel)
-{
-    uint8_t subLevel = logLevel & 0x07;
+    appendLogLevel(logLevel);
+    stream->print(";");
 
-    if (logLevel >= RF24LogLevel::ERROR && logLevel <= RF24LogLevel::DEBUG + 7)
-    {
-        uint8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
-        stream->print(rf24LogLevels[logIndex]);
+    appendVendorId(vendorId);
+    stream->print(";");
 
-        if(subLevel == 0)
-        {
-            stream->print("  ");
-        } else
-        {
-            stream->print(":");
-            stream->print(subLevel);
-        }
-
-        return;
-    }
-
-    if (logLevel < 10)
-    {
-        stream->print("Lvl   ");
-    }
-    else if (logLevel < 100)
-    {
-        stream->print("Lvl  ");
-    }
-    else
-    {
-        stream->print("Lvl ");
-    }
-    stream->print(logLevel);
+    // print formatted message
+    appendFormattedMessage(message, args);
+    stream->println("");
 }
 
 void RF24StreamLogHandler::appendVendorId(const __FlashStringHelper *vendorId)
 {
     stream->print(vendorId);
 }
+#endif

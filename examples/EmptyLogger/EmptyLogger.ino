@@ -18,8 +18,8 @@
 #include <RF24Logger.h>
 #include <handlers/RF24StreamLogHandler.h>
 
-// Define global vendor id (it is stored in flash memory)
-const char PROGMEM vendorID[] = "RF24LogExample";
+// Define global vendor id (it is stored in RAM memory)
+const char vendorID[] = "RF24LogExample";
 
 // DO NOT create hardware serial port log appender
 // RF24StreamLogHandler rf24SerialLogHandler(&Serial);
@@ -47,14 +47,10 @@ void loop()
 
 void logSimpleRamMessage()
 {
-  rf24Logger.error((const __FlashStringHelper*) vendorID,
-                   "Error message defined in RAM");
-  rf24Logger.warn((const __FlashStringHelper*) vendorID,
-                  "Warning message defined in RAM");
-  rf24Logger.info((const __FlashStringHelper*) vendorID,
-                  "Info message defined in RAM");
-  rf24Logger.debug((const __FlashStringHelper*) vendorID,
-                   "Debug message defined in RAM");
+  rf24Logger.error(vendorID, "Error message defined in RAM");
+  rf24Logger.warn(vendorID, "Warning message defined in RAM");
+  rf24Logger.info(vendorID, "Info message defined in RAM");
+  rf24Logger.debug(vendorID, "Debug message defined in RAM");
 
   Serial.println();
 }

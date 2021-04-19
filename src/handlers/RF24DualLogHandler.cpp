@@ -24,23 +24,8 @@ RF24DualLogHandler::RF24DualLogHandler(RF24LogHandler *handler1,
 }
 
 void RF24DualLogHandler::log(uint8_t logLevel,
-                             const __FlashStringHelper *vendorId,
+                             const char *vendorId,
                              const char *message,
-                             va_list *args)
-{
-    // va_list can be iterated only once.
-    // Since we have here two handlers, we need to copy arguments.
-    va_list args2;
-    va_copy(args2, *args);
-
-    // redirect logs to wrapped handlers
-    handler1->log(logLevel, vendorId, message, args);
-    handler2->log(logLevel, vendorId, message, &args2);
-}
-
-void RF24DualLogHandler::log(uint8_t logLevel,
-                             const __FlashStringHelper *vendorId,
-                             const __FlashStringHelper *message,
                              va_list *args)
 {
     // va_list can be iterated only once.
@@ -58,3 +43,20 @@ void RF24DualLogHandler::setLogLevel(uint8_t logLevel)
     handler1->setLogLevel(logLevel);
     handler2->setLogLevel(logLevel);
 }
+
+#ifdef ARDUINO_ARCH_AVR
+void RF24DualLogHandler::log(uint8_t logLevel,
+                             const __FlashStringHelper *vendorId,
+                             const __FlashStringHelper *message,
+                             va_list *args)
+{
+    // va_list can be iterated only once.
+    // Since we have here two handlers, we need to copy arguments.
+    va_list args2;
+    va_copy(args2, *args);
+
+    // redirect logs to wrapped handlers
+    handler1->log(logLevel, vendorId, message, args);
+    handler2->log(logLevel, vendorId, message, &args2);
+}
+#endif

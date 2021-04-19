@@ -22,7 +22,8 @@
 RF24StreamLogHandler rf24SerialLogHandler(&Serial);
 
 // Define global vendor id (it is stored in flash memory)
-const char PROGMEM vendorID[] = "RF24LogExample";
+const char PROGMEM vendorIDFlash[] = "RF24LogExample";
+const char vendorIDRam[] = "RF24LogExample";
 
 
 // Define some test messages stored in EEPROM
@@ -39,7 +40,7 @@ void setup()
   // set serial port appender
   rf24Logger.setHandler(&rf24SerialLogHandler);
 
-  rf24Logger.info((const __FlashStringHelper*) vendorID, F("RF24Log/examples/BasicSerialLogger"));
+  rf24Logger.info((const __FlashStringHelper*) vendorIDFlash, F("RF24Log/examples/BasicSerialLogger"));
 }
 
 void logSimpleRamMessage();
@@ -77,27 +78,23 @@ void loop()
 
 void logSimpleRamMessage()
 {
-  rf24Logger.error((const __FlashStringHelper*) vendorID,
-                   "Error message defined in RAM");
-  rf24Logger.warn((const __FlashStringHelper*) vendorID,
-                  "Warning message defined in RAM");
-  rf24Logger.info((const __FlashStringHelper*) vendorID,
-                  "Info message defined in RAM");
-  rf24Logger.debug((const __FlashStringHelper*) vendorID,
-                   "Debug message defined in RAM");
+  rf24Logger.error(vendorIDRam, "Error message defined in RAM");
+  rf24Logger.warn(vendorIDRam, "Warning message defined in RAM");
+  rf24Logger.info(vendorIDRam, "Info message defined in RAM");
+  rf24Logger.debug(vendorIDRam, "Debug message defined in RAM");
 
   Serial.println();
 }
 
 void logSimpleGlobalProgmemMessage()
 {
-  rf24Logger.error((const __FlashStringHelper*) vendorID,
+  rf24Logger.error((const __FlashStringHelper*) vendorIDFlash,
                    (const __FlashStringHelper*) globalProgmemText);
-  rf24Logger.warn((const __FlashStringHelper*) vendorID,
+  rf24Logger.warn((const __FlashStringHelper*) vendorIDFlash,
                   (const __FlashStringHelper*) globalProgmemText);
-  rf24Logger.info((const __FlashStringHelper*) vendorID,
+  rf24Logger.info((const __FlashStringHelper*) vendorIDFlash,
                   (const __FlashStringHelper*) globalProgmemText);
-  rf24Logger.debug((const __FlashStringHelper*) vendorID,
+  rf24Logger.debug((const __FlashStringHelper*) vendorIDFlash,
                    (const __FlashStringHelper*) globalProgmemText);
 
   Serial.println();
@@ -105,13 +102,13 @@ void logSimpleGlobalProgmemMessage()
 
 void logSimpleFMacroMessage()
 {
-  rf24Logger.error((const __FlashStringHelper*) vendorID,
+  rf24Logger.error((const __FlashStringHelper*) vendorIDFlash,
                    F("text from F macro"));
-  rf24Logger.warn((const __FlashStringHelper*) vendorID,
+  rf24Logger.warn((const __FlashStringHelper*) vendorIDFlash,
                   F("text from F macro"));
-  rf24Logger.info((const __FlashStringHelper*) vendorID,
+  rf24Logger.info((const __FlashStringHelper*) vendorIDFlash,
                   F("text from F macro"));
-  rf24Logger.debug((const __FlashStringHelper*) vendorID,
+  rf24Logger.debug((const __FlashStringHelper*) vendorIDFlash,
                    F("text from F macro"));
 
   Serial.println();
@@ -119,27 +116,23 @@ void logSimpleFMacroMessage()
 
 void logRamMessageWithRamStringArgument()
 {
-  rf24Logger.error((const __FlashStringHelper*) vendorID,
-                   "RAM message with %s", "RAM string 1");
-  rf24Logger.warn((const __FlashStringHelper*) vendorID, "RAM message with %s",
-                  "RAM string 2");
-  rf24Logger.info((const __FlashStringHelper*) vendorID, "RAM message with %s",
-                  "RAM string 3");
-  rf24Logger.debug((const __FlashStringHelper*) vendorID,
-                   "RAM message with %s", "RAM string 4");
+  rf24Logger.error(vendorIDRam, "RAM message with %s", "RAM string 1");
+  rf24Logger.warn(vendorIDRam, "RAM message with %s", "RAM string 2");
+  rf24Logger.info(vendorIDRam, "RAM message with %s", "RAM string 3");
+  rf24Logger.debug(vendorIDRam, "RAM message with %s", "RAM string 4");
 
   Serial.println();
 }
 
 void logRamMessageWithProgmemStringArgument()
 {
-  rf24Logger.error((const __FlashStringHelper*) vendorID,
+  rf24Logger.error(vendorIDRam,
                    "RAM message with %S", (const __FlashStringHelper*) globalProgmemText);
-  rf24Logger.warn((const __FlashStringHelper*) vendorID, "RAM message with %S",
+  rf24Logger.warn(vendorIDRam, "RAM message with %S",
                   (const __FlashStringHelper*) globalProgmemText);
-  rf24Logger.info((const __FlashStringHelper*) vendorID, "RAM message with %S",
+  rf24Logger.info(vendorIDRam, "RAM message with %S",
                   (const __FlashStringHelper*) globalProgmemText);
-  rf24Logger.debug((const __FlashStringHelper*) vendorID,
+  rf24Logger.debug(vendorIDRam,
                    "RAM message with %S", (const __FlashStringHelper*) globalProgmemText);
 
   Serial.println();
@@ -147,30 +140,26 @@ void logRamMessageWithProgmemStringArgument()
 
 void logRamMessageWithFMacroStringArgument()
 {
-  rf24Logger.error((const __FlashStringHelper*) vendorID,
-                   "RAM message with %S", F("F macro string 1"));
-  rf24Logger.warn((const __FlashStringHelper*) vendorID, "RAM message with %S",
-                  F("F macro string 2"));
-  rf24Logger.info((const __FlashStringHelper*) vendorID, "RAM message with %S",
-                  F("F macro string 3"));
-  rf24Logger.debug((const __FlashStringHelper*) vendorID,
-                   "RAM message with %S", F("F macro string 4"));
+  rf24Logger.error(vendorIDRam, "RAM message with %S", F("F macro string 1"));
+  rf24Logger.warn(vendorIDRam, "RAM message with %S", F("F macro string 2"));
+  rf24Logger.info(vendorIDRam, "RAM message with %S", F("F macro string 3"));
+  rf24Logger.debug(vendorIDRam, "RAM message with %S", F("F macro string 4"));
 
   Serial.println();
 }
 
 void logProgmemMessageWithRamStringArgument()
 {
-  rf24Logger.error((const __FlashStringHelper*) vendorID,
+  rf24Logger.error((const __FlashStringHelper*) vendorIDFlash,
                    (const __FlashStringHelper*) globalProgmemMessageWithRamString,
                    "RAM string 1");
-  rf24Logger.warn((const __FlashStringHelper*) vendorID,
+  rf24Logger.warn((const __FlashStringHelper*) vendorIDFlash,
                   (const __FlashStringHelper*) globalProgmemMessageWithRamString,
                   "RAM string 2");
-  rf24Logger.info((const __FlashStringHelper*) vendorID,
+  rf24Logger.info((const __FlashStringHelper*) vendorIDFlash,
                   (const __FlashStringHelper*) globalProgmemMessageWithRamString,
                   "RAM string 3");
-  rf24Logger.debug((const __FlashStringHelper*) vendorID,
+  rf24Logger.debug((const __FlashStringHelper*) vendorIDFlash,
                    (const __FlashStringHelper*) globalProgmemMessageWithRamString,
                    "RAM string 4");
 
@@ -179,7 +168,7 @@ void logProgmemMessageWithRamStringArgument()
 
 void logMessageWithAdditionalTagAtTheBeginning()
 {
-  rf24Logger.info((const __FlashStringHelper*) vendorID,
+  rf24Logger.info(vendorIDRam,
                   "%S info log with additional tag at the beginning", F("RF24Log.cpp"));
 
   Serial.println();
@@ -187,35 +176,31 @@ void logMessageWithAdditionalTagAtTheBeginning()
 
 void logMessageWithUnknownFormat()
 {
-  rf24Logger.info((const __FlashStringHelper*) vendorID,
-                  "info log with unknown format   : %p", F("flash text"));
+  rf24Logger.info((const __FlashStringHelper*) vendorIDFlash,
+                  F("info log with unknown format   : %p"), F("flash text"));
 
   Serial.println();
 }
 
 void logFloatNumber()
 {
-  rf24Logger.info((const __FlashStringHelper*) vendorID,
-                  " info log with double value %D", 3.14);
+  rf24Logger.info(vendorIDRam, " info log with double value %D", 3.14);
 
-  rf24Logger.warn((const __FlashStringHelper*) vendorID,
-                  " warn log with double value %D", 3.14);
+  rf24Logger.warn(vendorIDRam, " warn log with double value %D", 3.14);
 
-  rf24Logger.error((const __FlashStringHelper*) vendorID,
-                   "error log with double value %D", 3.14);
+  rf24Logger.error(vendorIDRam, "error log with double value %D", 3.14);
 
-  rf24Logger.debug((const __FlashStringHelper*) vendorID,
-                   "debug log with double value %F", 2.71);
+  rf24Logger.debug(vendorIDRam, "debug log with double value %F", 2.71);
 
   Serial.println();
 }
 
 void logCustomLogLevels()
 {
-  rf24Logger.log(RF24LogLevel::INFO + 1, (const __FlashStringHelper*) vendorID,
+  rf24Logger.log(RF24LogLevel::INFO + 1, vendorIDRam,
                  "INFO + 1 message defined in RAM");
 
-  rf24Logger.log(RF24LogLevel::WARN + 1, (const __FlashStringHelper*) vendorID,
+  rf24Logger.log(RF24LogLevel::WARN + 1, (const __FlashStringHelper*) vendorIDFlash,
                  F("WARN + 1 message defined in FLASH"));
 
   Serial.println();
