@@ -41,6 +41,8 @@ void setup()
   rf24Logger.setHandler(&rf24SerialLogHandler);
 
   rf24Logger.info((const __FlashStringHelper*) vendorIDFlash, F("RF24Log/examples/BasicSerialLogger"));
+
+  RF24LOGGER_info("RF24LogExample", "Log message here");
 }
 
 void logSimpleRamMessage();

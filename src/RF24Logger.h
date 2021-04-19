@@ -22,6 +22,13 @@
 #include "RF24LogLevel.h"
 #include "RF24LogHandler.h"
 
+#if defined (ARDUINO_ARCH_AVR)
+  #define RF24LOG_FLASHIFY(A) F(A)
+  #define RF24LOGGER_info(vendorId, message, ...) (rf24Logger.log(RF24LogLevel::INFO, RF24LOG_FLASHIFY(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))
+#elif
+  #define RF24LOGGER_info(vendorId, message, ...) (rf24Logger.log(RF24LogLevel::INFO, vendorId, message, ##__VA_ARGS__))
+#endif
+
 /**
  * This is the end-user's access point into the world of logging messages.
  */
@@ -92,8 +99,7 @@ public:
      */
     void log(uint8_t logLevel, const char *vendorId, const char *message, ...);
 
-    // AVR SPECIFIC CODE
-    #ifdef ARDUINO_ARCH_AVR
+#if defined (ARDUINO_ARCH_AVR)
     /**
      * @brief ouput an ERROR message
      * @param vendorId A scoping identity of the message's origin
@@ -144,7 +150,7 @@ public:
      * same order for which they appear in the @p message
      */
     void log(uint8_t logLevel, const __FlashStringHelper *vendorId, const __FlashStringHelper *message, ...);
-    #endif
+#endif
 };
 
 /**
