@@ -120,24 +120,6 @@ void RF24StreamLogHandler::appendFormattedMessage(const char *format, va_list *a
     }
 }
 
-void RF24StreamLogHandler::appendFormattedMessage(const __FlashStringHelper *format, va_list *args)
-{
-    PGM_P p = reinterpret_cast<PGM_P>(format);
-    char c = pgm_read_byte(p++);
-    for (; c != 0; c = pgm_read_byte(p++))
-    {
-        if (c == '%')
-        {
-            c = pgm_read_byte(p++);
-            appendFormat(c, args);
-        }
-        else
-        {
-            stream->print(c);
-        }
-    }
-}
-
 void RF24StreamLogHandler::appendFormat(const char format, va_list *args)
 {
     if (format == 's')
@@ -200,5 +182,23 @@ void RF24StreamLogHandler::write(uint8_t logLevel,
 void RF24StreamLogHandler::appendVendorId(const __FlashStringHelper *vendorId)
 {
     stream->print(vendorId);
+}
+
+void RF24StreamLogHandler::appendFormattedMessage(const __FlashStringHelper *format, va_list *args)
+{
+    PGM_P p = reinterpret_cast<PGM_P>(format);
+    char c = pgm_read_byte(p++);
+    for (; c != 0; c = pgm_read_byte(p++))
+    {
+        if (c == '%')
+        {
+            c = pgm_read_byte(p++);
+            appendFormat(c, args);
+        }
+        else
+        {
+            stream->print(c);
+        }
+    }
 }
 #endif
