@@ -42,7 +42,7 @@ void setup()
 
   rf24Logger.info((const __FlashStringHelper*) vendorIDFlash, F("RF24Log/examples/BasicSerialLogger"));
 
-  RF24LOGGER_info("RF24LogExample", "Log message here");
+  RF24LOGGER_info(vendorIDFlash, "This comes from macro.");
 }
 
 void logSimpleRamMessage();
