@@ -18,15 +18,23 @@
 #ifndef SRC_RF24LOGGER_H_
 #define SRC_RF24LOGGER_H_
 
-#include <WString.h>
+#include <String.h>
 #include "RF24LogLevel.h"
 #include "RF24LogHandler.h"
 
 #if defined (ARDUINO_ARCH_AVR)
-  #define RF24LOG_FLASHIFY(A) F(A)
-  #define RF24LOGGER_info(vendorId, message, ...) (rf24Logger.log(RF24LogLevel::INFO, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))
+    #define RF24LOG_FLASHIFY(A) F(A)
+    #define RF24LOGGER_error(vendorId, message, ...) (rf24Logger.log(RF24LogLevel::ERROR, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))
+    #define RF24LOGGER_warn(vendorId, message, ...) (rf24Logger.log(RF24LogLevel::WARN, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))
+    #define RF24LOGGER_info(vendorId, message, ...) (rf24Logger.log(RF24LogLevel::INFO, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))
+    #define RF24LOGGER_debug(vendorId, message, ...) (rf24Logger.log(RF24LogLevel::DEBUG, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))
+    #define RF24LOGGER_log(logLevel, vendorId, message, ...) (rf24Logger.log(logLevel, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))
 #else
-  #define RF24LOGGER_info(vendorId, message, ...) (rf24Logger.log(RF24LogLevel::INFO, vendorId, message, ##__VA_ARGS__))
+    #define RF24LOGGER_error(vendorId, message, ...) (rf24Logger.log(RF24LogLevel::ERROR, vendorId, message, ##__VA_ARGS__))
+    #define RF24LOGGER_warn(vendorId, message, ...) (rf24Logger.log(RF24LogLevel::WARN, vendorId, message, ##__VA_ARGS__))
+    #define RF24LOGGER_info(vendorId, message, ...) (rf24Logger.log(RF24LogLevel::INFO, vendorId, message, ##__VA_ARGS__))
+    #define RF24LOGGER_debug(vendorId, message, ...) (rf24Logger.log(RF24LogLevel::DEBUG, vendorId, message, ##__VA_ARGS__))
+    #define RF24LOGGER_log(logLevel, vendorId, message, ...) (rf24Logger.log(logLevel, vendorId, message, ##__VA_ARGS__))
 #endif
 
 /**

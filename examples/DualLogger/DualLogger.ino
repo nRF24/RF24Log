@@ -27,13 +27,8 @@ RF24StreamLogHandler rf24SerialLogHandler2(&Serial);
 
 RF24DualLogHandler rf24DualLogHandler(&rf24SerialLogHandler1, &rf24SerialLogHandler2);
 
-// Define global vendor id (it is stored in flash memory)
+// Define global vendor id (it is stored in FLASH memory)
 const char PROGMEM vendorID[] = "RF24LogExample";
-
-
-// Define some test messages stored in EEPROM
-const char PROGMEM globalProgmemText[] = "global PROGMEM message";
-const char PROGMEM globalProgmemMessageWithRamString[] = "PROGMEM message with %s";
 
 void setup()
 {
@@ -45,18 +40,18 @@ void setup()
   // set serial port appender
   rf24Logger.setHandler(&rf24DualLogHandler);
 
-  rf24Logger.info((const __FlashStringHelper*) vendorID, F("RF24Log/examples/DualLogger"));
+  RF24LOGGER_info(vendorID, "RF24Log/examples/DualLogger");
 }
 
 void loop()
 {
-  rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
-  rf24Logger.info((const __FlashStringHelper*) vendorID, F("This message should be logged %s."), "twice");
+    rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
+    RF24LOGGER_info(vendorID, "This message should be logged %s.", "twice");
 
-  rf24DualLogHandler.setLogLevel(RF24LogLevel::INFO);
-  rf24Logger.warn((const __FlashStringHelper*) vendorID, F("This warn message should be logged %s."), "twice");
-  rf24Logger.info((const __FlashStringHelper*) vendorID, F("This info message should be logged %s."), "twice");
-  rf24Logger.debug((const __FlashStringHelper*) vendorID, F("This debug message should NOT be logged %s."));
+    rf24DualLogHandler.setLogLevel(RF24LogLevel::INFO);
+    RF24LOGGER_warn(vendorID, "This warn message should be logged %s.", "twice");
+    RF24LOGGER_info(vendorID, "This info message should be logged %s.", "twice");
+    RF24LOGGER_debug(vendorID, "This debug message should NOT be logged %s.");
 
-  delay(5000);
+    delay(5000);
 }
