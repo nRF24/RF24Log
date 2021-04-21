@@ -26,31 +26,31 @@ const char PROGMEM vendorID[] = "RF24LogExample";
 
 void setup()
 {
-    // configure serial port baudrate
-    Serial.begin(115200);
-    // DO NOT set serial port appender
-    // rf24Logger.setAppender(&rf24SerialLogAppender);
+  // configure serial port baudrate
+  Serial.begin(115200);
+  // DO NOT set serial port appender
+  // rf24Logger.setAppender(&rf24SerialLogAppender);
 
-    Serial.println("There is no appender defined. Nothing should be logged.");
+  Serial.println("There is no appender defined. Nothing should be logged.");
 
-    RF24LOGGER_info(vendorID, "RF24Log/examples/EmptyLogger");
+  RF24LOGGER_info(vendorID, "RF24Log/examples/EmptyLogger");
 }
 
 void logSimpleMessage();
 
 void loop()
 {
-    logSimpleMessage();
+  logSimpleMessage();
 
-    delay(5000);
+  delay(5000);
 }
 
 void logSimpleMessage()
 {
-    RF24LOGGER_error(vendorID, "Error message");
-    RF24LOGGER_warn(vendorID, "Warning message");
-    RF24LOGGER_info(vendorID, "Info message");
-    RF24LOGGER_debug(vendorID, "Debug message");
+  RF24LOGGER_error(vendorID, "Error message");
+  RF24LOGGER_warn(vendorID, "Warning message");
+  RF24LOGGER_info(vendorID, "Info message");
+  RF24LOGGER_debug(vendorID, "Debug message");
 
-    Serial.println();
+  Serial.println();
 }

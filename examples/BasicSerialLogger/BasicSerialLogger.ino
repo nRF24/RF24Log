@@ -30,17 +30,17 @@ const char PROGMEM globalProgmemMessageWithRamString[] = "PROGMEM message with %
 
 void setup()
 {
-    // configure serial port baudrate
-    Serial.begin(115200);
+  // configure serial port baudrate
+  Serial.begin(115200);
 
-    // set maximal log level to ALL
-    rf24SerialLogHandler.setLogLevel(RF24LogLevel::ALL);
-    // set serial port appender
-    rf24Logger.setHandler(&rf24SerialLogHandler);
+  // set maximal log level to ALL
+  rf24SerialLogHandler.setLogLevel(RF24LogLevel::ALL);
+  // set serial port appender
+  rf24Logger.setHandler(&rf24SerialLogHandler);
 
-    RF24LOGGER_info(vendorID, "RF24Log/examples/BasicSerialLogger");
+  RF24LOGGER_info(vendorID, "RF24Log/examples/BasicSerialLogger");
 
-    RF24LOGGER_info(vendorID, "This comes from macro.");
+  RF24LOGGER_info(vendorID, "This comes from macro.");
 }
 
 void logSimpleMessage();
@@ -50,53 +50,53 @@ void logCustomLogLevels();
 
 void loop()
 {
-    logSimpleMessage();
-    logMessageWithRamStringArgument();
-    logFloatNumber();
-    logCustomLogLevels();
+  logSimpleMessage();
+  logMessageWithRamStringArgument();
+  logFloatNumber();
+  logCustomLogLevels();
 
-    Serial.println();
-    Serial.println("--------------------------------------------------");
-    Serial.println();
+  Serial.println();
+  Serial.println("--------------------------------------------------");
+  Serial.println();
 
-        delay(5000);
+  delay(5000);
 }
 
 void logSimpleMessage()
 {
-    RF24LOGGER_error(vendorID, "Error message");
-    RF24LOGGER_warn(vendorID, "Warning message");
-    RF24LOGGER_info(vendorID, "Info message");
-    RF24LOGGER_debug(vendorID, "Debug message");
+  RF24LOGGER_error(vendorID, "Error message");
+  RF24LOGGER_warn(vendorID, "Warning message");
+  RF24LOGGER_info(vendorID, "Info message");
+  RF24LOGGER_debug(vendorID, "Debug message");
 
-    Serial.println();
+  Serial.println();
 }
 
 
 void logMessageWithRamStringArgument()
 {
-    RF24LOGGER_error(vendorID, "Error message with %s", "RAM string 1");
-    RF24LOGGER_warn(vendorID, "Warning message with %s", "RAM string 2");
-    RF24LOGGER_info(vendorID, "Info message with %s", "RAM string 3");
-    RF24LOGGER_debug(vendorID, "Debug message with %s", "RAM string 4");
+  RF24LOGGER_error(vendorID, "Error message with %s", "RAM string 1");
+  RF24LOGGER_warn(vendorID, "Warning message with %s", "RAM string 2");
+  RF24LOGGER_info(vendorID, "Info message with %s", "RAM string 3");
+  RF24LOGGER_debug(vendorID, "Debug message with %s", "RAM string 4");
 
-    Serial.println();
+  Serial.println();
 }
 
 void logFloatNumber()
 {
-    RF24LOGGER_info(vendorID, " info log with double value %D", 3.14);
-    RF24LOGGER_warn(vendorID, " warn log with double value %D", 3.14);
-    RF24LOGGER_error(vendorID, "error log with double value %D", 3.14);
-    RF24LOGGER_debug(vendorID, "debug log with double value %F", 2.71);
+  RF24LOGGER_info(vendorID, " info log with double value %D", 3.14);
+  RF24LOGGER_warn(vendorID, " warn log with double value %D", 3.14);
+  RF24LOGGER_error(vendorID, "error log with double value %D", 3.14);
+  RF24LOGGER_debug(vendorID, "debug log with double value %F", 2.71);
 
-    Serial.println();
+  Serial.println();
 }
 
 void logCustomLogLevels()
 {
-    RF24LOGGER_log(RF24LogLevel::INFO + 1, vendorID, "INFO + 1 message");
-    RF24LOGGER_log(RF24LogLevel::WARN + 1, vendorID, "WARN + 1 message");
+  RF24LOGGER_log(RF24LogLevel::INFO + 1, vendorID, "INFO + 1 message");
+  RF24LOGGER_log(RF24LogLevel::WARN + 1, vendorID, "WARN + 1 message");
 
-    Serial.println();
+  Serial.println();
 }

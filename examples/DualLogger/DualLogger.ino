@@ -45,13 +45,13 @@ void setup()
 
 void loop()
 {
-    rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
-    RF24LOGGER_info(vendorID, "This message should be logged %s.", "twice");
+  rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
+  RF24LOGGER_info(vendorID, "This message should be logged %s.", "twice");
 
-    rf24DualLogHandler.setLogLevel(RF24LogLevel::INFO);
-    RF24LOGGER_warn(vendorID, "This warn message should be logged %s.", "twice");
-    RF24LOGGER_info(vendorID, "This info message should be logged %s.", "twice");
-    RF24LOGGER_debug(vendorID, "This debug message should NOT be logged %s.");
+  rf24DualLogHandler.setLogLevel(RF24LogLevel::INFO);
+  RF24LOGGER_warn(vendorID, "This warn message should be logged %s.", "twice");
+  RF24LOGGER_info(vendorID, "This info message should be logged %s.", "twice");
+  RF24LOGGER_debug(vendorID, "This debug message should NOT be logged %s.");
 
-    delay(5000);
+  delay(5000);
 }

@@ -29,61 +29,61 @@ void logSimpleMessage();
 
 void setup()
 {
-    // configure serial port baudrate
-    Serial.begin(115200);
+  // configure serial port baudrate
+  Serial.begin(115200);
 
-    // set maximal log level to ALL
-    rf24SerialLogHandler.setLogLevel(RF24LogLevel::ALL);
-    // set serial port appender
-    rf24Logger.setHandler(&rf24SerialLogHandler);
+  // set maximal log level to ALL
+  rf24SerialLogHandler.setLogLevel(RF24LogLevel::ALL);
+  // set serial port appender
+  rf24Logger.setHandler(&rf24SerialLogHandler);
 
-    RF24LOGGER_info(vendorID, "RF24Log/examples/LogLevelsLogger");
+  RF24LOGGER_info(vendorID, "RF24Log/examples/LogLevelsLogger");
 }
 
 void loop()
 {
-    Serial.println("Set log level to OFF");
-    rf24SerialLogHandler.setLogLevel(RF24LogLevel::OFF);
-    logSimpleMessage();
+  Serial.println("Set log level to OFF");
+  rf24SerialLogHandler.setLogLevel(RF24LogLevel::OFF);
+  logSimpleMessage();
 
-    Serial.println("Set log level to ERROR");
-    rf24SerialLogHandler.setLogLevel(RF24LogLevel::ERROR);
-    logSimpleMessage();
+  Serial.println("Set log level to ERROR");
+  rf24SerialLogHandler.setLogLevel(RF24LogLevel::ERROR);
+  logSimpleMessage();
 
-    Serial.println("Set log level to ERROR + 1");
-    rf24SerialLogHandler.setLogLevel(RF24LogLevel::ERROR + 1);
-    logSimpleMessage();
+  Serial.println("Set log level to ERROR + 1");
+  rf24SerialLogHandler.setLogLevel(RF24LogLevel::ERROR + 1);
+  logSimpleMessage();
 
-    Serial.println("Set log level to ERROR + 7");
-    rf24SerialLogHandler.setLogLevel(RF24LogLevel::ERROR + 7);
-    logSimpleMessage();
+  Serial.println("Set log level to ERROR + 7");
+  rf24SerialLogHandler.setLogLevel(RF24LogLevel::ERROR + 7);
+  logSimpleMessage();
 
-    Serial.println("Set log level to WARN");
-    rf24SerialLogHandler.setLogLevel(RF24LogLevel::WARN);
-    logSimpleMessage();
+  Serial.println("Set log level to WARN");
+  rf24SerialLogHandler.setLogLevel(RF24LogLevel::WARN);
+  logSimpleMessage();
 
-    Serial.println("Set log level to INFO");
-    rf24SerialLogHandler.setLogLevel(RF24LogLevel::INFO);
-    logSimpleMessage();
+  Serial.println("Set log level to INFO");
+  rf24SerialLogHandler.setLogLevel(RF24LogLevel::INFO);
+  logSimpleMessage();
 
-    Serial.println("Set log level to DEBUG");
-    rf24SerialLogHandler.setLogLevel(RF24LogLevel::DEBUG);
-    logSimpleMessage();
+  Serial.println("Set log level to DEBUG");
+  rf24SerialLogHandler.setLogLevel(RF24LogLevel::DEBUG);
+  logSimpleMessage();
 
-    Serial.println("Set log level to DEBUG + 1");
-    rf24SerialLogHandler.setLogLevel(RF24LogLevel::DEBUG + 1);
-    logSimpleMessage();
+  Serial.println("Set log level to DEBUG + 1");
+  rf24SerialLogHandler.setLogLevel(RF24LogLevel::DEBUG + 1);
+  logSimpleMessage();
 
-    Serial.println("Set log level to DEBUG + 7");
-    rf24SerialLogHandler.setLogLevel(RF24LogLevel::DEBUG + 7);
-    logSimpleMessage();
+  Serial.println("Set log level to DEBUG + 7");
+  rf24SerialLogHandler.setLogLevel(RF24LogLevel::DEBUG + 7);
+  logSimpleMessage();
 
-    Serial.println("Set log level to ALL");
-    rf24SerialLogHandler.setLogLevel(RF24LogLevel::ALL);
-    logSimpleMessage();
+  Serial.println("Set log level to ALL");
+  rf24SerialLogHandler.setLogLevel(RF24LogLevel::ALL);
+  logSimpleMessage();
 
-    Serial.println("");
-    delay(5000);
+  Serial.println("");
+  delay(5000);
 }
 
 void logSimpleMessage()
