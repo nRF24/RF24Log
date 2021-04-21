@@ -88,21 +88,21 @@ void loop()
 
 void logSimpleMessage()
 {
-    RF24LOGGER_error(vendorID, "Error message");
-    RF24LOGGER_log(RF24LogLevel::ERROR + 1, vendorID, "Error message sub-level 1");
-    RF24LOGGER_log(RF24LogLevel::ERROR + 7, vendorID, "Error message sub-level 7");
+  RF24LOGGER_error(vendorID, "Error message");
+  RF24LOGGER_log(RF24LogLevel::ERROR + 1, vendorID, "Error message sub-level 1");
+  RF24LOGGER_log(RF24LogLevel::ERROR + 7, vendorID, "Error message sub-level 7");
 
-    RF24LOGGER_warn(vendorID, "Warning message");
-    RF24LOGGER_log(RF24LogLevel::WARN + 1, vendorID, "Warning message sub-level 1");
-    RF24LOGGER_log(RF24LogLevel::WARN + 7, vendorID, "Warning message sub-level 7");
+  RF24LOGGER_warn(vendorID, "Warning message");
+  RF24LOGGER_log(RF24LogLevel::WARN + 1, vendorID, "Warning message sub-level 1");
+  RF24LOGGER_log(RF24LogLevel::WARN + 7, vendorID, "Warning message sub-level 7");
 
-    RF24LOGGER_info(vendorID, "Info message");
-    RF24LOGGER_log(RF24LogLevel::INFO + 1, vendorID, "Info message sub-level 1");
-    RF24LOGGER_log(RF24LogLevel::INFO + 7, vendorID, "Info message sub-level 7");
+  RF24LOGGER_info(vendorID, "Info message");
+  RF24LOGGER_log(RF24LogLevel::INFO + 1, vendorID, "Info message sub-level 1");
+  RF24LOGGER_log(RF24LogLevel::INFO + 7, vendorID, "Info message sub-level 7");
 
-    RF24LOGGER_debug(vendorID, "Debug message");
-    RF24LOGGER_log(RF24LogLevel::DEBUG + 1, vendorID, "Debug message sub-level 1");
-    RF24LOGGER_log(RF24LogLevel::DEBUG + 7, vendorID, "Debug message sub-level 7");
+  RF24LOGGER_debug(vendorID, "Debug message");
+  RF24LOGGER_log(RF24LogLevel::DEBUG + 1, vendorID, "Debug message sub-level 1");
+  RF24LOGGER_log(RF24LogLevel::DEBUG + 7, vendorID, "Debug message sub-level 7");
 
-    Serial.println();
+  Serial.println();
 }
