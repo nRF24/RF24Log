@@ -18,7 +18,12 @@
 #ifndef SRC_RF24LOGGER_H_
 #define SRC_RF24LOGGER_H_
 
+#if defined(ARDUINO_API_VERSION)
 #include <String.h>
+#else
+#include <WString.h>
+#endif
+
 #include "RF24LogLevel.h"
 #include "RF24LogHandler.h"
 
