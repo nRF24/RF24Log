@@ -21,11 +21,11 @@
 // Create hardware serial port log appender
 RF24StreamLogHandler rf24SerialLogHandler(&Serial);
 
-// Define global vendor id (it is stored in flash memory)
+// Define global vendor id (it is stored in FLASH memory)
 const char PROGMEM vendorID[] = "RF24LogExample";
 
 
-void logSimpleRamMessage();
+void logSimpleMessage();
 
 void setup()
 {
@@ -37,84 +37,72 @@ void setup()
   // set serial port appender
   rf24Logger.setHandler(&rf24SerialLogHandler);
 
-  rf24Logger.info((const __FlashStringHelper*) vendorID, F("RF24Log/examples/LogLevelsLogger"));
+  RF24LOGGER_info(vendorID, "RF24Log/examples/LogLevelsLogger");
 }
 
 void loop()
 {
   Serial.println("Set log level to OFF");
   rf24SerialLogHandler.setLogLevel(RF24LogLevel::OFF);
-  logSimpleRamMessage();
+  logSimpleMessage();
 
   Serial.println("Set log level to ERROR");
   rf24SerialLogHandler.setLogLevel(RF24LogLevel::ERROR);
-  logSimpleRamMessage();
+  logSimpleMessage();
 
   Serial.println("Set log level to ERROR + 1");
   rf24SerialLogHandler.setLogLevel(RF24LogLevel::ERROR + 1);
-  logSimpleRamMessage();
+  logSimpleMessage();
 
   Serial.println("Set log level to ERROR + 7");
   rf24SerialLogHandler.setLogLevel(RF24LogLevel::ERROR + 7);
-  logSimpleRamMessage();
+  logSimpleMessage();
 
   Serial.println("Set log level to WARN");
   rf24SerialLogHandler.setLogLevel(RF24LogLevel::WARN);
-  logSimpleRamMessage();
+  logSimpleMessage();
 
   Serial.println("Set log level to INFO");
   rf24SerialLogHandler.setLogLevel(RF24LogLevel::INFO);
-  logSimpleRamMessage();
+  logSimpleMessage();
 
   Serial.println("Set log level to DEBUG");
   rf24SerialLogHandler.setLogLevel(RF24LogLevel::DEBUG);
-  logSimpleRamMessage();
+  logSimpleMessage();
 
   Serial.println("Set log level to DEBUG + 1");
   rf24SerialLogHandler.setLogLevel(RF24LogLevel::DEBUG + 1);
-  logSimpleRamMessage();
+  logSimpleMessage();
 
   Serial.println("Set log level to DEBUG + 7");
   rf24SerialLogHandler.setLogLevel(RF24LogLevel::DEBUG + 7);
-  logSimpleRamMessage();
+  logSimpleMessage();
 
   Serial.println("Set log level to ALL");
   rf24SerialLogHandler.setLogLevel(RF24LogLevel::ALL);
-  logSimpleRamMessage();
+  logSimpleMessage();
 
   Serial.println("");
   delay(5000);
 }
 
-void logSimpleRamMessage()
+void logSimpleMessage()
 {
-  rf24Logger.error((const __FlashStringHelper*) vendorID,
-                   "Error message");
-  rf24Logger.log(RF24LogLevel::ERROR + 1, (const __FlashStringHelper*) vendorID,
-                 "Error message sub-level 1");
-  rf24Logger.log(RF24LogLevel::ERROR + 7, (const __FlashStringHelper*) vendorID,
-                 "Error message sub-level 7");
+  RF24LOGGER_error(vendorID, "Error message");
+  RF24LOGGER_log(RF24LogLevel::ERROR + 1, vendorID, "Error message sub-level 1");
+  RF24LOGGER_log(RF24LogLevel::ERROR + 7, vendorID, "Error message sub-level 7");
 
-  rf24Logger.warn((const __FlashStringHelper*) vendorID,
-                  "Warning message");
-  rf24Logger.log(RF24LogLevel::WARN + 1, (const __FlashStringHelper*) vendorID,
-                 "Warning message sub-level 1");
-  rf24Logger.log(RF24LogLevel::WARN + 7, (const __FlashStringHelper*) vendorID,
-                 "Warning message sub-level 7");
+  RF24LOGGER_warn(vendorID, "Warning message");
+  RF24LOGGER_log(RF24LogLevel::WARN + 1, vendorID, "Warning message sub-level 1");
+  RF24LOGGER_log(RF24LogLevel::WARN + 7, vendorID, "Warning message sub-level 7");
 
-  rf24Logger.info((const __FlashStringHelper*) vendorID,
-                  "Info message");
-  rf24Logger.log(RF24LogLevel::INFO + 1, (const __FlashStringHelper*) vendorID,
-                 "Info message sub-level 1");
-  rf24Logger.log(RF24LogLevel::INFO + 7, (const __FlashStringHelper*) vendorID,
-                 "Info message sub-level 7");
+  RF24LOGGER_info(vendorID, "Info message");
+  RF24LOGGER_log(RF24LogLevel::INFO + 1, vendorID, "Info message sub-level 1");
+  RF24LOGGER_log(RF24LogLevel::INFO + 7, vendorID, "Info message sub-level 7");
 
-  rf24Logger.debug((const __FlashStringHelper*) vendorID,
-                   "Debug message");
-  rf24Logger.log(RF24LogLevel::DEBUG + 1, (const __FlashStringHelper*) vendorID,
-                 "Debug message sub-level 1");
-  rf24Logger.log(RF24LogLevel::DEBUG + 7, (const __FlashStringHelper*) vendorID,
-                 "Debug message sub-level 7");
+  RF24LOGGER_debug(vendorID, "Debug message");
+  RF24LOGGER_log(RF24LogLevel::DEBUG + 1, vendorID, "Debug message sub-level 1");
+  RF24LOGGER_log(RF24LogLevel::DEBUG + 7, vendorID, "Debug message sub-level 7");
 
   Serial.println();
 }

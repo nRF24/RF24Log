@@ -21,13 +21,8 @@ RF24AbstractLogHandler::RF24AbstractLogHandler()
     this->logLevel = RF24LogLevel::INFO;
 }
 
-void RF24AbstractLogHandler::setLogLevel(uint8_t logLevel)
-{
-    this->logLevel = logLevel;
-}
-
 void RF24AbstractLogHandler::log(uint8_t logLevel,
-                                 const __FlashStringHelper *vendorId,
+                                 const char *vendorId,
                                  const char *message,
                                  va_list *args)
 {
@@ -39,6 +34,12 @@ void RF24AbstractLogHandler::log(uint8_t logLevel,
     write(logLevel, vendorId, message, args);
 }
 
+void RF24AbstractLogHandler::setLogLevel(uint8_t logLevel)
+{
+    this->logLevel = logLevel;
+}
+
+#if defined (ARDUINO_ARCH_AVR)
 void RF24AbstractLogHandler::log(uint8_t logLevel,
                                  const __FlashStringHelper *vendorId,
                                  const __FlashStringHelper *message,
@@ -51,3 +52,4 @@ void RF24AbstractLogHandler::log(uint8_t logLevel,
 
     write(logLevel, vendorId, message, args);
 }
+#endif

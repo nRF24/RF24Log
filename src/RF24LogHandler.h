@@ -38,10 +38,11 @@ public:
      * same order for which they appear in the @p message
      */
     virtual void log(uint8_t logLevel,
-                     const __FlashStringHelper *vendorId,
+                     const char *vendorId,
                      const char *message,
                      va_list *args);
 
+#if defined (ARDUINO_ARCH_AVR)
     /**
      * @brief log a message.
      * @param logLevel The level of the logging message
@@ -54,6 +55,7 @@ public:
                      const __FlashStringHelper *vendorId,
                      const __FlashStringHelper *message,
                      va_list *args);
+#endif
 
     /**
      * set the maximal level of the logged messages.

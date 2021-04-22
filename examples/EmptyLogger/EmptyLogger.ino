@@ -18,7 +18,7 @@
 #include <RF24Logger.h>
 #include <handlers/RF24StreamLogHandler.h>
 
-// Define global vendor id (it is stored in flash memory)
+// Define global vendor id (it is stored in FLASH memory)
 const char PROGMEM vendorID[] = "RF24LogExample";
 
 // DO NOT create hardware serial port log appender
@@ -33,28 +33,24 @@ void setup()
 
   Serial.println("There is no appender defined. Nothing should be logged.");
 
-  rf24Logger.info((const __FlashStringHelper*) vendorID, F("RF24Log/examples/EmptyLogger"));
+  RF24LOGGER_info(vendorID, "RF24Log/examples/EmptyLogger");
 }
 
-void logSimpleRamMessage();
+void logSimpleMessage();
 
 void loop()
 {
-  logSimpleRamMessage();
+  logSimpleMessage();
 
   delay(5000);
 }
 
-void logSimpleRamMessage()
+void logSimpleMessage()
 {
-  rf24Logger.error((const __FlashStringHelper*) vendorID,
-                   "Error message defined in RAM");
-  rf24Logger.warn((const __FlashStringHelper*) vendorID,
-                  "Warning message defined in RAM");
-  rf24Logger.info((const __FlashStringHelper*) vendorID,
-                  "Info message defined in RAM");
-  rf24Logger.debug((const __FlashStringHelper*) vendorID,
-                   "Debug message defined in RAM");
+  RF24LOGGER_error(vendorID, "Error message");
+  RF24LOGGER_warn(vendorID, "Warning message");
+  RF24LOGGER_info(vendorID, "Info message");
+  RF24LOGGER_debug(vendorID, "Debug message");
 
   Serial.println();
 }

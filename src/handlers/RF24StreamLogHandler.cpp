@@ -38,7 +38,7 @@ RF24StreamLogHandler::RF24StreamLogHandler(Print *stream)
 }
 
 void RF24StreamLogHandler::write(uint8_t logLevel,
-                                 const __FlashStringHelper *vendorId,
+                                 const char *vendorId,
                                  const char *message,
                                  va_list *args)
 {
@@ -54,98 +54,6 @@ void RF24StreamLogHandler::write(uint8_t logLevel,
     // print formatted message
     appendFormattedMessage(message, args);
     stream->println("");
-}
-
-void RF24StreamLogHandler::write(uint8_t logLevel,
-                                 const __FlashStringHelper *vendorId,
-                                 const __FlashStringHelper *message,
-                                 va_list *args)
-{
-    appendTimestamp();
-    stream->print(";");
-
-    appendLogLevel(logLevel);
-    stream->print(";");
-
-    appendVendorId(vendorId);
-    stream->print(";");
-
-    // print formatted message
-    appendFormattedMessage(message, args);
-    stream->println("");
-}
-
-void RF24StreamLogHandler::appendFormattedMessage(const char *format, va_list *args)
-{
-    for (; *format != 0; ++format)
-    {
-        if (*format == '%')
-        {
-            ++format;
-            appendFormat(*format, args);
-        }
-        else
-        {
-            stream->print(*format);
-        }
-    }
-}
-
-void RF24StreamLogHandler::appendFormattedMessage(const __FlashStringHelper *format, va_list *args)
-{
-    PGM_P p = reinterpret_cast<PGM_P>(format);
-    char c = pgm_read_byte(p++);
-    for (; c != 0; c = pgm_read_byte(p++))
-    {
-        if (c == '%')
-        {
-            c = pgm_read_byte(p++);
-            appendFormat(c, args);
-        }
-        else
-        {
-            stream->print(c);
-        }
-    }
-}
-
-void RF24StreamLogHandler::appendFormat(const char format, va_list *args)
-{
-    if (format == 's')
-    {
-        // print text from RAM
-        register char *s = (char *)va_arg(*args, int);
-        stream->print(s);
-
-        return;
-    }
-
-    if (format == 'S')
-    {
-        // print text from FLASH
-        register __FlashStringHelper *s = (__FlashStringHelper *)va_arg(*args, int);
-        stream->print(s);
-
-        return;
-    }
-
-    if (format == 'D' || format == 'F')
-    {
-        // print as double
-        stream->print(va_arg(*args, double));
-
-        return;
-    }
-
-    if (format == 'd' || format == 'i')
-    {
-        // print as integer
-        stream->print(va_arg(*args, int), DEC);
-
-        return;
-    }
-
-    stream->print(format);
 }
 
 void RF24StreamLogHandler::appendTimestamp()
@@ -191,7 +99,106 @@ void RF24StreamLogHandler::appendLogLevel(uint8_t logLevel)
     stream->print(logLevel);
 }
 
+void RF24StreamLogHandler::appendVendorId(const char *vendorId)
+{
+    stream->print(vendorId);
+}
+
+void RF24StreamLogHandler::appendFormattedMessage(const char *format, va_list *args)
+{
+    for (; *format != 0; ++format)
+    {
+        if (*format == '%')
+        {
+            ++format;
+            appendFormat(*format, args);
+        }
+        else
+        {
+            stream->print(*format);
+        }
+    }
+}
+
+void RF24StreamLogHandler::appendFormat(const char format, va_list *args)
+{
+    if (format == 's')
+    {
+        // print text from RAM
+        register char *s = (char *)va_arg(*args, int);
+        stream->print(s);
+
+        return;
+    }
+
+    if (format == 'S')
+    {
+        // print text from FLASH
+        register __FlashStringHelper *s = (__FlashStringHelper *)va_arg(*args, int);
+        stream->print(s);
+
+        return;
+    }
+
+    if (format == 'D' || format == 'F')
+    {
+        // print as double
+        stream->print(va_arg(*args, double));
+
+        return;
+    }
+
+    if (format == 'd' || format == 'i')
+    {
+        // print as integer
+        stream->print(va_arg(*args, int), DEC);
+
+        return;
+    }
+
+    stream->print(format);
+}
+
+#if defined (ARDUINO_ARCH_AVR)
+void RF24StreamLogHandler::write(uint8_t logLevel,
+                                 const __FlashStringHelper *vendorId,
+                                 const __FlashStringHelper *message,
+                                 va_list *args)
+{
+    appendTimestamp();
+    stream->print(";");
+
+    appendLogLevel(logLevel);
+    stream->print(";");
+
+    appendVendorId(vendorId);
+    stream->print(";");
+
+    // print formatted message
+    appendFormattedMessage(message, args);
+    stream->println("");
+}
+
 void RF24StreamLogHandler::appendVendorId(const __FlashStringHelper *vendorId)
 {
     stream->print(vendorId);
 }
+
+void RF24StreamLogHandler::appendFormattedMessage(const __FlashStringHelper *format, va_list *args)
+{
+    PGM_P p = reinterpret_cast<PGM_P>(format);
+    char c = pgm_read_byte(p++);
+    for (; c != 0; c = pgm_read_byte(p++))
+    {
+        if (c == '%')
+        {
+            c = pgm_read_byte(p++);
+            appendFormat(c, args);
+        }
+        else
+        {
+            stream->print(c);
+        }
+    }
+}
+#endif

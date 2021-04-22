@@ -32,16 +32,18 @@ class RF24AbstractLogHandler : public RF24LogHandler
 {
 public:
     void log(uint8_t logLevel,
-             const __FlashStringHelper *vendorId,
+             const char *vendorId,
              const char *message,
              va_list *args);
 
+    void setLogLevel(uint8_t logLevel);
+
+#if defined (ARDUINO_ARCH_AVR)
     void log(uint8_t logLevel,
              const __FlashStringHelper *vendorId,
              const __FlashStringHelper *message,
              va_list *args);
-
-    void setLogLevel(uint8_t logLevel);
+#endif
 
 protected:
 
@@ -59,10 +61,11 @@ protected:
      * same order for which they appear in the @p message
      */
     virtual void write(uint8_t logLevel,
-                       const __FlashStringHelper *vendorId,
+                       const char *vendorId,
                        const char *message,
                        va_list *args) = 0;
 
+#if defined (ARDUINO_ARCH_AVR)
     /**
      * write log message to its destination
      * @param logLevel The level of the logging message
@@ -75,6 +78,7 @@ protected:
                        const __FlashStringHelper *vendorId,
                        const __FlashStringHelper *message,
                        va_list *args) = 0;
+#endif
 };
 
 #endif /* SRC_HANDLERS_RF24ABSTRACTLOGHANDLER_H_ */

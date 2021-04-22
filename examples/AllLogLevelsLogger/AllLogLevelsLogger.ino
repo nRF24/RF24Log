@@ -21,7 +21,7 @@
 // Create hardware serial port log appender
 RF24StreamLogHandler rf24SerialLogHandler(&Serial);
 
-// Define global vendor id (it is stored in flash memory)
+// Define global vendor id (it is stored in FLASH memory)
 const char PROGMEM vendorID[] = "RF24LogExample";
 
 void setup()
@@ -34,14 +34,14 @@ void setup()
   // set serial port appender
   rf24Logger.setHandler(&rf24SerialLogHandler);
 
-  rf24Logger.info((const __FlashStringHelper*) vendorID, F("RF24Log/examples/AllLogLevelsLogger"));
+  RF24LOGGER_info(vendorID, "RF24Log/examples/AllLogLevelsLogger");
 }
 
 void loop()
 {
   for (uint16_t logLevel = 0 ; logLevel <= 255 ; logLevel ++)
   {
-    rf24Logger.log((uint8_t)logLevel, (const __FlashStringHelper*)vendorID, F("This is a log message with level %d"), logLevel);
+    RF24LOGGER_log((uint8_t)logLevel, vendorID, "This is a log message with level %d", logLevel);
   }
 
   Serial.println("");
