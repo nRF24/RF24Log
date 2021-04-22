@@ -87,12 +87,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac69ea82682f53d161f1ccd8ab3a52991"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_dual_log_handler.html#ac69ea82682f53d161f1ccd8ab3a52991">RF24DualLogHandler</a> (<a class="el" href="class_r_f24_log_handler.html">RF24LogHandler</a> *handler1, <a class="el" href="class_r_f24_log_handler.html">RF24LogHandler</a> *handler2)</td></tr>
 <tr class="memdesc:ac69ea82682f53d161f1ccd8ab3a52991"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instance constructor.  <a href="class_r_f24_dual_log_handler.html#ac69ea82682f53d161f1ccd8ab3a52991">More...</a><br /></td></tr>
 <tr class="separator:ac69ea82682f53d161f1ccd8ab3a52991"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac51188bcdb388074cafee883435e9837"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_dual_log_handler.html#ac51188bcdb388074cafee883435e9837">log</a> (uint8_t logLevel, const __FlashStringHelper *vendorId, const char *message, va_list *args)</td></tr>
-<tr class="memdesc:ac51188bcdb388074cafee883435e9837"><td class="mdescLeft">&#160;</td><td class="mdescRight">log a message.  <a href="class_r_f24_dual_log_handler.html#ac51188bcdb388074cafee883435e9837">More...</a><br /></td></tr>
-<tr class="separator:ac51188bcdb388074cafee883435e9837"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83807f1c19a1d84f9ba029ad2adc8951"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_dual_log_handler.html#a83807f1c19a1d84f9ba029ad2adc8951">log</a> (uint8_t logLevel, const __FlashStringHelper *vendorId, const __FlashStringHelper *message, va_list *args)</td></tr>
-<tr class="memdesc:a83807f1c19a1d84f9ba029ad2adc8951"><td class="mdescLeft">&#160;</td><td class="mdescRight">log a message.  <a href="class_r_f24_dual_log_handler.html#a83807f1c19a1d84f9ba029ad2adc8951">More...</a><br /></td></tr>
-<tr class="separator:a83807f1c19a1d84f9ba029ad2adc8951"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa371406aba2ec48194967a64f86d5c27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_dual_log_handler.html#aa371406aba2ec48194967a64f86d5c27">log</a> (uint8_t logLevel, const char *vendorId, const char *message, va_list *args)</td></tr>
+<tr class="memdesc:aa371406aba2ec48194967a64f86d5c27"><td class="mdescLeft">&#160;</td><td class="mdescRight">log a message.  <a href="class_r_f24_dual_log_handler.html#aa371406aba2ec48194967a64f86d5c27">More...</a><br /></td></tr>
+<tr class="separator:aa371406aba2ec48194967a64f86d5c27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad81db68291bcdf1fa253ca1fdf700901"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_dual_log_handler.html#ad81db68291bcdf1fa253ca1fdf700901">setLogLevel</a> (uint8_t logLevel)</td></tr>
 <tr class="separator:ad81db68291bcdf1fa253ca1fdf700901"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -141,8 +138,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a83807f1c19a1d84f9ba029ad2adc8951"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83807f1c19a1d84f9ba029ad2adc8951">&#9670;&nbsp;</a></span>log() <span class="overload">[1/2]</span></h2>
+<a id="aa371406aba2ec48194967a64f86d5c27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa371406aba2ec48194967a64f86d5c27">&#9670;&nbsp;</a></span>log()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -159,70 +156,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const __FlashStringHelper *&#160;</td>
-          <td class="paramname"><em>vendorId</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const __FlashStringHelper *&#160;</td>
-          <td class="paramname"><em>message</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">va_list *&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>log a message. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">logLevel</td><td>The level of the logging message </td></tr>
-    <tr><td class="paramname">vendorId</td><td>The prefixed origin of the message </td></tr>
-    <tr><td class="paramname">message</td><td>The message format string. Review <a href="md_docs_supported_specifiers.html">the supported printf spcifiers</a>. </td></tr>
-    <tr><td class="paramname">args</td><td>The sequence of variables used to replace the format specifiers in the same order for which they appear in the <code>message</code> </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Reimplemented from <a class="el" href="class_r_f24_log_handler.html#a596539b2fe6854ba1e7a4148105b5acf">RF24LogHandler</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_r_f24_dual_log_handler_8cpp_source.html#l00041">41</a> of file <a class="el" href="_r_f24_dual_log_handler_8cpp_source.html">RF24DualLogHandler.cpp</a>.</p>
-
-</div>
-</div>
-<a id="ac51188bcdb388074cafee883435e9837"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac51188bcdb388074cafee883435e9837">&#9670;&nbsp;</a></span>log() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void RF24DualLogHandler::log </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>logLevel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const __FlashStringHelper *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>vendorId</em>, </td>
         </tr>
         <tr>
@@ -261,7 +195,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Reimplemented from <a class="el" href="class_r_f24_log_handler.html#a974793351e13c4e0b370921194801e30">RF24LogHandler</a>.</p>
+<p>Reimplemented from <a class="el" href="class_r_f24_log_handler.html#ad82545329939ba516d2b622dd353cb2e">RF24LogHandler</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_r_f24_dual_log_handler_8cpp_source.html#l00026">26</a> of file <a class="el" href="_r_f24_dual_log_handler_8cpp_source.html">RF24DualLogHandler.cpp</a>.</p>
 
@@ -300,7 +234,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_r_f24_log_handler.html#a7ae1378ea39e298905f51ac54a4a7d80">RF24LogHandler</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_dual_log_handler_8cpp_source.html#l00056">56</a> of file <a class="el" href="_r_f24_dual_log_handler_8cpp_source.html">RF24DualLogHandler.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_dual_log_handler_8cpp_source.html#l00041">41</a> of file <a class="el" href="_r_f24_dual_log_handler_8cpp_source.html">RF24DualLogHandler.cpp</a>.</p>
 
 </div>
 </div>

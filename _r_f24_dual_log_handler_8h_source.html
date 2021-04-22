@@ -87,25 +87,28 @@ $(function() {
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="class_r_f24_dual_log_handler.html#ac69ea82682f53d161f1ccd8ab3a52991">RF24DualLogHandler</a>(<a class="code" href="class_r_f24_log_handler.html">RF24LogHandler</a> *handler1, <a class="code" href="class_r_f24_log_handler.html">RF24LogHandler</a> *handler2);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_r_f24_dual_log_handler.html#ac51188bcdb388074cafee883435e9837">log</a>(uint8_t logLevel,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;             <span class="keyword">const</span> __FlashStringHelper *vendorId,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_r_f24_dual_log_handler.html#aa371406aba2ec48194967a64f86d5c27">log</a>(uint8_t logLevel,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;             <span class="keyword">const</span> <span class="keywordtype">char</span> *vendorId,</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;             <span class="keyword">const</span> <span class="keywordtype">char</span> *message,</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;             va_list *args);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_r_f24_dual_log_handler.html#ac51188bcdb388074cafee883435e9837">log</a>(uint8_t logLevel,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;             <span class="keyword">const</span> __FlashStringHelper *vendorId,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;             <span class="keyword">const</span> __FlashStringHelper *message,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;             va_list *args);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="class_r_f24_dual_log_handler.html#ad81db68291bcdf1fa253ca1fdf700901">setLogLevel</a>(uint8_t logLevel);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SRC_HANDLERS_RF24DUALLOGHANDLER_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_r_f24_dual_log_handler.html#ad81db68291bcdf1fa253ca1fdf700901">setLogLevel</a>(uint8_t logLevel);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#if defined (ARDUINO_ARCH_AVR)</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_r_f24_dual_log_handler.html#aa371406aba2ec48194967a64f86d5c27">log</a>(uint8_t logLevel,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;             <span class="keyword">const</span> __FlashStringHelper *vendorId,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;             <span class="keyword">const</span> __FlashStringHelper *message,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;             va_list *args);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;};</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SRC_HANDLERS_RF24DUALLOGHANDLER_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="a_r_f24_log_handler_8h_html"><div class="ttname"><a href="_r_f24_log_handler_8h.html">RF24LogHandler.h</a></div></div>
 <div class="ttc" id="aclass_r_f24_dual_log_handler_html"><div class="ttname"><a href="class_r_f24_dual_log_handler.html">RF24DualLogHandler</a></div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_dual_log_handler_8h_source.html#l00025">RF24DualLogHandler.h:26</a></div></div>
-<div class="ttc" id="aclass_r_f24_dual_log_handler_html_ac51188bcdb388074cafee883435e9837"><div class="ttname"><a href="class_r_f24_dual_log_handler.html#ac51188bcdb388074cafee883435e9837">RF24DualLogHandler::log</a></div><div class="ttdeci">void log(uint8_t logLevel, const __FlashStringHelper *vendorId, const char *message, va_list *args)</div><div class="ttdoc">log a message.</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_dual_log_handler_8cpp_source.html#l00026">RF24DualLogHandler.cpp:26</a></div></div>
+<div class="ttc" id="aclass_r_f24_dual_log_handler_html_aa371406aba2ec48194967a64f86d5c27"><div class="ttname"><a href="class_r_f24_dual_log_handler.html#aa371406aba2ec48194967a64f86d5c27">RF24DualLogHandler::log</a></div><div class="ttdeci">void log(uint8_t logLevel, const char *vendorId, const char *message, va_list *args)</div><div class="ttdoc">log a message.</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_dual_log_handler_8cpp_source.html#l00026">RF24DualLogHandler.cpp:26</a></div></div>
 <div class="ttc" id="aclass_r_f24_dual_log_handler_html_ac69ea82682f53d161f1ccd8ab3a52991"><div class="ttname"><a href="class_r_f24_dual_log_handler.html#ac69ea82682f53d161f1ccd8ab3a52991">RF24DualLogHandler::RF24DualLogHandler</a></div><div class="ttdeci">RF24DualLogHandler(RF24LogHandler *handler1, RF24LogHandler *handler2)</div><div class="ttdoc">Instance constructor.</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_dual_log_handler_8cpp_source.html#l00019">RF24DualLogHandler.cpp:19</a></div></div>
-<div class="ttc" id="aclass_r_f24_dual_log_handler_html_ad81db68291bcdf1fa253ca1fdf700901"><div class="ttname"><a href="class_r_f24_dual_log_handler.html#ad81db68291bcdf1fa253ca1fdf700901">RF24DualLogHandler::setLogLevel</a></div><div class="ttdeci">void setLogLevel(uint8_t logLevel)</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_dual_log_handler_8cpp_source.html#l00056">RF24DualLogHandler.cpp:56</a></div></div>
+<div class="ttc" id="aclass_r_f24_dual_log_handler_html_ad81db68291bcdf1fa253ca1fdf700901"><div class="ttname"><a href="class_r_f24_dual_log_handler.html#ad81db68291bcdf1fa253ca1fdf700901">RF24DualLogHandler::setLogLevel</a></div><div class="ttdeci">void setLogLevel(uint8_t logLevel)</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_dual_log_handler_8cpp_source.html#l00041">RF24DualLogHandler.cpp:41</a></div></div>
 <div class="ttc" id="aclass_r_f24_log_handler_html"><div class="ttname"><a href="class_r_f24_log_handler.html">RF24LogHandler</a></div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_handler_8h_source.html#l00029">RF24LogHandler.h:30</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
