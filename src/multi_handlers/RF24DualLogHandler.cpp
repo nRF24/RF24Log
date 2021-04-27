@@ -14,7 +14,7 @@
  * Public License instead of this License.
  */
 
-#include <handlers/RF24DualLogHandler.h>
+#include <multi_handlers/RF24DualLogHandler.h>
 
 RF24DualLogHandler::RF24DualLogHandler(RF24LogHandler *handler1,
                                        RF24LogHandler *handler2)

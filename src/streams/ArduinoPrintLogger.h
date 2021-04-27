@@ -1,7 +1,7 @@
 /**
  * @file ArduinoPrintLogger.h
  * @brief handler for Print::print() based function calls
- * @date created 2 Oct 2020
+ * @date Created 2 Oct 2020
  * @author Witold Markowski (wmarkow)
  * @copyright Copyright (C)
  *     2020    Witold Markowski (wmarkow) <br>

@@ -1,13 +1,10 @@
 /**
  * @file RF24Logger.cpp
- *
- * Created on: 2 Oct 2020
- *     Author: Witold Markowski (wmarkow)
- *
- * Copyright (C)
- *    2020        Witold Markowski (wmarkow)
- *    2021        Brendan Doherty (2bndy5)
- *
+ * @date Created 2 Oct 2020
+ * @author Witold Markowski (wmarkow)
+ * @copyright Copyright (C)
+ *      2020        Witold Markowski (wmarkow)
+ *      2021        Brendan Doherty (2bndy5) <br>
  * This General Public License does not permit incorporating your program into
  * proprietary programs.  If your program is a subroutine library, you may
  * consider it more useful to permit linking proprietary applications with the

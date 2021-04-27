@@ -1,12 +1,10 @@
 /**
  * @file RF24DualLogHandler.h
- *
- * Created on: 30 Mar 2021
- *     Author: Witold Markowski (wmarkow)
- *
- * Copyright (C)
- *    2021        Witold Markowski (wmarkow)
- *
+ * @brief handler extention to manage 2 handlers
+ * @date Created 30 Mar 2021
+ * @author Witold Markowski (wmarkow)
+ * @copyright Copyright (C)
+ *     2020    Witold Markowski (wmarkow) <br>
  * This General Public License does not permit incorporating your program into
  * proprietary programs.  If your program is a subroutine library, you may
  * consider it more useful to permit linking proprietary applications with the
@@ -14,8 +12,8 @@
  * Public License instead of this License.
  */
 
-#ifndef SRC_HANDLERS_RF24DUALLOGHANDLER_H_
-#define SRC_HANDLERS_RF24DUALLOGHANDLER_H_
+#ifndef SRC_MULTI_HANDLERS_RF24DUALLOGHANDLER_H_
+#define SRC_MULTI_HANDLERS_RF24DUALLOGHANDLER_H_
 
 #include <RF24LogHandler.h>
 
@@ -53,4 +51,4 @@ public:
 
 };
 
-#endif /* SRC_HANDLERS_RF24DUALLOGHANDLER_H_ */
+#endif /* SRC_MULTI_HANDLERS_RF24DUALLOGHANDLER_H_ */
