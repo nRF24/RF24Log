@@ -1,5 +1,5 @@
 /**
- * @file OStreamLogger.cpp
+ * @file NewStreamLogger.cpp
  * @date created 2021-04-24
  * @author Brendan Doherty (2bndy5)
  * @copyright Copyright (C)
@@ -12,7 +12,7 @@
  */
 #ifndef ARDUINO
 #include <ctime> // for time_t, struct tm*, time(), localtime(), strftime()
-#include "OStreamLogger.h"
+#include "NewStreamLogger.h"
 
 /** description of the @ref ERROR base level */
 const char rf24logLevelError[] = "ERROR";
@@ -28,12 +28,12 @@ const char *const rf24LogLevels[] = {rf24logLevelError,
                                      rf24logLevelInfo,
                                      rf24logLevelDebug};
 
-OStreamLogger::OStreamLogger(std::ostream *stream)
+NewStreamLogger::NewStreamLogger(std::ostream *stream)
 {
     this->stream = stream;
 }
 
-void OStreamLogger::write(uint8_t logLevel,
+void NewStreamLogger::write(uint8_t logLevel,
                                  const char *vendorId,
                                  const char *message,
                                  va_list *args)
@@ -49,7 +49,7 @@ void OStreamLogger::write(uint8_t logLevel,
     #endif
 }
 
-void OStreamLogger::appendTimestamp()
+void NewStreamLogger::appendTimestamp()
 {
     char buffer[21];
     time_t rawtime;
@@ -61,7 +61,7 @@ void OStreamLogger::appendTimestamp()
     *stream << buffer;
 }
 
-void OStreamLogger::appendLogLevel(uint8_t logLevel)
+void NewStreamLogger::appendLogLevel(uint8_t logLevel)
 {
     uint8_t subLevel = logLevel & 0x07;
 
@@ -87,7 +87,7 @@ void OStreamLogger::appendLogLevel(uint8_t logLevel)
     *stream << logLevel << ";";
 }
 
-void OStreamLogger::appendFormattedMessage(const char *format, va_list *args)
+void NewStreamLogger::appendFormattedMessage(const char *format, va_list *args)
 {
     char buffer[80];
     sprintf(buffer, format, args);

@@ -78,11 +78,11 @@ void ArduinoPrintLogger::appendLogLevel(uint8_t logLevel)
         }
     }
     else {
-        if (logLevel < 10)
+        if (logLevel < 010)
         {
             stream->print("Lvl   ");
         }
-        else if (logLevel < 100)
+        else if (logLevel < 0100)
         {
             stream->print("Lvl  ");
         }
@@ -90,7 +90,7 @@ void ArduinoPrintLogger::appendLogLevel(uint8_t logLevel)
         {
             stream->print("Lvl ");
         }
-        stream->print(logLevel);
+        stream->print(logLevel, OCT);
     }
     stream->print(";");
 }

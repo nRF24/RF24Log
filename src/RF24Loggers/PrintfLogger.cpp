@@ -57,10 +57,10 @@ void PrintfLogger::write(uint8_t logLevel,
 
 void PrintfLogger::appendTimestamp()
 {
-    #if defined(PICO_BUILD)
-    stream("%12lu;", to_us_since_boot(adbsolute_time()));
-    #elif defined (ARDUINO)
+    #if defined (ARDUINO)
     stream("%12lu;", millis());
+    #elif defined(PICO_BUILD)
+    stream("%12lu;", to_us_since_boot(absolute_time()));
     #else // !defined (PICO_BUILD) && !defined (ARDUINO)
     char buffer[21];
     time_t rawtime;
@@ -94,7 +94,7 @@ void PrintfLogger::appendLogLevel(uint8_t logLevel)
         return;
     }
 
-    stream("Lvl%4i;", logLevel);
+    stream("Lvl%4o;", logLevel);
 }
 
 void PrintfLogger::appendFormattedMessage(const char *format, va_list *args)

@@ -1,5 +1,5 @@
 /**
- * @file OStreamLogger.h
+ * @file newStreamLogger.h
  * @brief handler for ostream based objects
  * @date Created 2021-04-24
  * @author Brendan Doherty (2bndy5)
@@ -11,7 +11,6 @@
  * library.  If this is what you want to do, use the GNU Lesser General
  * Public License instead of this License.
  */
-#ifndef ARDUINO
 #ifndef SRC_RF24LOGGERS_OSTREAMLOGGER_H_
 #define SRC_RF24LOGGERS_OSTREAMLOGGER_H_
 
@@ -21,14 +20,14 @@
 /**
  * @brief Class to manage logging messages to a ostream based object.
  */
-class OStreamLogger : public RF24LogAbstractHandler, RF24LogAbstractStream
+class NewStreamLogger : public RF24LogAbstractHandler, RF24LogAbstractStream
 {
 public:
     /**
-     * @brief Construct a new OStreamLogger object
+     * @brief Construct a new NewStreamLogger object
      * @param stream The output stream that inherits from ostream class.
      */
-    OStreamLogger(std::ostream* stream);
+    NewStreamLogger(std::ostream* stream);
 
 private:
 
@@ -50,9 +49,4 @@ protected:
     void appendFormattedMessage(const char *format, va_list *args);
 };
 
-#ifndef PROGMEM
-#define PROGMEM
-#endif
-
-#endif // SRC_RF24LOGGERS_OSTREAMLOGGER_H_
-#endif // !ARDUINO
+#endif // SRC_RF24LOGGERS_NEWSTREAMLOGGER_H_
