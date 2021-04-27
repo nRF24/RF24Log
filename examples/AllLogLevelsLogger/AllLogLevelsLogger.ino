@@ -64,8 +64,7 @@ void setup()
 
 void loop()
 {
-  for (uint16_t logLevel = 0 ; logLevel <= 255 ; logLevel ++)
-  {
+  for (uint16_t logLevel = 0 ; logLevel <= 255 ; logLevel ++) {
     RF24LOGGER_log((uint8_t)logLevel, vendorID, "This is a log message with level %d", logLevel);
   }
 #ifdef ARDUINO
@@ -83,7 +82,9 @@ void loop()
 int main()
 {
   setup();
-  while (1) { loop(); }
+  while (1) {
+    loop();
+  }
   return 0;
 }
 #endif

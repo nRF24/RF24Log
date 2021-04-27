@@ -88,7 +88,7 @@ void loop()
     printf("Set log level (in octal) to ");
   }
   while (input != PICO_ERROR_TIMEOUT) {
-    if (input >= 48 || input < 56){
+    if (input >= 48 || input < 56) {
       count <<= 3;
       count += input - 48;
     } else {
@@ -130,7 +130,9 @@ void loop()
 int main()
 {
   setup();
-  while (1) { loop(); }
+  while (1) {
+    loop();
+  }
   return 0;
 }
 #endif
