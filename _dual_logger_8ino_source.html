@@ -108,7 +108,7 @@ $(function() {
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// set log level for both Handlers</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  rf24DualLogHandler.setLogLevel(<a class="code" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0ab1d5eac4b1dca480c8056eaea7663b7a">RF24LogLevel::ALL</a>);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">if</span> (Serial.available()) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">char</span> input = Serial.ParseInt();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">char</span> input = Serial.parseInt();</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    Serial.print(<span class="stringliteral">&quot;Set log level (in octal) to &quot;</span>);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    Serial.print(input, OCT);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    Serial.println(<span class="stringliteral">&quot; for Handler2&quot;</span>);</div>

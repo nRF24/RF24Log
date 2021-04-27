@@ -97,7 +97,7 @@ $(function() {
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">void</span> loop()</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">if</span> (Serial.available()) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">char</span> input = Serial.ParseInt();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">char</span> input = Serial.parseInt();</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    Serial.print(<span class="stringliteral">&quot;Set log level (in octal) to &quot;</span>);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    Serial.println(input, OCT);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    rf24SerialLogHandler.<a class="code" href="class_r_f24_log_abstract_handler.html#a964b4de4cae6567127b51502497f55cb">setLogLevel</a>(input);</div>
