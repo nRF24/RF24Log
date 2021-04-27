@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['printflogger_91',['PrintfLogger',['../class_printf_logger.html#a5ef609532997ea28cc50fe1ca18f795c',1,'PrintfLogger']]]
+  ['rf24dualloghandler_85',['RF24DualLogHandler',['../class_r_f24_dual_log_handler.html#ac69ea82682f53d161f1ccd8ab3a52991',1,'RF24DualLogHandler']]],
+  ['rf24logging_86',['RF24Logging',['../class_r_f24_logging.html#a8326d01f37e4f7cd33eab97398060935',1,'RF24Logging']]]
 ];

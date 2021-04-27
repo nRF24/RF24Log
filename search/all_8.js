@@ -1,6 +1,29 @@
 var searchData=
 [
-  ['printflogger_22',['PrintfLogger',['../class_printf_logger.html',1,'PrintfLogger'],['../class_printf_logger.html#a5ef609532997ea28cc50fe1ca18f795c',1,'PrintfLogger::PrintfLogger()']]],
-  ['printflogger_2ecpp_23',['PrintfLogger.cpp',['../_printf_logger_8cpp.html',1,'']]],
-  ['printflogger_2eh_24',['PrintfLogger.h',['../_printf_logger_8h.html',1,'']]]
+  ['rf24dualloghandler_22',['RF24DualLogHandler',['../class_r_f24_dual_log_handler.html',1,'RF24DualLogHandler'],['../class_r_f24_dual_log_handler.html#ac69ea82682f53d161f1ccd8ab3a52991',1,'RF24DualLogHandler::RF24DualLogHandler()']]],
+  ['rf24dualloghandler_2ecpp_23',['RF24DualLogHandler.cpp',['../_r_f24_dual_log_handler_8cpp.html',1,'']]],
+  ['rf24dualloghandler_2eh_24',['RF24DualLogHandler.h',['../_r_f24_dual_log_handler_8h.html',1,'']]],
+  ['rf24log_25',['RF24Log',['../index.html',1,'']]],
+  ['rf24log_5fdebug_26',['RF24Log_debug',['../group___user_access_macros.html#ga14adb54e78925f200b5caee1a819d88b',1,'RF24Logging.h']]],
+  ['rf24log_5ferror_27',['RF24Log_error',['../group___user_access_macros.html#gaa9bcf8f72ed3e2d0f1a98c1b40c5409f',1,'RF24Logging.h']]],
+  ['rf24log_5finfo_28',['RF24Log_info',['../group___user_access_macros.html#ga2e0c08b7f516dc508b491f1f3102c901',1,'RF24Logging.h']]],
+  ['rf24log_5flog_29',['RF24Log_log',['../group___user_access_macros.html#ga04b17e399c677818d69abd5f5d37e9ef',1,'RF24Logging.h']]],
+  ['rf24log_5fwarn_30',['RF24Log_warn',['../group___user_access_macros.html#gab3b6be9f0d9d9f97dc4d9be5187fe2ca',1,'RF24Logging.h']]],
+  ['rf24logabstracthandler_31',['RF24LogAbstractHandler',['../class_r_f24_log_abstract_handler.html',1,'']]],
+  ['rf24logabstracts_2ecpp_32',['RF24LogAbstracts.cpp',['../_r_f24_log_abstracts_8cpp.html',1,'']]],
+  ['rf24logabstracts_2eh_33',['RF24LogAbstracts.h',['../_r_f24_log_abstracts_8h.html',1,'']]],
+  ['rf24logabstractstream_34',['RF24LogAbstractStream',['../class_r_f24_log_abstract_stream.html',1,'']]],
+  ['rf24logging_35',['RF24Logging',['../class_r_f24_logging.html#a8326d01f37e4f7cd33eab97398060935',1,'RF24Logging::RF24Logging()'],['../class_r_f24_logging.html',1,'RF24Logging']]],
+  ['rf24logging_36',['rf24Logging',['../_r_f24_logging_8cpp.html#ab335c779efc8aa9cf199825986ed87a9',1,'rf24Logging():&#160;RF24Logging.cpp'],['../_r_f24_logging_8h.html#ab335c779efc8aa9cf199825986ed87a9',1,'rf24Logging():&#160;RF24Logging.cpp']]],
+  ['rf24logging_2ecpp_37',['RF24Logging.cpp',['../_r_f24_logging_8cpp.html',1,'']]],
+  ['rf24logging_2eh_38',['RF24Logging.h',['../_r_f24_logging_8h.html',1,'']]],
+  ['rf24loghandler_39',['RF24LogHandler',['../class_r_f24_log_handler.html',1,'']]],
+  ['rf24loghandler_2eh_40',['RF24LogHandler.h',['../_r_f24_log_handler_8h.html',1,'']]],
+  ['rf24loglevel_41',['RF24LogLevel',['../group__log_levels.html#gacc30ca4b505e752d787a523d1007a5b0',1,'RF24LogLevel.h']]],
+  ['rf24loglevel_2eh_42',['RF24LogLevel.h',['../_r_f24_log_level_8h.html',1,'']]],
+  ['rf24logleveldebug_43',['rf24logLevelDebug',['../_arduino_print_logger_8cpp.html#a715372281dfc3c45fb29a224ed098766',1,'rf24logLevelDebug():&#160;ArduinoPrintLogger.cpp'],['../_printf_logger_8cpp.html#a715372281dfc3c45fb29a224ed098766',1,'rf24logLevelDebug():&#160;PrintfLogger.cpp'],['../_o_stream_logger_8cpp.html#a715372281dfc3c45fb29a224ed098766',1,'rf24logLevelDebug():&#160;OStreamLogger.cpp']]],
+  ['rf24loglevelerror_44',['rf24logLevelError',['../_arduino_print_logger_8cpp.html#a3cb6833ec526c0466c71c89a25c22ddf',1,'rf24logLevelError():&#160;ArduinoPrintLogger.cpp'],['../_o_stream_logger_8cpp.html#a3cb6833ec526c0466c71c89a25c22ddf',1,'rf24logLevelError():&#160;OStreamLogger.cpp'],['../_printf_logger_8cpp.html#a3cb6833ec526c0466c71c89a25c22ddf',1,'rf24logLevelError():&#160;PrintfLogger.cpp']]],
+  ['rf24loglevelinfo_45',['rf24logLevelInfo',['../_arduino_print_logger_8cpp.html#a9bd6fc2fd1b0488b1483994f255cb0ed',1,'rf24logLevelInfo():&#160;ArduinoPrintLogger.cpp'],['../_o_stream_logger_8cpp.html#a9bd6fc2fd1b0488b1483994f255cb0ed',1,'rf24logLevelInfo():&#160;OStreamLogger.cpp'],['../_printf_logger_8cpp.html#a9bd6fc2fd1b0488b1483994f255cb0ed',1,'rf24logLevelInfo():&#160;PrintfLogger.cpp']]],
+  ['rf24loglevels_46',['rf24LogLevels',['../_arduino_print_logger_8cpp.html#a499dfd5c4bc8bda25d25e53113f194c8',1,'rf24LogLevels():&#160;ArduinoPrintLogger.cpp'],['../_o_stream_logger_8cpp.html#a499dfd5c4bc8bda25d25e53113f194c8',1,'rf24LogLevels():&#160;OStreamLogger.cpp'],['../_printf_logger_8cpp.html#a499dfd5c4bc8bda25d25e53113f194c8',1,'rf24LogLevels():&#160;PrintfLogger.cpp']]],
+  ['rf24loglevelwarn_47',['rf24logLevelWarn',['../_arduino_print_logger_8cpp.html#a6e0cca7b51daf2c97b5e3819c7fa7d78',1,'rf24logLevelWarn():&#160;ArduinoPrintLogger.cpp'],['../_o_stream_logger_8cpp.html#a6e0cca7b51daf2c97b5e3819c7fa7d78',1,'rf24logLevelWarn():&#160;OStreamLogger.cpp'],['../_printf_logger_8cpp.html#a6e0cca7b51daf2c97b5e3819c7fa7d78',1,'rf24logLevelWarn():&#160;PrintfLogger.cpp']]]
 ];

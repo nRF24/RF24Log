@@ -73,6 +73,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>A log handler implementation which outputs log messages to a stream.  
+ <a href="class_arduino_print_logger.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_arduino_print_logger_8h_source.html">ArduinoPrintLogger.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ArduinoPrintLogger:</div>
@@ -80,9 +83,9 @@ Inheritance diagram for ArduinoPrintLogger:</div>
  <div class="center">
   <img src="class_arduino_print_logger.png" usemap="#ArduinoPrintLogger_map" alt=""/>
   <map id="ArduinoPrintLogger_map" name="ArduinoPrintLogger_map">
-<area href="class_r_f24_log_abstract_handler.html" alt="RF24LogAbstractHandler" shape="rect" coords="0,56,155,80"/>
+<area href="class_r_f24_log_abstract_handler.html" title="An abstract base class for handling log messages." alt="RF24LogAbstractHandler" shape="rect" coords="0,56,155,80"/>
 <area href="class_r_f24_log_abstract_stream.html" title="A protected collection of methods that output formatted data to a stream." alt="RF24LogAbstractStream" shape="rect" coords="165,56,320,80"/>
-<area href="class_r_f24_log_handler.html" alt="RF24LogHandler" shape="rect" coords="0,0,155,24"/>
+<area href="class_r_f24_log_handler.html" title="A base mechanism for handling log messages." alt="RF24LogHandler" shape="rect" coords="0,0,155,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -118,7 +121,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:afc518aba1aeea255105e371aecf805a4"><td class="memItemLeft" align="right" valign="top">Print *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_print_logger.html#afc518aba1aeea255105e371aecf805a4">stream</a></td></tr>
+<tr class="memitem:afc518aba1aeea255105e371aecf805a4"><td class="memItemLeft" align="right" valign="top"><a id="afc518aba1aeea255105e371aecf805a4"></a>
+Print *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_print_logger.html#afc518aba1aeea255105e371aecf805a4">stream</a></td></tr>
+<tr class="memdesc:afc518aba1aeea255105e371aecf805a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The output stream. <br /></td></tr>
 <tr class="separator:afc518aba1aeea255105e371aecf805a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_r_f24_log_abstract_handler"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_r_f24_log_abstract_handler')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_r_f24_log_abstract_handler.html">RF24LogAbstractHandler</a></td></tr>
 <tr class="memitem:aa4686f79ac6fded262d411f00c2478f4 inherit pro_attribs_class_r_f24_log_abstract_handler"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a></td></tr>
@@ -129,7 +134,7 @@ Protected Attributes</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#_a0">BasicSerialLogger.ino</a>, and <a class="el" href="_log_levels_logger_8ino-example.html#_a0">LogLevelsLogger.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_arduino_print_logger_8h_source.html#l00024">24</a> of file <a class="el" href="_arduino_print_logger_8h_source.html">ArduinoPrintLogger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_arduino_print_logger_8h_source.html#l00022">22</a> of file <a class="el" href="_arduino_print_logger_8h_source.html">ArduinoPrintLogger.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7a060a0055e96cc5a0e8dcd90d10e92e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7a060a0055e96cc5a0e8dcd90d10e92e">&#9670;&nbsp;</a></span>ArduinoPrintLogger()</h2>
@@ -352,32 +357,6 @@ Protected Attributes</h2></td></tr>
 <p>Implements <a class="el" href="class_r_f24_log_abstract_handler.html#a8f50251b51562787436b0dd6cdc0e359">RF24LogAbstractHandler</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_arduino_print_logger_8cpp_source.html#l00037">37</a> of file <a class="el" href="_arduino_print_logger_8cpp_source.html">ArduinoPrintLogger.cpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="afc518aba1aeea255105e371aecf805a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc518aba1aeea255105e371aecf805a4">&#9670;&nbsp;</a></span>stream</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Print* ArduinoPrintLogger::stream</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>The output stream </p>
-
-<p class="definition">Definition at line <a class="el" href="_arduino_print_logger_8h_source.html#l00029">29</a> of file <a class="el" href="_arduino_print_logger_8h_source.html">ArduinoPrintLogger.h</a>.</p>
 
 </div>
 </div>

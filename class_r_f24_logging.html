@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RF24Log: RF24Logger Class Reference</title>
+<title>RF24Log: RF24Logging Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -65,40 +65,43 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="class_r_f24_logger-members.html">List of all members</a>  </div>
+<a href="class_r_f24_logging-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">RF24Logger Class Reference</div>  </div>
+<div class="title">RF24Logging Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="_r_f24_logger_8h_source.html">RF24Logger.h</a>&gt;</code></p>
+<p>This is the end-user's access point into the world of logging messages.  
+ <a href="class_r_f24_logging.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_r_f24_logging_8h_source.html">RF24Logging.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aff3589cfd19931ce88370d42f20ac613"><td class="memItemLeft" align="right" valign="top"><a id="aff3589cfd19931ce88370d42f20ac613"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_logger.html#aff3589cfd19931ce88370d42f20ac613">RF24Logger</a> ()</td></tr>
-<tr class="memdesc:aff3589cfd19931ce88370d42f20ac613"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the handler to nullptr. <br /></td></tr>
-<tr class="separator:aff3589cfd19931ce88370d42f20ac613"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b6d6098ff3862c5aa46694dfa1457f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_logger.html#a2b6d6098ff3862c5aa46694dfa1457f2">setHandler</a> (<a class="el" href="class_r_f24_log_handler.html">RF24LogHandler</a> *handler)</td></tr>
-<tr class="memdesc:a2b6d6098ff3862c5aa46694dfa1457f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the instance's handler  <a href="class_r_f24_logger.html#a2b6d6098ff3862c5aa46694dfa1457f2">More...</a><br /></td></tr>
-<tr class="separator:a2b6d6098ff3862c5aa46694dfa1457f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a483905aae20da2531bf2d2728a678d12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_logger.html#a483905aae20da2531bf2d2728a678d12">log</a> (uint8_t logLevel, const char *vendorId, const char *message,...)</td></tr>
-<tr class="memdesc:a483905aae20da2531bf2d2728a678d12"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a log message of any level  <a href="class_r_f24_logger.html#a483905aae20da2531bf2d2728a678d12">More...</a><br /></td></tr>
-<tr class="separator:a483905aae20da2531bf2d2728a678d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8326d01f37e4f7cd33eab97398060935"><td class="memItemLeft" align="right" valign="top"><a id="a8326d01f37e4f7cd33eab97398060935"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_logging.html#a8326d01f37e4f7cd33eab97398060935">RF24Logging</a> ()</td></tr>
+<tr class="memdesc:a8326d01f37e4f7cd33eab97398060935"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the handler to nullptr. <br /></td></tr>
+<tr class="separator:a8326d01f37e4f7cd33eab97398060935"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a825defc5520a2cd187693e1d7d303a84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_logging.html#a825defc5520a2cd187693e1d7d303a84">setHandler</a> (<a class="el" href="class_r_f24_log_handler.html">RF24LogHandler</a> *handler)</td></tr>
+<tr class="memdesc:a825defc5520a2cd187693e1d7d303a84"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the instance's handler  <a href="class_r_f24_logging.html#a825defc5520a2cd187693e1d7d303a84">More...</a><br /></td></tr>
+<tr class="separator:a825defc5520a2cd187693e1d7d303a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a197f0b717a027c511a9dc3634dbc9089"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_logging.html#a197f0b717a027c511a9dc3634dbc9089">log</a> (uint8_t logLevel, const char *vendorId, const char *message,...)</td></tr>
+<tr class="memdesc:a197f0b717a027c511a9dc3634dbc9089"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a log message of any level  <a href="class_r_f24_logging.html#a197f0b717a027c511a9dc3634dbc9089">More...</a><br /></td></tr>
+<tr class="separator:a197f0b717a027c511a9dc3634dbc9089"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the end-user's access point into the world of logging messages. </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_logger_8h_source.html#l00100">100</a> of file <a class="el" href="_r_f24_logger_8h_source.html">RF24Logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_logging_8h_source.html#l00098">98</a> of file <a class="el" href="_r_f24_logging_8h_source.html">RF24Logging.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a483905aae20da2531bf2d2728a678d12"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a483905aae20da2531bf2d2728a678d12">&#9670;&nbsp;</a></span>log()</h2>
+<a id="a197f0b717a027c511a9dc3634dbc9089"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a197f0b717a027c511a9dc3634dbc9089">&#9670;&nbsp;</a></span>log()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void RF24Logger::log </td>
+          <td class="memname">void RF24Logging::log </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>logLevel</em>, </td>
@@ -140,18 +143,18 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_logger_8cpp_source.html#l00027">27</a> of file <a class="el" href="_r_f24_logger_8cpp_source.html">RF24Logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_logging_8cpp_source.html#l00027">27</a> of file <a class="el" href="_r_f24_logging_8cpp_source.html">RF24Logging.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a2b6d6098ff3862c5aa46694dfa1457f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b6d6098ff3862c5aa46694dfa1457f2">&#9670;&nbsp;</a></span>setHandler()</h2>
+<a id="a825defc5520a2cd187693e1d7d303a84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a825defc5520a2cd187693e1d7d303a84">&#9670;&nbsp;</a></span>setHandler()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void RF24Logger::setHandler </td>
+          <td class="memname">void RF24Logging::setHandler </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_r_f24_log_handler.html">RF24LogHandler</a> *&#160;</td>
           <td class="paramname"><em>handler</em></td><td>)</td>
@@ -170,13 +173,13 @@ Public Member Functions</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#a5">BasicSerialLogger.ino</a>, and <a class="el" href="_log_levels_logger_8ino-example.html#a4">LogLevelsLogger.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_logger_8cpp_source.html#l00022">22</a> of file <a class="el" href="_r_f24_logger_8cpp_source.html">RF24Logger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_logging_8cpp_source.html#l00022">22</a> of file <a class="el" href="_r_f24_logging_8cpp_source.html">RF24Logging.cpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/<a class="el" href="_r_f24_logger_8h_source.html">RF24Logger.h</a></li>
-<li>src/<a class="el" href="_r_f24_logger_8cpp_source.html">RF24Logger.cpp</a></li>
+<li>src/<a class="el" href="_r_f24_logging_8h_source.html">RF24Logging.h</a></li>
+<li>src/<a class="el" href="_r_f24_logging_8cpp_source.html">RF24Logging.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
