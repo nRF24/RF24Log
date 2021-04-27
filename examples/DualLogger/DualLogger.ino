@@ -16,14 +16,14 @@
 #include <string.h>
 
 #include <RF24Logger.h>
-#include <handlers/RF24StreamLogHandler.h>
-#include <handlers/RF24DualLogHandler.h>
+#include <stream_handlers/ArduinoPrintLogger.h>
+#include <multi_handlers/RF24DualLogHandler.h>
 
-// Create first hardware serial port log appender
-RF24StreamLogHandler rf24SerialLogHandler1(&Serial);
+// Create first hardware serial port log handler
+ArduinoPrintLogger rf24SerialLogHandler1(&Serial);
 
-// Create second hardware serial port log appender
-RF24StreamLogHandler rf24SerialLogHandler2(&Serial);
+// Create second hardware serial port log handler
+ArduinoPrintLogger rf24SerialLogHandler2(&Serial);
 
 RF24DualLogHandler rf24DualLogHandler(&rf24SerialLogHandler1, &rf24SerialLogHandler2);
 
@@ -37,7 +37,7 @@ void setup()
 
   // set maximal log level to ALL
   rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
-  // set serial port appender
+  // set serial port handler
   rf24Logger.setHandler(&rf24DualLogHandler);
 
   RF24LOGGER_info(vendorID, "RF24Log/examples/DualLogger");
@@ -45,13 +45,22 @@ void setup()
 
 void loop()
 {
+  // set log level for both Handlers
   rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
-  RF24LOGGER_info(vendorID, "This message should be logged %s.", "twice");
+  if (Serial.available()) {
+    char input = Serial.ParseInt();
+    Serial.print("Set log level (in octal) to ");
+    Serial.print(input, OCT);
+    Serial.println(" for Handler2");
+    rf24SerialLogHandler2.setLogLevel(input); // set log level only for handler2
+  }
 
-  rf24DualLogHandler.setLogLevel(RF24LogLevel::INFO);
+  RF24LOGGER_info(vendorID, "This message should be logged %s.", "twice");
   RF24LOGGER_warn(vendorID, "This warn message should be logged %s.", "twice");
   RF24LOGGER_info(vendorID, "This info message should be logged %s.", "twice");
   RF24LOGGER_debug(vendorID, "This debug message should NOT be logged %s.");
+
+  Serial.println("");
 
   delay(5000);
 }

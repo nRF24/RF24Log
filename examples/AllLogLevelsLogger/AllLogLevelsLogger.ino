@@ -16,10 +16,10 @@
 #include <string.h>
 
 #include <RF24Logger.h>
-#include <handlers/RF24StreamLogHandler.h>
+#include <stream_handlers/ArduinoPrintLogger.h>
 
 // Create hardware serial port log appender
-RF24StreamLogHandler rf24SerialLogHandler(&Serial);
+ArduinoPrintLogger rf24SerialLogHandler(&Serial);
 
 // Define global vendor id (it is stored in FLASH memory)
 const char PROGMEM vendorID[] = "RF24LogExample";

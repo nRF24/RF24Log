@@ -1,5 +1,6 @@
 /**
  * @file RF24LogHandler.h
+ * @brief inherent declarations for all handlers.
  *
  * Created on: 2 Oct 2020
  *     Author: Witold Markowski (wmarkow)
@@ -18,7 +19,11 @@
 #ifndef SRC_RF24LOGHANDLER_H_
 #define SRC_RF24LOGHANDLER_H_
 
+#if defined(ARDUINO_ARCH_AVR)
 #include <WString.h>
+#else
+#include <string.h>
+#endif
 #include <stdint.h>
 #include <stdarg.h>
 #include "RF24LogLevel.h"
@@ -43,14 +48,6 @@ public:
                      va_list *args);
 
 #if defined (ARDUINO_ARCH_AVR)
-    /**
-     * @brief log a message.
-     * @param logLevel The level of the logging message
-     * @param vendorId The prefixed origin of the message
-     * @param message The message format string. Review [the supported printf spcifiers](md_docs_supported_specifiers.html).
-     * @param args The sequence of variables used to replace the format specifiers in the
-     * same order for which they appear in the @p message
-     */
     virtual void log(uint8_t logLevel,
                      const __FlashStringHelper *vendorId,
                      const __FlashStringHelper *message,

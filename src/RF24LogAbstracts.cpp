@@ -1,5 +1,5 @@
 /**
- * @file RF24AbstractLogHandler.cpp
+ * @file RF24LogAbstracts.cpp
  *
  * Created on: 3 Apr 2021
  *     Author: Witold Markowski (wmarkow)
@@ -14,14 +14,14 @@
  * Public License instead of this License.
  */
 
-#include "RF24AbstractLogHandler.h"
+#include "RF24LogAbstracts.h"
 
-RF24AbstractLogHandler::RF24AbstractLogHandler()
+RF24LogAbstractHandler::RF24LogAbstractHandler()
 {
     this->logLevel = RF24LogLevel::INFO;
 }
 
-void RF24AbstractLogHandler::log(uint8_t logLevel,
+void RF24LogAbstractHandler::log(uint8_t logLevel,
                                  const char *vendorId,
                                  const char *message,
                                  va_list *args)
@@ -34,13 +34,13 @@ void RF24AbstractLogHandler::log(uint8_t logLevel,
     write(logLevel, vendorId, message, args);
 }
 
-void RF24AbstractLogHandler::setLogLevel(uint8_t logLevel)
+void RF24LogAbstractHandler::setLogLevel(uint8_t logLevel)
 {
     this->logLevel = logLevel;
 }
 
 #if defined (ARDUINO_ARCH_AVR)
-void RF24AbstractLogHandler::log(uint8_t logLevel,
+void RF24LogAbstractHandler::log(uint8_t logLevel,
                                  const __FlashStringHelper *vendorId,
                                  const __FlashStringHelper *message,
                                  va_list *args)

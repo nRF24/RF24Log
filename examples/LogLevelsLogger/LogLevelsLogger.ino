@@ -16,16 +16,13 @@
 #include <string.h>
 
 #include <RF24Logger.h>
-#include <handlers/RF24StreamLogHandler.h>
+#include <stream_handlers/ArduinoPrintLogger.h>
 
 // Create hardware serial port log appender
-RF24StreamLogHandler rf24SerialLogHandler(&Serial);
+ArduinoPrintLogger rf24SerialLogHandler(&Serial);
 
 // Define global vendor id (it is stored in FLASH memory)
 const char PROGMEM vendorID[] = "RF24LogExample";
-
-
-void logSimpleMessage();
 
 void setup()
 {
@@ -42,52 +39,13 @@ void setup()
 
 void loop()
 {
-  Serial.println("Set log level to OFF");
-  rf24SerialLogHandler.setLogLevel(RF24LogLevel::OFF);
-  logSimpleMessage();
+  if (Serial.available()) {
+    char input = Serial.ParseInt();
+    Serial.print("Set log level (in octal) to ");
+    Serial.println(input, OCT);
+    rf24SerialLogHandler.setLogLevel(input);
+  }
 
-  Serial.println("Set log level to ERROR");
-  rf24SerialLogHandler.setLogLevel(RF24LogLevel::ERROR);
-  logSimpleMessage();
-
-  Serial.println("Set log level to ERROR + 1");
-  rf24SerialLogHandler.setLogLevel(RF24LogLevel::ERROR + 1);
-  logSimpleMessage();
-
-  Serial.println("Set log level to ERROR + 7");
-  rf24SerialLogHandler.setLogLevel(RF24LogLevel::ERROR + 7);
-  logSimpleMessage();
-
-  Serial.println("Set log level to WARN");
-  rf24SerialLogHandler.setLogLevel(RF24LogLevel::WARN);
-  logSimpleMessage();
-
-  Serial.println("Set log level to INFO");
-  rf24SerialLogHandler.setLogLevel(RF24LogLevel::INFO);
-  logSimpleMessage();
-
-  Serial.println("Set log level to DEBUG");
-  rf24SerialLogHandler.setLogLevel(RF24LogLevel::DEBUG);
-  logSimpleMessage();
-
-  Serial.println("Set log level to DEBUG + 1");
-  rf24SerialLogHandler.setLogLevel(RF24LogLevel::DEBUG + 1);
-  logSimpleMessage();
-
-  Serial.println("Set log level to DEBUG + 7");
-  rf24SerialLogHandler.setLogLevel(RF24LogLevel::DEBUG + 7);
-  logSimpleMessage();
-
-  Serial.println("Set log level to ALL");
-  rf24SerialLogHandler.setLogLevel(RF24LogLevel::ALL);
-  logSimpleMessage();
-
-  Serial.println("");
-  delay(5000);
-}
-
-void logSimpleMessage()
-{
   RF24LOGGER_error(vendorID, "Error message");
   RF24LOGGER_log(RF24LogLevel::ERROR + 1, vendorID, "Error message sub-level 1");
   RF24LOGGER_log(RF24LogLevel::ERROR + 7, vendorID, "Error message sub-level 7");
@@ -104,5 +62,6 @@ void logSimpleMessage()
   RF24LOGGER_log(RF24LogLevel::DEBUG + 1, vendorID, "Debug message sub-level 1");
   RF24LOGGER_log(RF24LogLevel::DEBUG + 7, vendorID, "Debug message sub-level 7");
 
-  Serial.println();
+  Serial.println("");
+  delay(5000);
 }

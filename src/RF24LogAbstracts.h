@@ -1,5 +1,6 @@
 /**
- * @file RF24AbstractLogHandler.h
+ * @file RF24LogAbstracts.h
+ * @brief abstract classes that allow custom handlers and different output stream APIs
  *
  * Created on: 2 Oct 2020
  *     Author: Witold Markowski (wmarkow)
@@ -15,10 +16,11 @@
  * Public License instead of this License.
  */
 
-#ifndef SRC_HANDLERS_RF24ABSTRACTLOGHANDLER_H_
-#define SRC_HANDLERS_RF24ABSTRACTLOGHANDLER_H_
-
+#ifndef SRC_RF24LOGABSTRACTS_H_
+#define SRC_RF24LOGABSTRACTS_H_
+#if defined (ARDUINO_ARCH_AVR)
 #include <WString.h>
+#endif
 #include <stdint.h>
 #include <stdarg.h>
 
@@ -28,7 +30,7 @@
 /**
  * A base class for handling log messages.
  */
-class RF24AbstractLogHandler : public RF24LogHandler
+class RF24LogAbstractHandler : public RF24LogHandler
 {
 public:
     void log(uint8_t logLevel,
@@ -50,7 +52,7 @@ protected:
     /** The configured log level used to filter which messages are output. */
     uint8_t logLevel;
 
-    RF24AbstractLogHandler();
+    RF24LogAbstractHandler();
 
     /**
      * write log message to its destination
@@ -66,14 +68,6 @@ protected:
                        va_list *args) = 0;
 
 #if defined (ARDUINO_ARCH_AVR)
-    /**
-     * write log message to its destination
-     * @param logLevel The level of the logging message
-     * @param vendorId The prefixed origin of the message
-     * @param message The message
-     * @param args The sequence of variables used to replace the format specifiers in the
-     * same order for which they appear in the @p message
-     */
     virtual void write(uint8_t logLevel,
                        const __FlashStringHelper *vendorId,
                        const __FlashStringHelper *message,
@@ -81,4 +75,32 @@ protected:
 #endif
 };
 
-#endif /* SRC_HANDLERS_RF24ABSTRACTLOGHANDLER_H_ */
+/**
+ * @brief A `protected` collection of methods that output formatted data to a stream.
+ */
+class RF24LogAbstractStream
+{
+protected:
+    /** @brief output a timestamp */
+    virtual void appendTimestamp() = 0;
+
+    /**
+     * @brief output a description of the log level
+     * @param logLevel The level to describe.
+     */
+    virtual void appendLogLevel(uint8_t logLevel) = 0;
+
+    /**
+     * @brief output a message with the specifiers replaced with values from the sequence of @p args
+     * @param format The format of the message
+     * @param args The sequence of args
+     */
+    virtual void appendFormattedMessage(const char *format, va_list *args) = 0;
+
+#if defined (ARDUINO_ARCH_AVR)
+    virtual void appendFormattedMessage(const __FlashStringHelper *format, va_list *args) = 0;
+#endif
+
+};
+
+#endif /* SRC_RF24LOGABSTRACTS_H_ */
