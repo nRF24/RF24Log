@@ -16,7 +16,7 @@
 #include <string.h>
 
 #include <RF24Logger.h>
-#include <stream_handlers/ArduinoPrintLogger.h>
+#include <RF24Loggers/ArduinoPrintLogger.h>
 
 // Create hardware serial port log appender
 ArduinoPrintLogger rf24SerialLogHandler(&Serial);
@@ -40,12 +40,13 @@ void setup()
 void loop()
 {
   if (Serial.available()) {
-    char input = Serial.ParseInt();
+    char input = Serial.parseInt();
     Serial.print("Set log level (in octal) to ");
     Serial.println(input, OCT);
     rf24SerialLogHandler.setLogLevel(input);
   }
 
+  RF24LOGGER_log(1, vendorID, "this is a custom sublevel without a domain.");
   RF24LOGGER_error(vendorID, "Error message");
   RF24LOGGER_log(RF24LogLevel::ERROR + 1, vendorID, "Error message sub-level 1");
   RF24LOGGER_log(RF24LogLevel::ERROR + 7, vendorID, "Error message sub-level 7");
@@ -61,6 +62,11 @@ void loop()
   RF24LOGGER_debug(vendorID, "Debug message");
   RF24LOGGER_log(RF24LogLevel::DEBUG + 1, vendorID, "Debug message sub-level 1");
   RF24LOGGER_log(RF24LogLevel::DEBUG + 7, vendorID, "Debug message sub-level 7");
+
+  RF24LOGGER_warn(vendorID, "wierd order? Its in octal!");
+  RF24LOGGER_log(RF24LogLevel::ERROR - 1, vendorID, "This is not an Error message");
+  RF24LOGGER_log(RF24LogLevel::DEBUG + 8, vendorID, "This is not a Debug message");
+  RF24LOGGER_log(0x75, vendorID, "This is level 0x75");
 
   Serial.println("");
   delay(5000);

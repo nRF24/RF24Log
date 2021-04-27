@@ -11,12 +11,12 @@
  * library.  If this is what you want to do, use the GNU Lesser General
  * Public License instead of this License.
  */
-#ifndef SRC_STREAMS_OSTREAMLOGGER_H_
-#define SRC_STREAMS_OSTREAMLOGGER_H_
+#ifndef ARDUINO
+#ifndef SRC_RF24LOGGERS_OSTREAMLOGGER_H_
+#define SRC_RF24LOGGERS_OSTREAMLOGGER_H_
 
-#include <RF24LogAbstracts.h>
 #include <ostream>
-#include <ctime>
+#include <RF24LogAbstracts.h>
 
 /**
  * @brief Class to manage logging messages to a ostream based object.
@@ -50,4 +50,5 @@ protected:
     void appendFormattedMessage(const char *format, va_list *args);
 };
 
-#endif
+#endif // SRC_RF24LOGGERS_OSTREAMLOGGER_H_
+#endif // !ARDUINO

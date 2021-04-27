@@ -16,8 +16,8 @@
 #include <string.h>
 
 #include <RF24Logger.h>
-#include <stream_handlers/ArduinoPrintLogger.h>
-#include <multi_handlers/RF24DualLogHandler.h>
+#include <RF24Loggers/ArduinoPrintLogger.h>
+#include <handler_ext/RF24DualLogHandler.h>
 
 // Create first hardware serial port log handler
 ArduinoPrintLogger rf24SerialLogHandler1(&Serial);

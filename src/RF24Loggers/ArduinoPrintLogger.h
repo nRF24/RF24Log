@@ -12,8 +12,8 @@
  * Public License instead of this License.
  */
 
-#ifndef SRC_STREAMS_ARDUINOPRINTLOGGER_H_
-#define SRC_STREAMS_ARDUINOPRINTLOGGER_H_
+#ifndef SRC_RF24LOGGERS_ARDUINOPRINTLOGGER_H_
+#define SRC_RF24LOGGERS_ARDUINOPRINTLOGGER_H_
 
 #include <RF24LogAbstracts.h>
 #include <Print.h>
@@ -48,6 +48,9 @@ protected:
     // declare the rest to raise from pure virtual
     /************************************************/
 
+    void appendTimestamp();
+    void appendLogLevel(uint8_t logLevel);
+    void appendFormattedMessage(const char *format, va_list *args);
     void write(uint8_t logLevel,
                const char *vendorId,
                const char *message,
@@ -58,11 +61,8 @@ protected:
                const __FlashStringHelper *vendorId,
                const __FlashStringHelper *message,
                va_list *args);
+    void appendFormattedMessage(const __FlashStringHelper *format, va_list *args);
 #endif
-
-    void appendTimestamp();
-    void appendLogLevel(uint8_t logLevel);
-    void appendFormattedMessage(const char *format, va_list *args);
 };
 
-#endif /* SRC_STREAMS_ARDUINOPRINTLOGGER_H_ */
+#endif /* SRC_RF24LOGGERS_ARDUINOPRINTLOGGER_H_ */

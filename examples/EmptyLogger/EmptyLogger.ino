@@ -16,7 +16,7 @@
 #include <string.h>
 
 #include <RF24Logger.h>
-#include <stream_handlers/ArduinoPrintLogger.h>
+#include <RF24Loggers/ArduinoPrintLogger.h>
 
 // Define global vendor id (it is stored in FLASH memory)
 const char PROGMEM vendorID[] = "RF24LogExample";

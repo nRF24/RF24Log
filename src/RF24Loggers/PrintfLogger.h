@@ -11,12 +11,10 @@
  * library.  If this is what you want to do, use the GNU Lesser General
  * Public License instead of this License.
  */
-#ifndef SRC_HANDLERS_RF24PRINTFLOGHANDLER_H_
-#define SRC_HANDLERS_RF24PRINTFLOGHANDLER_H_
+#ifndef SRC_RF24LOGGERS_PRINTFLOGGER_H_
+#define SRC_RF24LOGGERS_PRINTFLOGGER_H_
 
 #include <RF24LogAbstracts.h>
-#include <ctime>
-#include <cstdio>
 
 /**
  * @brief Class to manage logging messages to a printf function pointer.
@@ -26,14 +24,14 @@ class PrintfLogger : public RF24LogAbstractHandler, RF24LogAbstractStream
 public:
     /**
      * @brief Construct a new PrintfLogger object
-     * @param stream The `printf()`-like function that ships with cstdio.
+     * @param _stream The `printf()`-like function that ships with cstdio.
      */
-    PrintfLogger(((int)(const char *, ...))* stream);
+    PrintfLogger(int (*_stream)(const char *, ...));
 
 private:
 
     /** The internal reference to the configured output stream */
-    ((int)(const char *, ...))* stream;
+    int (*stream)(const char *, ...);
 
 protected:
 
@@ -50,4 +48,4 @@ protected:
     void appendFormattedMessage(const char *format, va_list *args);
 };
 
-#endif
+#endif // SRC_RF24LOGGERS_PRINTFLOGGER_H_

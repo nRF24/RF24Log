@@ -1,5 +1,5 @@
 /**
- * @file PrintfLogger.cpp
+ * @file OStreamLogger.cpp
  * @date created 2021-04-24
  * @author Brendan Doherty (2bndy5)
  * @copyright Copyright (C)
@@ -10,9 +10,9 @@
  * library.  If this is what you want to do, use the GNU Lesser General
  * Public License instead of this License.
  */
+#ifndef ARDUINO
 #include <ctime> // for time_t, struct tm*, time(), localtime(), strftime()
-
-#include "PrintfLogger.h"
+#include "OStreamLogger.h"
 
 /** description of the @ref ERROR base level */
 const char rf24logLevelError[] = "ERROR";
@@ -28,31 +28,29 @@ const char *const rf24LogLevels[] = {rf24logLevelError,
                                      rf24logLevelInfo,
                                      rf24logLevelDebug};
 
-PrintfLogger::PrintfLogger((int)(const char *, ...) *stream)
+OStreamLogger::OStreamLogger(std::ostream *stream)
 {
-    stream = stream;
+    this->stream = stream;
 }
 
-void PrintfLogger::write(uint8_t logLevel,
-                         const char *vendorId,
-                         const char *message,
-                         va_list *args)
+void OStreamLogger::write(uint8_t logLevel,
+                                 const char *vendorId,
+                                 const char *message,
+                                 va_list *args)
 {
     appendTimestamp();
     appendLogLevel(logLevel);
-    stream(vendorId);
-    stream(";");
+    *stream << vendorId << ";";
 
     // print formatted message
     appendFormattedMessage(message, args);
     #ifndef RF24LOG_NO_EOL
-    stream("\n");
+    *stream << std::endl;
     #endif
 }
 
-void PrintfLogger::appendTimestamp()
+void OStreamLogger::appendTimestamp()
 {
-    #if !defined(PICO_BUILD)
     char buffer[21];
     time_t rawtime;
     struct tm* timeinfo;
@@ -60,37 +58,39 @@ void PrintfLogger::appendTimestamp()
     timeinfo = localtime(&rawtime);
 
     strftime(buffer, 21, "%F:%H:%M:%S;", timeinfo);
-    stream(buffer);
-    #else // defined (PICO_BUILD)
-    stream("%12lu;", to_us_since_boot(adbsolute_time()));
-    #endif // defined (PICO_BUILD)
+    *stream << buffer;
 }
 
-void PrintfLogger::appendLogLevel(uint8_t logLevel)
+void OStreamLogger::appendLogLevel(uint8_t logLevel)
 {
     uint8_t subLevel = logLevel & 0x07;
 
     if (logLevel >= RF24LogLevel::ERROR && logLevel <= RF24LogLevel::DEBUG + 7)
     {
         uint8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
-        stream(rf24LogLevels[logIndex]);
+        *stream << rf24LogLevels[logIndex];
 
         if(subLevel)
         {
-            stream(":%d;" << subLevel;
+            *stream << ":" << subLevel << ";";
         }
         else
         {
-            stream("  ;");
+            *stream << "  ;";
         }
 
         return;
     }
 
-    stream("Lvl%4i;", logLevel);
+    *stream << "Lvl";
+    stream->width(4);
+    *stream << logLevel << ";";
 }
 
-void PrintfLogger::appendFormattedMessage(const char *format, va_list *args)
+void OStreamLogger::appendFormattedMessage(const char *format, va_list *args)
 {
-    stream(format, args...);
+    char buffer[80];
+    sprintf(buffer, format, args);
+    *stream << buffer;
 }
+#endif // !ARDUINO
