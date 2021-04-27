@@ -72,46 +72,89 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_r_f24_logger_8h.html">RF24Logger.h</a>&gt;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_r_f24_logger_8h.html">RF24Logger.h</a>&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_arduino_print_logger_8h.html">RF24Loggers/ArduinoPrintLogger.h</a>&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// Create hardware serial port log appender</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<a class="code" href="class_arduino_print_logger.html">ArduinoPrintLogger</a> rf24SerialLogHandler(&amp;Serial);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// Define global vendor id (it is stored in FLASH memory)</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> PROGMEM vendorID[] = <span class="stringliteral">&quot;RF24LogExample&quot;</span>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">void</span> setup()</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="comment">// configure serial port baudrate</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  Serial.begin(115200);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="comment">// set maximal log level to ALL</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  rf24SerialLogHandler.<a class="code" href="class_r_f24_log_abstract_handler.html#a964b4de4cae6567127b51502497f55cb">setLogLevel</a>(<a class="code" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0ab1d5eac4b1dca480c8056eaea7663b7a">RF24LogLevel::ALL</a>);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="comment">// set serial port appender</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="_r_f24_logger_8cpp.html#a69c6af0be57a4a9868d516ef55e843f0">rf24Logger</a>.<a class="code" href="class_r_f24_logger.html#a2b6d6098ff3862c5aa46694dfa1457f2">setHandler</a>(&amp;rf24SerialLogHandler);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="group___user_access_macros.html#ga31bb3233b7363b3de370327743ff5446">RF24LOGGER_info</a>(vendorID, <span class="stringliteral">&quot;RF24Log/examples/AllLogLevelsLogger&quot;</span>);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">void</span> loop()</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">for</span> (uint16_t logLevel = 0 ; logLevel &lt;= 255 ; logLevel ++)</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="group___user_access_macros.html#ga8f308985c8824c23acd7ffc8e6c03d3b">RF24LOGGER_log</a>((uint8_t)logLevel, vendorID, <span class="stringliteral">&quot;This is a log message with level %d&quot;</span>, logLevel);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  Serial.println(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  delay(5000);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifdef ARDUINO</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_arduino_print_logger_8h.html">RF24Loggers/ArduinoPrintLogger.h</a>&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// Create hardware serial port log handler</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<a class="code" href="class_arduino_print_logger.html">ArduinoPrintLogger</a> serialLogHandler(&amp;Serial);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#elif PICO_BUILD</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;pico/stdlib.h&quot;</span>  <span class="comment">// printf(), sleep_ms(), getchar_timeout_us(), to_us_since_boot(), get_absolute_time()</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;pico/bootrom.h&quot;</span> <span class="comment">// reset_usb_boot()</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;tusb.h&gt;</span>         <span class="comment">// tud_cdc_connected()</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_printf_logger_8h.html">RF24Loggers/PrintfLogger.h</a>&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// Create hardware serial port log handler</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<a class="code" href="class_printf_logger.html">PrintfLogger</a> serialLogHandler(&amp;printf);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_o_stream_logger_8h.html">RF24Loggers/OStreamLogger.h</a>&gt;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// Create hardware serial port log handler</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<a class="code" href="class_o_stream_logger.html">OStreamLogger</a> serialLogHandler(&amp;std::cout);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">// Define global vendor id (it is stored in FLASH memory)</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> PROGMEM vendorID[] = <span class="stringliteral">&quot;RF24LogExample&quot;</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">void</span> setup()</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#ifdef ARDUINO</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// configure serial port baudrate</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  Serial.begin(115200);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#elif defined (PICO_BUILD)</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="comment">// wait here until the CDC ACM (serial port emulation) is connected</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">while</span> (!tud_cdc_connected()) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    sleep_ms(10);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="comment">// set maximal log level to ALL</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  serialLogHandler.setLogLevel(<a class="code" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0ab1d5eac4b1dca480c8056eaea7663b7a">RF24LogLevel::ALL</a>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="comment">// set serial port handler</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="_r_f24_logger_8cpp.html#a69c6af0be57a4a9868d516ef55e843f0">rf24Logger</a>.<a class="code" href="class_r_f24_logger.html#a2b6d6098ff3862c5aa46694dfa1457f2">setHandler</a>(&amp;serialLogHandler);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="group___user_access_macros.html#ga31bb3233b7363b3de370327743ff5446">RF24LOGGER_info</a>(vendorID, <span class="stringliteral">&quot;RF24Log/examples/AllLogLevelsLogger&quot;</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> loop()</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordflow">for</span> (uint16_t logLevel = 0 ; logLevel &lt;= 255 ; logLevel ++)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="group___user_access_macros.html#ga8f308985c8824c23acd7ffc8e6c03d3b">RF24LOGGER_log</a>((uint8_t)logLevel, vendorID, <span class="stringliteral">&quot;This is a log message with level %d&quot;</span>, logLevel);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#ifdef ARDUINO</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  Serial.println(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  delay(5000);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#elif !defined(PICO_BUILD)</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="comment">// for non-Arduino &amp; not Pico SDK</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="comment">// time.sleep(1); // TODO</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#ifndef ARDUINO</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">int</span> main()</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;{</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  setup();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordflow">while</span> (1) { loop(); }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="a_arduino_print_logger_8h_html"><div class="ttname"><a href="_arduino_print_logger_8h.html">ArduinoPrintLogger.h</a></div><div class="ttdoc">handler for Print::print() based function calls</div></div>
+<div class="ttc" id="a_o_stream_logger_8h_html"><div class="ttname"><a href="_o_stream_logger_8h.html">OStreamLogger.h</a></div><div class="ttdoc">handler for ostream based objects</div></div>
+<div class="ttc" id="a_printf_logger_8h_html"><div class="ttname"><a href="_printf_logger_8h.html">PrintfLogger.h</a></div><div class="ttdoc">handler for printf basedfunction calls</div></div>
 <div class="ttc" id="a_r_f24_logger_8cpp_html_a69c6af0be57a4a9868d516ef55e843f0"><div class="ttname"><a href="_r_f24_logger_8cpp.html#a69c6af0be57a4a9868d516ef55e843f0">rf24Logger</a></div><div class="ttdeci">RF24Logger rf24Logger</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_logger_8cpp_source.html#l00050">RF24Logger.cpp:50</a></div></div>
 <div class="ttc" id="a_r_f24_logger_8h_html"><div class="ttname"><a href="_r_f24_logger_8h.html">RF24Logger.h</a></div><div class="ttdoc">declaration of common RF24Log API</div></div>
 <div class="ttc" id="aclass_arduino_print_logger_html"><div class="ttname"><a href="class_arduino_print_logger.html">ArduinoPrintLogger</a></div><div class="ttdef"><b>Definition:</b> <a href="_arduino_print_logger_8h_source.html#l00024">ArduinoPrintLogger.h:25</a></div></div>
-<div class="ttc" id="aclass_r_f24_log_abstract_handler_html_a964b4de4cae6567127b51502497f55cb"><div class="ttname"><a href="class_r_f24_log_abstract_handler.html#a964b4de4cae6567127b51502497f55cb">RF24LogAbstractHandler::setLogLevel</a></div><div class="ttdeci">void setLogLevel(uint8_t logLevel)</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_abstracts_8cpp_source.html#l00035">RF24LogAbstracts.cpp:35</a></div></div>
+<div class="ttc" id="aclass_o_stream_logger_html"><div class="ttname"><a href="class_o_stream_logger.html">OStreamLogger</a></div><div class="ttdoc">Class to manage logging messages to a ostream based object.</div><div class="ttdef"><b>Definition:</b> <a href="_o_stream_logger_8h_source.html#l00024">OStreamLogger.h:25</a></div></div>
+<div class="ttc" id="aclass_printf_logger_html"><div class="ttname"><a href="class_printf_logger.html">PrintfLogger</a></div><div class="ttdoc">Class to manage logging messages to a printf function pointer.</div><div class="ttdef"><b>Definition:</b> <a href="_printf_logger_8h_source.html#l00022">PrintfLogger.h:23</a></div></div>
 <div class="ttc" id="aclass_r_f24_logger_html_a2b6d6098ff3862c5aa46694dfa1457f2"><div class="ttname"><a href="class_r_f24_logger.html#a2b6d6098ff3862c5aa46694dfa1457f2">RF24Logger::setHandler</a></div><div class="ttdeci">void setHandler(RF24LogHandler *handler)</div><div class="ttdoc">set the instance's handler</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_logger_8cpp_source.html#l00022">RF24Logger.cpp:22</a></div></div>
 <div class="ttc" id="agroup___user_access_macros_html_ga31bb3233b7363b3de370327743ff5446"><div class="ttname"><a href="group___user_access_macros.html#ga31bb3233b7363b3de370327743ff5446">RF24LOGGER_info</a></div><div class="ttdeci">#define RF24LOGGER_info(vendorId, message,...)</div><div class="ttdoc">output an INFO message</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_logger_8h_source.html#l00071">RF24Logger.h:71</a></div></div>
 <div class="ttc" id="agroup___user_access_macros_html_ga8f308985c8824c23acd7ffc8e6c03d3b"><div class="ttname"><a href="group___user_access_macros.html#ga8f308985c8824c23acd7ffc8e6c03d3b">RF24LOGGER_log</a></div><div class="ttdeci">#define RF24LOGGER_log(logLevel, vendorId, message,...)</div><div class="ttdoc">output a log message of any level</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_logger_8h_source.html#l00093">RF24Logger.h:93</a></div></div>

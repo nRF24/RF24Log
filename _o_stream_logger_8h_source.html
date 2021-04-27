@@ -103,8 +103,12 @@ $(function() {
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_o_stream_logger.html#aa68b0cf99500b68fbd34616b71e5b46b">appendFormattedMessage</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *format, va_list *args);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SRC_RF24LOGGERS_OSTREAMLOGGER_H_</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;#endif <span class="comment">// !ARDUINO</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#ifndef PROGMEM</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define PROGMEM</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// SRC_RF24LOGGERS_OSTREAMLOGGER_H_</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;#endif <span class="comment">// !ARDUINO</span></div>
 <div class="ttc" id="a_r_f24_log_abstracts_8h_html"><div class="ttname"><a href="_r_f24_log_abstracts_8h.html">RF24LogAbstracts.h</a></div><div class="ttdoc">abstract classes that allow custom handlers and different output stream APIs</div></div>
 <div class="ttc" id="aclass_o_stream_logger_html"><div class="ttname"><a href="class_o_stream_logger.html">OStreamLogger</a></div><div class="ttdoc">Class to manage logging messages to a ostream based object.</div><div class="ttdef"><b>Definition:</b> <a href="_o_stream_logger_8h_source.html#l00024">OStreamLogger.h:25</a></div></div>
 <div class="ttc" id="aclass_o_stream_logger_html_a10d19cc76c65ec6a7f27ea739f7f0ffb"><div class="ttname"><a href="class_o_stream_logger.html#a10d19cc76c65ec6a7f27ea739f7f0ffb">OStreamLogger::write</a></div><div class="ttdeci">void write(uint8_t logLevel, const char *vendorId, const char *message, va_list *args)</div><div class="ttdef"><b>Definition:</b> <a href="_o_stream_logger_8cpp_source.html#l00036">OStreamLogger.cpp:36</a></div></div>
