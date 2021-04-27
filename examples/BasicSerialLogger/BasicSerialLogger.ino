@@ -40,7 +40,7 @@ void setup()
 void loop()
 {
   if (Serial.available()) {
-    char input = Serial.ParseInt();
+    char input = Serial.parseInt();
     Serial.print("Set log level (in octal) to ");
     Serial.println(input, OCT);
     rf24SerialLogHandler.setLogLevel(input);

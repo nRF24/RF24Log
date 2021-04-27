@@ -48,7 +48,7 @@ void loop()
   // set log level for both Handlers
   rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
   if (Serial.available()) {
-    char input = Serial.ParseInt();
+    char input = Serial.parseInt();
     Serial.print("Set log level (in octal) to ");
     Serial.print(input, OCT);
     Serial.println(" for Handler2");
