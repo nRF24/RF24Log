@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['warn_44',['warn',['../class_r_f24_logger.html#a8bceb8741287aef5a494efccfcc45b41',1,'RF24Logger']]],
-  ['warn_45',['WARN',['../group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a74dac7ac23d5b810db6d4067f14e8676',1,'RF24LogLevel.h']]],
-  ['write_46',['write',['../class_r_f24_abstract_log_handler.html#a4da7df839cb8b0d0e74c5acfef20a20f',1,'RF24AbstractLogHandler::write()'],['../class_r_f24_stream_log_handler.html#a9fd2ef2f5175c10bf695e53fea96d24a',1,'RF24StreamLogHandler::write()']]]
+  ['sethandler_48',['setHandler',['../class_r_f24_logger.html#a2b6d6098ff3862c5aa46694dfa1457f2',1,'RF24Logger']]],
+  ['setloglevel_49',['setLogLevel',['../class_r_f24_dual_log_handler.html#ad81db68291bcdf1fa253ca1fdf700901',1,'RF24DualLogHandler::setLogLevel()'],['../class_r_f24_log_abstract_handler.html#a964b4de4cae6567127b51502497f55cb',1,'RF24LogAbstractHandler::setLogLevel()'],['../class_r_f24_log_handler.html#a7ae1378ea39e298905f51ac54a4a7d80',1,'RF24LogHandler::setLogLevel()']]],
+  ['stream_50',['stream',['../class_arduino_print_logger.html#afc518aba1aeea255105e371aecf805a4',1,'ArduinoPrintLogger']]],
+  ['supported_20format_20specifiers_51',['Supported Format Specifiers',['../md_docs_supported_specifiers.html',1,'']]]
 ];

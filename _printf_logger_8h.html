@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RF24Log: src/handlers/RF24AbstractLogHandler.h File Reference</title>
+<title>RF24Log: src/stream_handlers/PrintfLogger.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,35 +63,39 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5686efc8b5ddd35b6b727c343c338ca5.html">handlers</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f57be43dc3ee5fc8857d6f973a7658f8.html">stream_handlers</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
-<div class="title">RF24AbstractLogHandler.h File Reference</div>  </div>
+<div class="title">PrintfLogger.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;WString.h&gt;</code><br />
-<code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &lt;stdarg.h&gt;</code><br />
-<code>#include &lt;<a class="el" href="_r_f24_log_handler_8h_source.html">RF24LogHandler.h</a>&gt;</code><br />
-<code>#include &quot;<a class="el" href="_r_f24_log_level_8h_source.html">RF24LogLevel.h</a>&quot;</code><br />
+
+<p>handler for printf basedfunction calls  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;<a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>&gt;</code><br />
+<code>#include &lt;ctime&gt;</code><br />
+<code>#include &lt;cstdio&gt;</code><br />
 </div>
-<p><a href="_r_f24_abstract_log_handler_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="_printf_logger_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_abstract_log_handler.html">RF24AbstractLogHandler</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html">PrintfLogger</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class to manage logging messages to a printf function pointer.  <a href="class_printf_logger.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Created on: 2 Oct 2020 Author: Witold Markowski (wmarkow)</p>
-<p>Copyright (C) 2020 Witold Markowski (wmarkow) 2021 Brendan Doherty (2bndy5)</p>
-<p>This General Public License does not permit incorporating your program into proprietary programs. If your program is a subroutine library, you may consider it more useful to permit linking proprietary applications with the library. If this is what you want to do, use the GNU Lesser General Public License instead of this License. </p>
+<div class="textblock"><p>handler for printf basedfunction calls </p>
+<dl class="section date"><dt>Date</dt><dd>created 2021-04-24 </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Brendan Doherty (2bndy5) </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (C) 2021 Brendan Doherty (2bndy5) <br  />
+ This General Public License does not permit incorporating your program into proprietary programs. If your program is a subroutine library, you may consider it more useful to permit linking proprietary applications with the library. If this is what you want to do, use the GNU Lesser General Public License instead of this License. </dd></dl>
 
-<p class="definition">Definition in file <a class="el" href="_r_f24_abstract_log_handler_8h_source.html">RF24AbstractLogHandler.h</a>.</p>
+<p class="definition">Definition in file <a class="el" href="_printf_logger_8h_source.html">PrintfLogger.h</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

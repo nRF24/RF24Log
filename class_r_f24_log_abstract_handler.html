@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RF24Log: RF24AbstractLogHandler Class Reference</title>
+<title>RF24Log: RF24LogAbstractHandler Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -67,49 +67,51 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="class_r_f24_abstract_log_handler-members.html">List of all members</a>  </div>
+<a href="class_r_f24_log_abstract_handler-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">RF24AbstractLogHandler Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+<div class="title">RF24LogAbstractHandler Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="_r_f24_abstract_log_handler_8h_source.html">RF24AbstractLogHandler.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for RF24AbstractLogHandler:</div>
+Inheritance diagram for RF24LogAbstractHandler:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="class_r_f24_abstract_log_handler.png" usemap="#RF24AbstractLogHandler_map" alt=""/>
-  <map id="RF24AbstractLogHandler_map" name="RF24AbstractLogHandler_map">
-<area href="class_r_f24_log_handler.html" alt="RF24LogHandler" shape="rect" coords="0,0,155,24"/>
-<area href="class_r_f24_stream_log_handler.html" alt="RF24StreamLogHandler" shape="rect" coords="0,112,155,136"/>
+  <img src="class_r_f24_log_abstract_handler.png" usemap="#RF24LogAbstractHandler_map" alt=""/>
+  <map id="RF24LogAbstractHandler_map" name="RF24LogAbstractHandler_map">
+<area href="class_r_f24_log_handler.html" alt="RF24LogHandler" shape="rect" coords="165,0,320,24"/>
+<area href="class_arduino_print_logger.html" alt="ArduinoPrintLogger" shape="rect" coords="0,112,155,136"/>
+<area href="class_o_stream_logger.html" title="Class to manage logging messages to a ostream based object." alt="OStreamLogger" shape="rect" coords="165,112,320,136"/>
+<area href="class_printf_logger.html" title="Class to manage logging messages to a printf function pointer." alt="PrintfLogger" shape="rect" coords="330,112,485,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a01c6a23ed7c0b62b6769f0dc050ba8b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_abstract_log_handler.html#a01c6a23ed7c0b62b6769f0dc050ba8b1">log</a> (uint8_t <a class="el" href="class_r_f24_abstract_log_handler.html#a92a1db4a5a2c7d999378c963c0d7a2e4">logLevel</a>, const char *vendorId, const char *message, va_list *args)</td></tr>
-<tr class="memdesc:a01c6a23ed7c0b62b6769f0dc050ba8b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">log a message.  <a href="class_r_f24_abstract_log_handler.html#a01c6a23ed7c0b62b6769f0dc050ba8b1">More...</a><br /></td></tr>
-<tr class="separator:a01c6a23ed7c0b62b6769f0dc050ba8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f45dfbd8c56151d8d8322bc5fefee90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_abstract_log_handler.html#a3f45dfbd8c56151d8d8322bc5fefee90">setLogLevel</a> (uint8_t <a class="el" href="class_r_f24_abstract_log_handler.html#a92a1db4a5a2c7d999378c963c0d7a2e4">logLevel</a>)</td></tr>
-<tr class="separator:a3f45dfbd8c56151d8d8322bc5fefee90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54660bdcc2271e75e2a07a60928b5a89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89">log</a> (uint8_t <a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a>, const char *vendorId, const char *message, va_list *args)</td></tr>
+<tr class="memdesc:a54660bdcc2271e75e2a07a60928b5a89"><td class="mdescLeft">&#160;</td><td class="mdescRight">log a message.  <a href="class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89">More...</a><br /></td></tr>
+<tr class="separator:a54660bdcc2271e75e2a07a60928b5a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a964b4de4cae6567127b51502497f55cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#a964b4de4cae6567127b51502497f55cb">setLogLevel</a> (uint8_t <a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a>)</td></tr>
+<tr class="separator:a964b4de4cae6567127b51502497f55cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a4da7df839cb8b0d0e74c5acfef20a20f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_abstract_log_handler.html#a4da7df839cb8b0d0e74c5acfef20a20f">write</a> (uint8_t <a class="el" href="class_r_f24_abstract_log_handler.html#a92a1db4a5a2c7d999378c963c0d7a2e4">logLevel</a>, const char *vendorId, const char *message, va_list *args)=0</td></tr>
-<tr class="separator:a4da7df839cb8b0d0e74c5acfef20a20f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f50251b51562787436b0dd6cdc0e359"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#a8f50251b51562787436b0dd6cdc0e359">write</a> (uint8_t <a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a>, const char *vendorId, const char *message, va_list *args)=0</td></tr>
+<tr class="separator:a8f50251b51562787436b0dd6cdc0e359"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a92a1db4a5a2c7d999378c963c0d7a2e4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_abstract_log_handler.html#a92a1db4a5a2c7d999378c963c0d7a2e4">logLevel</a></td></tr>
-<tr class="separator:a92a1db4a5a2c7d999378c963c0d7a2e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4686f79ac6fded262d411f00c2478f4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a></td></tr>
+<tr class="separator:aa4686f79ac6fded262d411f00c2478f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A base class for handling log messages. </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_abstract_log_handler_8h_source.html#l00031">31</a> of file <a class="el" href="_r_f24_abstract_log_handler_8h_source.html">RF24AbstractLogHandler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8h_source.html#l00033">33</a> of file <a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a01c6a23ed7c0b62b6769f0dc050ba8b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01c6a23ed7c0b62b6769f0dc050ba8b1">&#9670;&nbsp;</a></span>log()</h2>
+<a id="a54660bdcc2271e75e2a07a60928b5a89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54660bdcc2271e75e2a07a60928b5a89">&#9670;&nbsp;</a></span>log()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -118,7 +120,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void RF24AbstractLogHandler::log </td>
+          <td class="memname">void RF24LogAbstractHandler::log </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>logLevel</em>, </td>
@@ -167,12 +169,12 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_r_f24_log_handler.html#ad82545329939ba516d2b622dd353cb2e">RF24LogHandler</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_abstract_log_handler_8cpp_source.html#l00024">24</a> of file <a class="el" href="_r_f24_abstract_log_handler_8cpp_source.html">RF24AbstractLogHandler.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00024">24</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a3f45dfbd8c56151d8d8322bc5fefee90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f45dfbd8c56151d8d8322bc5fefee90">&#9670;&nbsp;</a></span>setLogLevel()</h2>
+<a id="a964b4de4cae6567127b51502497f55cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a964b4de4cae6567127b51502497f55cb">&#9670;&nbsp;</a></span>setLogLevel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -181,7 +183,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void RF24AbstractLogHandler::setLogLevel </td>
+          <td class="memname">void RF24LogAbstractHandler::setLogLevel </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>logLevel</em></td><td>)</td>
@@ -203,15 +205,15 @@ Protected Attributes</h2></td></tr>
 <dl class="section see"><dt>See also</dt><dd>Review the descriptions in the <a class="el" href="group__log_levels.html">Log Levels</a> </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class_r_f24_log_handler.html#a7ae1378ea39e298905f51ac54a4a7d80">RF24LogHandler</a>.</p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#a1">BasicSerialLogger.ino</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_basic_serial_logger_8ino-example.html#a1">BasicSerialLogger.ino</a>, and <a class="el" href="_log_levels_logger_8ino-example.html#a1">LogLevelsLogger.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_abstract_log_handler_8cpp_source.html#l00037">37</a> of file <a class="el" href="_r_f24_abstract_log_handler_8cpp_source.html">RF24AbstractLogHandler.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00037">37</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a4da7df839cb8b0d0e74c5acfef20a20f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4da7df839cb8b0d0e74c5acfef20a20f">&#9670;&nbsp;</a></span>write()</h2>
+<a id="a8f50251b51562787436b0dd6cdc0e359"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f50251b51562787436b0dd6cdc0e359">&#9670;&nbsp;</a></span>write()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -220,7 +222,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void RF24AbstractLogHandler::write </td>
+          <td class="memname">virtual void RF24LogAbstractHandler::write </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>logLevel</em>, </td>
@@ -265,13 +267,13 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_r_f24_stream_log_handler.html#a9fd2ef2f5175c10bf695e53fea96d24a">RF24StreamLogHandler</a>.</p>
+<p>Implemented in <a class="el" href="class_printf_logger.html#aff6713962021a634664b096925ca70f9">PrintfLogger</a>, <a class="el" href="class_o_stream_logger.html#a10d19cc76c65ec6a7f27ea739f7f0ffb">OStreamLogger</a>, and <a class="el" href="class_arduino_print_logger.html#a103bc553bc490e0617d5d75b2fa6d02e">ArduinoPrintLogger</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a92a1db4a5a2c7d999378c963c0d7a2e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92a1db4a5a2c7d999378c963c0d7a2e4">&#9670;&nbsp;</a></span>logLevel</h2>
+<a id="aa4686f79ac6fded262d411f00c2478f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4686f79ac6fded262d411f00c2478f4">&#9670;&nbsp;</a></span>logLevel</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -280,7 +282,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t RF24AbstractLogHandler::logLevel</td>
+          <td class="memname">uint8_t RF24LogAbstractHandler::logLevel</td>
         </tr>
       </table>
   </td>
@@ -291,13 +293,13 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>The configured log level used to filter which messages are output. </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_abstract_log_handler_8h_source.html#l00051">51</a> of file <a class="el" href="_r_f24_abstract_log_handler_8h_source.html">RF24AbstractLogHandler.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8h_source.html#l00053">53</a> of file <a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/handlers/<a class="el" href="_r_f24_abstract_log_handler_8h_source.html">RF24AbstractLogHandler.h</a></li>
-<li>src/handlers/<a class="el" href="_r_f24_abstract_log_handler_8cpp_source.html">RF24AbstractLogHandler.cpp</a></li>
+<li>src/<a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a></li>
+<li>src/<a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RF24Log: Member List</title>
+<title>RF24Log: src/stream_handlers/ArduinoPrintLogger.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,21 +61,40 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f57be43dc3ee5fc8857d6f973a7658f8.html">stream_handlers</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
-<div class="title">RF24AbstractLogHandler Member List</div>  </div>
+<div class="title">ArduinoPrintLogger.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the complete list of members for <a class="el" href="class_r_f24_abstract_log_handler.html">RF24AbstractLogHandler</a>, including all inherited members.</p>
-<table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="class_r_f24_abstract_log_handler.html#a01c6a23ed7c0b62b6769f0dc050ba8b1">log</a>(uint8_t logLevel, const char *vendorId, const char *message, va_list *args)</td><td class="entry"><a class="el" href="class_r_f24_abstract_log_handler.html">RF24AbstractLogHandler</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_r_f24_abstract_log_handler.html#a92a1db4a5a2c7d999378c963c0d7a2e4">logLevel</a></td><td class="entry"><a class="el" href="class_r_f24_abstract_log_handler.html">RF24AbstractLogHandler</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>RF24AbstractLogHandler</b>() (defined in <a class="el" href="class_r_f24_abstract_log_handler.html">RF24AbstractLogHandler</a>)</td><td class="entry"><a class="el" href="class_r_f24_abstract_log_handler.html">RF24AbstractLogHandler</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_r_f24_abstract_log_handler.html#a3f45dfbd8c56151d8d8322bc5fefee90">setLogLevel</a>(uint8_t logLevel)</td><td class="entry"><a class="el" href="class_r_f24_abstract_log_handler.html">RF24AbstractLogHandler</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_r_f24_abstract_log_handler.html#a4da7df839cb8b0d0e74c5acfef20a20f">write</a>(uint8_t logLevel, const char *vendorId, const char *message, va_list *args)=0</td><td class="entry"><a class="el" href="class_r_f24_abstract_log_handler.html">RF24AbstractLogHandler</a></td><td class="entry"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></td></tr>
-</table></div><!-- contents -->
+<p>handler for Print::print() based function calls  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;<a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>&gt;</code><br />
+<code>#include &lt;Print.h&gt;</code><br />
+</div>
+<p><a href="_arduino_print_logger_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_print_logger.html">ArduinoPrintLogger</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>handler for Print::print() based function calls </p>
+<dl class="section date"><dt>Date</dt><dd>created 2 Oct 2020 </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Witold Markowski (wmarkow) </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (C) 2020 Witold Markowski (wmarkow) <br  />
+ This General Public License does not permit incorporating your program into proprietary programs. If your program is a subroutine library, you may consider it more useful to permit linking proprietary applications with the library. If this is what you want to do, use the GNU Lesser General Public License instead of this License. </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_arduino_print_logger_8h_source.html">ArduinoPrintLogger.h</a>.</p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1

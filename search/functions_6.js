@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['sethandler_74',['setHandler',['../class_r_f24_logger.html#a2b6d6098ff3862c5aa46694dfa1457f2',1,'RF24Logger']]],
-  ['setloglevel_75',['setLogLevel',['../class_r_f24_abstract_log_handler.html#a3f45dfbd8c56151d8d8322bc5fefee90',1,'RF24AbstractLogHandler::setLogLevel()'],['../class_r_f24_dual_log_handler.html#ad81db68291bcdf1fa253ca1fdf700901',1,'RF24DualLogHandler::setLogLevel()'],['../class_r_f24_log_handler.html#a7ae1378ea39e298905f51ac54a4a7d80',1,'RF24LogHandler::setLogLevel()']]]
+  ['write_89',['write',['../class_r_f24_log_abstract_handler.html#a8f50251b51562787436b0dd6cdc0e359',1,'RF24LogAbstractHandler::write()'],['../class_arduino_print_logger.html#a103bc553bc490e0617d5d75b2fa6d02e',1,'ArduinoPrintLogger::write()'],['../class_o_stream_logger.html#a10d19cc76c65ec6a7f27ea739f7f0ffb',1,'OStreamLogger::write()'],['../class_printf_logger.html#aff6713962021a634664b096925ca70f9',1,'PrintfLogger::write()']]]
 ];

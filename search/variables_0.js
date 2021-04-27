@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loglevel_78',['logLevel',['../class_r_f24_abstract_log_handler.html#a92a1db4a5a2c7d999378c963c0d7a2e4',1,'RF24AbstractLogHandler']]]
+  ['loglevel_90',['logLevel',['../class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4',1,'RF24LogAbstractHandler']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['info_69',['info',['../class_r_f24_logger.html#ad796eee634664c51a43d6ff811661c96',1,'RF24Logger']]]
+  ['printflogger_84',['PrintfLogger',['../class_printf_logger.html#a7d1921079221f789a7d94d5a5410b13c',1,'PrintfLogger']]]
 ];

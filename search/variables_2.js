@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stream_85',['stream',['../class_r_f24_stream_log_handler.html#a94f31187ef9d6afeb69b5ac3a552c547',1,'RF24StreamLogHandler']]]
+  ['stream_97',['stream',['../class_arduino_print_logger.html#afc518aba1aeea255105e371aecf805a4',1,'ArduinoPrintLogger']]]
 ];
