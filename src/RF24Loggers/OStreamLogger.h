@@ -18,9 +18,7 @@
 #include <ostream>
 #include <RF24LogAbstracts.h>
 
-/**
- * @brief Class to manage logging messages to a ostream based object.
- */
+/** @brief Class to manage logging messages to a `ostream` based object. */
 class OStreamLogger : public RF24LogAbstractHandler, RF24LogAbstractStream
 {
 public:

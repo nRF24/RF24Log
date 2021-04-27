@@ -15,7 +15,7 @@
 #include <Arduino.h>
 #include <string.h>
 
-#include <RF24Logger.h>
+#include <RF24Logging.h>
 #include <RF24Loggers/ArduinoPrintLogger.h>
 
 // Define global vendor id (it is stored in FLASH memory)
@@ -30,19 +30,19 @@ void setup()
   Serial.begin(115200);
 
   // DO NOT set serial port log handler
-  // rf24Logger.setHandler(&rf24SerialLogHandler);
+  // rf24Logging.setHandler(&rf24SerialLogHandler);
 
   Serial.println("There is no handler defined. Nothing should be logged.");
 
-  RF24LOGGER_info(vendorID, "RF24Log/examples/EmptyLogger");
+  RF24Log_info(vendorID, "RF24Log/examples/EmptyLogger");
 }
 
 void loop()
 {
-  RF24LOGGER_error(vendorID, "Error message");
-  RF24LOGGER_warn(vendorID, "Warning message");
-  RF24LOGGER_info(vendorID, "Info message");
-  RF24LOGGER_debug(vendorID, "Debug message");
+  RF24Log_error(vendorID, "Error message");
+  RF24Log_warn(vendorID, "Warning message");
+  RF24Log_info(vendorID, "Info message");
+  RF24Log_debug(vendorID, "Debug message");
 
   delay(5000);
 }

@@ -24,9 +24,7 @@
 #include <RF24LogHandler.h>
 #include "RF24LogLevel.h"
 
-/**
- * A base class for handling log messages.
- */
+/** @brief An abstract base class for handling log messages. */
 class RF24LogAbstractHandler : public RF24LogHandler
 {
 public:
@@ -72,9 +70,7 @@ protected:
 #endif
 };
 
-/**
- * @brief A `protected` collection of methods that output formatted data to a stream.
- */
+/** @brief A `protected` collection of methods that output formatted data to a stream. */
 class RF24LogAbstractStream
 {
 protected:

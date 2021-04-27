@@ -16,9 +16,7 @@
 
 #include <RF24LogAbstracts.h>
 
-/**
- * @brief Class to manage logging messages to a printf function pointer.
- */
+/** @brief Class to manage logging messages to a printf function pointer. */
 class PrintfLogger : public RF24LogAbstractHandler, RF24LogAbstractStream
 {
 public:
@@ -30,7 +28,7 @@ public:
 
 private:
 
-    /** The internal reference to the configured output stream */
+    /** @brief The internal reference to the configured output stream */
     int (*stream)(const char *, ...);
 
 protected:

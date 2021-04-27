@@ -19,6 +19,7 @@
 #include <stdint.h>
 /**
  * @defgroup logLevels Log Levels
+ * @brief Order of logging levels
  * @{
  */
 /**

@@ -13,7 +13,7 @@
  */
 
 #include <string.h>
-#include <RF24Logger.h>
+#include <RF24Logging.h>
 
 #ifdef ARDUINO
 #include <Arduino.h>
@@ -57,15 +57,15 @@ void setup()
   // set maximal log level to ALL
   serialLogHandler.setLogLevel(RF24LogLevel::ALL);
   // set serial port handler
-  rf24Logger.setHandler(&serialLogHandler);
+  rf24Logging.setHandler(&serialLogHandler);
 
-  RF24LOGGER_info(vendorID, "RF24Log/examples/AllLogLevelsLogger");
+  RF24Log_info(vendorID, "RF24Log/examples/AllLogLevelsLogger");
 }
 
 void loop()
 {
   for (uint16_t logLevel = 0 ; logLevel <= 255 ; logLevel ++) {
-    RF24LOGGER_log((uint8_t)logLevel, vendorID, "This is a log message with level %d", logLevel);
+    RF24Log_log((uint8_t)logLevel, vendorID, "This is a log message with level %d", logLevel);
   }
 #ifdef ARDUINO
   Serial.println("");

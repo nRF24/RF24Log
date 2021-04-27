@@ -23,11 +23,8 @@
 #endif
 #include <stdint.h>
 #include <stdarg.h>
-#include "RF24LogLevel.h"
 
-/**
- * A base class for handling log messages.
- */
+/** @brief A base mechanism for handling log messages. */
 class RF24LogHandler
 {
 public:

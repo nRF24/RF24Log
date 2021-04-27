@@ -18,14 +18,12 @@
 #include <RF24LogAbstracts.h>
 #include <Print.h>
 
-/**
- * A log handler implementation which outputs log messages to a stream.
- */
+/** @brief A log handler implementation which outputs log messages to a stream. */
 class ArduinoPrintLogger : public RF24LogAbstractHandler, RF24LogAbstractStream
 {
 protected:
 
-    /** The output stream */
+    /** @brief The output stream */
     Print *stream;
 
 public:

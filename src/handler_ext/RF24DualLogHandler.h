@@ -17,9 +17,7 @@
 
 #include <RF24LogHandler.h>
 
-/**
- * A log handler implementation which redirects log messages to a two other log handlers.
- */
+/** @brief Module to extend the RF24LogHandler mechanism for redirecting to 2 different RF24LogHandler objects. */
 class RF24DualLogHandler : public RF24LogHandler
 {
 private:

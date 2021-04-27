@@ -15,7 +15,7 @@
 #include <Arduino.h>
 #include <string.h>
 
-#include <RF24Logger.h>
+#include <RF24Logging.h>
 #include <RF24Loggers/ArduinoPrintLogger.h>
 
 // Create hardware serial port log appender
@@ -32,9 +32,9 @@ void setup()
   // set maximal log level to ALL
   rf24SerialLogHandler.setLogLevel(RF24LogLevel::ALL);
   // set serial port appender
-  rf24Logger.setHandler(&rf24SerialLogHandler);
+  rf24Logging.setHandler(&rf24SerialLogHandler);
 
-  RF24LOGGER_info(vendorID, "RF24Log/examples/LogLevelsLogger");
+  RF24Log_info(vendorID, "RF24Log/examples/LogLevelsLogger");
 }
 
 void loop()
@@ -46,27 +46,27 @@ void loop()
     rf24SerialLogHandler.setLogLevel(input);
   }
 
-  RF24LOGGER_log(1, vendorID, "this is a custom sublevel without a domain.");
-  RF24LOGGER_error(vendorID, "Error message");
-  RF24LOGGER_log(RF24LogLevel::ERROR + 1, vendorID, "Error message sub-level 1");
-  RF24LOGGER_log(RF24LogLevel::ERROR + 7, vendorID, "Error message sub-level 7");
+  RF24Log_log(1, vendorID, "this is a custom sublevel without a domain.");
+  RF24Log_error(vendorID, "Error message");
+  RF24Log_log(RF24LogLevel::ERROR + 1, vendorID, "Error message sub-level 1");
+  RF24Log_log(RF24LogLevel::ERROR + 7, vendorID, "Error message sub-level 7");
 
-  RF24LOGGER_warn(vendorID, "Warning message");
-  RF24LOGGER_log(RF24LogLevel::WARN + 1, vendorID, "Warning message sub-level 1");
-  RF24LOGGER_log(RF24LogLevel::WARN + 7, vendorID, "Warning message sub-level 7");
+  RF24Log_warn(vendorID, "Warning message");
+  RF24Log_log(RF24LogLevel::WARN + 1, vendorID, "Warning message sub-level 1");
+  RF24Log_log(RF24LogLevel::WARN + 7, vendorID, "Warning message sub-level 7");
 
-  RF24LOGGER_info(vendorID, "Info message");
-  RF24LOGGER_log(RF24LogLevel::INFO + 1, vendorID, "Info message sub-level 1");
-  RF24LOGGER_log(RF24LogLevel::INFO + 7, vendorID, "Info message sub-level 7");
+  RF24Log_info(vendorID, "Info message");
+  RF24Log_log(RF24LogLevel::INFO + 1, vendorID, "Info message sub-level 1");
+  RF24Log_log(RF24LogLevel::INFO + 7, vendorID, "Info message sub-level 7");
 
-  RF24LOGGER_debug(vendorID, "Debug message");
-  RF24LOGGER_log(RF24LogLevel::DEBUG + 1, vendorID, "Debug message sub-level 1");
-  RF24LOGGER_log(RF24LogLevel::DEBUG + 7, vendorID, "Debug message sub-level 7");
+  RF24Log_debug(vendorID, "Debug message");
+  RF24Log_log(RF24LogLevel::DEBUG + 1, vendorID, "Debug message sub-level 1");
+  RF24Log_log(RF24LogLevel::DEBUG + 7, vendorID, "Debug message sub-level 7");
 
-  RF24LOGGER_warn(vendorID, "wierd order? Its in octal!");
-  RF24LOGGER_log(RF24LogLevel::ERROR - 1, vendorID, "This is not an Error message");
-  RF24LOGGER_log(RF24LogLevel::DEBUG + 8, vendorID, "This is not a Debug message");
-  RF24LOGGER_log(0x75, vendorID, "This is level 0x75");
+  RF24Log_warn(vendorID, "wierd order? Its in octal!");
+  RF24Log_log(RF24LogLevel::ERROR - 1, vendorID, "This is not an Error message");
+  RF24Log_log(RF24LogLevel::DEBUG + 8, vendorID, "This is not a Debug message");
+  RF24Log_log(0x75, vendorID, "This is level 0x75");
 
   Serial.println("");
   delay(5000);

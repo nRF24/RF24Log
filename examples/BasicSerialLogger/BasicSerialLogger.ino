@@ -13,7 +13,7 @@
  */
 
 #include <string.h>
-#include <RF24Logger.h>
+#include <RF24Logging.h>
 
 #ifdef ARDUINO
 #include <Arduino.h>
@@ -57,9 +57,9 @@ void setup()
   // set maximal log level to ALL
   serialLogHandler.setLogLevel(RF24LogLevel::ALL);
   // set serial port handler
-  rf24Logger.setHandler(&serialLogHandler);
+  rf24Logging.setHandler(&serialLogHandler);
 
-  RF24LOGGER_info(vendorID, "RF24Log/examples/BasicSerialLogger");
+  RF24Log_info(vendorID, "RF24Log/examples/BasicSerialLogger");
 }
 
 void loop()
@@ -103,19 +103,19 @@ void loop()
 
 #endif
 
-  RF24LOGGER_error(vendorID, "Error message");
-  RF24LOGGER_warn(vendorID, "Warning message");
-  RF24LOGGER_info(vendorID, "Info message");
-  RF24LOGGER_debug(vendorID, "Debug message");
+  RF24Log_error(vendorID, "Error message");
+  RF24Log_warn(vendorID, "Warning message");
+  RF24Log_info(vendorID, "Info message");
+  RF24Log_debug(vendorID, "Debug message");
 
-  RF24LOGGER_error(vendorID, "Error message with %s", "RAM string 1");
-  RF24LOGGER_warn(vendorID, "Warning message with %s", "RAM string 2");
+  RF24Log_error(vendorID, "Error message with %s", "RAM string 1");
+  RF24Log_warn(vendorID, "Warning message with %s", "RAM string 2");
 
-  RF24LOGGER_info(vendorID, " info log with double value %D", 3.14);
-  RF24LOGGER_debug(vendorID, " warn log with double value %D", 2.71);
+  RF24Log_info(vendorID, " info log with double value %D", 3.14);
+  RF24Log_debug(vendorID, " warn log with double value %D", 2.71);
 
-  RF24LOGGER_log(RF24LogLevel::INFO + 1, vendorID, "INFO + 1 message");
-  RF24LOGGER_log(RF24LogLevel::WARN + 1, vendorID, "WARN + 1 message");
+  RF24Log_log(RF24LogLevel::INFO + 1, vendorID, "INFO + 1 message");
+  RF24Log_log(RF24LogLevel::WARN + 1, vendorID, "WARN + 1 message");
 #ifdef ARDUINO
   Serial.println("");
 

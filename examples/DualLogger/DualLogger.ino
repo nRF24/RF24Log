@@ -15,7 +15,7 @@
 #include <Arduino.h>
 #include <string.h>
 
-#include <RF24Logger.h>
+#include <RF24Logging.h>
 #include <RF24Loggers/ArduinoPrintLogger.h>
 #include <handler_ext/RF24DualLogHandler.h>
 
@@ -38,9 +38,9 @@ void setup()
   // set maximal log level to ALL
   rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
   // set serial port handler
-  rf24Logger.setHandler(&rf24DualLogHandler);
+  rf24Logging.setHandler(&rf24DualLogHandler);
 
-  RF24LOGGER_info(vendorID, "RF24Log/examples/DualLogger");
+  RF24Log_info(vendorID, "RF24Log/examples/DualLogger");
 }
 
 void loop()
@@ -55,10 +55,10 @@ void loop()
     rf24SerialLogHandler2.setLogLevel(input); // set log level only for handler2
   }
 
-  RF24LOGGER_info(vendorID, "This message should be logged %s.", "twice");
-  RF24LOGGER_warn(vendorID, "This warn message should be logged %s.", "twice");
-  RF24LOGGER_info(vendorID, "This info message should be logged %s.", "twice");
-  RF24LOGGER_debug(vendorID, "This debug message should NOT be logged %s.");
+  RF24Log_info(vendorID, "This message should be logged %s.", "twice");
+  RF24Log_warn(vendorID, "This warn message should be logged %s.", "twice");
+  RF24Log_info(vendorID, "This info message should be logged %s.", "twice");
+  RF24Log_debug(vendorID, "This debug message should NOT be logged %s.");
 
   Serial.println("");
 
