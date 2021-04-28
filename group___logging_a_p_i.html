@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RF24Log: User Access Macros</title>
+<title>RF24Log: Logging API</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,35 +64,54 @@ $(function() {
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">User Access Macros</div>  </div>
+<div class="title">Logging API</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>freindly helper macros for user access to logging output.  
+<p>simple helper macros for user access to logging output via the <a class="el" href="group___logging_a_p_i.html#gab335c779efc8aa9cf199825986ed87a9">rf24Logging</a> object.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_logging.html">RF24Logging</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the end-user's access point into the world of logging messages.  <a href="class_r_f24_logging.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:gaa9bcf8f72ed3e2d0f1a98c1b40c5409f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___user_access_macros.html#gaa9bcf8f72ed3e2d0f1a98c1b40c5409f">RF24Log_error</a>(vendorId,  message, ...)&#160;&#160;&#160;(rf24Logging.log(<a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a2fd6f336d08340583bd620a7f5694c90">RF24LogLevel::ERROR</a>, vendorId, message, ##__VA_ARGS__))</td></tr>
-<tr class="memdesc:gaa9bcf8f72ed3e2d0f1a98c1b40c5409f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ouput an ERROR message  <a href="group___user_access_macros.html#gaa9bcf8f72ed3e2d0f1a98c1b40c5409f">More...</a><br /></td></tr>
+<tr class="memitem:gaa9bcf8f72ed3e2d0f1a98c1b40c5409f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___logging_a_p_i.html#gaa9bcf8f72ed3e2d0f1a98c1b40c5409f">RF24Log_error</a>(vendorId,  message, ...)&#160;&#160;&#160;(rf24Logging.log(<a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a2fd6f336d08340583bd620a7f5694c90">RF24LogLevel::ERROR</a>, vendorId, message, ##__VA_ARGS__))</td></tr>
+<tr class="memdesc:gaa9bcf8f72ed3e2d0f1a98c1b40c5409f"><td class="mdescLeft">&#160;</td><td class="mdescRight">ouput an <a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a2fd6f336d08340583bd620a7f5694c90">ERROR</a> message  <a href="group___logging_a_p_i.html#gaa9bcf8f72ed3e2d0f1a98c1b40c5409f">More...</a><br /></td></tr>
 <tr class="separator:gaa9bcf8f72ed3e2d0f1a98c1b40c5409f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab3b6be9f0d9d9f97dc4d9be5187fe2ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___user_access_macros.html#gab3b6be9f0d9d9f97dc4d9be5187fe2ca">RF24Log_warn</a>(vendorId,  message, ...)&#160;&#160;&#160;(rf24Logging.log(<a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a74dac7ac23d5b810db6d4067f14e8676">RF24LogLevel::WARN</a>, vendorId, message, ##__VA_ARGS__))</td></tr>
-<tr class="memdesc:gab3b6be9f0d9d9f97dc4d9be5187fe2ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a message to WARN the reader  <a href="group___user_access_macros.html#gab3b6be9f0d9d9f97dc4d9be5187fe2ca">More...</a><br /></td></tr>
+<tr class="memitem:gab3b6be9f0d9d9f97dc4d9be5187fe2ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___logging_a_p_i.html#gab3b6be9f0d9d9f97dc4d9be5187fe2ca">RF24Log_warn</a>(vendorId,  message, ...)&#160;&#160;&#160;(rf24Logging.log(<a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a74dac7ac23d5b810db6d4067f14e8676">RF24LogLevel::WARN</a>, vendorId, message, ##__VA_ARGS__))</td></tr>
+<tr class="memdesc:gab3b6be9f0d9d9f97dc4d9be5187fe2ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a message to WARN the reader  <a href="group___logging_a_p_i.html#gab3b6be9f0d9d9f97dc4d9be5187fe2ca">More...</a><br /></td></tr>
 <tr class="separator:gab3b6be9f0d9d9f97dc4d9be5187fe2ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2e0c08b7f516dc508b491f1f3102c901"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___user_access_macros.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(vendorId,  message, ...)&#160;&#160;&#160;(rf24Logging.log(<a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a748005382152808a72b1a9177d9dc806">RF24LogLevel::INFO</a>, vendorId, message, ##__VA_ARGS__))</td></tr>
-<tr class="memdesc:ga2e0c08b7f516dc508b491f1f3102c901"><td class="mdescLeft">&#160;</td><td class="mdescRight">output an INFO message  <a href="group___user_access_macros.html#ga2e0c08b7f516dc508b491f1f3102c901">More...</a><br /></td></tr>
+<tr class="memitem:ga2e0c08b7f516dc508b491f1f3102c901"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(vendorId,  message, ...)&#160;&#160;&#160;(rf24Logging.log(<a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a748005382152808a72b1a9177d9dc806">RF24LogLevel::INFO</a>, vendorId, message, ##__VA_ARGS__))</td></tr>
+<tr class="memdesc:ga2e0c08b7f516dc508b491f1f3102c901"><td class="mdescLeft">&#160;</td><td class="mdescRight">output an <a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a748005382152808a72b1a9177d9dc806">INFO</a> message  <a href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">More...</a><br /></td></tr>
 <tr class="separator:ga2e0c08b7f516dc508b491f1f3102c901"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga14adb54e78925f200b5caee1a819d88b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___user_access_macros.html#ga14adb54e78925f200b5caee1a819d88b">RF24Log_debug</a>(vendorId,  message, ...)&#160;&#160;&#160;(rf24Logging.log(<a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a0593585da9181e972974c1274d8f2b4f">RF24LogLevel::DEBUG</a>, vendorId, message, ##__VA_ARGS__))</td></tr>
-<tr class="memdesc:ga14adb54e78925f200b5caee1a819d88b"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a message to help developers DEBUG their source code  <a href="group___user_access_macros.html#ga14adb54e78925f200b5caee1a819d88b">More...</a><br /></td></tr>
+<tr class="memitem:ga14adb54e78925f200b5caee1a819d88b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___logging_a_p_i.html#ga14adb54e78925f200b5caee1a819d88b">RF24Log_debug</a>(vendorId,  message, ...)&#160;&#160;&#160;(rf24Logging.log(<a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a0593585da9181e972974c1274d8f2b4f">RF24LogLevel::DEBUG</a>, vendorId, message, ##__VA_ARGS__))</td></tr>
+<tr class="memdesc:ga14adb54e78925f200b5caee1a819d88b"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a message to help developers <a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a0593585da9181e972974c1274d8f2b4f">DEBUG</a> their source code  <a href="group___logging_a_p_i.html#ga14adb54e78925f200b5caee1a819d88b">More...</a><br /></td></tr>
 <tr class="separator:ga14adb54e78925f200b5caee1a819d88b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga04b17e399c677818d69abd5f5d37e9ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___user_access_macros.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(logLevel,  vendorId,  message, ...)&#160;&#160;&#160;(rf24Logging.log(logLevel, vendorId, message, ##__VA_ARGS__))</td></tr>
-<tr class="memdesc:ga04b17e399c677818d69abd5f5d37e9ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a log message of any level  <a href="group___user_access_macros.html#ga04b17e399c677818d69abd5f5d37e9ef">More...</a><br /></td></tr>
+<tr class="memitem:ga04b17e399c677818d69abd5f5d37e9ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(logLevel,  vendorId,  message, ...)&#160;&#160;&#160;(rf24Logging.log(logLevel, vendorId, message, ##__VA_ARGS__))</td></tr>
+<tr class="memdesc:ga04b17e399c677818d69abd5f5d37e9ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a log message of any level  <a href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">More...</a><br /></td></tr>
 <tr class="separator:ga04b17e399c677818d69abd5f5d37e9ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7cb23572049cfb32fa4b9f2e0c52c9d2"><td class="memItemLeft" align="right" valign="top"><a id="ga7cb23572049cfb32fa4b9f2e0c52c9d2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___logging_a_p_i.html#ga7cb23572049cfb32fa4b9f2e0c52c9d2">RF24LOG_NO_EOL</a></td></tr>
+<tr class="memdesc:ga7cb23572049cfb32fa4b9f2e0c52c9d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">macro (when defined) disables automatic line feeds at the end of all log messages. <br /></td></tr>
+<tr class="separator:ga7cb23572049cfb32fa4b9f2e0c52c9d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:gab335c779efc8aa9cf199825986ed87a9"><td class="memItemLeft" align="right" valign="top"><a id="gab335c779efc8aa9cf199825986ed87a9"></a>
+<a class="el" href="class_r_f24_logging.html">RF24Logging</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___logging_a_p_i.html#gab335c779efc8aa9cf199825986ed87a9">rf24Logging</a></td></tr>
+<tr class="memdesc:gab335c779efc8aa9cf199825986ed87a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">the singleton used for all your program's logging purposes. <br /></td></tr>
+<tr class="separator:gab335c779efc8aa9cf199825986ed87a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>freindly helper macros for user access to logging output. </p>
+<p>simple helper macros for user access to logging output via the <a class="el" href="group___logging_a_p_i.html#gab335c779efc8aa9cf199825986ed87a9">rf24Logging</a> object. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ga14adb54e78925f200b5caee1a819d88b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga14adb54e78925f200b5caee1a819d88b">&#9670;&nbsp;</a></span>RF24Log_debug</h2>
@@ -126,11 +145,11 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>output a message to help developers DEBUG their source code </p>
+<p>output a message to help developers <a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a0593585da9181e972974c1274d8f2b4f">DEBUG</a> their source code </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">vendorId</td><td>A scoping identity of the message's origin </td></tr>
-    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf spcifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>%F</code> for floats). </td></tr>
+    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf specifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>%F</code> for floats). </td></tr>
     <tr><td class="paramname">...</td><td>the sequence of variables used to replace the format specifiers in the same order for which they appear in the <code>message</code> </td></tr>
   </table>
   </dd>
@@ -174,11 +193,11 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>ouput an ERROR message </p>
+<p>ouput an <a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a2fd6f336d08340583bd620a7f5694c90">ERROR</a> message </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">vendorId</td><td>A scoping identity of the message's origin </td></tr>
-    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf spcifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>%F</code> for floats). </td></tr>
+    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf specifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>%F</code> for floats). </td></tr>
     <tr><td class="paramname">...</td><td>the sequence of variables used to replace the format specifiers in the same order for which they appear in the <code>message</code> </td></tr>
   </table>
   </dd>
@@ -222,11 +241,11 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>output an INFO message </p>
+<p>output an <a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a748005382152808a72b1a9177d9dc806">INFO</a> message </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">vendorId</td><td>A scoping identity of the message's origin </td></tr>
-    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf spcifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>%F</code> for floats). </td></tr>
+    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf specifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>%F</code> for floats). </td></tr>
     <tr><td class="paramname">...</td><td>the sequence of variables used to replace the format specifiers in the same order for which they appear in the <code>message</code> </td></tr>
   </table>
   </dd>
@@ -282,7 +301,7 @@ Macros</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">logLevel</td><td>the level of the logging message </td></tr>
     <tr><td class="paramname">vendorId</td><td>A scoping identity of the message's origin </td></tr>
-    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf spcifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>%F</code> for floats). </td></tr>
+    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf specifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>%F</code> for floats). </td></tr>
     <tr><td class="paramname">...</td><td>the sequence of variables used to replace the format specifiers in the same order for which they appear in the <code>message</code> </td></tr>
   </table>
   </dd>
@@ -330,7 +349,7 @@ Macros</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">vendorId</td><td>A scoping identity of the message's origin </td></tr>
-    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf spcifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>%F</code> for floats). </td></tr>
+    <tr><td class="paramname">message</td><td>The message format string. Review <a href="https://www.cplusplus.com/reference/cstdio/printf/">the printf specifiers</a>, but note that not all are supported on certain MCU architectures (eg <code>%F</code> for floats). </td></tr>
     <tr><td class="paramname">...</td><td>the sequence of variables used to replace the format specifiers in the same order for which they appear in the <code>message</code> </td></tr>
   </table>
   </dd>

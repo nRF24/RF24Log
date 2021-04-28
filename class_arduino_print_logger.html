@@ -103,9 +103,12 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a9b69be4e8cccbb09cd1727f4feae8c78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_print_logger.html#a9b69be4e8cccbb09cd1727f4feae8c78">appendFormat</a> (const char format, va_list *args)</td></tr>
-<tr class="memdesc:a9b69be4e8cccbb09cd1727f4feae8c78"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a data according to the format specifier  <a href="class_arduino_print_logger.html#a9b69be4e8cccbb09cd1727f4feae8c78">More...</a><br /></td></tr>
-<tr class="separator:a9b69be4e8cccbb09cd1727f4feae8c78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67300ee6dd83b63f92cdaca3351f4b6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_print_logger.html#a67300ee6dd83b63f92cdaca3351f4b6a">appendFormat</a> (uint8_t count, char format, va_list *args)</td></tr>
+<tr class="memdesc:a67300ee6dd83b63f92cdaca3351f4b6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a data according to the format specifier  <a href="class_arduino_print_logger.html#a67300ee6dd83b63f92cdaca3351f4b6a">More...</a><br /></td></tr>
+<tr class="separator:a67300ee6dd83b63f92cdaca3351f4b6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06240a066be78b9ec41cc9e68cc46ad8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_print_logger.html#a06240a066be78b9ec41cc9e68cc46ad8">appendPadding</a> (const char *padding, int16_t depth)</td></tr>
+<tr class="memdesc:a06240a066be78b9ec41cc9e68cc46ad8"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a padding character a number of times  <a href="class_arduino_print_logger.html#a06240a066be78b9ec41cc9e68cc46ad8">More...</a><br /></td></tr>
+<tr class="separator:a06240a066be78b9ec41cc9e68cc46ad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e0e99600181bdaf0c11422b07126329"><td class="memItemLeft" align="right" valign="top"><a id="a0e0e99600181bdaf0c11422b07126329"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_print_logger.html#a0e0e99600181bdaf0c11422b07126329">appendTimestamp</a> ()</td></tr>
 <tr class="memdesc:a0e0e99600181bdaf0c11422b07126329"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a timestamp <br /></td></tr>
@@ -165,8 +168,8 @@ Print *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9b69be4e8cccbb09cd1727f4feae8c78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b69be4e8cccbb09cd1727f4feae8c78">&#9670;&nbsp;</a></span>appendFormat()</h2>
+<a id="a67300ee6dd83b63f92cdaca3351f4b6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67300ee6dd83b63f92cdaca3351f4b6a">&#9670;&nbsp;</a></span>appendFormat()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -177,7 +180,13 @@ Print *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
         <tr>
           <td class="memname">void ArduinoPrintLogger::appendFormat </td>
           <td>(</td>
-          <td class="paramtype">const char&#160;</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>format</em>, </td>
         </tr>
         <tr>
@@ -202,13 +211,14 @@ Print *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>output a data according to the format specifier </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">count</td><td>The number of prefixed padding characters </td></tr>
     <tr><td class="paramname">format</td><td>The format of the message </td></tr>
     <tr><td class="paramname">args</td><td>The sequence of args </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_arduino_print_logger_8cpp_source.html#l00114">114</a> of file <a class="el" href="_arduino_print_logger_8cpp_source.html">ArduinoPrintLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_arduino_print_logger_8cpp_source.html#l00132">132</a> of file <a class="el" href="_arduino_print_logger_8cpp_source.html">ArduinoPrintLogger.cpp</a>.</p>
 
 </div>
 </div>
@@ -257,7 +267,7 @@ Print *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#ade6125bf405bc97a2437fddf1bcaf3f0">RF24LogAbstractStream</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_arduino_print_logger_8cpp_source.html#l00098">98</a> of file <a class="el" href="_arduino_print_logger_8cpp_source.html">ArduinoPrintLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_arduino_print_logger_8cpp_source.html#l00099">99</a> of file <a class="el" href="_arduino_print_logger_8cpp_source.html">ArduinoPrintLogger.cpp</a>.</p>
 
 </div>
 </div>
@@ -295,7 +305,54 @@ Print *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#a927ad3e8894132c7cdee07fe71e70e3b">RF24LogAbstractStream</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_arduino_print_logger_8cpp_source.html#l00061">61</a> of file <a class="el" href="_arduino_print_logger_8cpp_source.html">ArduinoPrintLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_arduino_print_logger_8cpp_source.html#l00072">72</a> of file <a class="el" href="_arduino_print_logger_8cpp_source.html">ArduinoPrintLogger.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a06240a066be78b9ec41cc9e68cc46ad8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06240a066be78b9ec41cc9e68cc46ad8">&#9670;&nbsp;</a></span>appendPadding()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ArduinoPrintLogger::appendPadding </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>padding</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>depth</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>append a padding character a number of times </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">padding</td><td>The char to use as padding </td></tr>
+    <tr><td class="paramname">depth</td><td>The number of padding characters desired sequentially. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_arduino_print_logger_8cpp_source.html#l00258">258</a> of file <a class="el" href="_arduino_print_logger_8cpp_source.html">ArduinoPrintLogger.cpp</a>.</p>
 
 </div>
 </div>

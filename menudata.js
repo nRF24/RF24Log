@@ -39,7 +39,14 @@ var menudata={children:[
 {text:"r",url:"functions.html#index_r"},
 {text:"s",url:"functions.html#index_s"},
 {text:"w",url:"functions.html#index_w"}]},
-{text:"Functions",url:"functions_func.html"},
+{text:"Functions",url:"functions_func.html",children:[
+{text:"a",url:"functions_func.html#index_a"},
+{text:"l",url:"functions_func.html#index_l"},
+{text:"o",url:"functions_func.html#index_o"},
+{text:"p",url:"functions_func.html#index_p"},
+{text:"r",url:"functions_func.html#index_r"},
+{text:"s",url:"functions_func.html#index_s"},
+{text:"w",url:"functions_func.html#index_w"}]},
 {text:"Variables",url:"functions_vars.html"}]}]},
 {text:"Files",url:"files.html",children:[
 {text:"File List",url:"files.html"},
