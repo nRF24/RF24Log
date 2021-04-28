@@ -73,8 +73,9 @@ Conditional dependency</h1>
 <h2><a class="anchor" id="autotoc_md4"></a>
 Arduino Platform Supported Specifiers</h2>
 <p>Because all Arduino cores for all Arduino compatible boards don't unanimously support printf, we have a basic imitation mechanism included with <a class="el" href="class_arduino_print_logger.html" title="A log handler implementation which outputs log messages to a stream.">ArduinoPrintLogger</a>.</p>
-<p>The format specifiers' usage: </p><div class="fragment"><div class="line">%[pad_quantity][specifier]</div>
-</div><!-- fragment --><p> The following list of characters that follow a % symbol (or a <code>pad_quantity</code> number) will signify that the corresponding argument is of a certain datatype.</p>
+<p>The format specifiers' usage: </p><div class="fragment"><div class="line">%[flags][pad_quantity].[precision_quantity]specifier</div>
+</div><!-- fragment --> <dl class="section note"><dt>Note</dt><dd>The only supported flags are zero (<code>0</code>) for padding data with zeros instead of spaces.</dd></dl>
+<p>The following list of characters that follow a % symbol (or a <code>pad_quantity</code> number) will signify that the corresponding argument is of a certain datatype.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadRight">Specifier   </th><th class="markdownTableHeadLeft">relative datatype    </th></tr>
@@ -83,7 +84,7 @@ Arduino Platform Supported Specifiers</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyRight"><code>s</code> / <code>S</code>   </td><td class="markdownTableBodyLeft">a string    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyRight"><code>d</code> / <code>i</code> / <code>l</code>   </td><td class="markdownTableBodyLeft">an integer    </td></tr>
+<td class="markdownTableBodyRight"><code>d</code> / <code>i</code> / <code>l</code> / <code>u</code>   </td><td class="markdownTableBodyLeft">an integer    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyRight"><code>x</code> / <code>X</code>   </td><td class="markdownTableBodyLeft">a hexadecimal integer    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -104,10 +105,10 @@ Padding the numbers</h3>
 <div class="line"><a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(<span class="stringliteral">&quot;exampleVendor&quot;</span>, <span class="stringliteral">&quot;%02x&quot;</span>, 0xa0);</div>
 <div class="line"><span class="comment">// prints:     60176; INFO  ;exampleVendor;A0</span></div>
 <div class="line"> </div>
-<div class="line"><a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(<span class="stringliteral">&quot;exampleVendor&quot;</span>, <span class="stringliteral">&quot;%02F&quot;</span>, 3.1459);</div>
+<div class="line"><a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(<span class="stringliteral">&quot;exampleVendor&quot;</span>, <span class="stringliteral">&quot;%.2F&quot;</span>, 3.1459);</div>
 <div class="line"><span class="comment">// prints:     60176; INFO  ;exampleVendor;3.14</span></div>
 <div class="ttc" id="agroup___logging_a_p_i_html_ga2e0c08b7f516dc508b491f1f3102c901"><div class="ttname"><a href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a></div><div class="ttdeci">#define RF24Log_info(vendorId, message,...)</div><div class="ttdoc">output an INFO message</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_logging_8h_source.html#l00071">RF24Logging.h:71</a></div></div>
-</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Floats/Doubles will only use the padding quantity as resolution of decimal places. Specifying quantity of insignificant zeroes on the whole numbers of floats/doubles is not supported.</dd>
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>Floats/Doubles will only use the precision quantity as the resolution of decimal places. Specifying quantity of insignificant zeroes on the whole numbers of floats/doubles is not supported.</dd>
 <dd>
 Octal and hexadecimal integers are padded with zeros. Characters and decimal integers are padded with spaces. </dd></dl>
 </div></div><!-- contents -->

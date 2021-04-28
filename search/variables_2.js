@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stream_101',['stream',['../class_arduino_print_logger.html#afc518aba1aeea255105e371aecf805a4',1,'ArduinoPrintLogger']]]
+  ['precis_102',['precis',['../struct_specifier_flags.html#aeec95e8170851e17d7dd2f845089f505',1,'SpecifierFlags']]]
 ];

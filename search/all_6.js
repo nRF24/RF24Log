@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['off_17',['OFF',['../group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0aac132f2982b98bcaa3445e535a03ff75',1,'RF24LogLevel.h']]],
-  ['ostreamlogger_18',['OStreamLogger',['../class_o_stream_logger.html',1,'OStreamLogger'],['../class_o_stream_logger.html#a7c8efbb70c6c6cd7cf6d12c73fc77a59',1,'OStreamLogger::OStreamLogger()']]],
-  ['ostreamlogger_2ecpp_19',['OStreamLogger.cpp',['../_o_stream_logger_8cpp.html',1,'']]],
-  ['ostreamlogger_2eh_20',['OStreamLogger.h',['../_o_stream_logger_8h.html',1,'']]]
+  ['log_14',['log',['../class_r_f24_dual_log_handler.html#aa371406aba2ec48194967a64f86d5c27',1,'RF24DualLogHandler::log()'],['../class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89',1,'RF24LogAbstractHandler::log()'],['../class_r_f24_logging.html#a197f0b717a027c511a9dc3634dbc9089',1,'RF24Logging::log()'],['../class_r_f24_log_handler.html#ad82545329939ba516d2b622dd353cb2e',1,'RF24LogHandler::log()']]],
+  ['log_20levels_15',['Log Levels',['../group__log_levels.html',1,'']]],
+  ['logging_20api_16',['Logging API',['../group___logging_a_p_i.html',1,'']]],
+  ['loglevel_17',['logLevel',['../class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4',1,'RF24LogAbstractHandler']]]
 ];
