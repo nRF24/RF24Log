@@ -93,7 +93,22 @@ protected:
 #if defined (ARDUINO_ARCH_AVR)
     virtual void appendFormattedMessage(const __FlashStringHelper *format, va_list *args) = 0;
 #endif
+};
 
+/** @brief Some data about a format specifier */
+struct SpecifierFlags
+{
+    /**
+     * @brief Construct a new Specifier Flags object
+     * @param pad The default char used when padding data
+     */
+    SpecifierFlags(char pad = ' ') : fill(pad) {};
+    /** @brief The default character used as padding. */
+    char fill;
+    /** @brief The width of the padding */
+    unsigned int width = 0;
+    /** @brief The number of decimal places. If negative, then default of 2 places is used. */
+    int8_t precis = -1;
 };
 
 #endif /* SRC_RF24LOGABSTRACTS_H_ */

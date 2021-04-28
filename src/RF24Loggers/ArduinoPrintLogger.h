@@ -42,14 +42,14 @@ protected:
      * @param format The format of the message
      * @param args The sequence of args
      */
-    void appendFormat(uint8_t count, char format, va_list *args);
+    void appendFormat(SpecifierFlags* flags, char format, va_list *args);
 
     /**
      * @brief append a padding character a number of times
      * @param padding The char to use as padding
      * @param depth The number of padding characters desired sequentially.
      */
-    void appendPadding(const char *padding, int16_t depth);
+    void appendPadding(char padding, int16_t depth);
 
 
     // declare the rest to raise from pure virtual

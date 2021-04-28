@@ -64,7 +64,7 @@ void ArduinoPrintLogger::appendTimestamp()
         temp /= 10;
         i++;
     }
-    appendPadding(" ", 10 - i - !i);
+    appendPadding(' ', 10 - i - !i);
     stream->print(now);
     stream->print(";");
 }
@@ -90,7 +90,7 @@ void ArduinoPrintLogger::appendLogLevel(uint8_t logLevel)
     }
     else {
         stream->print("Lvl");
-        appendPadding(" ", logLevel < 010 ? 3 : 1 + (logLevel < 0100));
+        appendPadding(' ', logLevel < 010 ? 3 : 1 + (logLevel < 0100));
         stream->print(logLevel, OCT);
     }
     stream->print(";");
@@ -103,15 +103,36 @@ void ArduinoPrintLogger::appendFormattedMessage(const char *format, va_list *arg
         if (*format == '%')
         {
             ++format;
-            uint8_t count = 0;
-            while (isDigit(*format))
+            SpecifierFlags flags;
+            while (*format == '-' || *format == '+' || *format == ' ' || *format == '0')
             {
-                count = (count * 10) + (*format - 48);
+                if (*format == '0')
+                {
+                    flags.fill = *format;
+                }
+                ++format;
+            }
+            while (isDigit(*format) || *format == '.')
+            {
+                if (*format == '.')
+                {
+                    flags.precis = 0;
+                }
+                else
+                {
+                    if (flags.precis >=0) {
+                        flags.precis = (flags.precis * 10) + (*format - 48);
+                    }
+                    else
+                    {
+                        flags.width = (flags.width * 10) + (*format - 48);
+                    }
+                }
                 ++format;
             }
             if (isAlpha(*format))
             {
-                appendFormat(count, *format, args);
+                appendFormat(&flags, *format, args);
             }
             else
             {
@@ -129,7 +150,7 @@ void ArduinoPrintLogger::appendFormattedMessage(const char *format, va_list *arg
     }
 }
 
-void ArduinoPrintLogger::appendFormat(uint8_t count, char format, va_list *args)
+void ArduinoPrintLogger::appendFormat(SpecifierFlags* flags, char format, va_list *args)
 {
     if (format == 's')
     {
@@ -149,9 +170,9 @@ void ArduinoPrintLogger::appendFormat(uint8_t count, char format, va_list *args)
 
     else if (format == 'c')
     {
-        if (count)
+        if (flags->width)
         {
-            appendPadding(" ", count - 1);
+            appendPadding(flags->fill, flags->width - 1);
         }
         stream->print((char)va_arg(*args, int));
     }
@@ -159,14 +180,21 @@ void ArduinoPrintLogger::appendFormat(uint8_t count, char format, va_list *args)
     else if (format == 'D' || format == 'F')
     {
         // print as double
-        stream->print(va_arg(*args, double), count);
+        if (flags->precis >= 0)
+        {
+            stream->print(va_arg(*args, double), flags->precis);
+        }
+        else
+        {
+            stream->print(va_arg(*args, double));
+        }
     }
 
-    else if (format == 'd' || format == 'i' || format == 'l')
+    else if (format == 'd' || format == 'i' || format == 'l' || format == 'u')
     {
         // print as integer
         int temp = va_arg(*args, int);
-        if (count)
+        if (flags->width)
         {
             int mask = temp;
             int16_t i = 0;
@@ -179,7 +207,7 @@ void ArduinoPrintLogger::appendFormat(uint8_t count, char format, va_list *args)
             {
                 i++; // compensate for the negative sign
             }
-            appendPadding(" ", count - i);
+            appendPadding(flags->fill, flags->width - i);
         }
         stream->print(temp, DEC);
     }
@@ -188,7 +216,7 @@ void ArduinoPrintLogger::appendFormat(uint8_t count, char format, va_list *args)
     {
         // print as integer
         int temp = va_arg(*args, int);
-        if (count)
+        if (flags->width)
         {
             int mask = temp;
             int16_t i = 0;
@@ -201,7 +229,7 @@ void ArduinoPrintLogger::appendFormat(uint8_t count, char format, va_list *args)
             {
                 i++; // compensate for the negative sign
             }
-            appendPadding("0", count - i);
+            appendPadding(flags->fill, flags->width - i);
         }
         stream->print(temp, HEX);
     }
@@ -210,7 +238,7 @@ void ArduinoPrintLogger::appendFormat(uint8_t count, char format, va_list *args)
     {
         // print as integer
         int temp = va_arg(*args, int);
-        if (count)
+        if (flags->width)
         {
             int mask = temp;
             int16_t i = 0;
@@ -223,7 +251,7 @@ void ArduinoPrintLogger::appendFormat(uint8_t count, char format, va_list *args)
             {
                 i++; // compensate for the negative sign
             }
-            appendPadding("0", count - i);
+            appendPadding(flags->fill, flags->width - i);
         }
         stream->print(temp, OCT);
     }
@@ -232,7 +260,7 @@ void ArduinoPrintLogger::appendFormat(uint8_t count, char format, va_list *args)
     {
         // print as integer
         unsigned int temp = va_arg(*args, int);
-        if (count)
+        if (flags->width)
         {
             unsigned int mask = temp;
             int16_t i = 0;
@@ -241,26 +269,26 @@ void ArduinoPrintLogger::appendFormat(uint8_t count, char format, va_list *args)
                 mask >>= 1;
                 i++;
             }
-            appendPadding("0", count - i);
+            appendPadding(flags->fill, flags->width - i);
         }
         stream->print(temp, BIN);
     }
     else
     {
         stream->print(format);
-        if (count)
+        if (flags->width)
         {
-            stream->print(count, DEC);
+            stream->print(flags->width, DEC);
         }
     }
 }
 
-void ArduinoPrintLogger::appendPadding(const char *padding, int16_t depth)
+void ArduinoPrintLogger::appendPadding(char padding, int16_t depth)
 {
     while (depth > 0)
     {
-        depth -= 1;
-        stream->print(padding);
+        --depth;
+        stream->print((char)padding);
     }
 }
 
@@ -291,14 +319,36 @@ void ArduinoPrintLogger::appendFormattedMessage(const __FlashStringHelper *forma
         if (c == '%')
         {
             c = pgm_read_byte(p++);
-            uint8_t count = 0;
-            while (isDigit(c)) {
-                count = (count * 10) + (c - 48);
+            SpecifierFlags flags;
+            while (c == '-' || c == '+' || c == ' ' || c == '0')
+            {
+                if (c == '0')
+                {
+                    flags.fill = '0';
+                }
+                c = pgm_read_byte(p++);
+            }
+            while (isDigit(c) || c == '.')
+            {
+                if (c == '.')
+                {
+                    flags.precis = 0;
+                }
+                else
+                {
+                    if (flags.precis >=0) {
+                        flags.precis = (flags.precis * 10) + (c - 48);
+                    }
+                    else
+                    {
+                        flags.width = (flags.width * 10) + (c - 48);
+                    }
+                }
                 c = pgm_read_byte(p++);
             }
             if (isAlpha(c))
             {
-                appendFormat(count, c, args);
+                appendFormat(&flags, c, args);
             }
             else
             {
@@ -308,7 +358,6 @@ void ArduinoPrintLogger::appendFormattedMessage(const __FlashStringHelper *forma
                 }
                 stream->print(c);
             }
-
         }
         else
         {

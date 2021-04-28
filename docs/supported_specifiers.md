@@ -9,8 +9,10 @@ printf, we have a basic imitation mechanism included with ArduinoPrintLogger.
 
 The format specifiers' usage:
 ```text
-%[pad_quantity][specifier]
+%[flags][pad_quantity].[precision_quantity]specifier
 ```
+@note The only supported flags are zero (`0`) for padding data with zeros instead of spaces.
+
 The following list of characters that follow a % symbol (or a `pad_quantity` number)
 will signify that the corresponding argument is of a certain datatype.
 
@@ -18,7 +20,7 @@ will signify that the corresponding argument is of a certain datatype.
 |----------:|:------------------|
 | `F` / `D` | a double |
 | `s` / `S` | a string |
-| `d` / `i` / `l` | an integer |
+| `d` / `i` / `l` / `u` | an integer |
 | `x` / `X` | a hexadecimal integer |
 | `o` | an octal integer |
 | `b` | a binary integer |
@@ -42,11 +44,11 @@ RF24Log_info("exampleVendor", "0x%02x %%", 0xf);
 RF24Log_info("exampleVendor", "%02x", 0xa0);
 // prints:     60176; INFO  ;exampleVendor;A0
 
-RF24Log_info("exampleVendor", "%02F", 3.1459);
+RF24Log_info("exampleVendor", "%.2F", 3.1459);
 // prints:     60176; INFO  ;exampleVendor;3.14
 ```
 
-@note Floats/Doubles will only use the padding quantity as resolution of decimal places.
+@note Floats/Doubles will only use the precision quantity as the resolution of decimal places.
 Specifying quantity of insignificant zeroes on the whole numbers of floats/doubles is not supported.
 
 @note Octal and hexadecimal integers are padded with zeros. Characters and
