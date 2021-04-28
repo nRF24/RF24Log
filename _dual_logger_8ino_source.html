@@ -108,22 +108,30 @@ $(function() {
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// set log level for both Handlers</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  rf24DualLogHandler.setLogLevel(<a class="code" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0ab1d5eac4b1dca480c8056eaea7663b7a">RF24LogLevel::ALL</a>);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">if</span> (Serial.available()) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">char</span> input = Serial.parseInt();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    Serial.print(<span class="stringliteral">&quot;Set log level (in octal) to &quot;</span>);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    Serial.print(input, OCT);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    Serial.println(<span class="stringliteral">&quot; for Handler2&quot;</span>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    rf24SerialLogHandler2.<a class="code" href="class_r_f24_log_abstract_handler.html#a964b4de4cae6567127b51502497f55cb">setLogLevel</a>(input); <span class="comment">// set log level only for handler2</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(vendorID, <span class="stringliteral">&quot;This message should be logged %s.&quot;</span>, <span class="stringliteral">&quot;twice&quot;</span>);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="group___logging_a_p_i.html#gab3b6be9f0d9d9f97dc4d9be5187fe2ca">RF24Log_warn</a>(vendorID, <span class="stringliteral">&quot;This warn message should be logged %s.&quot;</span>, <span class="stringliteral">&quot;twice&quot;</span>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(vendorID, <span class="stringliteral">&quot;This info message should be logged %s.&quot;</span>, <span class="stringliteral">&quot;twice&quot;</span>);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga14adb54e78925f200b5caee1a819d88b">RF24Log_debug</a>(vendorID, <span class="stringliteral">&quot;This debug message should NOT be logged %s.&quot;</span>);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  Serial.println(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  delay(5000);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">char</span> input = Serial.read();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    uint8_t count = 0;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">while</span> (Serial.available() &amp;&amp; input &gt;= 48 &amp;&amp; input &lt; 56) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      count &lt;&lt;= 3;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      count += input - 48;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      input = Serial.read();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">if</span> (count) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      Serial.print(<span class="stringliteral">&quot;Set log level (in octal) to &quot;</span>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      Serial.print(count, OCT);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      Serial.println(<span class="stringliteral">&quot; for Handler2&quot;</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      rf24SerialLogHandler2.<a class="code" href="class_r_f24_log_abstract_handler.html#a964b4de4cae6567127b51502497f55cb">setLogLevel</a>(count); <span class="comment">// set log level only for handler2</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(vendorID, <span class="stringliteral">&quot;This message should be logged %s.&quot;</span>, <span class="stringliteral">&quot;twice&quot;</span>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="group___logging_a_p_i.html#gab3b6be9f0d9d9f97dc4d9be5187fe2ca">RF24Log_warn</a>(vendorID, <span class="stringliteral">&quot;This warn message should be logged %s.&quot;</span>, <span class="stringliteral">&quot;twice&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(vendorID, <span class="stringliteral">&quot;This info message should be logged %s.&quot;</span>, <span class="stringliteral">&quot;twice&quot;</span>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga14adb54e78925f200b5caee1a819d88b">RF24Log_debug</a>(vendorID, <span class="stringliteral">&quot;This debug message should NOT be logged %s.&quot;</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  Serial.println(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  delay(5000);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
 <div class="ttc" id="a_arduino_print_logger_8h_html"><div class="ttname"><a href="_arduino_print_logger_8h.html">ArduinoPrintLogger.h</a></div><div class="ttdoc">handler for Print::print() based function calls</div></div>
 <div class="ttc" id="a_r_f24_dual_log_handler_8h_html"><div class="ttname"><a href="_r_f24_dual_log_handler_8h.html">RF24DualLogHandler.h</a></div><div class="ttdoc">handler extention to manage 2 handlers</div></div>
 <div class="ttc" id="a_r_f24_logging_8h_html"><div class="ttname"><a href="_r_f24_logging_8h.html">RF24Logging.h</a></div><div class="ttdoc">Provides rf24Logging singleton for accessing the RF24Log API.</div></div>
