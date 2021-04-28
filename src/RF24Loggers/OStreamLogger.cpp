@@ -1,6 +1,6 @@
 /**
  * @file OStreamLogger.cpp
- * @date created 2021-04-24
+ * @date Created 2021-04-24
  * @author Brendan Doherty (2bndy5)
  * @copyright Copyright (C)
  *     2021    Brendan Doherty (2bndy5) <br>
@@ -72,7 +72,7 @@ void OStreamLogger::appendLogLevel(uint8_t logLevel)
 
         if(subLevel)
         {
-            *stream << ":" << (unsigned int)subLevel << ";";
+            *stream << "+" << (unsigned int)subLevel << ";";
         }
         else
         {

@@ -11,7 +11,6 @@
  * library.  If this is what you want to do, use the GNU Lesser General
  * Public License instead of this License.
  */
-#include <stdio.h>
 #include "RF24Logging.h"
 
 RF24Logging::RF24Logging()

@@ -53,9 +53,12 @@ void ArduinoPrintLogger::write(uint8_t logLevel,
 
 void ArduinoPrintLogger::appendTimestamp()
 {
+    // this seems to cost more resources
     // char c[11];
     // sprintf(c, "%10lu;", millis());
     // stream->print(c);
+
+    // this costs less by using in-house tools
     unsigned long temp, now(millis());
     temp = now;
     uint16_t i = 0;

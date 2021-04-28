@@ -1,6 +1,6 @@
 /**
  * @file RF24LogLevel.h
- * @brief order of log levels and filtering
+ * @brief Order of log levels and filtering
  * @date Created 2 Oct 2020
  * @author Witold Markowski (wmarkow)
  * @copyright Copyright (C)

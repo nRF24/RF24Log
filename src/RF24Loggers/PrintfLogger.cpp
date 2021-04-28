@@ -1,6 +1,6 @@
 /**
  * @file PrintfLogger.cpp
- * @date created 2021-04-24
+ * @date Created 2021-04-24
  * @author Brendan Doherty (2bndy5)
  * @copyright Copyright (C)
  *     2021    Brendan Doherty (2bndy5) <br>
@@ -84,7 +84,7 @@ void PrintfLogger::appendLogLevel(uint8_t logLevel)
 
         if(subLevel)
         {
-            stream(":%d;", subLevel);
+            stream("+%d;", subLevel);
         }
         else
         {
@@ -99,5 +99,5 @@ void PrintfLogger::appendLogLevel(uint8_t logLevel)
 
 void PrintfLogger::appendFormattedMessage(const char *format, va_list *args)
 {
-    stream(format, args);
+    stream(format, &args);
 }

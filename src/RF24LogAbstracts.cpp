@@ -12,7 +12,7 @@
  * Public License instead of this License.
  */
 
-#include "RF24LogAbstracts.h"
+#include <RF24LogAbstracts.h>
 
 RF24LogAbstractHandler::RF24LogAbstractHandler()
 {

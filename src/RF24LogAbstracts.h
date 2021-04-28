@@ -21,7 +21,7 @@
 #include <stdint.h>
 #include <stdarg.h>
 
-#include <RF24LogHandler.h>
+#include "RF24LogHandler.h"
 #include "RF24LogLevel.h"
 
 /** @brief An abstract base class for handling log messages. */
