@@ -21,6 +21,12 @@
 #else
 #include <string.h>
 #endif
+/**
+ * @defgroup LoggingAPI Logging API
+ *
+ * @brief simple helper macros for user access to logging output via the @ref rf24Logging object.
+ * @{
+ */
 
 #include "RF24LogLevel.h"
 #include "RF24LogHandler.h"
@@ -35,15 +41,9 @@
 #else
 
     /**
-     * @defgroup UserAccessMacros User Access Macros
-     *
-     * @brief freindly helper macros for user access to logging output.
-     * @{
-     */
-    /**
-     * @brief ouput an ERROR message
+     * @brief ouput an @ref ERROR message
      * @param vendorId A scoping identity of the message's origin
-     * @param message The message format string. Review [the printf spcifiers](https://www.cplusplus.com/reference/cstdio/printf/),
+     * @param message The message format string. Review [the printf specifiers](https://www.cplusplus.com/reference/cstdio/printf/),
      * but note that not all are supported on certain MCU architectures (eg `%%F` for floats).
      * @param ... the sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
@@ -53,7 +53,7 @@
     /**
      * @brief output a message to WARN the reader
      * @param vendorId A scoping identity of the message's origin
-     * @param message The message format string. Review [the printf spcifiers](https://www.cplusplus.com/reference/cstdio/printf/),
+     * @param message The message format string. Review [the printf specifiers](https://www.cplusplus.com/reference/cstdio/printf/),
      * but note that not all are supported on certain MCU architectures (eg `%%F` for floats).
      * @param ... the sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
@@ -61,9 +61,9 @@
     #define RF24Log_warn(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::WARN, vendorId, message, ##__VA_ARGS__))
 
     /**
-     * @brief output an INFO message
+     * @brief output an @ref INFO message
      * @param vendorId A scoping identity of the message's origin
-     * @param message The message format string. Review [the printf spcifiers](https://www.cplusplus.com/reference/cstdio/printf/),
+     * @param message The message format string. Review [the printf specifiers](https://www.cplusplus.com/reference/cstdio/printf/),
      * but note that not all are supported on certain MCU architectures (eg `%%F` for floats).
      * @param ... the sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
@@ -71,9 +71,9 @@
     #define RF24Log_info(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::INFO, vendorId, message, ##__VA_ARGS__))
 
     /**
-     * @brief output a message to help developers DEBUG their source code
+     * @brief output a message to help developers @ref DEBUG their source code
      * @param vendorId A scoping identity of the message's origin
-     * @param message The message format string. Review [the printf spcifiers](https://www.cplusplus.com/reference/cstdio/printf/),
+     * @param message The message format string. Review [the printf specifiers](https://www.cplusplus.com/reference/cstdio/printf/),
      * but note that not all are supported on certain MCU architectures (eg `%%F` for floats).
      * @param ... the sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
@@ -85,13 +85,12 @@
      * @sa RF24Logging::log()
      * @param logLevel the level of the logging message
      * @param vendorId A scoping identity of the message's origin
-     * @param message The message format string. Review [the printf spcifiers](https://www.cplusplus.com/reference/cstdio/printf/),
+     * @param message The message format string. Review [the printf specifiers](https://www.cplusplus.com/reference/cstdio/printf/),
      * but note that not all are supported on certain MCU architectures (eg `%%F` for floats).
      * @param ... the sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
      */
     #define RF24Log_log(logLevel, vendorId, message, ...) (rf24Logging.log(logLevel, vendorId, message, ##__VA_ARGS__))
-    /** @} */
 #endif
 
 /** @brief This is the end-user's access point into the world of logging messages. */
@@ -115,7 +114,7 @@ public:
      * @brief output a log message of any level
      * @param logLevel the level of the logging message
      * @param vendorId A scoping identity of the message's origin
-     * @param message The message format string. Review [the printf spcifiers](https://www.cplusplus.com/reference/cstdio/printf/),
+     * @param message The message format string. Review [the printf specifiers](),
      * but note that not all are supported on certain MCU architectures (eg `%%F` for floats).
      * @param ... the sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
@@ -127,8 +126,18 @@ public:
 #endif
 };
 
+#ifdef DOXYGEN_FORCED
+/**
+ * @def RF24LOG_NO_EOL
+ * @brief macro (when defined) disables automatic line feeds at the end of all log messages.
+ */
+#define RF24LOG_NO_EOL
+#endif
+
 /** @brief the singleton used for all your program's logging purposes. */
 extern RF24Logging rf24Logging;
+
+/** @} */
 
 #endif /* SRC_RF24LOGGER_H_ */
 

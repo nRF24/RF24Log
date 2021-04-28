@@ -47,6 +47,7 @@ void setup()
 #ifdef ARDUINO
   // configure serial port baudrate
   Serial.begin(115200);
+  while (!Serial) {/* some boards need this */ ; }
 #elif defined (PICO_BUILD)
   // wait here until the CDC ACM (serial port emulation) is connected
   while (!tud_cdc_connected()) {

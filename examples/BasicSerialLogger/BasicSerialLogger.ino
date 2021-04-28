@@ -111,11 +111,12 @@ void loop()
   RF24Log_error(vendorID, "Error message with %s", "RAM string 1");
   RF24Log_warn(vendorID, "Warning message with %s", "RAM string 2");
 
-  RF24Log_info(vendorID, " info log with double value %D", 3.14);
-  RF24Log_debug(vendorID, " warn log with double value %D", 2.71);
+  RF24Log_info(vendorID, "info log with double value %03D", 3.14);
+  RF24Log_debug(vendorID, "warn log with double value %02D", 2.71);
 
   RF24Log_log(RF24LogLevel::INFO + 1, vendorID, "INFO + 1 message");
   RF24Log_log(RF24LogLevel::WARN + 1, vendorID, "WARN + 1 message");
+  RF24Log_log(07, vendorID, "%%%%This is level 0x%2x (0b%8b or%3l)%c", 07, 07, 07, '!');
 #ifdef ARDUINO
   Serial.println("");
 

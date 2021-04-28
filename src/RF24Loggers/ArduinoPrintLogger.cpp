@@ -53,9 +53,20 @@ void ArduinoPrintLogger::write(uint8_t logLevel,
 
 void ArduinoPrintLogger::appendTimestamp()
 {
-    char c[12];
-    sprintf(c, "%10lu;", millis());
-    stream->print(c);
+    // char c[11];
+    // sprintf(c, "%10lu;", millis());
+    // stream->print(c);
+    unsigned long temp, now(millis());
+    temp = now;
+    uint16_t i = 0;
+    while (temp)
+    {
+        temp /= 10;
+        i++;
+    }
+    appendPadding(" ", 10 - i - !i);
+    stream->print(now);
+    stream->print(";");
 }
 
 void ArduinoPrintLogger::appendLogLevel(uint8_t logLevel)
@@ -73,23 +84,13 @@ void ArduinoPrintLogger::appendLogLevel(uint8_t logLevel)
         }
         else
         {
-            stream->print(":");
+            stream->print("+");
             stream->print(subLevel);
         }
     }
     else {
-        if (logLevel < 010)
-        {
-            stream->print("Lvl   ");
-        }
-        else if (logLevel < 0100)
-        {
-            stream->print("Lvl  ");
-        }
-        else
-        {
-            stream->print("Lvl ");
-        }
+        stream->print("Lvl");
+        appendPadding(" ", logLevel < 010 ? 3 : 1 + (logLevel < 0100));
         stream->print(logLevel, OCT);
     }
     stream->print(";");
@@ -102,7 +103,24 @@ void ArduinoPrintLogger::appendFormattedMessage(const char *format, va_list *arg
         if (*format == '%')
         {
             ++format;
-            appendFormat(*format, args);
+            uint8_t count = 0;
+            while (isDigit(*format))
+            {
+                count = (count * 10) + (*format - 48);
+                ++format;
+            }
+            if (isAlpha(*format))
+            {
+                appendFormat(count, *format, args);
+            }
+            else
+            {
+                if (*format != '%')
+                {
+                    stream->print("%");
+                }
+                stream->print(*format);
+            }
         }
         else
         {
@@ -111,45 +129,139 @@ void ArduinoPrintLogger::appendFormattedMessage(const char *format, va_list *arg
     }
 }
 
-void ArduinoPrintLogger::appendFormat(const char format, va_list *args)
+void ArduinoPrintLogger::appendFormat(uint8_t count, char format, va_list *args)
 {
     if (format == 's')
     {
         // print text from RAM
         register char *s = (char *)va_arg(*args, int);
         stream->print(s);
-
-        return;
     }
 
 #ifdef ARDUINO_ARCH_AVR
-    if (format == 'S')
+    else if (format == 'S')
     {
         // print text from FLASH
         register __FlashStringHelper *s = (__FlashStringHelper *)va_arg(*args, int);
         stream->print(s);
-
-        return;
     }
 #endif
 
-    if (format == 'D' || format == 'F')
+    else if (format == 'c')
+    {
+        if (count)
+        {
+            appendPadding(" ", count - 1);
+        }
+        stream->print((char)va_arg(*args, int));
+    }
+
+    else if (format == 'D' || format == 'F')
     {
         // print as double
-        stream->print(va_arg(*args, double));
-
-        return;
+        stream->print(va_arg(*args, double), count);
     }
 
-    if (format == 'd' || format == 'i')
+    else if (format == 'd' || format == 'i' || format == 'l')
     {
         // print as integer
-        stream->print(va_arg(*args, int), DEC);
-
-        return;
+        int temp = va_arg(*args, int);
+        if (count)
+        {
+            int mask = temp;
+            int16_t i = 0;
+            while (mask)
+            {
+                mask /= 10;
+                i++;
+            }
+            if (temp < 0)
+            {
+                i++; // compensate for the negative sign
+            }
+            appendPadding(" ", count - i);
+        }
+        stream->print(temp, DEC);
     }
 
-    stream->print(format);
+    else if (format == 'x' || format == 'X')
+    {
+        // print as integer
+        int temp = va_arg(*args, int);
+        if (count)
+        {
+            int mask = temp;
+            int16_t i = 0;
+            while (mask)
+            {
+                mask >>= 4;
+                i++;
+            }
+            if (temp < 0)
+            {
+                i++; // compensate for the negative sign
+            }
+            appendPadding("0", count - i);
+        }
+        stream->print(temp, HEX);
+    }
+
+    else if (format == 'o')
+    {
+        // print as integer
+        int temp = va_arg(*args, int);
+        if (count)
+        {
+            int mask = temp;
+            int16_t i = 0;
+            while (mask)
+            {
+                mask >>= 3;
+                i++;
+            }
+            if (temp < 0)
+            {
+                i++; // compensate for the negative sign
+            }
+            appendPadding("0", count - i);
+        }
+        stream->print(temp, OCT);
+    }
+
+    else if (format == 'b')
+    {
+        // print as integer
+        unsigned int temp = va_arg(*args, int);
+        if (count)
+        {
+            unsigned int mask = temp;
+            int16_t i = 0;
+            while (mask)
+            {
+                mask >>= 1;
+                i++;
+            }
+            appendPadding("0", count - i);
+        }
+        stream->print(temp, BIN);
+    }
+    else
+    {
+        stream->print(format);
+        if (count)
+        {
+            stream->print(count, DEC);
+        }
+    }
+}
+
+void ArduinoPrintLogger::appendPadding(const char *padding, int16_t depth)
+{
+    while (depth > 0)
+    {
+        depth -= 1;
+        stream->print(padding);
+    }
 }
 
 #if defined (ARDUINO_ARCH_AVR)
@@ -179,7 +291,24 @@ void ArduinoPrintLogger::appendFormattedMessage(const __FlashStringHelper *forma
         if (c == '%')
         {
             c = pgm_read_byte(p++);
-            appendFormat(c, args);
+            uint8_t count = 0;
+            while (isDigit(c)) {
+                count = (count * 10) + (c - 48);
+                c = pgm_read_byte(p++);
+            }
+            if (isAlpha(c))
+            {
+                appendFormat(count, c, args);
+            }
+            else
+            {
+                if (c != '%')
+                {
+                    stream->print("%");
+                }
+                stream->print(c);
+            }
+
         }
         else
         {
