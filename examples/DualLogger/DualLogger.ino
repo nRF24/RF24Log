@@ -48,11 +48,19 @@ void loop()
   // set log level for both Handlers
   rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
   if (Serial.available()) {
-    char input = Serial.parseInt();
-    Serial.print("Set log level (in octal) to ");
-    Serial.print(input, OCT);
-    Serial.println(" for Handler2");
-    rf24SerialLogHandler2.setLogLevel(input); // set log level only for handler2
+    char input = Serial.read();
+    uint8_t count = 0;
+    while (Serial.available() && input >= 48 && input < 56) {
+      count <<= 3;
+      count += input - 48;
+      input = Serial.read();
+    }
+    if (count) {
+      Serial.print("Set log level (in octal) to ");
+      Serial.print(count, OCT);
+      Serial.println(" for Handler2");
+      rf24SerialLogHandler2.setLogLevel(count); // set log level only for handler2
+    }
   }
 
   RF24Log_info(vendorID, "This message should be logged %s.", "twice");

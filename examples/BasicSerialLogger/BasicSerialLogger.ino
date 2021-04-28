@@ -68,17 +68,16 @@ void loop()
   if (Serial.available()) {
     char input = Serial.read();
     uint8_t count = 0;
-    while (Serial.available()) {
-      if (input >= 48 && input < 56) {
-        count <<= 3;
-        count += input - 48;
-      } else {
-        break;
-      }
+    while (Serial.available() && input >= 48 && input < 56) {
+      count <<= 3;
+      count += input - 48;
+      input = Serial.read();
     }
-    Serial.print("Set log level (in octal) to ");
-    Serial.println(count, OCT);
-    serialLogHandler.setLogLevel(count);
+    if (count) {
+      Serial.print("Set log level (in octal) to ");
+      Serial.println(count, OCT);
+      serialLogHandler.setLogLevel(count);
+    }
   }
 #elif defined (PICO_BUILD)
   char input;
@@ -87,13 +86,9 @@ void loop()
   if (input != PICO_ERROR_TIMEOUT) {
     printf("Set log level (in octal) to ");
   }
-  while (input != PICO_ERROR_TIMEOUT) {
-    if (input >= 48 && input < 56) {
-      count <<= 3;
-      count += input - 48;
-    } else {
-      break;
-    }
+  while (input != PICO_ERROR_TIMEOUT && input >= 48 && input < 56) {
+    count <<= 3;
+    count += input - 48;
     input = getchar_timeout_us(0); // get char from buffer for user input;
   }
   if (count) {

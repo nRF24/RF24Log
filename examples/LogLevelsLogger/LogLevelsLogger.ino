@@ -40,10 +40,18 @@ void setup()
 void loop()
 {
   if (Serial.available()) {
-    char input = Serial.parseInt();
-    Serial.print("Set log level (in octal) to ");
-    Serial.println(input, OCT);
-    rf24SerialLogHandler.setLogLevel(input);
+    char input = Serial.read();
+    uint8_t count = 0;
+    while (Serial.available() && input >= 48 && input < 56) {
+      count <<= 3;
+      count += input - 48;
+      input = Serial.read();
+    }
+    if (count) {
+      Serial.print("Set log level (in octal) to ");
+      Serial.println(count, OCT);
+      rf24SerialLogHandler.setLogLevel(count);
+    }
   }
 
   RF24Log_log(1, vendorID, "this is a custom sublevel without a domain.");
