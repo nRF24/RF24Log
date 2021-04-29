@@ -34,6 +34,7 @@ void setup()
 {
   // configure serial port baudrate
   Serial.begin(115200);
+  while (!Serial) {/* some boards need this */ ; }
 
   // set maximal log level to ALL
   rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
@@ -70,7 +71,7 @@ void loop()
 #endif // platform specific user input
 
   if (level) {
-    RF24Log_log(1, "loop() user input", "Set log level (in octal) to %o\n", level);
+    RF24Log_log(1, F("loop() user input"), "Set log level (in octal) to %o\n", level);
     rf24SerialLogHandler2.setLogLevel(level); // set log level only for handler2
   }
 

@@ -28,6 +28,7 @@ void setup()
 {
   // configure serial port baudrate
   Serial.begin(115200);
+  while (!Serial) {/* some boards need this */ ; }
 
   // DO NOT set serial port log handler
   // rf24Logging.setHandler(&rf24SerialLogHandler);

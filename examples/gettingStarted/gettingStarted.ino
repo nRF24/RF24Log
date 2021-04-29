@@ -41,12 +41,14 @@ OStreamLogger serialLogHandler(&std::cout);
 
 // Define global vendor id (it is stored in FLASH memory)
 const char PROGMEM vendorID[] = "RF24LogExample";
+const char PROGMEM uiPrompt[] = "user input";
 
 void setup()
 {
 #ifdef ARDUINO
   // configure serial port baudrate
   Serial.begin(115200);
+  while (!Serial) {/* some boards need this */ ; }
 #elif defined (PICO_BUILD)
   // wait here until the CDC ACM (serial port emulation) is connected
   while (!tud_cdc_connected()) {
@@ -87,7 +89,7 @@ void loop()
 #endif // platform specific user input
 
   if (level) {
-    RF24Log_log(1, "loop() user input", "Set log level (in octal) to %o\n", level);
+    RF24Log_log(1, uiPrompt, "Set log level (in octal) to %o\n", level);
     serialLogHandler.setLogLevel(level);
   }
 

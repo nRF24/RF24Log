@@ -18,9 +18,8 @@
 
 #if defined(ARDUINO_ARCH_AVR)
 #include <WString.h>
-#else
-#include <string.h>
 #endif
+
 /**
  * @defgroup LoggingAPI Logging API
  *

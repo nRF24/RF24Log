@@ -15,7 +15,7 @@
 
 #ifndef SRC_RF24LOGABSTRACTS_H_
 #define SRC_RF24LOGABSTRACTS_H_
-#if defined (ARDUINO_ARCH_AVR)
+#if defined (ARDUINO)
 #include <WString.h>
 #endif
 #include <stdint.h>
