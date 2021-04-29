@@ -120,11 +120,11 @@ $(function() {
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
 <div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_o_stream_logger.html#a9a46c6f41d316c6990d0d5b7a858aefd">   64</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_o_stream_logger.html#a9a46c6f41d316c6990d0d5b7a858aefd">OStreamLogger::appendLogLevel</a>(uint8_t logLevel)</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    int8_t subLevel = <a class="code" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a> &amp; 0x07;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    uint8_t subLevel = <a class="code" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a> &amp; 0x07;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a> &gt;= <a class="code" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a2fd6f336d08340583bd620a7f5694c90">RF24LogLevel::ERROR</a> &amp;&amp; <a class="code" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a> &lt;= <a class="code" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a0593585da9181e972974c1274d8f2b4f">RF24LogLevel::DEBUG</a> + 7)</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        int8_t logIndex = ((<a class="code" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a> &amp; 0x38) &gt;&gt; 3) - 1;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        uint8_t logIndex = ((<a class="code" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a> &amp; 0x38) &gt;&gt; 3) - 1;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        *stream &lt;&lt; <a class="code" href="_o_stream_logger_8cpp.html#a499dfd5c4bc8bda25d25e53113f194c8">rf24LogLevels</a>[logIndex];</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">if</span>(subLevel)</div>
