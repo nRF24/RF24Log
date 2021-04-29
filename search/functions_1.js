@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['howwide_93',['howWide',['../class_r_f24_log_abstract_stream.html#a08b13f9222fd4ceb2b6a06c5644a29bd',1,'RF24LogAbstractStream']]]
+  ['desctimelevel_96',['descTimeLevel',['../class_r_f24_log_abstract_stream.html#ae7b7c7980e4076659bf8f47daeba0094',1,'RF24LogAbstractStream']]]
 ];

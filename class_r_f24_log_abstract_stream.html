@@ -96,6 +96,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:a927ad3e8894132c7cdee07fe71e70e3b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#a927ad3e8894132c7cdee07fe71e70e3b">appendLogLevel</a> (uint8_t logLevel)=0</td></tr>
 <tr class="memdesc:a927ad3e8894132c7cdee07fe71e70e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a description of the log level  <a href="class_r_f24_log_abstract_stream.html#a927ad3e8894132c7cdee07fe71e70e3b">More...</a><br /></td></tr>
 <tr class="separator:a927ad3e8894132c7cdee07fe71e70e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7b7c7980e4076659bf8f47daeba0094"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#ae7b7c7980e4076659bf8f47daeba0094">descTimeLevel</a> (uint8_t logLevel)</td></tr>
+<tr class="memdesc:ae7b7c7980e4076659bf8f47daeba0094"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automate the output of the header' timestamp and level description.  <a href="class_r_f24_log_abstract_stream.html#ae7b7c7980e4076659bf8f47daeba0094">More...</a><br /></td></tr>
+<tr class="separator:ae7b7c7980e4076659bf8f47daeba0094"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade6125bf405bc97a2437fddf1bcaf3f0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#ade6125bf405bc97a2437fddf1bcaf3f0">appendFormattedMessage</a> (const char *format, va_list *args)=0</td></tr>
 <tr class="memdesc:ade6125bf405bc97a2437fddf1bcaf3f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a message with the specifiers replaced with values from the sequence of <code>args</code>  <a href="class_r_f24_log_abstract_stream.html#ade6125bf405bc97a2437fddf1bcaf3f0">More...</a><br /></td></tr>
 <tr class="separator:ade6125bf405bc97a2437fddf1bcaf3f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -106,7 +109,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code>protected</code> collection of methods that output formatted data to a stream. </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8h_source.html#l00074">74</a> of file <a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8h_source.html#l00083">83</a> of file <a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ade6125bf405bc97a2437fddf1bcaf3f0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ade6125bf405bc97a2437fddf1bcaf3f0">&#9670;&nbsp;</a></span>appendFormattedMessage()</h2>
@@ -191,6 +194,42 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </div>
 </div>
+<a id="ae7b7c7980e4076659bf8f47daeba0094"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7b7c7980e4076659bf8f47daeba0094">&#9670;&nbsp;</a></span>descTimeLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RF24LogAbstractStream::descTimeLevel </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>logLevel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Automate the output of the header' timestamp and level description. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">logLevel</td><td>The Log level to describe. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00087">87</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a08b13f9222fd4ceb2b6a06c5644a29bd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a08b13f9222fd4ceb2b6a06c5644a29bd">&#9670;&nbsp;</a></span>howWide()</h2>
 
@@ -234,7 +273,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00055">55</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00056">56</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
 
 </div>
 </div>

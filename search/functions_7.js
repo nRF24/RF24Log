@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['sethandler_101',['setHandler',['../class_r_f24_logging.html#a825defc5520a2cd187693e1d7d303a84',1,'RF24Logging']]],
-  ['setloglevel_102',['setLogLevel',['../class_r_f24_dual_log_handler.html#ad81db68291bcdf1fa253ca1fdf700901',1,'RF24DualLogHandler::setLogLevel()'],['../class_r_f24_log_abstract_handler.html#a964b4de4cae6567127b51502497f55cb',1,'RF24LogAbstractHandler::setLogLevel()'],['../class_r_f24_log_handler.html#a7ae1378ea39e298905f51ac54a4a7d80',1,'RF24LogHandler::setLogLevel()']]],
-  ['specifierflags_103',['SpecifierFlags',['../struct_specifier_flags.html#a69b5f8fbd327c81f9144e8433ac00dcb',1,'SpecifierFlags']]]
+  ['rf24dualloghandler_103',['RF24DualLogHandler',['../class_r_f24_dual_log_handler.html#ac69ea82682f53d161f1ccd8ab3a52991',1,'RF24DualLogHandler']]],
+  ['rf24logging_104',['RF24Logging',['../class_r_f24_logging.html#a8326d01f37e4f7cd33eab97398060935',1,'RF24Logging']]]
 ];

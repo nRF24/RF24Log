@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['isflagged_94',['isFlagged',['../struct_specifier_flags.html#adbbb61fbc911e589b0a6873777adf25d',1,'SpecifierFlags']]],
-  ['ispaddprec_95',['isPaddPrec',['../struct_specifier_flags.html#a4c3b0a8c9e68ff4f7c9bc543e2d5554b',1,'SpecifierFlags']]]
+  ['howwide_97',['howWide',['../class_r_f24_log_abstract_stream.html#a08b13f9222fd4ceb2b6a06c5644a29bd',1,'RF24LogAbstractStream']]]
 ];

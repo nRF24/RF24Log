@@ -149,31 +149,33 @@ $(function() {
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    serialLogHandler.setLogLevel(level);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  }</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordflow">for</span> (level = 0 ; level &lt;= 255 ; level ++) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(level, vendorID, <span class="stringliteral">&quot;This is a log message with level %d&quot;</span>, level);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#ifdef ARDUINO</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  Serial.println(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  delay(5000);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#elif !defined(PICO_BUILD)</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="comment">// for non-Arduino &amp; not Pico SDK</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  std::cout &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="comment">// time.sleep(1); // TODO</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#ifndef ARDUINO</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">int</span> main()</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;{</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  setup();</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordflow">while</span> (1) {</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    loop();</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  }</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  level = 0;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    level++;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(level, vendorID, <span class="stringliteral">&quot;This is a log message with level %d&quot;</span>, level);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  } <span class="keywordflow">while</span> (level);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#ifdef ARDUINO</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  Serial.println(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  delay(5000);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#elif !defined(PICO_BUILD)</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="comment">// for non-Arduino &amp; not Pico SDK</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="comment">// time.sleep(1); // TODO</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#ifndef ARDUINO</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keywordtype">int</span> main()</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;{</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  setup();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordflow">while</span> (1) {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    loop();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="a_arduino_print_logger_8h_html"><div class="ttname"><a href="_arduino_print_logger_8h.html">ArduinoPrintLogger.h</a></div><div class="ttdoc">handler for Print::print() based function calls</div></div>
 <div class="ttc" id="a_o_stream_logger_8h_html"><div class="ttname"><a href="_o_stream_logger_8h.html">OStreamLogger.h</a></div><div class="ttdoc">handler for ostream based objects</div></div>
 <div class="ttc" id="a_printf_logger_8h_html"><div class="ttname"><a href="_printf_logger_8h.html">PrintfLogger.h</a></div><div class="ttdoc">handler for printf basedfunction calls</div></div>
