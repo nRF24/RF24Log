@@ -3,8 +3,8 @@
  *     Author: Witold Markowski (wmarkow)
  *
  * Copyright (C)
- *    2021        Witold Markowski (wmarkow)
- *
+ *    2020        Witold Markowski (wmarkow)
+ *    2021        Brendan Doherty (2bndy5) <br>
  * This General Public License does not permit incorporating your program into
  * proprietary programs.  If your program is a subroutine library, you may
  * consider it more useful to permit linking proprietary applications with the
@@ -47,20 +47,31 @@ void loop()
 {
   // set log level for both Handlers
   rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
+
+  uint8_t level = 0;
+  char input;
+
+#ifdef ARDUINO
   if (Serial.available()) {
-    char input = Serial.read();
-    uint8_t count = 0;
+    input = Serial.read();
     while (Serial.available() && input >= 48 && input < 56) {
-      count <<= 3;
-      count += input - 48;
+      level <<= 3;
+      level += input - 48;
       input = Serial.read();
     }
-    if (count) {
-      Serial.print("Set log level (in octal) to ");
-      Serial.print(count, OCT);
-      Serial.println(" for Handler2");
-      rf24SerialLogHandler2.setLogLevel(count); // set log level only for handler2
-    }
+  }
+#elif defined (PICO_BUILD)
+  input = getchar_timeout_us(5000); // get char from buffer for user input after 5 sec
+  while (input != PICO_ERROR_TIMEOUT && input >= 48 && input < 56) {
+    level <<= 3;
+    level += input - 48;
+    input = getchar_timeout_us(1000); // get char from buffer for user input after 1 sec
+  }
+#endif // platform specific user input
+
+  if (level) {
+    RF24Log_log(1, "loop() user input", "Set log level (in octal) to %o\n", level);
+    rf24SerialLogHandler2.setLogLevel(level); // set log level only for handler2
   }
 
   RF24Log_info(vendorID, "This message should be logged %s.", "twice");
@@ -68,7 +79,12 @@ void loop()
   RF24Log_info(vendorID, "This info message should be logged %s.", "twice");
   RF24Log_debug(vendorID, "This debug message should NOT be logged %s.");
 
+#ifdef ARDUINO
   Serial.println("");
 
   delay(5000);
+#elif !defined(PICO_BUILD)
+  // for non-Arduino & not Pico SDK
+  // time.sleep(1); // TODO
+#endif
 }

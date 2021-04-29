@@ -3,8 +3,8 @@
  *     Author: Witold Markowski (wmarkow)
  *
  * Copyright (C)
- *    2021        Witold Markowski (wmarkow)
- *
+ *    2020        Witold Markowski (wmarkow)
+ *    2021        Brendan Doherty (2bndy5) <br>
  * This General Public License does not permit incorporating your program into
  * proprietary programs.  If your program is a subroutine library, you may
  * consider it more useful to permit linking proprietary applications with the
@@ -65,9 +65,36 @@ void setup()
 
 void loop()
 {
-  for (uint16_t logLevel = 0 ; logLevel <= 255 ; logLevel ++) {
-    RF24Log_log((uint8_t)logLevel, vendorID, "This is a log message with level %d", logLevel);
+  uint8_t level = 0;
+  char input;
+
+#ifdef ARDUINO
+  if (Serial.available()) {
+    input = Serial.read();
+    while (Serial.available() && input >= 48 && input < 56) {
+      level <<= 3;
+      level += input - 48;
+      input = Serial.read();
+    }
   }
+#elif defined (PICO_BUILD)
+  input = getchar_timeout_us(5000); // get char from buffer for user input after 5 sec
+  while (input != PICO_ERROR_TIMEOUT && input >= 48 && input < 56) {
+    level <<= 3;
+    level += input - 48;
+    input = getchar_timeout_us(1000); // get char from buffer for user input after 1 sec
+  }
+#endif // platform specific user input
+
+  if (level) {
+    RF24Log_log(1, "loop() user input", "Set log level (in octal) to %o\n", level);
+    serialLogHandler.setLogLevel(level);
+  }
+
+  for (level = 0 ; level <= 255 ; level ++) {
+    RF24Log_log(level, vendorID, "This is a log message with level %d", level);
+  }
+
 #ifdef ARDUINO
   Serial.println("");
 

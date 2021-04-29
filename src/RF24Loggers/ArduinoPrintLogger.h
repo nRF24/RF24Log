@@ -38,7 +38,7 @@ protected:
 
     /**
      * @brief output a data according to the format specifier
-     * @param count The number of prefixed padding characters
+     * @param flags The object of prefixed specifier options/flags
      * @param format The format of the message
      * @param args The sequence of args
      */

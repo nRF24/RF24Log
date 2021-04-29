@@ -142,14 +142,23 @@ extern RF24Logging rf24Logging;
 #endif /* SRC_RF24LOGGER_H_ */
 
 /**
- * @example{lineno} BasicSerialLogger.ino
+ * @example{lineno} gettingStarted.ino
  *
  * A Basic usage of RF24Logging on the Arduino IDE's Serial Monitor.
  * This example accepts user input to change the log level used as a filter.
  */
 
 /**
- * @example{lineno} LogLevelsLogger.ino
+ * @example{lineno} DualStream.ino
  *
+ * This example uses a handler extension to forward log messages to 2
+ * simultaneous out put streams.
+ * This example accepts user input to change the log level used as a filter.
+ */
+
+/**
+ * @example{lineno} AllLogLevels.ino
+ *
+ * This example just prints a messaged for each supported log level.
  * This example accepts user input to change the log level used as a filter.
  */

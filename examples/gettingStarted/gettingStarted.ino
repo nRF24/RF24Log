@@ -4,7 +4,7 @@
  *
  * Copyright (C)
  *    2020        Witold Markowski (wmarkow)
- *
+ *    2021        Brendan Doherty (2bndy5) <br>
  * This General Public License does not permit incorporating your program into
  * proprietary programs.  If your program is a subroutine library, you may
  * consider it more useful to permit linking proprietary applications with the
@@ -64,39 +64,32 @@ void setup()
 
 void loop()
 {
+
+  uint8_t level = 0;
+  char input;
+
 #ifdef ARDUINO
   if (Serial.available()) {
-    char input = Serial.read();
-    uint8_t count = 0;
+    input = Serial.read();
     while (Serial.available() && input >= 48 && input < 56) {
-      count <<= 3;
-      count += input - 48;
+      level <<= 3;
+      level += input - 48;
       input = Serial.read();
-    }
-    if (count) {
-      Serial.print("Set log level (in octal) to ");
-      Serial.println(count, OCT);
-      serialLogHandler.setLogLevel(count);
     }
   }
 #elif defined (PICO_BUILD)
-  char input;
   input = getchar_timeout_us(5000); // get char from buffer for user input after 5 sec
-  uint8_t count = 0;
-  if (input != PICO_ERROR_TIMEOUT) {
-    printf("Set log level (in octal) to ");
-  }
   while (input != PICO_ERROR_TIMEOUT && input >= 48 && input < 56) {
-    count <<= 3;
-    count += input - 48;
-    input = getchar_timeout_us(0); // get char from buffer for user input;
+    level <<= 3;
+    level += input - 48;
+    input = getchar_timeout_us(1000); // get char from buffer for user input after 1 sec
   }
-  if (count) {
-    printf("%o", count);
-    serialLogHandler.setLogLevel(count);
-  }
+#endif // platform specific user input
 
-#endif
+  if (level) {
+    RF24Log_log(1, "loop() user input", "Set log level (in octal) to %o\n", level);
+    serialLogHandler.setLogLevel(level);
+  }
 
   RF24Log_error(vendorID, "Error message");
   RF24Log_warn(vendorID, "Warning message");
@@ -112,13 +105,15 @@ void loop()
   RF24Log_log(RF24LogLevel::INFO + 1, vendorID, "INFO + 1 message");
   RF24Log_log(RF24LogLevel::WARN + 1, vendorID, "WARN + 1 message");
   RF24Log_log(07, vendorID, "%%%%This is level 0x%02x (0b%08b or%3l)%c", 07, 07, 07, '!');
+
 #ifdef ARDUINO
   Serial.println("");
 
   delay(5000);
 #elif !defined(PICO_BUILD)
   // for non-Arduino & not Pico SDK
-  // time.sleep(5); // TODO
+  std::cout << std::endl;
+  // time.sleep(1); // TODO
 #endif
 }
 
