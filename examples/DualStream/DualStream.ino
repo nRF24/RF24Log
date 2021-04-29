@@ -29,6 +29,7 @@ RF24DualLogHandler rf24DualLogHandler(&rf24SerialLogHandler1, &rf24SerialLogHand
 
 // Define global vendor id (it is stored in FLASH memory)
 const char PROGMEM vendorID[] = "RF24LogExample";
+const char PROGMEM uiPrompt[] = "user input";
 
 void setup()
 {
@@ -71,7 +72,7 @@ void loop()
 #endif // platform specific user input
 
   if (level) {
-    RF24Log_log(1, F("loop() user input"), "Set log level (in octal) to %o\n", level);
+    RF24Log_log(1, uiPrompt, "Set log level (in octal) to %o\n", level);
     rf24SerialLogHandler2.setLogLevel(level); // set log level only for handler2
   }
 
