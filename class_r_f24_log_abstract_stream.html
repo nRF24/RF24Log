@@ -99,6 +99,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:ade6125bf405bc97a2437fddf1bcaf3f0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#ade6125bf405bc97a2437fddf1bcaf3f0">appendFormattedMessage</a> (const char *format, va_list *args)=0</td></tr>
 <tr class="memdesc:ade6125bf405bc97a2437fddf1bcaf3f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a message with the specifiers replaced with values from the sequence of <code>args</code>  <a href="class_r_f24_log_abstract_stream.html#ade6125bf405bc97a2437fddf1bcaf3f0">More...</a><br /></td></tr>
 <tr class="separator:ade6125bf405bc97a2437fddf1bcaf3f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c77deb3a80033416e95f7caac00b776"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#a7c77deb3a80033416e95f7caac00b776">howWide</a> (unsigned long numb, uint8_t base=10)</td></tr>
+<tr class="memdesc:a7c77deb3a80033416e95f7caac00b776"><td class="mdescLeft">&#160;</td><td class="mdescRight">how wide does it take to display a number  <a href="class_r_f24_log_abstract_stream.html#a7c77deb3a80033416e95f7caac00b776">More...</a><br /></td></tr>
+<tr class="separator:a7c77deb3a80033416e95f7caac00b776"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code>protected</code> collection of methods that output formatted data to a stream. </p>
@@ -188,8 +191,56 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a id="a7c77deb3a80033416e95f7caac00b776"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c77deb3a80033416e95f7caac00b776">&#9670;&nbsp;</a></span>howWide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t RF24LogAbstractStream::howWide </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>numb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>base</em> = <code>10</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>how wide does it take to display a number </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numb</td><td>The number to represent </td></tr>
+    <tr><td class="paramname">base</td><td>The base counting scheme. Defaulrs to 10 for decimal counting system. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00055">55</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a></li>
+<li>src/<a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

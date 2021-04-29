@@ -82,6 +82,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a69b5f8fbd327c81f9144e8433ac00dcb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specifier_flags.html#a69b5f8fbd327c81f9144e8433ac00dcb">SpecifierFlags</a> (char pad=' ')</td></tr>
 <tr class="memdesc:a69b5f8fbd327c81f9144e8433ac00dcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Specifier Flags object.  <a href="struct_specifier_flags.html#a69b5f8fbd327c81f9144e8433ac00dcb">More...</a><br /></td></tr>
 <tr class="separator:a69b5f8fbd327c81f9144e8433ac00dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbbb61fbc911e589b0a6873777adf25d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specifier_flags.html#adbbb61fbc911e589b0a6873777adf25d">isFlagged</a> (char c)</td></tr>
+<tr class="memdesc:adbbb61fbc911e589b0a6873777adf25d"><td class="mdescLeft">&#160;</td><td class="mdescRight">is a character a valid specifier flag  <a href="struct_specifier_flags.html#adbbb61fbc911e589b0a6873777adf25d">More...</a><br /></td></tr>
+<tr class="separator:adbbb61fbc911e589b0a6873777adf25d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c3b0a8c9e68ff4f7c9bc543e2d5554b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specifier_flags.html#a4c3b0a8c9e68ff4f7c9bc543e2d5554b">isPaddPrec</a> (char c)</td></tr>
+<tr class="memdesc:a4c3b0a8c9e68ff4f7c9bc543e2d5554b"><td class="mdescLeft">&#160;</td><td class="mdescRight">is a character a valid specifier padding/precision quantity  <a href="struct_specifier_flags.html#a4c3b0a8c9e68ff4f7c9bc543e2d5554b">More...</a><br /></td></tr>
+<tr class="separator:a4c3b0a8c9e68ff4f7c9bc543e2d5554b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -90,18 +96,18 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 <tr class="memdesc:a104c0479b2cd1bb1e8a8efd99a577904"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default character used as padding. <br /></td></tr>
 <tr class="separator:a104c0479b2cd1bb1e8a8efd99a577904"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac610d5b19cde2fdba55326282bfe3a8"><td class="memItemLeft" align="right" valign="top"><a id="aac610d5b19cde2fdba55326282bfe3a8"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specifier_flags.html#aac610d5b19cde2fdba55326282bfe3a8">width</a> = 0</td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specifier_flags.html#aac610d5b19cde2fdba55326282bfe3a8">width</a></td></tr>
 <tr class="memdesc:aac610d5b19cde2fdba55326282bfe3a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The width of the padding. <br /></td></tr>
 <tr class="separator:aac610d5b19cde2fdba55326282bfe3a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeec95e8170851e17d7dd2f845089f505"><td class="memItemLeft" align="right" valign="top"><a id="aeec95e8170851e17d7dd2f845089f505"></a>
-int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specifier_flags.html#aeec95e8170851e17d7dd2f845089f505">precis</a> = -1</td></tr>
+int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_specifier_flags.html#aeec95e8170851e17d7dd2f845089f505">precis</a></td></tr>
 <tr class="memdesc:aeec95e8170851e17d7dd2f845089f505"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of decimal places. If negative, then default of 2 places is used. <br /></td></tr>
 <tr class="separator:aeec95e8170851e17d7dd2f845089f505"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Some data about a format specifier. </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8h_source.html#l00099">99</a> of file <a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8h_source.html#l00107">107</a> of file <a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a69b5f8fbd327c81f9144e8433ac00dcb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a69b5f8fbd327c81f9144e8433ac00dcb">&#9670;&nbsp;</a></span>SpecifierFlags()</h2>
@@ -135,12 +141,72 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8h_source.html#l00105">105</a> of file <a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8h_source.html#l00113">113</a> of file <a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="adbbb61fbc911e589b0a6873777adf25d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbbb61fbc911e589b0a6873777adf25d">&#9670;&nbsp;</a></span>isFlagged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SpecifierFlags::isFlagged </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>is a character a valid specifier flag </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>A character </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the <code>c</code> param is a valid option; false otherwise </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00086">86</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4c3b0a8c9e68ff4f7c9bc543e2d5554b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c3b0a8c9e68ff4f7c9bc543e2d5554b">&#9670;&nbsp;</a></span>isPaddPrec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SpecifierFlags::isPaddPrec </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>is a character a valid specifier padding/precision quantity </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>A character </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the <code>c</code> param is a valid option; false otherwise </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00095">95</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>src/<a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a></li>
+<li>src/<a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

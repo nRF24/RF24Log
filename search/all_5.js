@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['info_13',['INFO',['../group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a748005382152808a72b1a9177d9dc806',1,'RF24LogLevel.h']]]
+  ['howwide_13',['howWide',['../class_r_f24_log_abstract_stream.html#a7c77deb3a80033416e95f7caac00b776',1,'RF24LogAbstractStream']]]
 ];
