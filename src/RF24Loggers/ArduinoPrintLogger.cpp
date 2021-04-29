@@ -63,7 +63,7 @@ void ArduinoPrintLogger::appendTimestamp()
     int16_t w = howWide(now, 10);
     appendPadding(' ', 10 - w - !w);
     stream->print(now, DEC);
-    stream->print((char)';');
+    stream->print(";");
 }
 
 void ArduinoPrintLogger::appendLogLevel(uint8_t logLevel)
@@ -81,7 +81,7 @@ void ArduinoPrintLogger::appendLogLevel(uint8_t logLevel)
         }
         else
         {
-            stream->print((char)'+');
+            stream->print("+");
             stream->print(subLevel);
         }
     }
@@ -90,7 +90,7 @@ void ArduinoPrintLogger::appendLogLevel(uint8_t logLevel)
         appendPadding(' ', logLevel < 010 ? 3 : 1 + (logLevel < 0100));
         stream->print(logLevel, OCT);
     }
-    stream->print((char)';');
+    stream->print(";");
 }
 
 void ArduinoPrintLogger::appendFormattedMessage(const char *format, va_list *args)

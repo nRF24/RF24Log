@@ -96,7 +96,7 @@ protected:
      * @param numb The number to represent
      * @param base The base counting scheme. Defaulrs to 10 for decimal counting system.
      */
-    int16_t howWide(unsigned long numb, uint8_t base = 10);
+    int16_t howWide(int numb, uint8_t base = 10);
 
 #if defined (ARDUINO_ARCH_AVR)
     virtual void appendFormattedMessage(const __FlashStringHelper *format, va_list *args) = 0;

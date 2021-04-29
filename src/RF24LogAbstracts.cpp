@@ -52,7 +52,7 @@ void RF24LogAbstractHandler::log(uint8_t logLevel,
 }
 #endif
 
-int16_t RF24LogAbstractStream::howWide(unsigned long numb, uint8_t base)
+int16_t RF24LogAbstractStream::howWide(int numb, uint8_t base)
 {
     int mask = numb;
     int16_t i = 0;
@@ -60,19 +60,19 @@ int16_t RF24LogAbstractStream::howWide(unsigned long numb, uint8_t base)
     {
         if (base == 2)
         {
-            mask >> 1;
+            mask >>= 1;
         }
         else if (base == 8)
         {
             mask >>= 3;
         }
-        else if (base == 10)
-        {
-            mask /= 10;
-        }
         else if (base == 16)
         {
             mask >>= 4;
+        }
+        else // assume base is default value of 10
+        {
+            mask /= 10;
         }
         i++;
     }
@@ -87,31 +87,32 @@ bool SpecifierFlags::isFlagged(char c)
 {
     if (c == '0')
     {
-        fill = c;
+        fill = '0';
     }
-    return c == '-' || c == '+' || c == ' ' || c == '0';
+    return (bool)(c == '-' || c == '+' || c == ' ' || c == '0');
 }
 
 bool SpecifierFlags::isPaddPrec(char c)
 {
-    if (c != '.' || c < 48 && c > 57)
+    if (c == '.' || (c > 47 && c < 58))
     {
-        return false;
-    }
-    if (c == '.')
-    {
-        precis = 0;
-    }
-    else
-    {
-        if (precis >=0)
+        if (c == '.')
         {
-            precis = (precis * 10) + (c - 48);
+            precis = 0;
         }
         else
         {
-            width = (width * 10) + (c - 48);
+            if (precis >=0)
+            {
+                precis = (precis * 10) + (c - 48);
+            }
+            else
+            {
+                width = (width * 10) + (c - 48);
+            }
         }
+        return true;
     }
-    return true;
+    return false;
+
 }
