@@ -24,6 +24,11 @@
 #include <stdint.h>
 #include <stdarg.h>
 
+/** @brief Change The Delimiter character used in the header prefix of log messages. */
+#ifndef RF24LOG_DELIMITER
+#define RF24LOG_DELIMITER ';'
+#endif
+
 /** @brief A base mechanism for handling log messages. */
 class RF24LogHandler
 {

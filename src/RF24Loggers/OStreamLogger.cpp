@@ -34,13 +34,12 @@ OStreamLogger::OStreamLogger(std::ostream *stream)
 }
 
 void OStreamLogger::write(uint8_t logLevel,
-                                 const char *vendorId,
-                                 const char *message,
-                                 va_list *args)
+                          const char *vendorId,
+                          const char *message,
+                          va_list *args)
 {
-    appendTimestamp();
-    appendLogLevel(logLevel);
-    *stream << vendorId << ";";
+    descTimeLevel(logLevel);
+    *stream << vendorId << RF24LOG_DELIMITER;
 
     // print formatted message
     appendFormattedMessage(message, args);
@@ -57,26 +56,27 @@ void OStreamLogger::appendTimestamp()
     time(&rawtime);
     timeinfo = localtime(&rawtime);
 
-    strftime(buffer, 21, "%F:%H:%M:%S;", timeinfo);
+    strftime(buffer, 20, "%F:%H:%M:%S", timeinfo);
+    buffer[20] = RF24LOG_DELIMITER;
     *stream << buffer;
 }
 
 void OStreamLogger::appendLogLevel(uint8_t logLevel)
 {
-    uint8_t subLevel = logLevel & 0x07;
+    int8_t subLevel = logLevel & 0x07;
 
     if (logLevel >= RF24LogLevel::ERROR && logLevel <= RF24LogLevel::DEBUG + 7)
     {
-        uint8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
+        int8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
         *stream << rf24LogLevels[logIndex];
 
         if(subLevel)
         {
-            *stream << "+" << (unsigned int)subLevel << ";";
+            *stream << "+" << (unsigned int)subLevel << RF24LOG_DELIMITER;
         }
         else
         {
-            *stream << "  ;";
+            *stream << "  " << RF24LOG_DELIMITER;
         }
 
         return;
@@ -84,7 +84,7 @@ void OStreamLogger::appendLogLevel(uint8_t logLevel)
 
     *stream << "Lvl";
     stream->width(4);
-    *stream << logLevel << ";";
+    *stream << logLevel << RF24LOG_DELIMITER;
 }
 
 void OStreamLogger::appendFormattedMessage(const char *format, va_list *args)

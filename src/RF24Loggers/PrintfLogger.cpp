@@ -43,10 +43,9 @@ void PrintfLogger::write(uint8_t logLevel,
                          const char *message,
                          va_list *args)
 {
-    appendTimestamp();
-    appendLogLevel(logLevel);
+    descTimeLevel(logLevel);
     stream(vendorId);
-    stream(";");
+    stream(reinterpret_cast<const char*>(RF24LOG_DELIMITER));
 
     // print formatted message
     appendFormattedMessage(message, args);
@@ -68,33 +67,35 @@ void PrintfLogger::appendTimestamp()
     time(&rawtime);
     timeinfo = localtime(&rawtime);
 
-    strftime(buffer, 21, "%F:%H:%M:%S;", timeinfo);
+    strftime(buffer, 20, "%F:%H:%M:%S", timeinfo);
+    buffer[20] = RF24LOG_DELIMITER;
     stream(buffer);
     #endif // defined (PICO_BUILD) && !defined (ARDUINO)
 }
 
 void PrintfLogger::appendLogLevel(uint8_t logLevel)
 {
-    uint8_t subLevel = logLevel & 0x07;
+    int8_t subLevel = logLevel & 0x07;
 
     if (logLevel >= RF24LogLevel::ERROR && logLevel <= RF24LogLevel::DEBUG + 7)
     {
-        uint8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
+        int8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
         stream(rf24LogLevels[logIndex]);
 
         if(subLevel)
         {
-            stream("+%d;", subLevel);
+            stream("+%d", subLevel);
         }
         else
         {
-            stream("  ;");
+            stream("  ");
         }
-
+        stream(reinterpret_cast<const char*>(RF24LOG_DELIMITER));
         return;
     }
 
-    stream("Lvl%4o;", logLevel);
+    stream("Lvl%4o", logLevel);
+    stream(reinterpret_cast<const char*>(RF24LOG_DELIMITER));
 }
 
 void PrintfLogger::appendFormattedMessage(const char *format, va_list *args)

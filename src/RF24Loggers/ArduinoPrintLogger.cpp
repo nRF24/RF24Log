@@ -35,14 +35,13 @@ ArduinoPrintLogger::ArduinoPrintLogger(Print *stream)
 }
 
 void ArduinoPrintLogger::write(uint8_t logLevel,
-                                 const char *vendorId,
-                                 const char *message,
-                                 va_list *args)
+                               const char *vendorId,
+                               const char *message,
+                               va_list *args)
 {
-    appendTimestamp();
-    appendLogLevel(logLevel);
+    descTimeLevel(logLevel);
     stream->print(vendorId);
-    stream->print(";");
+    stream->print(RF24LOG_DELIMITER);
 
     // print formatted message
     appendFormattedMessage(message, args);
@@ -63,12 +62,12 @@ void ArduinoPrintLogger::appendTimestamp()
     int16_t w = howWide(now, 10);
     appendPadding(' ', 10 - w - !w);
     stream->print(now, DEC);
-    stream->print(";");
+    stream->print(RF24LOG_DELIMITER);
 }
 
 void ArduinoPrintLogger::appendLogLevel(uint8_t logLevel)
 {
-    uint8_t subLevel = logLevel & 0x07;
+    int8_t subLevel = logLevel & 0x07;
 
     if (logLevel >= RF24LogLevel::ERROR && logLevel <= RF24LogLevel::DEBUG + 7)
     {
@@ -90,7 +89,7 @@ void ArduinoPrintLogger::appendLogLevel(uint8_t logLevel)
         appendPadding(' ', logLevel < 010 ? 3 : 1 + (logLevel < 0100));
         stream->print(logLevel, OCT);
     }
-    stream->print(";");
+    stream->print(RF24LOG_DELIMITER);
 }
 
 void ArduinoPrintLogger::appendFormattedMessage(const char *format, va_list *args)
@@ -241,10 +240,9 @@ void ArduinoPrintLogger::write(uint8_t logLevel,
                                const __FlashStringHelper *message,
                                va_list *args)
 {
-    appendTimestamp();
-    appendLogLevel(logLevel);
+    descTimeLevel(logLevel);
     stream->print(vendorId);
-    stream->print(";");
+    stream->print(RF24LOG_DELIMITER);
 
     // print formatted message
     appendFormattedMessage(message, args);

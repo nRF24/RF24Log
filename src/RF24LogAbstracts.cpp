@@ -24,17 +24,20 @@ void RF24LogAbstractHandler::log(uint8_t logLevel,
                                  const char *message,
                                  va_list *args)
 {
-    if (logLevel > this->logLevel)
+    if (isLevelEnabled(logLevel))
     {
-        return;
+        write(logLevel, vendorId, message, args);
     }
-
-    write(logLevel, vendorId, message, args);
 }
 
 void RF24LogAbstractHandler::setLogLevel(uint8_t logLevel)
 {
     this->logLevel = logLevel;
+}
+
+bool RF24LogAbstractHandler::isLevelEnabled(uint8_t logLevel)
+{
+    return logLevel && logLevel <= this->logLevel;
 }
 
 #if defined (ARDUINO_ARCH_AVR)
@@ -43,18 +46,16 @@ void RF24LogAbstractHandler::log(uint8_t logLevel,
                                  const __FlashStringHelper *message,
                                  va_list *args)
 {
-    if (logLevel > this->logLevel)
+    if (isLevelEnabled(logLevel))
     {
-        return;
+        write(logLevel, vendorId, message, args);
     }
-
-    write(logLevel, vendorId, message, args);
 }
 #endif
 
 int16_t RF24LogAbstractStream::howWide(int numb, uint8_t base)
 {
-    int mask = numb;
+    int mask = (numb > 0 ? numb : numb * -1);
     int16_t i = 0;
     while (mask)
     {
@@ -81,6 +82,14 @@ int16_t RF24LogAbstractStream::howWide(int numb, uint8_t base)
         i++; // compensate for the negative sign
     }
     return i;
+}
+
+void RF24LogAbstractStream::descTimeLevel(uint8_t logLevel)
+{
+    #ifndef RF24LOG_NO_TIMESTAMP
+    appendTimestamp();
+    #endif
+    appendLogLevel(logLevel);
 }
 
 bool SpecifierFlags::isFlagged(char c)

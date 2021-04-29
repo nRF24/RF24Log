@@ -42,6 +42,15 @@ public:
              va_list *args);
 #endif
 
+private:
+
+    /**
+     * @brief is logging enabled for a certain level?
+     * @param logLevel The Log level to test if enabled.
+     * @return true if the log messages are enabled for the specified @p logLevel; false otherwise.
+     */
+    bool isLevelEnabled(uint8_t logLevel);
+
 protected:
 
     /** The configured log level used to filter which messages are output. */
@@ -82,6 +91,12 @@ protected:
      * @param logLevel The level to describe.
      */
     virtual void appendLogLevel(uint8_t logLevel) = 0;
+
+    /**
+     * @brief Automate the output of the header' timestamp and level description
+     * @param logLevel The Log level to describe.
+     */
+    void descTimeLevel(uint8_t logLevel);
 
     /**
      * @brief output a message with the specifiers replaced with values from the sequence of @p args

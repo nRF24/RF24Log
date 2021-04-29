@@ -92,9 +92,11 @@ void loop()
     serialLogHandler.setLogLevel(level);
   }
 
-  for (level = 0 ; level <= 255 ; level ++) {
+  level = 0;
+  do {
+    level++;
     RF24Log_log(level, vendorID, "This is a log message with level %d", level);
-  }
+  } while (level);
 
 #ifdef ARDUINO
   Serial.println("");

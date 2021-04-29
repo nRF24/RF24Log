@@ -126,11 +126,11 @@ public:
 };
 
 #ifdef DOXYGEN_FORCED
-/**
- * @def RF24LOG_NO_EOL
- * @brief macro (when defined) disables automatic line feeds at the end of all log messages.
- */
+/** @brief macro (when defined) disables line feeds at the end of all log messages. */
 #define RF24LOG_NO_EOL
+
+/** @brief macro (when defined) disables timestamp at the start of all log messages. */
+#define RF24LOG_NO_TIMESTAMP
 #endif
 
 /** @brief the singleton used for all your program's logging purposes. */
