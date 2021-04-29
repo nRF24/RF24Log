@@ -59,17 +59,11 @@ void ArduinoPrintLogger::appendTimestamp()
     // stream->print(c);
 
     // this costs less by using in-house tools
-    unsigned long temp, now(millis());
-    temp = now;
-    uint16_t i = 0;
-    while (temp)
-    {
-        temp /= 10;
-        i++;
-    }
-    appendPadding(' ', 10 - i - !i);
-    stream->print(now);
-    stream->print(";");
+    unsigned long now = millis();
+    int16_t w = howWide(now, 10);
+    appendPadding(' ', 10 - w - !w);
+    stream->print(now, DEC);
+    stream->print((char)';');
 }
 
 void ArduinoPrintLogger::appendLogLevel(uint8_t logLevel)
@@ -87,7 +81,7 @@ void ArduinoPrintLogger::appendLogLevel(uint8_t logLevel)
         }
         else
         {
-            stream->print("+");
+            stream->print((char)'+');
             stream->print(subLevel);
         }
     }
@@ -96,7 +90,7 @@ void ArduinoPrintLogger::appendLogLevel(uint8_t logLevel)
         appendPadding(' ', logLevel < 010 ? 3 : 1 + (logLevel < 0100));
         stream->print(logLevel, OCT);
     }
-    stream->print(";");
+    stream->print((char)';');
 }
 
 void ArduinoPrintLogger::appendFormattedMessage(const char *format, va_list *args)
@@ -107,30 +101,12 @@ void ArduinoPrintLogger::appendFormattedMessage(const char *format, va_list *arg
         {
             ++format;
             SpecifierFlags flags;
-            while (*format == '-' || *format == '+' || *format == ' ' || *format == '0')
+            while (flags.isFlagged(*format))
             {
-                if (*format == '0')
-                {
-                    flags.fill = *format;
-                }
                 ++format;
             }
-            while (isDigit(*format) || *format == '.')
+            while (flags.isPaddPrec(*format))
             {
-                if (*format == '.')
-                {
-                    flags.precis = 0;
-                }
-                else
-                {
-                    if (flags.precis >=0) {
-                        flags.precis = (flags.precis * 10) + (*format - 48);
-                    }
-                    else
-                    {
-                        flags.width = (flags.width * 10) + (*format - 48);
-                    }
-                }
                 ++format;
             }
             if (isAlpha(*format))
@@ -199,18 +175,8 @@ void ArduinoPrintLogger::appendFormat(SpecifierFlags* flags, char format, va_lis
         int temp = va_arg(*args, int);
         if (flags->width)
         {
-            int mask = temp;
-            int16_t i = 0;
-            while (mask)
-            {
-                mask /= 10;
-                i++;
-            }
-            if (temp < 0)
-            {
-                i++; // compensate for the negative sign
-            }
-            appendPadding(flags->fill, flags->width - i);
+            int16_t w = howWide(temp, 10);
+            appendPadding(flags->fill, flags->width - w);
         }
         stream->print(temp, DEC);
     }
@@ -221,18 +187,8 @@ void ArduinoPrintLogger::appendFormat(SpecifierFlags* flags, char format, va_lis
         int temp = va_arg(*args, int);
         if (flags->width)
         {
-            int mask = temp;
-            int16_t i = 0;
-            while (mask)
-            {
-                mask >>= 4;
-                i++;
-            }
-            if (temp < 0)
-            {
-                i++; // compensate for the negative sign
-            }
-            appendPadding(flags->fill, flags->width - i);
+            int16_t w = howWide(temp, 16);
+            appendPadding(flags->fill, flags->width - w);
         }
         stream->print(temp, HEX);
     }
@@ -243,18 +199,8 @@ void ArduinoPrintLogger::appendFormat(SpecifierFlags* flags, char format, va_lis
         int temp = va_arg(*args, int);
         if (flags->width)
         {
-            int mask = temp;
-            int16_t i = 0;
-            while (mask)
-            {
-                mask >>= 3;
-                i++;
-            }
-            if (temp < 0)
-            {
-                i++; // compensate for the negative sign
-            }
-            appendPadding(flags->fill, flags->width - i);
+            int16_t w = howWide(temp, 8);
+            appendPadding(flags->fill, flags->width - w);
         }
         stream->print(temp, OCT);
     }
@@ -265,14 +211,8 @@ void ArduinoPrintLogger::appendFormat(SpecifierFlags* flags, char format, va_lis
         unsigned int temp = va_arg(*args, int);
         if (flags->width)
         {
-            unsigned int mask = temp;
-            int16_t i = 0;
-            while (mask)
-            {
-                mask >>= 1;
-                i++;
-            }
-            appendPadding(flags->fill, flags->width - i);
+            int16_t w = howWide(temp, 2);
+            appendPadding(flags->fill, flags->width - w);
         }
         stream->print(temp, BIN);
     }
@@ -297,9 +237,9 @@ void ArduinoPrintLogger::appendPadding(char padding, int16_t depth)
 
 #if defined (ARDUINO_ARCH_AVR)
 void ArduinoPrintLogger::write(uint8_t logLevel,
-                                 const __FlashStringHelper *vendorId,
-                                 const __FlashStringHelper *message,
-                                 va_list *args)
+                               const __FlashStringHelper *vendorId,
+                               const __FlashStringHelper *message,
+                               va_list *args)
 {
     appendTimestamp();
     appendLogLevel(logLevel);
@@ -323,30 +263,12 @@ void ArduinoPrintLogger::appendFormattedMessage(const __FlashStringHelper *forma
         {
             c = pgm_read_byte(p++);
             SpecifierFlags flags;
-            while (c == '-' || c == '+' || c == ' ' || c == '0')
+            while (flags.isFlagged(c))
             {
-                if (c == '0')
-                {
-                    flags.fill = '0';
-                }
                 c = pgm_read_byte(p++);
             }
-            while (isDigit(c) || c == '.')
+            while (flags.isPaddPrec(c))
             {
-                if (c == '.')
-                {
-                    flags.precis = 0;
-                }
-                else
-                {
-                    if (flags.precis >=0) {
-                        flags.precis = (flags.precis * 10) + (c - 48);
-                    }
-                    else
-                    {
-                        flags.width = (flags.width * 10) + (c - 48);
-                    }
-                }
                 c = pgm_read_byte(p++);
             }
             if (isAlpha(c))

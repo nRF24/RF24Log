@@ -51,3 +51,67 @@ void RF24LogAbstractHandler::log(uint8_t logLevel,
     write(logLevel, vendorId, message, args);
 }
 #endif
+
+int16_t RF24LogAbstractStream::howWide(unsigned long numb, uint8_t base)
+{
+    int mask = numb;
+    int16_t i = 0;
+    while (mask)
+    {
+        if (base == 2)
+        {
+            mask >> 1;
+        }
+        else if (base == 8)
+        {
+            mask >>= 3;
+        }
+        else if (base == 10)
+        {
+            mask /= 10;
+        }
+        else if (base == 16)
+        {
+            mask >>= 4;
+        }
+        i++;
+    }
+    if (numb < 0)
+    {
+        i++; // compensate for the negative sign
+    }
+    return i;
+}
+
+bool SpecifierFlags::isFlagged(char c)
+{
+    if (c == '0')
+    {
+        fill = c;
+    }
+    return c == '-' || c == '+' || c == ' ' || c == '0';
+}
+
+bool SpecifierFlags::isPaddPrec(char c)
+{
+    if (c != '.' || c < 48 && c > 57)
+    {
+        return false;
+    }
+    if (c == '.')
+    {
+        precis = 0;
+    }
+    else
+    {
+        if (precis >=0)
+        {
+            precis = (precis * 10) + (c - 48);
+        }
+        else
+        {
+            width = (width * 10) + (c - 48);
+        }
+    }
+    return true;
+}

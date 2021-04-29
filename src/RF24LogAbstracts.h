@@ -90,6 +90,14 @@ protected:
      */
     virtual void appendFormattedMessage(const char *format, va_list *args) = 0;
 
+    /**
+     * @brief how wide does it take to display a number
+     *
+     * @param numb The number to represent
+     * @param base The base counting scheme. Defaulrs to 10 for decimal counting system.
+     */
+    int16_t howWide(unsigned long numb, uint8_t base = 10);
+
 #if defined (ARDUINO_ARCH_AVR)
     virtual void appendFormattedMessage(const __FlashStringHelper *format, va_list *args) = 0;
 #endif
@@ -102,13 +110,29 @@ struct SpecifierFlags
      * @brief Construct a new Specifier Flags object
      * @param pad The default char used when padding data
      */
-    SpecifierFlags(char pad = ' ') : fill(pad) {};
+    SpecifierFlags(char pad = ' ') : fill(pad), width(0), precis(-1) {};
+
+    /**
+     * @brief is a character a valid specifier flag
+     * @param c A character
+     * @return true if the @p c param is a valid option; false otherwise
+     */
+    bool isFlagged(char c);
+
+    /**
+     * @brief is a character a valid specifier padding/precision quantity
+     * @param c A character
+     * @return true if the @p c param is a valid option; false otherwise
+     */
+    bool isPaddPrec(char c);
+
     /** @brief The default character used as padding. */
     char fill;
     /** @brief The width of the padding */
-    unsigned int width = 0;
+    unsigned int width;
     /** @brief The number of decimal places. If negative, then default of 2 places is used. */
-    int8_t precis = -1;
+    int8_t precis;
+
 };
 
 #endif /* SRC_RF24LOGABSTRACTS_H_ */

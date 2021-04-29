@@ -51,7 +51,6 @@ protected:
      */
     void appendPadding(char padding, int16_t depth);
 
-
     // declare the rest to raise from pure virtual
     /************************************************/
 
