@@ -63,11 +63,11 @@ void OStreamLogger::appendTimestamp()
 
 void OStreamLogger::appendLogLevel(uint8_t logLevel)
 {
-    int8_t subLevel = logLevel & 0x07;
+    uint8_t subLevel = logLevel & 0x07;
 
     if (logLevel >= RF24LogLevel::ERROR && logLevel <= RF24LogLevel::DEBUG + 7)
     {
-        int8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
+        uint8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
         *stream << rf24LogLevels[logIndex];
 
         if(subLevel)
