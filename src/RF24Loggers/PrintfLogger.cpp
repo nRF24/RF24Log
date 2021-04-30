@@ -19,20 +19,6 @@
 #endif
 #include "PrintfLogger.h"
 
-/** description of the @ref ERROR base level */
-const char rf24logLevelError[] = "ERROR";
-/** description of the @ref WARN base level */
-const char rf24logLevelWarn[] = " WARN";
-/** description of the @ref INFO base level */
-const char rf24logLevelInfo[] = " INFO";
-/** description of the @ref DEBUG base level */
-const char rf24logLevelDebug[] = "DEBUG";
-/** collection of the base level descriptions */
-const char *const rf24LogLevels[] = {rf24logLevelError,
-                                     rf24logLevelWarn,
-                                     rf24logLevelInfo,
-                                     rf24logLevelDebug};
-
 PrintfLogger::PrintfLogger(int (*_stream)(const char *, ...))
 {
     stream = _stream;
@@ -80,7 +66,7 @@ void PrintfLogger::appendLogLevel(uint8_t logLevel)
     if (logLevel >= RF24LogLevel::ERROR && logLevel <= RF24LogLevel::DEBUG + 7)
     {
         uint8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
-        stream(rf24LogLevels[logIndex]);
+        stream(RF24LogDescLevels[logIndex]);
 
         if(subLevel)
         {
@@ -94,7 +80,8 @@ void PrintfLogger::appendLogLevel(uint8_t logLevel)
         return;
     }
 
-    stream("Lvl%4o", logLevel);
+    stream(RF24LogDescLevel);
+    stream("%4o", logLevel);
     stream(reinterpret_cast<const char*>(RF24LOG_DELIMITER));
 }
 

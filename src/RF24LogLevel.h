@@ -49,4 +49,44 @@ enum RF24LogLevel : uint8_t
     ALL = 0xFF
 };
 /**@} */
+
+/**
+ * @defgroup lvlDesc Level Descriptions
+ * @brief Level descriptions
+ * @{
+ */
+#ifdef RF24LOG_SHORT_DESC
+const char RF24LogDescError[] = " ERR";
+const char RF24LogDescWarn[]  = "WARN";
+const char RF24LogDescInfo[]  = "INFO";
+const char RF24LogDescDebug[] = "DEBG";
+const char RF24LogDescLevel[] = "Lv";
+
+#elif defined (RF24LOG_TERSE_DESC)
+const char RF24LogDescError[] = " E";
+const char RF24LogDescWarn[]  = " W";
+const char RF24LogDescInfo[]  = " I";
+const char RF24LogDescDebug[] = "DB";
+const char RF24LogDescLevel[] = "";
+
+#else
+/** description of the @ref ERROR base level */
+const char RF24LogDescError[] = "ERROR";
+/** description of the @ref WARN base level */
+const char RF24LogDescWarn[] = " WARN";
+/** description of the @ref INFO base level */
+const char RF24LogDescInfo[] = " INFO";
+/** description of the @ref DEBUG base level */
+const char RF24LogDescDebug[] = "DEBUG";
+/** description of the @ref DEBUG base level */
+const char RF24LogDescLevel[] = "Lvl";
+#endif
+
+/** collection of the base level descriptions */
+const char * const RF24LogDescLevels[] = {RF24LogDescError,
+                                          RF24LogDescWarn,
+                                          RF24LogDescInfo,
+                                          RF24LogDescDebug};
+
+/**@} */
 #endif /* SRC_RF24LOGLEVEL_H_ */

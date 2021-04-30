@@ -95,7 +95,7 @@ void loop()
   level = 0;
   do {
     level++;
-    RF24Log_log(level, vendorID, "This is a log message with level %d", level);
+    RF24Log_log(level, vendorID, "A log message from %s on level %3d", "loop()", level);
   } while (level);
 
 #ifdef ARDUINO

@@ -12,22 +12,9 @@
  * Public License instead of this License.
  */
 #include <Arduino.h>
-
+#include "RF24LogLevel.h"
 #include "ArduinoPrintLogger.h"
 
-/** description of the @ref ERROR base level */
-const char rf24logLevelError[] = "ERROR";
-/** description of the @ref WARN base level */
-const char rf24logLevelWarn[] = " WARN";
-/** description of the @ref INFO base level */
-const char rf24logLevelInfo[] = " INFO";
-/** description of the @ref DEBUG base level */
-const char rf24logLevelDebug[] = "DEBUG";
-/** collection of the base level descriptions */
-const char *const rf24LogLevels[] = {rf24logLevelError,
-                                     rf24logLevelWarn,
-                                     rf24logLevelInfo,
-                                     rf24logLevelDebug};
 
 ArduinoPrintLogger::ArduinoPrintLogger(Print *stream)
 {
@@ -58,8 +45,8 @@ void ArduinoPrintLogger::appendTimestamp()
     // stream->print(c);
 
     // this costs less by using in-house tools
-    unsigned long now = millis();
-    int16_t w = howWide(now, 10);
+    uint32_t now = millis();
+    int16_t w = howWide(now);
     appendPadding(' ', 10 - w - !w);
     stream->print(now, DEC);
     stream->print(RF24LOG_DELIMITER);
@@ -72,7 +59,7 @@ void ArduinoPrintLogger::appendLogLevel(uint8_t logLevel)
     if (logLevel >= RF24LogLevel::ERROR && logLevel <= RF24LogLevel::DEBUG + 7)
     {
         uint8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
-        stream->print(rf24LogLevels[logIndex]);
+        stream->print(RF24LogDescLevels[logIndex]);
 
         if(subLevel == 0)
         {
@@ -85,7 +72,7 @@ void ArduinoPrintLogger::appendLogLevel(uint8_t logLevel)
         }
     }
     else {
-        stream->print("Lvl");
+        stream->print(RF24LogDescLevel);
         appendPadding(' ', logLevel < 010 ? 3 : 1 + (logLevel < 0100));
         stream->print(logLevel, OCT);
     }

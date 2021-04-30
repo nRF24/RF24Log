@@ -63,6 +63,9 @@ void setup()
 
   RF24Log_info(vendorID, "RF24Log/examples/BasicSerialLogger");
 }
+#ifndef PI
+#define PI 3.14159
+#endif
 
 void loop()
 {
@@ -98,15 +101,14 @@ void loop()
   RF24Log_info(vendorID, "Info message");
   RF24Log_debug(vendorID, "Debug message");
 
-  RF24Log_error(vendorID, "Error message with %s", "RAM string 1");
-  RF24Log_warn(vendorID, "Warning message with %s", "RAM string 2");
+  RF24Log_error(vendorID, "Error message with %s", "RAM string");
 
-  RF24Log_info(vendorID, "info log with double value %D", 3.14);
-  RF24Log_debug(vendorID, "warn log with double value %0.4D", 2.71);
+  RF24Log_info(vendorID, "log with double value %.5D", PI);
+  RF24Log_debug(vendorID, "log with double value %.4D", 2.71);
 
-  RF24Log_log(RF24LogLevel::INFO + 1, vendorID, "INFO + 1 message");
-  RF24Log_log(RF24LogLevel::WARN + 1, vendorID, "WARN + 1 message");
-  RF24Log_log(07, vendorID, "%%%%This is level 0x%02x (0b%08b or%3l)%c", 07, 07, 07, '!');
+  RF24Log_log(RF24LogLevel::INFO + 1, vendorID, "message on sublevel INFO + 1");
+  RF24Log_log(RF24LogLevel::WARN + 1, vendorID, "message on sublevel WARN + 1");
+  RF24Log_log(75, vendorID, "%%%%This is level 0x%02x (0b%08b or%4l)%1c", 75, 75, 75, '!');
 
 #ifdef ARDUINO
   Serial.println("");

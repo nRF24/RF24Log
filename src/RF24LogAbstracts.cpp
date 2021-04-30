@@ -14,6 +14,8 @@
 
 #include <RF24LogAbstracts.h>
 
+/* *************************** AbstractHandler defs **************************** */
+
 RF24LogAbstractHandler::RF24LogAbstractHandler()
 {
     this->logLevel = RF24LogLevel::INFO;
@@ -53,9 +55,11 @@ void RF24LogAbstractHandler::log(uint8_t logLevel,
 }
 #endif
 
-int16_t RF24LogAbstractStream::howWide(int numb, uint8_t base)
+/* *************************** AbstractStream defs **************************** */
+
+int16_t RF24LogAbstractStream::howWide(int64_t numb, uint8_t base)
 {
-    int mask = (numb > 0 ? numb : numb * -1);
+    int64_t mask = (numb > 0 ? numb : numb * -1);
     int16_t i = 0;
     while (mask)
     {
@@ -91,6 +95,8 @@ void RF24LogAbstractStream::descTimeLevel(uint8_t logLevel)
     #endif
     appendLogLevel(logLevel);
 }
+
+/* *************************** SpecifierFlags defs **************************** */
 
 bool SpecifierFlags::isFlagged(char c)
 {
