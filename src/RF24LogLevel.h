@@ -70,23 +70,26 @@ const char RF24LogDescDebug[] = "DB";
 const char RF24LogDescLevel[] = "";
 
 #else
-/** description of the @ref ERROR base level */
+/** @brief description of the @ref ERROR base level */
 const char RF24LogDescError[] = "ERROR";
-/** description of the @ref WARN base level */
+/** @brief description of the @ref WARN base level */
 const char RF24LogDescWarn[] = " WARN";
-/** description of the @ref INFO base level */
+/** @brief description of the @ref INFO base level */
 const char RF24LogDescInfo[] = " INFO";
-/** description of the @ref DEBUG base level */
+/** @brief description of the @ref DEBUG base level */
 const char RF24LogDescDebug[] = "DEBUG";
-/** description of the @ref DEBUG base level */
+/** @brief description of the @ref DEBUG base level */
 const char RF24LogDescLevel[] = "Lvl";
 #endif
 
-/** collection of the base level descriptions */
-const char * const RF24LogDescLevels[] = {RF24LogDescError,
-                                          RF24LogDescWarn,
-                                          RF24LogDescInfo,
-                                          RF24LogDescDebug};
+/** @brief collection of the base level descriptions */
+const char * const RF24LogDescLevels[] =
+{
+    RF24LogDescError,
+    RF24LogDescWarn,
+    RF24LogDescInfo,
+    RF24LogDescDebug
+};
 
 /**@} */
 #endif /* SRC_RF24LOGLEVEL_H_ */
