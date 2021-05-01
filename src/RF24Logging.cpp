@@ -25,22 +25,24 @@ void RF24Logging::setHandler(RF24LogHandler *handler)
 
 void RF24Logging::log(uint8_t logLevel, const char *vendorId, const char *message, ...)
 {
-    if (handler != nullptr && logLevel)
+    if (handler != nullptr)
     {
         va_list args;
         va_start(args, message);
         handler->log(logLevel, vendorId, message, &args);
+        va_end(args);
     }
 }
 
 #if defined (ARDUINO_ARCH_AVR)
 void RF24Logging::log(uint8_t logLevel, const __FlashStringHelper *vendorId, const __FlashStringHelper *message, ...)
 {
-    if (handler != nullptr && logLevel)
+    if (handler != nullptr)
     {
         va_list args;
         va_start(args, message);
         handler->log(logLevel, vendorId, message, &args);
+        va_end(args);
     }
 }
 #endif

@@ -48,36 +48,102 @@ void OStreamLogger::appendTimestamp()
     *stream << buffer;
 }
 
-void OStreamLogger::appendLogLevel(uint8_t logLevel)
+void OStreamLogger::appendChar(char data, int16_t depth)
 {
-    uint8_t subLevel = logLevel & 0x07;
-
-    if (logLevel >= RF24LogLevel::ERROR && logLevel <= RF24LogLevel::DEBUG + 7)
+    while (depth > 0)
     {
-        uint8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
-        *stream << RF24LogDescLevels[logIndex];
-
-        if(subLevel)
-        {
-            *stream << "+" << (unsigned int)subLevel << RF24LOG_DELIMITER;
-        }
-        else
-        {
-            *stream << "  " << RF24LOG_DELIMITER;
-        }
-
-        return;
+        --depth;
+        *stream << (char)data;
     }
-
-    *stream << RF24LogDescLevel;
-    stream->width(4);
-    *stream << std::oct << logLevel << RF24LOG_DELIMITER;
 }
 
-void OStreamLogger::appendFormattedMessage(const char *format, va_list *args)
+void OStreamLogger::appendInt(long data, uint8_t base)
 {
-    char buffer[80];
-    sprintf(buffer, format, args);
-    *stream << buffer;
+    if (base == 2)
+    {
+        bool is_signed = data < 0;
+        if (!data)
+        {
+            *stream << '0'; // output a zero
+            return;
+        }
+        else if (is_signed)
+        {
+            *stream << '-'; // output a negative sign
+        }
+        char buffer[64];
+        uint8_t index = 0;
+        while (data)
+        {
+            // get representation as a reversed string
+            buffer[index] = (data & 1) + 48;
+            data >>= 1;
+            ++index;
+        }
+        while (--index)
+        {
+            *stream << buffer[index]; // dump reversed string 1 char at a time
+        }
+    }
+    else if (base == 8)
+    {
+        *stream << std::oct << data;
+    }
+    else if (base == 16)
+    {
+        *stream << std::hex << data;
+    }
+    else
+    {
+        *stream << std::dec << data;
+    }
 }
-#endif // !ARDUINO
+
+void OStreamLogger::appendUInt(unsigned long data, uint8_t base)
+{
+    if (base == 2)
+    {
+        if (!data)
+        {
+            *stream << '0'; // output a zero
+            return;
+        }
+        char buffer[64];
+        uint8_t index = 0;
+        while (data)
+        {
+            // get representation as a reversed string
+            buffer[index] = (data & 1) + 48;
+            data >>= 1;
+            ++index;
+        }
+        while (--index)
+        {
+            *stream << buffer[index]; // dump reversed string 1 char at a time
+        }
+    }
+    else if (base == 8)
+    {
+        *stream << std::oct << data;
+    }
+    else if (base == 16)
+    {
+        *stream << std::hex << data;
+    }
+    else
+    {
+        *stream << std::dec << data;
+    }
+}
+
+void OStreamLogger::appendDouble(double data, uint8_t precision)
+{
+    *stream << std::fixed << stream->precision(precision) << data;
+}
+
+void OStreamLogger::appendStr(const char* data)
+{
+    *stream << data;
+}
+
+#endif // !defined(ARDUINO)

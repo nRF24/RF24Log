@@ -10,6 +10,13 @@
  * library.  If this is what you want to do, use the GNU Lesser General
  * Public License instead of this License.
  */
+
+#ifdef ARDUINO_ARCH_AVR
+#include <string.h> // sprintf()
+#else
+#include <cstdio> // sprintf()
+#endif
+
 #ifdef ARDUINO
 #include <Arduino.h> // millis()
 #elif defined (PICO_BUILD)
@@ -17,6 +24,7 @@
 #else
 #include <ctime> // for time_t, struct tm*, time(), localtime(), strftime()
 #endif
+
 #include "PrintfLogger.h"
 
 PrintfLogger::PrintfLogger(int (*_stream)(const char *, ...))
@@ -43,9 +51,9 @@ void PrintfLogger::write(uint8_t logLevel,
 void PrintfLogger::appendTimestamp()
 {
     #if defined (ARDUINO)
-    stream("%12lu;", millis());
+    stream("%10lu;", millis());
     #elif defined(PICO_BUILD)
-    stream("%12lu;", to_us_since_boot(absolute_time()));
+    stream("%10lu;", to_ms_since_boot(absolute_time()));
     #else // !defined (PICO_BUILD) && !defined (ARDUINO)
     char buffer[21];
     time_t rawtime;
@@ -59,33 +67,97 @@ void PrintfLogger::appendTimestamp()
     #endif // defined (PICO_BUILD) && !defined (ARDUINO)
 }
 
-void PrintfLogger::appendLogLevel(uint8_t logLevel)
+void PrintfLogger::appendChar(char data, int16_t depth)
 {
-    uint8_t subLevel = logLevel & 0x07;
-
-    if (logLevel >= RF24LogLevel::ERROR && logLevel <= RF24LogLevel::DEBUG + 7)
+    while (depth > 0)
     {
-        uint8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
-        stream(RF24LogDescLevels[logIndex]);
-
-        if(subLevel)
-        {
-            stream("+%d", subLevel);
-        }
-        else
-        {
-            stream("  ");
-        }
-        stream(reinterpret_cast<const char*>(RF24LOG_DELIMITER));
-        return;
+        --depth;
+        stream(reinterpret_cast<const char*>(data));
     }
-
-    stream(RF24LogDescLevel);
-    stream("%4o", logLevel);
-    stream(reinterpret_cast<const char*>(RF24LOG_DELIMITER));
 }
 
-void PrintfLogger::appendFormattedMessage(const char *format, va_list *args)
+void PrintfLogger::appendInt(long data, uint8_t base)
 {
-    stream(format, &args);
+    if (base == 2)
+    {
+        if (!data)
+        {
+            stream("0"); // output a zero
+            return;
+        }
+        char buffer[64];
+        uint8_t index = 0;
+        while (data)
+        {
+            // get representation as a reversed string
+            buffer[index] = (data & 1) + 48;
+            data >>= 1;
+            ++index;
+        }
+        while (--index)
+        {
+            appendChar(buffer[index]); // dump reversed string 1 char at a time
+        }
+    }
+    else if (base == 8)
+    {
+        stream("%o", data);
+    }
+    else if (base == 16)
+    {
+        stream("%X", data);
+    }
+    else
+    {
+        stream("%lu", data);
+    }
+}
+
+void PrintfLogger::appendUInt(unsigned long data, uint8_t base)
+{
+    if (base == 2)
+    {
+        if (!data)
+        {
+            stream("0"); // output a zero
+            return;
+        }
+        char buffer[64];
+        uint8_t index = 0;
+        while (data)
+        {
+            // get representation as a reversed string
+            buffer[index] = (data & 1) + 48;
+            data >>= 1;
+            ++index;
+        }
+        while (--index)
+        {
+            appendChar(buffer[index]); // dump reversed string 1 char at a time
+        }
+    }
+    else if (base == 8)
+    {
+        stream("%o", data);
+    }
+    else if (base == 16)
+    {
+        stream("%X", data);
+    }
+    else
+    {
+        stream("%l", data);
+    }
+}
+
+void PrintfLogger::appendDouble(double data, uint8_t precision)
+{
+    char fmt_buf[64];
+    sprintf(fmt_buf, "%%.%dD", precision); // prepares a fmt str ("%.nD")
+    stream(reinterpret_cast<const char*>(fmt_buf), data);
+}
+
+void PrintfLogger::appendStr(const char* data)
+{
+    stream(data);
 }

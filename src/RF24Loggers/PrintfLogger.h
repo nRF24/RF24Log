@@ -11,6 +11,7 @@
  * library.  If this is what you want to do, use the GNU Lesser General
  * Public License instead of this License.
  */
+
 #ifndef SRC_RF24LOGGERS_PRINTFLOGGER_H_
 #define SRC_RF24LOGGERS_PRINTFLOGGER_H_
 
@@ -36,14 +37,16 @@ protected:
     // declare the rest to raise from pure virtual
     /************************************************/
 
+    void appendTimestamp();
+    void appendChar(char data, int16_t depth = 1);
+    void appendInt(long data, uint8_t base = 10);
+    void appendUInt(unsigned long data, uint8_t base = 10);
+    void appendDouble(double data, uint8_t precision = 2);
+    void appendStr(const char* data);
     void write(uint8_t logLevel,
                const char *vendorId,
                const char *message,
                va_list *args);
-
-    void appendTimestamp();
-    void appendLogLevel(uint8_t logLevel);
-    void appendFormattedMessage(const char *format, va_list *args);
 };
 
 #endif // SRC_RF24LOGGERS_PRINTFLOGGER_H_

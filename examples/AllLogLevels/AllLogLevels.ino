@@ -88,14 +88,14 @@ void loop()
 #endif // platform specific user input
 
   if (level) {
-    RF24Log_log(1, uiPrompt, "Set log level (in octal) to %o\n", level);
+    RF24Log_log(0, uiPrompt, "Set log level (in octal) to %o\n", level);
     serialLogHandler.setLogLevel(level);
   }
 
   level = 0;
   do {
-    level++;
     RF24Log_log(level, vendorID, "A log message from %s on level %3d", "loop()", level);
+    level++;
   } while (level);
 
 #ifdef ARDUINO

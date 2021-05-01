@@ -36,27 +36,18 @@ public:
 
 protected:
 
-    /**
-     * @brief output a data according to the format specifier
-     * @param flags The object of prefixed specifier options/flags
-     * @param format The format of the message
-     * @param args The sequence of args
-     */
-    void appendFormat(SpecifierFlags* flags, char format, va_list *args);
-
-    /**
-     * @brief append a padding character a number of times
-     * @param padding The char to use as padding
-     * @param depth The number of padding characters desired sequentially.
-     */
-    void appendPadding(char padding, int16_t depth);
-
     // declare the rest to raise from pure virtual
     /************************************************/
-
     void appendTimestamp();
-    void appendLogLevel(uint8_t logLevel);
-    void appendFormattedMessage(const char *format, va_list *args);
+    void appendChar(char data, int16_t depth = 1);
+    void appendInt(long data, uint8_t base = 10);
+    void appendUInt(unsigned long data, uint8_t base = 10);
+    void appendDouble(double data, uint8_t precision = 2);
+    void appendStr(const char* data);
+#ifdef ARDUINO_ARCH_AVR
+    void appendStr(const __FlashStringHelper* data);
+#endif
+
     void write(uint8_t logLevel,
                const char *vendorId,
                const char *message,
@@ -67,7 +58,6 @@ protected:
                const __FlashStringHelper *vendorId,
                const __FlashStringHelper *message,
                va_list *args);
-    void appendFormattedMessage(const __FlashStringHelper *format, va_list *args);
 #endif
 };
 

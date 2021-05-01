@@ -79,45 +79,6 @@ protected:
 #endif
 };
 
-/** @brief A `protected` collection of methods that output formatted data to a stream. */
-class RF24LogAbstractStream
-{
-protected:
-    /** @brief output a timestamp */
-    virtual void appendTimestamp() = 0;
-
-    /**
-     * @brief output a description of the log level
-     * @param logLevel The level to describe.
-     */
-    virtual void appendLogLevel(uint8_t logLevel) = 0;
-
-    /**
-     * @brief Automate the output of the header' timestamp and level description
-     * @param logLevel The Log level to describe.
-     */
-    void descTimeLevel(uint8_t logLevel);
-
-    /**
-     * @brief output a message with the specifiers replaced with values from the sequence of @p args
-     * @param format The format of the message
-     * @param args The sequence of args
-     */
-    virtual void appendFormattedMessage(const char *format, va_list *args) = 0;
-
-    /**
-     * @brief how wide does it take to display a number
-     *
-     * @param numb The number to represent
-     * @param base The base counting scheme. Defaulrs to 10 for decimal counting system.
-     */
-    int16_t howWide(int64_t numb, uint8_t base = 10);
-
-#if defined (ARDUINO_ARCH_AVR)
-    virtual void appendFormattedMessage(const __FlashStringHelper *format, va_list *args) = 0;
-#endif
-};
-
 /** @brief Some data about a format specifier */
 struct SpecifierFlags
 {
@@ -148,6 +109,91 @@ struct SpecifierFlags
     /** @brief The number of decimal places. If negative, then default of 2 places is used. */
     int8_t precis;
 
+};
+
+/** @brief A `protected` collection of methods that output formatted data to a stream. */
+class RF24LogAbstractStream
+{
+
+protected:
+
+    /** @brief output a timestamp */
+    virtual void appendTimestamp() = 0;
+
+    /**
+     * @brief output a description of the log level
+     * @param logLevel The level to describe.
+     */
+    void appendLogLevel(uint8_t logLevel);
+
+    /**
+     * @brief Automate the output of the header' timestamp and level description
+     * @param logLevel The Log level to describe.
+     */
+    void descTimeLevel(uint8_t logLevel);
+
+    /**
+     * @brief output a message with the specifiers replaced with values from the sequence of @p args
+     * @param format The format of the message
+     * @param args The sequence of args
+     */
+    void appendFormattedMessage(const char *format, va_list *args);
+#if defined (ARDUINO_ARCH_AVR)
+    void appendFormattedMessage(const __FlashStringHelper *format, va_list *args);
+#endif
+
+    /**
+     * @brief output a data according to the format specifier
+     * @param flags The object of prefixed specifier options/flags
+     * @param format The format of the message
+     * @param args The sequence of args
+     */
+    void appendFormat(SpecifierFlags* flags, char format, va_list *args);
+
+    /**
+     * @brief append a padding character a number of times
+     * @param padding The char to use as padding
+     * @param depth The number of padding characters desired sequentially.
+     */
+    virtual void appendChar(char data, int16_t depth = 1) = 0;
+
+    /**
+     * @brief append a number
+     * @param data The numeric data
+     * @param base The number of decimals places to output
+     */
+    virtual void appendInt(long data, uint8_t base = 10) = 0;
+
+    /**
+     * @brief append a number
+     * @param data The numeric data
+     * @param base The number of decimals places to output
+     */
+    virtual void appendUInt(unsigned long data, uint8_t base = 10) = 0;
+
+    /**
+     * @brief append a floating point number
+     * @param data The numeric data
+     * @param precision The number of decimals places to output
+     */
+    virtual void appendDouble(double data, uint8_t precision = 2) = 0;
+
+    /**
+     * @brief append a c-string
+     * @param data The c-string data
+     */
+    virtual void appendStr(const char* data) = 0;
+#ifdef ARDUINO_ARCH_AVR
+    virtual void appendStr(const __FlashStringHelper* data) = 0;
+#endif
+
+    /**
+     * @brief how wide does it take to display a number
+     *
+     * @param numb The number to represent
+     * @param base The base counting scheme. Defaulrs to 10 for decimal counting system.
+     */
+    int16_t howWide(int64_t numb, uint8_t base = 10);
 };
 
 #endif /* SRC_RF24LOGABSTRACTS_H_ */

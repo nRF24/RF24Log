@@ -38,14 +38,16 @@ protected:
     // declare the rest to raise from pure virtual
     /************************************************/
 
+    void appendTimestamp();
+    void appendChar(char data, int16_t depth = 1);
+    void appendInt(long data, uint8_t base = 10);
+    void appendUInt(unsigned long data, uint8_t base = 10);
+    void appendDouble(double data, uint8_t precision = 2);
+    void appendStr(const char* data);
     void write(uint8_t logLevel,
                const char *vendorId,
                const char *message,
                va_list *args);
-
-    void appendTimestamp();
-    void appendLogLevel(uint8_t logLevel);
-    void appendFormattedMessage(const char *format, va_list *args);
 };
 
 #ifndef PROGMEM
@@ -53,4 +55,4 @@ protected:
 #endif
 
 #endif // SRC_RF24LOGGERS_OSTREAMLOGGER_H_
-#endif // !ARDUINO
+#endif // !defined(ARDUINO)

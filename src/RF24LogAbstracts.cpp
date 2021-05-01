@@ -13,6 +13,12 @@
  */
 
 #include <RF24LogAbstracts.h>
+#ifdef ARDUINO_ARCH_AVR
+#include <Arduino.h> // isAlpha()
+#define isalpha(c) isAlpha(c)
+#else
+#include <cctype> // isalpha()
+#endif
 
 /* *************************** AbstractHandler defs **************************** */
 
@@ -39,7 +45,7 @@ void RF24LogAbstractHandler::setLogLevel(uint8_t logLevel)
 
 bool RF24LogAbstractHandler::isLevelEnabled(uint8_t logLevel)
 {
-    return logLevel && logLevel <= this->logLevel;
+    return logLevel <= this->logLevel;
 }
 
 #if defined (ARDUINO_ARCH_AVR)
@@ -53,6 +59,7 @@ void RF24LogAbstractHandler::log(uint8_t logLevel,
         write(logLevel, vendorId, message, args);
     }
 }
+
 #endif
 
 /* *************************** AbstractStream defs **************************** */
@@ -81,9 +88,9 @@ int16_t RF24LogAbstractStream::howWide(int64_t numb, uint8_t base)
         }
         i++;
     }
-    if (numb < 0)
+    if (numb <= 0)
     {
-        i++; // compensate for the negative sign
+        i += 1 + (bool)numb; // compensate for the negative sign (and zero char)
     }
     return i;
 }
@@ -95,6 +102,207 @@ void RF24LogAbstractStream::descTimeLevel(uint8_t logLevel)
     #endif
     appendLogLevel(logLevel);
 }
+
+void RF24LogAbstractStream::appendLogLevel(uint8_t logLevel)
+{
+    uint8_t subLevel = logLevel & 0x07;
+
+    if (logLevel >= RF24LogLevel::ERROR && logLevel <= RF24LogLevel::DEBUG + 7)
+    {
+        uint8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
+        appendStr(RF24LogDescLevels[logIndex]);
+
+        if(subLevel == 0)
+        {
+            appendStr("  ");
+        }
+        else
+        {
+            appendChar('+');
+            appendUInt(subLevel, 8);
+        }
+    }
+    else {
+        appendStr(RF24LogDescLevel);
+        appendChar(' ', logLevel < 010 ? 3 : 1 + (logLevel < 0100));
+        appendUInt(logLevel, 8);
+    }
+    appendChar(RF24LOG_DELIMITER);
+}
+
+void RF24LogAbstractStream::appendFormat(SpecifierFlags* flags, char format, va_list *args)
+{
+    if (format == 's')
+    {
+        // print text from RAM
+        register char *s = (char *)va_arg(*args, int);
+        appendStr(s);
+    }
+
+#ifdef ARDUINO_ARCH_AVR
+    else if (format == 'S')
+    {
+        // print text from FLASH
+        register __FlashStringHelper *s = (__FlashStringHelper *)va_arg(*args, int);
+        appendStr(s);
+    }
+#endif
+
+    else if (format == 'c')
+    {
+        if (flags->width)
+        {
+            appendChar(flags->fill, flags->width - 1);
+        }
+        appendChar((char)va_arg(*args, int));
+    }
+
+    else if (format == 'D' || format == 'F')
+    {
+        // print as double
+        if (flags->precis >= 0)
+        {
+            appendDouble(va_arg(*args, double), flags->precis);
+        }
+        else
+        {
+            appendDouble(va_arg(*args, double));
+        }
+    }
+
+    else if (format == 'd' || format == 'i' || format == 'l' || format == 'u')
+    {
+        // print as integer
+        int temp = va_arg(*args, int);
+        if (flags->width)
+        {
+            int16_t w = howWide(temp, 10);
+            appendChar(flags->fill, flags->width - w);
+        }
+        appendInt(temp, 10);
+    }
+
+    else if (format == 'x' || format == 'X')
+    {
+        // print as integer
+        int temp = va_arg(*args, int);
+        if (flags->width)
+        {
+            int16_t w = howWide(temp, 16);
+            appendChar(flags->fill, flags->width - w);
+        }
+        appendInt(temp, 16);
+    }
+
+    else if (format == 'o')
+    {
+        // print as integer
+        int temp = va_arg(*args, int);
+        if (flags->width)
+        {
+            int16_t w = howWide(temp, 8);
+            appendChar(flags->fill, flags->width - w);
+        }
+        appendInt(temp, 8);
+    }
+
+    else if (format == 'b')
+    {
+        // print as integer
+        unsigned int temp = va_arg(*args, int);
+        if (flags->width)
+        {
+            int16_t w = howWide(temp, 2);
+            appendChar(flags->fill, flags->width - w);
+        }
+        appendInt(temp, 2);
+    }
+    else
+    {
+        appendChar(format);
+        if (flags->width)
+        {
+            appendUInt(flags->width, 10);
+        }
+    }
+}
+
+void RF24LogAbstractStream::appendFormattedMessage(const char *format, va_list *args)
+{
+    for (; *format != 0; ++format)
+    {
+        if (*format == '%')
+        {
+            ++format;
+            SpecifierFlags flags;
+            while (flags.isFlagged(*format))
+            {
+                ++format;
+            }
+            while (flags.isPaddPrec(*format))
+            {
+                ++format;
+            }
+            if (isalpha(*format))
+            {
+                appendFormat(&flags, *format, args);
+            }
+            else
+            {
+                if (*format != '%')
+                {
+                    appendChar('%', 1);
+                }
+                appendChar(*format, 1);
+            }
+        }
+        else
+        {
+            appendChar(*format, 1);
+        }
+    }
+}
+
+#if defined (ARDUINO_ARCH_AVR)
+
+void RF24LogAbstractStream::appendFormattedMessage(const __FlashStringHelper *format, va_list *args)
+{
+    PGM_P p = reinterpret_cast<PGM_P>(format);
+    char c = pgm_read_byte(p++);
+    for (; c != 0; c = pgm_read_byte(p++))
+    {
+        if (c == '%')
+        {
+            c = pgm_read_byte(p++);
+            SpecifierFlags flags;
+            while (flags.isFlagged(c))
+            {
+                c = pgm_read_byte(p++);
+            }
+            while (flags.isPaddPrec(c))
+            {
+                c = pgm_read_byte(p++);
+            }
+            if (isalpha(c))
+            {
+                appendFormat(&flags, c, args);
+            }
+            else
+            {
+                if (c != '%')
+                {
+                    appendChar('%');
+                }
+                appendChar(c);
+            }
+        }
+        else
+        {
+            appendChar(c);
+        }
+    }
+}
+#endif
 
 /* *************************** SpecifierFlags defs **************************** */
 
