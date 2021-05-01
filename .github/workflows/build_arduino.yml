@@ -57,23 +57,23 @@ jobs:
           - "arduino:avr:atmegang"
           - "arduino:avr:robotControl"
           - "arduino:avr:robotMotor"
-          # - "arduino:avr:gemma"  # does not support SPI
+          - "arduino:avr:gemma"  # does not support SPI
           - "arduino:avr:circuitplay32u4cat"
           - "arduino:avr:yunmini"
           - "arduino:avr:chiwawa"
           - "arduino:avr:one"
           - "arduino:avr:unowifi"
           - "arduino:mbed:nano33ble"
-          # - "arduino:samd:mkr1000"  # InterruptConfigure.ino uses pin 2
-          # - "arduino:samd:mkrzero"  # InterruptConfigure.ino uses pin 2
-          # - "arduino:samd:mkrwifi1010"  # InterruptConfigure.ino uses pin 2
+          - "arduino:samd:mkr1000"  # Interrupt using pin 2 not available
+          - "arduino:samd:mkrzero"  # Interrupt using pin 2 not available
+          - "arduino:samd:mkrwifi1010"  # Interrupt using pin 2 not available
           - "arduino:samd:nano_33_iot"
-          # - "arduino:samd:mkrfox1200"  # InterruptConfigure.ino uses pin 2
-          # - "arduino:samd:mkrwan1300"  # InterruptConfigure.ino uses pin 2
-          # - "arduino:samd:mkrwan1310"  # InterruptConfigure.ino uses pin 2
-          # - "arduino:samd:mkrgsm1400"  # InterruptConfigure.ino uses pin 2
-          # - "arduino:samd:mkrnb1500"  # InterruptConfigure.ino uses pin 2
-          # - "arduino:samd:mkrvidor4000"  # InterruptConfigure.ino uses pin 2
+          - "arduino:samd:mkrfox1200"  # Interrupt using pin 2 not available
+          - "arduino:samd:mkrwan1300"  # Interrupt using pin 2 not available
+          - "arduino:samd:mkrwan1310"  # Interrupt using pin 2 not available
+          - "arduino:samd:mkrgsm1400"  # Interrupt using pin 2 not available
+          - "arduino:samd:mkrnb1500"  # Interrupt using pin 2 not available
+          - "arduino:samd:mkrvidor4000"  # Interrupt using pin 2 not available
           - "arduino:samd:adafruit_circuitplayground_m0"
           - "arduino:samd:mzero_pro_bl"
           - "arduino:samd:mzero_bl"
