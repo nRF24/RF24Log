@@ -102,18 +102,27 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:aff6713962021a634664b096925ca70f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#aff6713962021a634664b096925ca70f9">write</a> (uint8_t <a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a>, const char *vendorId, const char *message, va_list *args)</td></tr>
-<tr class="separator:aff6713962021a634664b096925ca70f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafbfc7eb7ab901e2e989731f09b55727"><td class="memItemLeft" align="right" valign="top"><a id="aafbfc7eb7ab901e2e989731f09b55727"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#aafbfc7eb7ab901e2e989731f09b55727">appendTimestamp</a> ()</td></tr>
 <tr class="memdesc:aafbfc7eb7ab901e2e989731f09b55727"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a timestamp <br /></td></tr>
 <tr class="separator:aafbfc7eb7ab901e2e989731f09b55727"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8293cef2274a54f7bec2a95582c8127"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#ac8293cef2274a54f7bec2a95582c8127">appendLogLevel</a> (uint8_t <a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a>)</td></tr>
-<tr class="memdesc:ac8293cef2274a54f7bec2a95582c8127"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a description of the log level  <a href="class_printf_logger.html#ac8293cef2274a54f7bec2a95582c8127">More...</a><br /></td></tr>
-<tr class="separator:ac8293cef2274a54f7bec2a95582c8127"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78828d253d6863ec988e0ce62fae2d85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#a78828d253d6863ec988e0ce62fae2d85">appendFormattedMessage</a> (const char *format, va_list *args)</td></tr>
-<tr class="memdesc:a78828d253d6863ec988e0ce62fae2d85"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a message with the specifiers replaced with values from the sequence of <code>args</code>  <a href="class_printf_logger.html#a78828d253d6863ec988e0ce62fae2d85">More...</a><br /></td></tr>
-<tr class="separator:a78828d253d6863ec988e0ce62fae2d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a796a9412bc824cf7d415ebbb51800edc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#a796a9412bc824cf7d415ebbb51800edc">appendChar</a> (char data, int16_t depth=1)</td></tr>
+<tr class="memdesc:a796a9412bc824cf7d415ebbb51800edc"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a padding character a number of times  <a href="class_printf_logger.html#a796a9412bc824cf7d415ebbb51800edc">More...</a><br /></td></tr>
+<tr class="separator:a796a9412bc824cf7d415ebbb51800edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f43dac0fc5ae55f0cbb29ceb9b710d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#a6f43dac0fc5ae55f0cbb29ceb9b710d9">appendInt</a> (long data, uint8_t base=10)</td></tr>
+<tr class="memdesc:a6f43dac0fc5ae55f0cbb29ceb9b710d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a number  <a href="class_printf_logger.html#a6f43dac0fc5ae55f0cbb29ceb9b710d9">More...</a><br /></td></tr>
+<tr class="separator:a6f43dac0fc5ae55f0cbb29ceb9b710d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4d0ebc1747bac47c1cf8eed1f44aeeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#af4d0ebc1747bac47c1cf8eed1f44aeeb">appendUInt</a> (unsigned long data, uint8_t base=10)</td></tr>
+<tr class="memdesc:af4d0ebc1747bac47c1cf8eed1f44aeeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a number  <a href="class_printf_logger.html#af4d0ebc1747bac47c1cf8eed1f44aeeb">More...</a><br /></td></tr>
+<tr class="separator:af4d0ebc1747bac47c1cf8eed1f44aeeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bce89c8fd5eb22795a0402141e32acc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#a9bce89c8fd5eb22795a0402141e32acc">appendDouble</a> (double data, uint8_t precision=2)</td></tr>
+<tr class="memdesc:a9bce89c8fd5eb22795a0402141e32acc"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a floating point number  <a href="class_printf_logger.html#a9bce89c8fd5eb22795a0402141e32acc">More...</a><br /></td></tr>
+<tr class="separator:a9bce89c8fd5eb22795a0402141e32acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6b4073ed52778bbdfd73201316a51d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#ae6b4073ed52778bbdfd73201316a51d4">appendStr</a> (const char *data)</td></tr>
+<tr class="memdesc:ae6b4073ed52778bbdfd73201316a51d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a c-string  <a href="class_printf_logger.html#ae6b4073ed52778bbdfd73201316a51d4">More...</a><br /></td></tr>
+<tr class="separator:ae6b4073ed52778bbdfd73201316a51d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff6713962021a634664b096925ca70f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#aff6713962021a634664b096925ca70f9">write</a> (uint8_t <a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a>, const char *vendorId, const char *message, va_list *args)</td></tr>
+<tr class="separator:aff6713962021a634664b096925ca70f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -126,7 +135,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_all_log_levels_8ino-example.html#_a1">AllLogLevels.ino</a>, and <a class="el" href="getting_started_8ino-example.html#_a1">gettingStarted.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_printf_logger_8h_source.html#l00020">20</a> of file <a class="el" href="_printf_logger_8h_source.html">PrintfLogger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_printf_logger_8h_source.html#l00021">21</a> of file <a class="el" href="_printf_logger_8h_source.html">PrintfLogger.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5ef609532997ea28cc50fe1ca18f795c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5ef609532997ea28cc50fe1ca18f795c">&#9670;&nbsp;</a></span>PrintfLogger()</h2>
@@ -152,13 +161,13 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00022">22</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00030">30</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a78828d253d6863ec988e0ce62fae2d85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78828d253d6863ec988e0ce62fae2d85">&#9670;&nbsp;</a></span>appendFormattedMessage()</h2>
+<a id="a796a9412bc824cf7d415ebbb51800edc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a796a9412bc824cf7d415ebbb51800edc">&#9670;&nbsp;</a></span>appendChar()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -167,16 +176,16 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void PrintfLogger::appendFormattedMessage </td>
+          <td class="memname">void PrintfLogger::appendChar </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">va_list *&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>depth</em> = <code>1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -191,23 +200,23 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>output a message with the specifiers replaced with values from the sequence of <code>args</code> </p>
+<p>append a padding character a number of times </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">format</td><td>The format of the message </td></tr>
-    <tr><td class="paramname">args</td><td>The sequence of args </td></tr>
+    <tr><td class="paramname">padding</td><td>The char to use as padding </td></tr>
+    <tr><td class="paramname">depth</td><td>The number of padding characters desired sequentially. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#ade6125bf405bc97a2437fddf1bcaf3f0">RF24LogAbstractStream</a>.</p>
+<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#a42e5d0f4f9d9be6f65ca9aa097324b83">RF24LogAbstractStream</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00088">88</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00070">70</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ac8293cef2274a54f7bec2a95582c8127"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8293cef2274a54f7bec2a95582c8127">&#9670;&nbsp;</a></span>appendLogLevel()</h2>
+<a id="a9bce89c8fd5eb22795a0402141e32acc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bce89c8fd5eb22795a0402141e32acc">&#9670;&nbsp;</a></span>appendDouble()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -216,10 +225,108 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void PrintfLogger::appendLogLevel </td>
+          <td class="memname">void PrintfLogger::appendDouble </td>
           <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>logLevel</em></td><td>)</td>
+          <td class="paramname"><em>precision</em> = <code>2</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>append a floating point number </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The numeric data </td></tr>
+    <tr><td class="paramname">precision</td><td>The number of decimals places to output </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#aed0c58fe5d99a5761700afafa36f9005">RF24LogAbstractStream</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00153">153</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6f43dac0fc5ae55f0cbb29ceb9b710d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f43dac0fc5ae55f0cbb29ceb9b710d9">&#9670;&nbsp;</a></span>appendInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PrintfLogger::appendInt </td>
+          <td>(</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>base</em> = <code>10</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>append a number </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The numeric data </td></tr>
+    <tr><td class="paramname">base</td><td>The number of decimals places to output </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">RF24LogAbstractStream</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00079">79</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae6b4073ed52778bbdfd73201316a51d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6b4073ed52778bbdfd73201316a51d4">&#9670;&nbsp;</a></span>appendStr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PrintfLogger::appendStr </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -230,17 +337,66 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>output a description of the log level </p>
+<p>append a c-string </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">logLevel</td><td>The level to describe. </td></tr>
+    <tr><td class="paramname">data</td><td>The c-string data </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#a927ad3e8894132c7cdee07fe71e70e3b">RF24LogAbstractStream</a>.</p>
+<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#a6c883ca4fd17889b6f99e5ac1d002558">RF24LogAbstractStream</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00062">62</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00160">160</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af4d0ebc1747bac47c1cf8eed1f44aeeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4d0ebc1747bac47c1cf8eed1f44aeeb">&#9670;&nbsp;</a></span>appendUInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PrintfLogger::appendUInt </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>base</em> = <code>10</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>append a number </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The numeric data </td></tr>
+    <tr><td class="paramname">base</td><td>The number of decimals places to output </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">RF24LogAbstractStream</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00116">116</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
 
 </div>
 </div>
@@ -301,7 +457,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_r_f24_log_abstract_handler.html#a8f50251b51562787436b0dd6cdc0e359">RF24LogAbstractHandler</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00027">27</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00035">35</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
 
 </div>
 </div>

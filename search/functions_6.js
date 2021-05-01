@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['printflogger_105',['PrintfLogger',['../class_printf_logger.html#a5ef609532997ea28cc50fe1ca18f795c',1,'PrintfLogger']]]
+  ['printflogger_113',['PrintfLogger',['../class_printf_logger.html#a5ef609532997ea28cc50fe1ca18f795c',1,'PrintfLogger']]]
 ];

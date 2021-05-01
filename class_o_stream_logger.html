@@ -102,18 +102,27 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a10d19cc76c65ec6a7f27ea739f7f0ffb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_stream_logger.html#a10d19cc76c65ec6a7f27ea739f7f0ffb">write</a> (uint8_t <a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a>, const char *vendorId, const char *message, va_list *args)</td></tr>
-<tr class="separator:a10d19cc76c65ec6a7f27ea739f7f0ffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31baad77b29303321f8e829792c90e49"><td class="memItemLeft" align="right" valign="top"><a id="a31baad77b29303321f8e829792c90e49"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_stream_logger.html#a31baad77b29303321f8e829792c90e49">appendTimestamp</a> ()</td></tr>
 <tr class="memdesc:a31baad77b29303321f8e829792c90e49"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a timestamp <br /></td></tr>
 <tr class="separator:a31baad77b29303321f8e829792c90e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a46c6f41d316c6990d0d5b7a858aefd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_stream_logger.html#a9a46c6f41d316c6990d0d5b7a858aefd">appendLogLevel</a> (uint8_t <a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a>)</td></tr>
-<tr class="memdesc:a9a46c6f41d316c6990d0d5b7a858aefd"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a description of the log level  <a href="class_o_stream_logger.html#a9a46c6f41d316c6990d0d5b7a858aefd">More...</a><br /></td></tr>
-<tr class="separator:a9a46c6f41d316c6990d0d5b7a858aefd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa68b0cf99500b68fbd34616b71e5b46b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_stream_logger.html#aa68b0cf99500b68fbd34616b71e5b46b">appendFormattedMessage</a> (const char *format, va_list *args)</td></tr>
-<tr class="memdesc:aa68b0cf99500b68fbd34616b71e5b46b"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a message with the specifiers replaced with values from the sequence of <code>args</code>  <a href="class_o_stream_logger.html#aa68b0cf99500b68fbd34616b71e5b46b">More...</a><br /></td></tr>
-<tr class="separator:aa68b0cf99500b68fbd34616b71e5b46b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e57f2b1e30ad2446efc80e3336cc755"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_stream_logger.html#a7e57f2b1e30ad2446efc80e3336cc755">appendChar</a> (char data, int16_t depth=1)</td></tr>
+<tr class="memdesc:a7e57f2b1e30ad2446efc80e3336cc755"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a padding character a number of times  <a href="class_o_stream_logger.html#a7e57f2b1e30ad2446efc80e3336cc755">More...</a><br /></td></tr>
+<tr class="separator:a7e57f2b1e30ad2446efc80e3336cc755"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b4f4b42093f11ccb1fa475cadf697a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_stream_logger.html#a0b4f4b42093f11ccb1fa475cadf697a1">appendInt</a> (long data, uint8_t base=10)</td></tr>
+<tr class="memdesc:a0b4f4b42093f11ccb1fa475cadf697a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a number  <a href="class_o_stream_logger.html#a0b4f4b42093f11ccb1fa475cadf697a1">More...</a><br /></td></tr>
+<tr class="separator:a0b4f4b42093f11ccb1fa475cadf697a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adca50c4860e24eb94347cde20bf5bf0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_stream_logger.html#adca50c4860e24eb94347cde20bf5bf0e">appendUInt</a> (unsigned long data, uint8_t base=10)</td></tr>
+<tr class="memdesc:adca50c4860e24eb94347cde20bf5bf0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a number  <a href="class_o_stream_logger.html#adca50c4860e24eb94347cde20bf5bf0e">More...</a><br /></td></tr>
+<tr class="separator:adca50c4860e24eb94347cde20bf5bf0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8baef5f18471ee46faa50a684b33e8c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_stream_logger.html#a8baef5f18471ee46faa50a684b33e8c1">appendDouble</a> (double data, uint8_t precision=2)</td></tr>
+<tr class="memdesc:a8baef5f18471ee46faa50a684b33e8c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a floating point number  <a href="class_o_stream_logger.html#a8baef5f18471ee46faa50a684b33e8c1">More...</a><br /></td></tr>
+<tr class="separator:a8baef5f18471ee46faa50a684b33e8c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac06915d24dc6ab8dc61cd009acc9080a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_stream_logger.html#ac06915d24dc6ab8dc61cd009acc9080a">appendStr</a> (const char *data)</td></tr>
+<tr class="memdesc:ac06915d24dc6ab8dc61cd009acc9080a"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a c-string  <a href="class_o_stream_logger.html#ac06915d24dc6ab8dc61cd009acc9080a">More...</a><br /></td></tr>
+<tr class="separator:ac06915d24dc6ab8dc61cd009acc9080a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10d19cc76c65ec6a7f27ea739f7f0ffb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_stream_logger.html#a10d19cc76c65ec6a7f27ea739f7f0ffb">write</a> (uint8_t <a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a>, const char *vendorId, const char *message, va_list *args)</td></tr>
+<tr class="separator:a10d19cc76c65ec6a7f27ea739f7f0ffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -157,8 +166,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa68b0cf99500b68fbd34616b71e5b46b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa68b0cf99500b68fbd34616b71e5b46b">&#9670;&nbsp;</a></span>appendFormattedMessage()</h2>
+<a id="a7e57f2b1e30ad2446efc80e3336cc755"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e57f2b1e30ad2446efc80e3336cc755">&#9670;&nbsp;</a></span>appendChar()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -167,16 +176,16 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void OStreamLogger::appendFormattedMessage </td>
+          <td class="memname">void OStreamLogger::appendChar </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">va_list *&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>depth</em> = <code>1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -191,23 +200,23 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>output a message with the specifiers replaced with values from the sequence of <code>args</code> </p>
+<p>append a padding character a number of times </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">format</td><td>The format of the message </td></tr>
-    <tr><td class="paramname">args</td><td>The sequence of args </td></tr>
+    <tr><td class="paramname">padding</td><td>The char to use as padding </td></tr>
+    <tr><td class="paramname">depth</td><td>The number of padding characters desired sequentially. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#ade6125bf405bc97a2437fddf1bcaf3f0">RF24LogAbstractStream</a>.</p>
+<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#a42e5d0f4f9d9be6f65ca9aa097324b83">RF24LogAbstractStream</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00077">77</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00051">51</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a9a46c6f41d316c6990d0d5b7a858aefd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a46c6f41d316c6990d0d5b7a858aefd">&#9670;&nbsp;</a></span>appendLogLevel()</h2>
+<a id="a8baef5f18471ee46faa50a684b33e8c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8baef5f18471ee46faa50a684b33e8c1">&#9670;&nbsp;</a></span>appendDouble()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -216,10 +225,108 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void OStreamLogger::appendLogLevel </td>
+          <td class="memname">void OStreamLogger::appendDouble </td>
           <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>logLevel</em></td><td>)</td>
+          <td class="paramname"><em>precision</em> = <code>2</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>append a floating point number </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The numeric data </td></tr>
+    <tr><td class="paramname">precision</td><td>The number of decimals places to output </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#aed0c58fe5d99a5761700afafa36f9005">RF24LogAbstractStream</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00139">139</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a0b4f4b42093f11ccb1fa475cadf697a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b4f4b42093f11ccb1fa475cadf697a1">&#9670;&nbsp;</a></span>appendInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OStreamLogger::appendInt </td>
+          <td>(</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>base</em> = <code>10</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>append a number </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The numeric data </td></tr>
+    <tr><td class="paramname">base</td><td>The number of decimals places to output </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">RF24LogAbstractStream</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00060">60</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac06915d24dc6ab8dc61cd009acc9080a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac06915d24dc6ab8dc61cd009acc9080a">&#9670;&nbsp;</a></span>appendStr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OStreamLogger::appendStr </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -230,17 +337,66 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>output a description of the log level </p>
+<p>append a c-string </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">logLevel</td><td>The level to describe. </td></tr>
+    <tr><td class="paramname">data</td><td>The c-string data </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#a927ad3e8894132c7cdee07fe71e70e3b">RF24LogAbstractStream</a>.</p>
+<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#a6c883ca4fd17889b6f99e5ac1d002558">RF24LogAbstractStream</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00051">51</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00144">144</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
+
+</div>
+</div>
+<a id="adca50c4860e24eb94347cde20bf5bf0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adca50c4860e24eb94347cde20bf5bf0e">&#9670;&nbsp;</a></span>appendUInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OStreamLogger::appendUInt </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>base</em> = <code>10</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>append a number </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>The numeric data </td></tr>
+    <tr><td class="paramname">base</td><td>The number of decimals places to output </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">RF24LogAbstractStream</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00102">102</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
 
 </div>
 </div>
