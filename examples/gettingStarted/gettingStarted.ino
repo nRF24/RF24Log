@@ -124,6 +124,9 @@ void loop()
 #ifndef ARDUINO
 int main()
 {
+#ifdef PICO_BUILD
+  stdio_init_all(); // init necessary IO for the RP2040
+#endif
   setup();
   while (1) {
     loop();

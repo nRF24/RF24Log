@@ -135,8 +135,13 @@ void RF24LogAbstractStream::appendFormat(SpecifierFlags* flags, char format, va_
     if (format == 's')
     {
         // print text from RAM
-        register char *s = (char *)va_arg(*args, int);
-        appendStr(s);
+        #ifdef Arduino
+        // warning: ISO C++17 does not allow 'register' storage class specifier [-Wregister]
+        register char *str_p = (char *)va_arg(*args, int);
+        #else
+        char *str_p = (char *)va_arg(*args, int);
+        #endif
+        appendStr(str_p);
     }
 
 #ifdef ARDUINO_ARCH_AVR

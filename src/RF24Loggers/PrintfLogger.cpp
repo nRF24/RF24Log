@@ -23,7 +23,7 @@
 #ifdef ARDUINO
 #include <Arduino.h> // millis()
 #elif defined (PICO_BUILD)
-#include <pico-sdk/stdlib.h> // to_us_since_boot(), absolute_time()
+#include <pico/stdlib.h> // to_ms_since_boot(), get_absolute_time()
 #else
 #include <ctime> // for time_t, struct tm*, time(), localtime(), strftime()
 #endif
@@ -56,7 +56,7 @@ void PrintfLogger::appendTimestamp()
     #if defined (ARDUINO)
     stream("%10lu;", millis());
     #elif defined(PICO_BUILD)
-    stream("%10lu;", to_ms_since_boot(absolute_time()));
+    stream("%10lu;", to_ms_since_boot(get_absolute_time()));
     #else // !defined (PICO_BUILD) && !defined (ARDUINO)
     char buffer[21];
     time_t rawtime;

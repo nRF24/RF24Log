@@ -63,3 +63,6 @@ dkms.conf
 docs/html/
 docs/xml/
 DS_Store/
+
+# CMake stuff
+build/

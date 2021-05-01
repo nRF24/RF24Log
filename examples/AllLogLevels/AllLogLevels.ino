@@ -88,7 +88,7 @@ void loop()
 #endif // platform specific user input
 
   if (level) {
-    RF24Log_log(0, uiPrompt, "Set log level (in octal) to %o\n", level);
+    RF24Log_log(1, uiPrompt, "Set log level (in octal) to %o\n", level);
     serialLogHandler.setLogLevel(level);
   }
 
@@ -112,6 +112,9 @@ void loop()
 #ifndef ARDUINO
 int main()
 {
+#ifdef PICO_BUILD
+  stdio_init_all(); // init necessary IO for the RP2040
+#endif
   setup();
   while (1) {
     loop();
