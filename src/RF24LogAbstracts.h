@@ -152,7 +152,7 @@ protected:
 
     /**
      * @brief append a padding character a number of times
-     * @param padding The char to use as padding
+     * @param data The char to use as padding
      * @param depth The number of padding characters desired sequentially.
      */
     virtual void appendChar(char data, int16_t depth = 1) = 0;
@@ -160,14 +160,14 @@ protected:
     /**
      * @brief append a number
      * @param data The numeric data
-     * @param base The counting scheme to interpret the data with
+     * @param base The base counting scheme. Defaults to 10 for decimal counting system
      */
     virtual void appendInt(long data, uint8_t base = 10) = 0;
 
     /**
      * @brief append a positive number
      * @param data The numeric data
-     * @param base The counting scheme to interpret the data with
+     * @param base The base counting scheme. Defaults to 10 for decimal counting system
      */
     virtual void appendUInt(unsigned long data, uint8_t base = 10) = 0;
 
@@ -191,7 +191,7 @@ protected:
      * @brief how wide does it take to display a number
      *
      * @param numb The number to represent
-     * @param base The base counting scheme. Defaulrs to 10 for decimal counting system.
+     * @param base The base counting scheme. Defaults to 10 for decimal counting system
      */
     int16_t howWide(int64_t numb, uint8_t base = 10);
 };

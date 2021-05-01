@@ -5,7 +5,7 @@ Native printf supported platforms will default to said support.
 
 ### Arduino Platform Supported Specifiers
 Because all Arduino cores for all Arduino compatible boards don't unanimously support
-printf, we have a basic imitation mechanism included with ArduinoPrintLogger.
+printf, we have a basic imitation mechanism included with RF24LogAbstractStream.
 
 The format specifiers' usage:
 ```text
@@ -29,12 +29,15 @@ argument is of a certain datatype.
 | % | escapes a single % character |
 
 #### Limitations
-@note Floats/Doubles will only use the `precision_quantity` as the number of decimal places.
-Specifying a `pad_quantity` for padding the whole numbers of floats/doubles is not supported.
-
-@warning Only the Arduino AVR platform supports a string (from flash memory)
-specifier's capitol (`S`) syntax because of the special `__FlashStringHelper`
-implementation. All other platforms should support using `s` for strings.
+- Floats/Doubles will only use the `precision_quantity` as the number of decimal places.
+  Specifying a `pad_quantity` for padding the whole numbers of floats/doubles is not
+  supported.
+- Only the Arduino AVR platform supports a string (from flash memory)
+  specifier's capitol (`S`) syntax because of the special `__FlashStringHelper`
+  implementation. All other platforms should support using `s` for strings.
+- Specifiers that involve more than one alphabetic character are not supported. This
+  means %lu will have the same output as %l (and likely the 'u' will still be
+  taken/output as literal text).
 
 #### Padding the numbers
 For each numeric data specifier, a quantity of padded characters can be

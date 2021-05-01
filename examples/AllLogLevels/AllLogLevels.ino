@@ -36,7 +36,7 @@ PrintfLogger serialLogHandler(&printf);
 #include <RF24Loggers/OStreamLogger.h>
 
 // Create hardware serial port log handler
-OStreamLogger serialLogHandler(&std::cout);
+OStreamLogger serialLogHandler((std::ostream*)&std::cout);
 #endif
 
 // Define global vendor id (it is stored in FLASH memory)
