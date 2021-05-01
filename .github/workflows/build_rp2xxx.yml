@@ -36,7 +36,7 @@ jobs:
           # - "pimoroni_picosystem" # SPI is reserved for LCD
 
     steps:
-    - name: checkout RF24 lib
+    - name: checkout RF24Log lib
       uses: actions/checkout@v2
 
     - name: Install toolchain
@@ -64,7 +64,7 @@ jobs:
       working-directory: ${{ github.workspace }}/build
       env:
         PICO_SDK_PATH: ${{ github.workspace }}/pico-sdk
-      run: cmake ../examples_pico -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DPICO_BOARD=${{ matrix.board }}
+      run: cmake ../examples -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DPICO_BOARD=${{ matrix.board }}
 
     - name: Build
       working-directory: ${{ github.workspace }}/build
