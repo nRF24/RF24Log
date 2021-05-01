@@ -160,14 +160,14 @@ protected:
     /**
      * @brief append a number
      * @param data The numeric data
-     * @param base The number of decimals places to output
+     * @param base The counting scheme to interpret the data with
      */
     virtual void appendInt(long data, uint8_t base = 10) = 0;
 
     /**
-     * @brief append a number
+     * @brief append a positive number
      * @param data The numeric data
-     * @param base The number of decimals places to output
+     * @param base The counting scheme to interpret the data with
      */
     virtual void appendUInt(unsigned long data, uint8_t base = 10) = 0;
 

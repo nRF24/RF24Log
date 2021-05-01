@@ -10,9 +10,12 @@
  * library.  If this is what you want to do, use the GNU Lesser General
  * Public License instead of this License.
  */
-
-#ifdef ARDUINO_ARCH_AVR
-#include <string.h> // sprintf()
+#ifdef ARDUINO
+    #ifdef ARDUINO_ARCH_AVR
+    #include <WString.h> // sprintf()
+    #else
+    #include <string.h> // sprintf()
+    #endif
 #else
 #include <cstdio> // sprintf()
 #endif

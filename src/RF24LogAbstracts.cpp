@@ -13,7 +13,7 @@
  */
 
 #include <RF24LogAbstracts.h>
-#ifdef ARDUINO_ARCH_AVR
+#ifdef ARDUINO
 #include <Arduino.h> // isAlpha()
 #define isalpha(c) isAlpha(c)
 #else
