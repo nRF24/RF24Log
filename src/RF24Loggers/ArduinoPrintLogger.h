@@ -39,7 +39,7 @@ protected:
     // declare the rest to raise from pure virtual
     /************************************************/
     void appendTimestamp();
-    void appendChar(char data, int16_t depth = 1);
+    void appendChar(char data, uint16_t depth = 1);
     void appendInt(long data, uint8_t base = 10);
     void appendUInt(unsigned long data, uint8_t base = 10);
     void appendDouble(double data, uint8_t precision = 2);

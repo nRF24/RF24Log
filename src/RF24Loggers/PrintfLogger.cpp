@@ -70,7 +70,7 @@ void PrintfLogger::appendTimestamp()
     #endif // defined (PICO_BUILD) && !defined (ARDUINO)
 }
 
-void PrintfLogger::appendChar(char data, int16_t depth)
+void PrintfLogger::appendChar(char data, uint16_t depth)
 {
     while (depth > 0)
     {

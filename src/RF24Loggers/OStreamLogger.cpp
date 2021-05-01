@@ -48,7 +48,7 @@ void OStreamLogger::appendTimestamp()
     *stream << buffer;
 }
 
-void OStreamLogger::appendChar(char data, int16_t depth)
+void OStreamLogger::appendChar(char data, uint16_t depth)
 {
     while (depth > 0)
     {

@@ -64,10 +64,10 @@ void RF24LogAbstractHandler::log(uint8_t logLevel,
 
 /* *************************** AbstractStream defs **************************** */
 
-int16_t RF24LogAbstractStream::howWide(int64_t numb, uint8_t base)
+uint16_t RF24LogAbstractStream::howWide(int64_t numb, uint8_t base)
 {
-    int64_t mask = (numb > 0 ? numb : numb * -1);
-    int16_t i = 0;
+    int64_t mask = (numb < 0 ? numb * -1 : numb);
+    uint16_t i = 0;
     while (mask)
     {
         if (base == 2)
@@ -181,8 +181,8 @@ void RF24LogAbstractStream::appendFormat(SpecifierFlags* flags, char format, va_
         int temp = va_arg(*args, int);
         if (flags->width)
         {
-            int16_t w = howWide(temp, 10);
-            appendChar(flags->fill, flags->width - w);
+            uint16_t w = howWide(temp, 10);
+            appendChar(flags->fill, (flags->width > w ? flags->width - w : 0));
         }
         appendInt(temp, 10);
     }
@@ -193,8 +193,8 @@ void RF24LogAbstractStream::appendFormat(SpecifierFlags* flags, char format, va_
         int temp = va_arg(*args, int);
         if (flags->width)
         {
-            int16_t w = howWide(temp, 16);
-            appendChar(flags->fill, flags->width - w);
+            uint16_t w = howWide(temp, 16);
+            appendChar(flags->fill, (flags->width > w ? flags->width - w : 0));
         }
         appendInt(temp, 16);
     }
@@ -205,8 +205,8 @@ void RF24LogAbstractStream::appendFormat(SpecifierFlags* flags, char format, va_
         int temp = va_arg(*args, int);
         if (flags->width)
         {
-            int16_t w = howWide(temp, 8);
-            appendChar(flags->fill, flags->width - w);
+            uint16_t w = howWide(temp, 8);
+            appendChar(flags->fill, (flags->width > w ? flags->width - w : 0));
         }
         appendInt(temp, 8);
     }
@@ -217,8 +217,8 @@ void RF24LogAbstractStream::appendFormat(SpecifierFlags* flags, char format, va_
         unsigned int temp = va_arg(*args, int);
         if (flags->width)
         {
-            int16_t w = howWide(temp, 2);
-            appendChar(flags->fill, flags->width - w);
+            uint16_t w = howWide(temp, 2);
+            appendChar(flags->fill, (flags->width > w ? flags->width - w : 0));
         }
         appendInt(temp, 2);
     }

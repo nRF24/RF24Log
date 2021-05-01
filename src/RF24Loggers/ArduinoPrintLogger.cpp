@@ -24,13 +24,13 @@ ArduinoPrintLogger::ArduinoPrintLogger(Print *stream)
 void ArduinoPrintLogger::appendTimestamp()
 {
     unsigned long now = millis();
-    int16_t w = howWide(now);
-    appendChar(' ', 10 - w);
+    uint16_t w = howWide(now);
+    appendChar(' ', (w < 10 ? 10 - w : 0));
     appendUInt(now, 10);
     appendChar(RF24LOG_DELIMITER);
 }
 
-void ArduinoPrintLogger::appendChar(char data, int16_t depth)
+void ArduinoPrintLogger::appendChar(char data, uint16_t depth)
 {
     while (depth > 0)
     {

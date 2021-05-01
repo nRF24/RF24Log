@@ -105,7 +105,7 @@ struct SpecifierFlags
     /** @brief The default character used as padding. */
     char fill;
     /** @brief The width of the padding */
-    unsigned int width;
+    uint16_t width;
     /** @brief The number of decimal places. If negative, then default of 2 places is used. */
     int8_t precis;
 
@@ -155,7 +155,7 @@ protected:
      * @param data The char to use as padding
      * @param depth The number of padding characters desired sequentially.
      */
-    virtual void appendChar(char data, int16_t depth = 1) = 0;
+    virtual void appendChar(char data, uint16_t depth = 1) = 0;
 
     /**
      * @brief append a number
@@ -193,7 +193,7 @@ protected:
      * @param numb The number to represent
      * @param base The base counting scheme. Defaults to 10 for decimal counting system
      */
-    int16_t howWide(int64_t numb, uint8_t base = 10);
+    uint16_t howWide(int64_t numb, uint8_t base = 10);
 };
 
 #endif /* SRC_RF24LOGABSTRACTS_H_ */
