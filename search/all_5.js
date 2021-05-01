@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['howwide_18',['howWide',['../class_r_f24_log_abstract_stream.html#a69caa1e6d956c56bdff12269616a6429',1,'RF24LogAbstractStream']]]
+  ['howwide_18',['howWide',['../class_r_f24_log_abstract_stream.html#acfa3e78a4fa7e281df73324b0b222b02',1,'RF24LogAbstractStream']]]
 ];
