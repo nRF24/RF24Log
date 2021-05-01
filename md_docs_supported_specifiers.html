@@ -72,7 +72,7 @@ Conditional dependency</h1>
 <p>Native printf supported platforms will default to said support.</p>
 <h2><a class="anchor" id="autotoc_md4"></a>
 Arduino Platform Supported Specifiers</h2>
-<p>Because all Arduino cores for all Arduino compatible boards don't unanimously support printf, we have a basic imitation mechanism included with <a class="el" href="class_arduino_print_logger.html" title="A log handler implementation which outputs log messages to a stream.">ArduinoPrintLogger</a>.</p>
+<p>Because all Arduino cores for all Arduino compatible boards don't unanimously support printf, we have a basic imitation mechanism included with <a class="el" href="class_r_f24_log_abstract_stream.html" title="A protected collection of methods that output formatted data to a stream.">RF24LogAbstractStream</a>.</p>
 <p>The format specifiers' usage: </p><div class="fragment"><div class="line">%[flags][pad_quantity][.precision_quantity]specifier</div>
 </div><!-- fragment --> <dl class="section note"><dt>Note</dt><dd>The only supported flags are zero (<code>0</code>) for padding data with zeros instead of spaces.</dd></dl>
 <p>The following list of characters that follow a % symbol (or a <code>flag</code>/<code>pad_quantity</code>/<code>precision_quantity</code> option) will signify that the corresponding argument is of a certain datatype.</p>
@@ -98,8 +98,11 @@ Arduino Platform Supported Specifiers</h2>
 </table>
 <h3><a class="anchor" id="autotoc_md5"></a>
 Limitations</h3>
-<dl class="section note"><dt>Note</dt><dd>Floats/Doubles will only use the <code>precision_quantity</code> as the number of decimal places. Specifying a <code>pad_quantity</code> for padding the whole numbers of floats/doubles is not supported.</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>Only the Arduino AVR platform supports a string (from flash memory) specifier's capitol (<code>S</code>) syntax because of the special <code>__FlashStringHelper</code> implementation. All other platforms should support using <code>s</code> for strings.</dd></dl>
+<ul>
+<li>Floats/Doubles will only use the <code>precision_quantity</code> as the number of decimal places. Specifying a <code>pad_quantity</code> for padding the whole numbers of floats/doubles is not supported.</li>
+<li>Only the Arduino AVR platform supports a string (from flash memory) specifier's capitol (<code>S</code>) syntax because of the special <code>__FlashStringHelper</code> implementation. All other platforms should support using <code>s</code> for strings.</li>
+<li>Specifiers that involve more than one alphabetic character are not supported. This means lu will have the same output as l (and likely the 'u' will still be taken/output as literal text).</li>
+</ul>
 <h3><a class="anchor" id="autotoc_md6"></a>
 Padding the numbers</h3>
 <p>For each numeric data specifier, a quantity of padded characters can be specified before the specifer (but immediately after the % symbol). The default character used for padding is a space (), but putting a zero (<code>0</code>) character <code>flag</code> before the <code>padding_quantity</code> changes the padding character to zeros (<code>0</code>).</p>
