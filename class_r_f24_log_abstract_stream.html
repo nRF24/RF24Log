@@ -81,9 +81,10 @@ Inheritance diagram for RF24LogAbstractStream:</div>
  <div class="center">
   <img src="class_r_f24_log_abstract_stream.png" usemap="#RF24LogAbstractStream_map" alt=""/>
   <map id="RF24LogAbstractStream_map" name="RF24LogAbstractStream_map">
-<area href="class_arduino_print_logger.html" title="A log handler implementation which outputs log messages to a stream." alt="ArduinoPrintLogger" shape="rect" coords="0,56,149,80"/>
-<area href="class_o_stream_logger.html" title="Class to manage logging messages to a ostream based object." alt="OStreamLogger" shape="rect" coords="159,56,308,80"/>
-<area href="class_printf_logger.html" title="Class to manage logging messages to a printf function pointer." alt="PrintfLogger" shape="rect" coords="318,56,467,80"/>
+<area href="class_r_f24_log_printf_parser.html" alt="RF24LogPrintfParser" shape="rect" coords="159,56,308,80"/>
+<area href="class_arduino_print_logger.html" title="A log handler implementation which outputs log messages to a stream." alt="ArduinoPrintLogger" shape="rect" coords="0,112,149,136"/>
+<area href="class_o_stream_logger.html" title="Class to manage logging messages to a ostream based object." alt="OStreamLogger" shape="rect" coords="159,112,308,136"/>
+<area href="class_printf_logger.html" title="Class to manage logging messages to a printf function pointer." alt="PrintfLogger" shape="rect" coords="318,112,467,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -99,12 +100,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:ae7b7c7980e4076659bf8f47daeba0094"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#ae7b7c7980e4076659bf8f47daeba0094">descTimeLevel</a> (uint8_t logLevel)</td></tr>
 <tr class="memdesc:ae7b7c7980e4076659bf8f47daeba0094"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automate the output of the header' timestamp and level description.  <a href="class_r_f24_log_abstract_stream.html#ae7b7c7980e4076659bf8f47daeba0094">More...</a><br /></td></tr>
 <tr class="separator:ae7b7c7980e4076659bf8f47daeba0094"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc681ca1dc62724fff4e5fbc206f7930"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#acc681ca1dc62724fff4e5fbc206f7930">appendFormattedMessage</a> (const char *format, va_list *args)</td></tr>
-<tr class="memdesc:acc681ca1dc62724fff4e5fbc206f7930"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a message with the specifiers replaced with values from the sequence of <code>args</code>  <a href="class_r_f24_log_abstract_stream.html#acc681ca1dc62724fff4e5fbc206f7930">More...</a><br /></td></tr>
-<tr class="separator:acc681ca1dc62724fff4e5fbc206f7930"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacac55e19a7d98415d014d7073550c39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#aacac55e19a7d98415d014d7073550c39">appendFormat</a> (<a class="el" href="struct_specifier_flags.html">SpecifierFlags</a> *flags, char format, va_list *args)</td></tr>
-<tr class="memdesc:aacac55e19a7d98415d014d7073550c39"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a data according to the format specifier  <a href="class_r_f24_log_abstract_stream.html#aacac55e19a7d98415d014d7073550c39">More...</a><br /></td></tr>
-<tr class="separator:aacac55e19a7d98415d014d7073550c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f33705456e0f1c407d21da70b2a5742"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#a4f33705456e0f1c407d21da70b2a5742">appendFormat</a> (<a class="el" href="struct_specifier_parsing.html">SpecifierParsing</a> *fmt_parser, va_list *args)</td></tr>
+<tr class="memdesc:a4f33705456e0f1c407d21da70b2a5742"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a data according to the format specifier  <a href="class_r_f24_log_abstract_stream.html#a4f33705456e0f1c407d21da70b2a5742">More...</a><br /></td></tr>
+<tr class="separator:a4f33705456e0f1c407d21da70b2a5742"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae27a36f91c4f03e443e581b63252fef"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">appendChar</a> (char data, uint16_t depth=1)=0</td></tr>
 <tr class="memdesc:aae27a36f91c4f03e443e581b63252fef"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a padding character a number of times  <a href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">More...</a><br /></td></tr>
 <tr class="separator:aae27a36f91c4f03e443e581b63252fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,14 +118,11 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:a6c883ca4fd17889b6f99e5ac1d002558"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#a6c883ca4fd17889b6f99e5ac1d002558">appendStr</a> (const char *data)=0</td></tr>
 <tr class="memdesc:a6c883ca4fd17889b6f99e5ac1d002558"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a c-string  <a href="class_r_f24_log_abstract_stream.html#a6c883ca4fd17889b6f99e5ac1d002558">More...</a><br /></td></tr>
 <tr class="separator:a6c883ca4fd17889b6f99e5ac1d002558"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfa3e78a4fa7e281df73324b0b222b02"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#acfa3e78a4fa7e281df73324b0b222b02">howWide</a> (int64_t numb, uint8_t base=10)</td></tr>
-<tr class="memdesc:acfa3e78a4fa7e281df73324b0b222b02"><td class="mdescLeft">&#160;</td><td class="mdescRight">how wide does it take to display a number  <a href="class_r_f24_log_abstract_stream.html#acfa3e78a4fa7e281df73324b0b222b02">More...</a><br /></td></tr>
-<tr class="separator:acfa3e78a4fa7e281df73324b0b222b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code>protected</code> collection of methods that output formatted data to a stream. </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8h_source.html#l00115">115</a> of file <a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8h_source.html#l00079">79</a> of file <a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aae27a36f91c4f03e443e581b63252fef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aae27a36f91c4f03e443e581b63252fef">&#9670;&nbsp;</a></span>appendChar()</h2>
@@ -223,8 +218,8 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </div>
 </div>
-<a id="aacac55e19a7d98415d014d7073550c39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aacac55e19a7d98415d014d7073550c39">&#9670;&nbsp;</a></span>appendFormat()</h2>
+<a id="a4f33705456e0f1c407d21da70b2a5742"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f33705456e0f1c407d21da70b2a5742">&#9670;&nbsp;</a></span>appendFormat()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -235,14 +230,8 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
         <tr>
           <td class="memname">void RF24LogAbstractStream::appendFormat </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_specifier_flags.html">SpecifierFlags</a> *&#160;</td>
-          <td class="paramname"><em>flags</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
+          <td class="paramtype"><a class="el" href="struct_specifier_parsing.html">SpecifierParsing</a> *&#160;</td>
+          <td class="paramname"><em>fmt_parser</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -266,61 +255,13 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <p>output a data according to the format specifier </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">flags</td><td>The object of prefixed specifier options/flags </td></tr>
-    <tr><td class="paramname">format</td><td>The format of the message </td></tr>
+    <tr><td class="paramname">fmt_parser</td><td>The object of prefixed specifier options/flags </td></tr>
     <tr><td class="paramname">args</td><td>The sequence of args </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00133">133</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
-
-</div>
-</div>
-<a id="acc681ca1dc62724fff4e5fbc206f7930"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acc681ca1dc62724fff4e5fbc206f7930">&#9670;&nbsp;</a></span>appendFormattedMessage()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void RF24LogAbstractStream::appendFormattedMessage </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">va_list *&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>output a message with the specifiers replaced with values from the sequence of <code>args</code> </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">format</td><td>The format of the message </td></tr>
-    <tr><td class="paramname">args</td><td>The sequence of args </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00235">235</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00244">244</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
 
 </div>
 </div>
@@ -403,7 +344,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00106">106</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00217">217</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
 
 </div>
 </div>
@@ -522,54 +463,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00098">98</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
-
-</div>
-</div>
-<a id="acfa3e78a4fa7e281df73324b0b222b02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acfa3e78a4fa7e281df73324b0b222b02">&#9670;&nbsp;</a></span>howWide()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t RF24LogAbstractStream::howWide </td>
-          <td>(</td>
-          <td class="paramtype">int64_t&#160;</td>
-          <td class="paramname"><em>numb</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>base</em> = <code>10</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>how wide does it take to display a number </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">numb</td><td>The number to represent </td></tr>
-    <tr><td class="paramname">base</td><td>The base counting scheme. Defaults to 10 for decimal counting system </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00067">67</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00209">209</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
 
 </div>
 </div>

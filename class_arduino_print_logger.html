@@ -83,6 +83,7 @@ Inheritance diagram for ArduinoPrintLogger:</div>
  <div class="center">
   <img src="class_arduino_print_logger.png" usemap="#ArduinoPrintLogger_map" alt=""/>
   <map id="ArduinoPrintLogger_map" name="ArduinoPrintLogger_map">
+<area href="class_r_f24_log_printf_parser.html" alt="RF24LogPrintfParser" shape="rect" coords="82,112,237,136"/>
 <area href="class_r_f24_log_abstract_handler.html" title="An abstract base class for handling log messages." alt="RF24LogAbstractHandler" shape="rect" coords="0,56,155,80"/>
 <area href="class_r_f24_log_abstract_stream.html" title="A protected collection of methods that output formatted data to a stream." alt="RF24LogAbstractStream" shape="rect" coords="165,56,320,80"/>
 <area href="class_r_f24_log_handler.html" title="A base mechanism for handling log messages." alt="RF24LogHandler" shape="rect" coords="0,0,155,24"/>
@@ -122,8 +123,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a6ef1df03ec8e89515ff467eaf64bc7d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_print_logger.html#a6ef1df03ec8e89515ff467eaf64bc7d8">appendStr</a> (const char *data)</td></tr>
 <tr class="memdesc:a6ef1df03ec8e89515ff467eaf64bc7d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a c-string  <a href="class_arduino_print_logger.html#a6ef1df03ec8e89515ff467eaf64bc7d8">More...</a><br /></td></tr>
 <tr class="separator:a6ef1df03ec8e89515ff467eaf64bc7d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a103bc553bc490e0617d5d75b2fa6d02e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_arduino_print_logger.html#a103bc553bc490e0617d5d75b2fa6d02e">write</a> (uint8_t <a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a>, const char *vendorId, const char *message, va_list *args)</td></tr>
-<tr class="separator:a103bc553bc490e0617d5d75b2fa6d02e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_r_f24_log_printf_parser"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_r_f24_log_printf_parser')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_r_f24_log_printf_parser.html">RF24LogPrintfParser</a></td></tr>
+<tr class="memitem:a47e693af8d708cdd92df8e5431da6136 inherit pro_methods_class_r_f24_log_printf_parser"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_printf_parser.html#a47e693af8d708cdd92df8e5431da6136">write</a> (uint8_t <a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a>, const char *vendorId, const char *message, va_list *args)</td></tr>
+<tr class="separator:a47e693af8d708cdd92df8e5431da6136 inherit pro_methods_class_r_f24_log_printf_parser"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -402,67 +404,6 @@ Print *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">RF24LogAbstractStream</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_arduino_print_logger_8cpp_source.html#l00047">47</a> of file <a class="el" href="_arduino_print_logger_8cpp_source.html">ArduinoPrintLogger.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a103bc553bc490e0617d5d75b2fa6d02e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a103bc553bc490e0617d5d75b2fa6d02e">&#9670;&nbsp;</a></span>write()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ArduinoPrintLogger::write </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>logLevel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>vendorId</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>message</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">va_list *&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>write log message to its destination </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">logLevel</td><td>The level of the logging message </td></tr>
-    <tr><td class="paramname">vendorId</td><td>The prefixed origin of the message </td></tr>
-    <tr><td class="paramname">message</td><td>The message </td></tr>
-    <tr><td class="paramname">args</td><td>The sequence of variables used to replace the format specifiers in the same order for which they appear in the <code>message</code> </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="class_r_f24_log_abstract_handler.html#a8f50251b51562787436b0dd6cdc0e359">RF24LogAbstractHandler</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_arduino_print_logger_8cpp_source.html#l00087">87</a> of file <a class="el" href="_arduino_print_logger_8cpp_source.html">ArduinoPrintLogger.cpp</a>.</p>
 
 </div>
 </div>

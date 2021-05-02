@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['precis_122',['precis',['../struct_specifier_flags.html#aeec95e8170851e17d7dd2f845089f505',1,'SpecifierFlags']]]
+  ['loglevel_126',['logLevel',['../class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4',1,'RF24LogAbstractHandler']]]
 ];
