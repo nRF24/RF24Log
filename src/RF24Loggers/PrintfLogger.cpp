@@ -35,21 +35,6 @@ PrintfLogger::PrintfLogger(int (*_stream)(const char *, ...))
     stream = _stream;
 }
 
-void PrintfLogger::write(uint8_t logLevel,
-                         const char *vendorId,
-                         const char *message,
-                         va_list *args)
-{
-    descTimeLevel(logLevel);
-    stream(vendorId);
-    stream(reinterpret_cast<const char*>(RF24LOG_DELIMITER));
-
-    // print formatted message
-    appendFormattedMessage(message, args);
-    #ifndef RF24LOG_NO_EOL
-    stream("\n");
-    #endif
-}
 
 void PrintfLogger::appendTimestamp()
 {

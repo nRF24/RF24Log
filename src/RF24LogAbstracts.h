@@ -24,69 +24,23 @@
 #include "RF24LogHandler.h"
 #include "RF24LogLevel.h"
 
-/** @brief An abstract base class for handling log messages. */
-class RF24LogAbstractHandler : public RF24LogHandler
-{
-public:
-    void log(uint8_t logLevel,
-             const char *vendorId,
-             const char *message,
-             va_list *args);
+/**
+ * @brief how wide (in characters) does it take to display a number
+ *
+ * @param numb The number to represent
+ * @param base The base counting scheme. Defaults to 10 for decimal counting system
+ */
+uint16_t howWide(int64_t numb, uint8_t base = 10);
 
-    void setLogLevel(uint8_t logLevel);
-
-#if defined (ARDUINO_ARCH_AVR)
-    void log(uint8_t logLevel,
-             const __FlashStringHelper *vendorId,
-             const __FlashStringHelper *message,
-             va_list *args);
-#endif
-
-private:
-
-    /**
-     * @brief is logging enabled for a certain level?
-     * @param logLevel The Log level to test if enabled.
-     * @return true if the log messages are enabled for the specified @p logLevel; false otherwise.
-     */
-    bool isLevelEnabled(uint8_t logLevel);
-
-protected:
-
-    /** The configured log level used to filter which messages are output. */
-    uint8_t logLevel;
-
-    RF24LogAbstractHandler();
-
-    /**
-     * write log message to its destination
-     * @param logLevel The level of the logging message
-     * @param vendorId The prefixed origin of the message
-     * @param message The message
-     * @param args The sequence of variables used to replace the format specifiers in the
-     * same order for which they appear in the @p message
-     */
-    virtual void write(uint8_t logLevel,
-                       const char *vendorId,
-                       const char *message,
-                       va_list *args) = 0;
-
-#if defined (ARDUINO_ARCH_AVR)
-    virtual void write(uint8_t logLevel,
-                       const __FlashStringHelper *vendorId,
-                       const __FlashStringHelper *message,
-                       va_list *args) = 0;
-#endif
-};
 
 /** @brief Some data about a format specifier */
-struct SpecifierFlags
+struct SpecifierParsing
 {
     /**
      * @brief Construct a new Specifier Flags object
      * @param pad The default char used when padding data
      */
-    SpecifierFlags(char pad = ' ') : fill(pad), width(0), precis(-1) {};
+    SpecifierParsing(char pad = ' ') : fill(pad), width(0), precis(-1), isUnsigned(false), specifier(0) {};
 
     /**
      * @brief is a character a valid specifier flag
@@ -102,13 +56,23 @@ struct SpecifierFlags
      */
     bool isPaddPrec(char c);
 
+    /**
+     * @brief is a character a valid/supported specifier format option
+     * @param c A character
+     * @return true if the @p c param could be followed by another option; false otherwise
+     */
+    bool isFmtOption(char c);
+
     /** @brief The default character used as padding. */
     char fill;
     /** @brief The width of the padding */
     uint16_t width;
     /** @brief The number of decimal places. If negative, then default of 2 places is used. */
     int8_t precis;
-
+    /** @brief flag to explicitly represent the number as an unsigned integer */
+    bool isUnsigned;
+    /** @brief datatype specifier */
+    char specifier;
 };
 
 /** @brief A `protected` collection of methods that output formatted data to a stream. */
@@ -133,22 +97,11 @@ protected:
     void descTimeLevel(uint8_t logLevel);
 
     /**
-     * @brief output a message with the specifiers replaced with values from the sequence of @p args
-     * @param format The format of the message
-     * @param args The sequence of args
-     */
-    void appendFormattedMessage(const char *format, va_list *args);
-#if defined (ARDUINO_ARCH_AVR)
-    void appendFormattedMessage(const __FlashStringHelper *format, va_list *args);
-#endif
-
-    /**
      * @brief output a data according to the format specifier
-     * @param flags The object of prefixed specifier options/flags
-     * @param format The format of the message
+     * @param fmt_parser The object of prefixed specifier options/flags
      * @param args The sequence of args
      */
-    void appendFormat(SpecifierFlags* flags, char format, va_list *args);
+    void appendFormat(SpecifierParsing* fmt_parser, va_list *args);
 
     /**
      * @brief append a padding character a number of times
@@ -186,14 +139,81 @@ protected:
 #ifdef ARDUINO_ARCH_AVR
     virtual void appendStr(const __FlashStringHelper* data) = 0;
 #endif
+};
+
+
+/** @brief An abstract base class for handling log messages. */
+class RF24LogAbstractHandler : public RF24LogHandler
+{
+public:
+    void log(uint8_t logLevel,
+             const char *vendorId,
+             const char *message,
+             va_list *args);
+
+    void setLogLevel(uint8_t logLevel);
+
+#if defined (ARDUINO_ARCH_AVR)
+    void log(uint8_t logLevel,
+             const __FlashStringHelper *vendorId,
+             const __FlashStringHelper *message,
+             va_list *args);
+#endif
+
+private:
 
     /**
-     * @brief how wide does it take to display a number
-     *
-     * @param numb The number to represent
-     * @param base The base counting scheme. Defaults to 10 for decimal counting system
+     * @brief is logging enabled for a certain level?
+     * @param logLevel The Log level to test if enabled.
+     * @return true if the log messages are enabled for the specified @p logLevel; false otherwise.
      */
-    uint16_t howWide(int64_t numb, uint8_t base = 10);
+    bool isLevelEnabled(uint8_t logLevel);
+
+protected:
+
+    // this is needed so RF24LogAbstracthandler::write() can call RF24LogAbstractStream::append*()
+    friend class RF24LogAbstractStream;
+
+    /** The configured log level used to filter which messages are output. */
+    uint8_t logLevel;
+
+    RF24LogAbstractHandler();
+
+    /**
+     * write log message to its destination
+     * @param logLevel The level of the logging message
+     * @param vendorId The prefixed origin of the message
+     * @param message The message
+     * @param args The sequence of variables used to replace the format specifiers in the
+     * same order for which they appear in the @p message
+     */
+    virtual void write(uint8_t logLevel,
+                       const char *vendorId,
+                       const char *message,
+                       va_list *args) = 0;
+
+#if defined (ARDUINO_ARCH_AVR)
+    virtual void write(uint8_t logLevel,
+                       const __FlashStringHelper *vendorId,
+                       const __FlashStringHelper *message,
+                       va_list *args) = 0;
+#endif
+};
+
+class RF24LogPrintfParser : public RF24LogAbstractHandler, RF24LogAbstractStream
+{
+protected:
+    void write(uint8_t logLevel,
+                       const char *vendorId,
+                       const char *message,
+                       va_list *args);
+
+#if defined (ARDUINO_ARCH_AVR)
+    void write(uint8_t logLevel,
+                       const __FlashStringHelper *vendorId,
+                       const __FlashStringHelper *message,
+                       va_list *args);
+#endif
 };
 
 #endif /* SRC_RF24LOGABSTRACTS_H_ */

@@ -18,7 +18,7 @@
 #include <RF24LogAbstracts.h>
 
 /** @brief Class to manage logging messages to a printf function pointer. */
-class PrintfLogger : public RF24LogAbstractHandler, RF24LogAbstractStream
+class PrintfLogger : public RF24LogPrintfParser
 {
 public:
     /**
@@ -43,10 +43,6 @@ protected:
     void appendUInt(unsigned long data, uint8_t base = 10);
     void appendDouble(double data, uint8_t precision = 2);
     void appendStr(const char* data);
-    void write(uint8_t logLevel,
-               const char *vendorId,
-               const char *message,
-               va_list *args);
 };
 
 #endif // SRC_RF24LOGGERS_PRINTFLOGGER_H_

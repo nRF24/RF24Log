@@ -65,37 +65,3 @@ void ArduinoPrintLogger::appendStr(const __FlashStringHelper* data)
     stream->print(data);
 }
 #endif
-
-#ifdef ARDUINO_ARCH_AVR
-void ArduinoPrintLogger::write(uint8_t logLevel,
-                               const __FlashStringHelper *vendorId,
-                               const __FlashStringHelper *message,
-                               va_list *args)
-{
-    descTimeLevel(logLevel);
-    appendStr(vendorId);
-    appendChar(RF24LOG_DELIMITER, 1);
-
-    // print formatted message
-    appendFormattedMessage(message, args);
-    #ifndef RF24LOG_NO_EOL
-    appendChar('\n');
-    #endif
-}
-#endif
-
-void ArduinoPrintLogger::write(uint8_t logLevel,
-                               const char *vendorId,
-                               const char *message,
-                               va_list *args)
-{
-    descTimeLevel(logLevel);
-    appendStr(vendorId);
-    appendChar(RF24LOG_DELIMITER);
-
-    // print formatted message
-    appendFormattedMessage(message, args);
-    #ifndef RF24LOG_NO_EOL
-    appendChar('\n');
-    #endif
-}

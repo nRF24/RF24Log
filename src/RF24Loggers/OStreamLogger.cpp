@@ -20,21 +20,6 @@ OStreamLogger::OStreamLogger(std::ostream *stream)
     this->stream = stream;
 }
 
-void OStreamLogger::write(uint8_t logLevel,
-                          const char *vendorId,
-                          const char *message,
-                          va_list *args)
-{
-    descTimeLevel(logLevel);
-    *stream << vendorId << RF24LOG_DELIMITER;
-
-    // print formatted message
-    appendFormattedMessage(message, args);
-    #ifndef RF24LOG_NO_EOL
-    *stream << std::endl;
-    #endif
-}
-
 void OStreamLogger::appendTimestamp()
 {
     char buffer[21];

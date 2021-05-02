@@ -19,7 +19,7 @@
 #include <Print.h>
 
 /** @brief A log handler implementation which outputs log messages to a stream. */
-class ArduinoPrintLogger : public RF24LogAbstractHandler, RF24LogAbstractStream
+class ArduinoPrintLogger : public RF24LogPrintfParser
 {
 protected:
 
@@ -46,18 +46,6 @@ protected:
     void appendStr(const char* data);
 #ifdef ARDUINO_ARCH_AVR
     void appendStr(const __FlashStringHelper* data);
-#endif
-
-    void write(uint8_t logLevel,
-               const char *vendorId,
-               const char *message,
-               va_list *args);
-
-#if defined (ARDUINO_ARCH_AVR)
-    void write(uint8_t logLevel,
-               const __FlashStringHelper *vendorId,
-               const __FlashStringHelper *message,
-               va_list *args);
 #endif
 };
 
