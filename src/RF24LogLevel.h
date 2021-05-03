@@ -55,14 +55,14 @@ enum RF24LogLevel : uint8_t
  * @brief Level descriptions
  * @{
  */
-#ifdef RF24LOG_SHORT_DESC
+#if defined(RF24LOG_SHORT_DESC)
 const char RF24LogDescError[] = " ERR";
 const char RF24LogDescWarn[]  = "WARN";
 const char RF24LogDescInfo[]  = "INFO";
-const char RF24LogDescDebug[] = "DEBG";
-const char RF24LogDescLevel[] = "Lv";
+const char RF24LogDescDebug[] = " DBG";
+const char RF24LogDescLevel[] = "L ";
 
-#elif defined (RF24LOG_TERSE_DESC)
+#elif defined(RF24LOG_TERSE_DESC)
 const char RF24LogDescError[] = " E";
 const char RF24LogDescWarn[]  = " W";
 const char RF24LogDescInfo[]  = " I";
@@ -79,7 +79,7 @@ const char RF24LogDescInfo[] = " INFO";
 /** @brief description of the @ref DEBUG base level */
 const char RF24LogDescDebug[] = "DEBUG";
 /** @brief description of the @ref DEBUG base level */
-const char RF24LogDescLevel[] = "Lvl";
+const char RF24LogDescLevel[] = "Lvl ";
 #endif
 
 /** @brief collection of the base level descriptions */

@@ -31,8 +31,10 @@
 
 // for some reason, these need to be declared here and
 // not on any higher level of the project
-//#define RF24LOG_NO_TIMESTAMP
-//#define RF24LOG_NO_EOL
+// #define RF24LOG_NO_TIMESTAMP
+// #define RF24LOG_NO_EOL
+// #define RF24LOG_SHORT_DESC
+// #define RF24LOG_TERSE_DESC
 
 #ifdef DOXYGEN_FORCED
 /** @brief macro (when defined) disables line feeds at the end of all log messages. */

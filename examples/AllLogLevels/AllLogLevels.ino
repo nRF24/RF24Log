@@ -41,7 +41,7 @@ OStreamLogger serialLogHandler((std::ostream*)&std::cout);
 
 // Define global vendor id (it is stored in FLASH memory)
 const char PROGMEM vendorID[] = "RF24LogExample";
-const char PROGMEM uiPrompt[] = "user input";
+const char PROGMEM DisableVendor[] = ""; // vendorId needs to be a flash string on AVR architecture
 
 void setup()
 {
@@ -88,7 +88,7 @@ void loop()
 #endif // platform specific user input
 
   if (level) {
-    RF24Log_log(1, uiPrompt, "Set log level (in octal) to %o\n", level);
+    RF24Log_log(0, DisableVendor, "Set log level (in octal) to %o\n", level);
     serialLogHandler.setLogLevel(level);
   }
 
@@ -98,13 +98,14 @@ void loop()
     level++;
   } while (level);
 
+  // print a blank line (no timestamp, level description, or vendorId)
+  RF24Log_log(0, DisableVendor, " "); // messages with a zero length will not be logged
+
 #ifdef ARDUINO
-  Serial.println("");
 
   delay(5000);
 #elif !defined(PICO_BUILD)
   // for non-Arduino & not Pico SDK
-  std::cout << std::endl;
   // time.sleep(1); // TODO
 #endif
 }

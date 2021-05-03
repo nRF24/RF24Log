@@ -101,8 +101,13 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
         appendChar(RF24LOG_DELIMITER);
     #endif
         descTimeLevel(logLevel);
-        appendStr(vendorId);
-        appendChar(RF24LOG_DELIMITER);
+        PGM_P id = reinterpret_cast<PGM_P>(vendorId);
+        char v = pgm_read_byte(id++);
+        if (v)
+        {
+            appendStr(vendorId);
+            appendChar(RF24LOG_DELIMITER);
+        }
 
         // print formatted message (or at least 1 line at a time)
         while (c
@@ -168,8 +173,11 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
         appendChar(RF24LOG_DELIMITER);
     #endif
         descTimeLevel(logLevel);
-        appendStr(vendorId);
-        appendChar(RF24LOG_DELIMITER);
+        if (*vendorId)
+        {
+            appendStr(vendorId);
+            appendChar(RF24LOG_DELIMITER);
+        }
 
         // print formatted message (or at least 1 line at a time)
         while (*c
@@ -202,9 +210,6 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
                     }
                 }
                 else
-        #if defined(RF24LOG_NO_EOL)
-                if (*c != '\n') // dispose char; we control the new line feeds ourselves
-        #endif
                 {
                     appendChar(*c);
                 }
@@ -218,10 +223,9 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
             }
             ++c;
         }
+        if (*c == '\n') { ++c; } // dispose char; we control the new line feeds ourselves
         #if !defined(RF24LOG_NO_EOL)
         appendChar('\n');
-        #else
-        if (*c == '\n') { ++c; } // dispose char; we control the new line feeds ourselves
         #endif
     }
 }
@@ -230,6 +234,7 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
 
 void RF24LogAbstractStream::descTimeLevel(uint8_t logLevel)
 {
+    if (!logLevel) { return; } // skip level description for level 0
     #if !defined(RF24LOG_NO_TIMESTAMP)
     appendTimestamp();
     #endif
@@ -247,17 +252,23 @@ void RF24LogAbstractStream::appendLogLevel(uint8_t logLevel)
 
         if(subLevel == 0)
         {
-            appendStr("  ");
+    #if !defined(RF24LOG_TERSE_DESC) && !defined(RF24LOG_SHORT_DESC)
+            appendChar(' ', 2);
+    #else
+            appendChar(' ');
+    #endif
         }
         else
         {
+    #if !defined(RF24LOG_TERSE_DESC) && !defined(RF24LOG_SHORT_DESC)
             appendChar('+');
+    #endif
             appendUInt(subLevel, 8);
         }
     }
     else {
         appendStr(RF24LogDescLevel);
-        appendChar(' ', logLevel < 010 ? 3 : 1 + (logLevel < 0100));
+        appendChar(' ', logLevel < 010 ? 2 : (logLevel < 0100));
         appendUInt(logLevel, 8);
     }
     appendChar(RF24LOG_DELIMITER);

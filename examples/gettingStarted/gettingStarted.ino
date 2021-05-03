@@ -41,7 +41,7 @@ OStreamLogger serialLogHandler((std::ostream*)&std::cout);
 
 // Define global vendor id (it is stored in FLASH memory)
 const char PROGMEM vendorID[] = "RF24LogExample";
-const char PROGMEM uiPrompt[] = "user input";
+const char PROGMEM DisableVendor[] = ""; // vendorId needs to be a flash string on AVR architecture
 
 void setup()
 {
@@ -61,7 +61,7 @@ void setup()
   // set serial port handler
   rf24Logging.setHandler(&serialLogHandler);
 
-  RF24Log_info(vendorID, "RF24Log/examples/BasicSerialLogger");
+  RF24Log_info(vendorID, "RF24Log/examples/gettingStarted");
 }
 
 void loop()
@@ -89,34 +89,31 @@ void loop()
 #endif // platform specific user input
 
   if (level) {
-    RF24Log_log(1, uiPrompt, "Set log level (in octal) to %o\n", level);
+    RF24Log_log(0, DisableVendor, "Set log level (in octal) to %o\n", level);
     serialLogHandler.setLogLevel(level);
   }
 
-  RF24Log_error(vendorID, "Error message");
-  RF24Log_warn(vendorID, "Warning message");
-  RF24Log_info(vendorID, "Info message");
-  RF24Log_debug(vendorID, "Debug message");
-
+  RF24Log_warn(vendorID, "Warn internal core cache reset. error code = 0x%x%x%x%x", 0xde, 0xad, 0xbe, 0xef);
   RF24Log_error(vendorID, "Error message with %s", "RAM string");
-
-  RF24Log_info(vendorID, "log with double value %.5D", 3.14159);
-  RF24Log_debug(vendorID, "log with double value %.4D", 2.71);
+  RF24Log_info(vendorID, "Info about rounding a double value %.5D", 3.14159);
+  RF24Log_debug(vendorID, "Debug precision of a double value %.4D", 2.71);
 
   RF24Log_log(RF24LogLevel::INFO + 1, vendorID, "message on sublevel INFO + 1");
   RF24Log_log(RF24LogLevel::WARN + 1, vendorID, "message on sublevel WARN + 1");
   RF24Log_log(RF24LogLevel::ERROR - 1, vendorID, "message on sublevel ERROR - 1");
+  RF24Log_log(RF24LogLevel::DEBUG + 8, vendorID, "message on sublevel DEBUG + 8");
 
   RF24Log_log(077, vendorID, "This\n\tis a multiline\n\t\tmessage that\n\tends with a\nblank line\n\n");
   RF24Log_log(75, vendorID, "%%%%This is level 0x%02x (0b%08b or%4d)%3c", 75, 75, 75, '!');
 
+  // print a blank line (no timestamp, level description, or vendorId)
+  RF24Log_log(0, DisableVendor, " "); // messages with a zero length will not be logged
+
 #ifdef ARDUINO
-  Serial.println("");
 
   delay(5000);
 #elif !defined(PICO_BUILD)
   // for non-Arduino & not Pico SDK
-  std::cout << std::endl;
   // time.sleep(1); // TODO
 #endif
 }

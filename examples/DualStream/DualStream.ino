@@ -29,7 +29,7 @@ RF24DualLogHandler rf24DualLogHandler(&rf24SerialLogHandler1, &rf24SerialLogHand
 
 // Define global vendor id (it is stored in FLASH memory)
 const char PROGMEM vendorID[] = "RF24LogExample";
-const char PROGMEM uiPrompt[] = "user input";
+const char PROGMEM DisableVendor[] = ""; // vendorId needs to be a flash string on AVR architecture
 
 void setup()
 {
@@ -72,7 +72,7 @@ void loop()
 #endif // platform specific user input
 
   if (level) {
-    RF24Log_log(1, uiPrompt, "Set log level (in octal) to %o\n", level);
+    RF24Log_log(0, DisableVendor, "Set log level (in octal) to %o\n", level);
     rf24SerialLogHandler2.setLogLevel(level); // set log level only for handler2
   }
 
@@ -81,8 +81,10 @@ void loop()
   RF24Log_info(vendorID, "This info message should be logged %s.", "twice");
   RF24Log_debug(vendorID, "This debug message should NOT be logged %s.");
 
+  // print a blank line (no timestamp, level description, or vendorId)
+  RF24Log_log(0, DisableVendor, " "); // messages with a zero length will not be logged
+
 #ifdef ARDUINO
-  Serial.println("");
 
   delay(5000);
 #elif !defined(PICO_BUILD)
