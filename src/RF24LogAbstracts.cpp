@@ -126,10 +126,10 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
                     appendFormat(&fmt_parser, args);
                     // fmt_parser.isFmtOption() stops parsing on a non-fmt-specifying char only
                     // if the `while(isFmtOption())` loop above iterated more than once, then
-                    // we have to dispose of the left over char here
+                    // we have to prevent disposing of the left over char here
                     if (fmt_parser.specifier != c)
                     {
-                        appendChar(c);
+                        p--; // let the next iteration handle it
                     }
                 }
                 else
@@ -187,10 +187,10 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
                     appendFormat(&fmt_parser, args);
                     // fmt_parser.isFmtOption() stops parsing on a non-fmt-specifying char only
                     // if the `while(isFmtOption())` loop above iterated more than once, then
-                    // we have to dispose of the left over char here
+                    // we have to prevent disposing of the left over char here
                     if (fmt_parser.specifier != *c)
                     {
-                        appendChar(*c);
+                        --c; // let the next iteration handle it
                     }
                 }
                 else
@@ -411,12 +411,8 @@ bool SpecifierParsing::isPaddPrec(char c)
 
 bool SpecifierParsing::isFmtOption(char c)
 {
-    if (c == 'u')
-    {
-        specifier = c;
-        isUnsigned = false; // no second option is supported
-    }
-    else if (c == 's' ||
+
+    if (c == 's' ||
     #ifdef ARDUINO_ARCH_AVR
             c == 'S' ||
     #endif
@@ -426,9 +422,11 @@ bool SpecifierParsing::isFmtOption(char c)
             c == 'x' ||
             c == 'X' ||
             c == 'o' ||
+            c == 'u' ||
             c == 'b')
     {
         specifier = c;
+        isUnsigned = (c == 'u');
         return false; // no second option supported
     }
     else if (c == 'd' ||

@@ -105,8 +105,10 @@ void loop()
 
   RF24Log_log(RF24LogLevel::INFO + 1, vendorID, "message on sublevel INFO + 1");
   RF24Log_log(RF24LogLevel::WARN + 1, vendorID, "message on sublevel WARN + 1");
+  RF24Log_log(RF24LogLevel::ERROR - 1, vendorID, "message on sublevel ERROR - 1");
+
   RF24Log_log(077, vendorID, "This\n\tis a multiline\n\t\tmessage that\n\tends with a\nblank line\n\n");
-  RF24Log_log(75, vendorID, "%%%%This is level 0x%02x (0b%08b or%4u)%3c", 75, 75, 75, '!');
+  RF24Log_log(75, vendorID, "%%%%This is level 0x%02x (0b%08b or%4d)%3c", 75, 75, 75, '!');
 
 #ifdef ARDUINO
   Serial.println("");
