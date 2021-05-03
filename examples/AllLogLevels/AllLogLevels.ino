@@ -99,7 +99,7 @@ void loop()
   } while (level);
 
   // print a blank line (no timestamp, level description, or vendorId)
-  RF24Log_log(0, DisableVendor, " "); // messages with a zero length will not be logged
+  RF24Log_log(0, DisableVendor, "");
 
 #ifdef ARDUINO
 

@@ -40,7 +40,7 @@ struct SpecifierParsing
      * @brief Construct a new Specifier Flags object
      * @param pad The default char used when padding data
      */
-    SpecifierParsing(char pad = ' ') : fill(pad), width(0), precis(-1), isUnsigned(false), specifier(0) {};
+    SpecifierParsing(char pad = ' ') : fill(pad), width(0), precis(-1), specifier(0) {};
 
     /**
      * @brief is a character a valid specifier flag
@@ -69,8 +69,6 @@ struct SpecifierParsing
     uint16_t width;
     /** @brief The number of decimal places. If negative, then default of 2 places is used. */
     int8_t precis;
-    /** @brief flag to explicitly represent the number as an unsigned integer */
-    bool isUnsigned;
     /** @brief datatype specifier */
     char specifier;
 };

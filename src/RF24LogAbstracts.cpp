@@ -22,22 +22,10 @@ uint16_t howWide(int64_t numb, uint8_t base)
     uint16_t i = 0;
     while (mask)
     {
-        if (base == 2)
-        {
-            mask >>= 1;
-        }
-        else if (base == 8)
-        {
-            mask >>= 3;
-        }
-        else if (base == 16)
-        {
-            mask >>= 4;
-        }
-        else // assume base is default value of 10
-        {
-            mask /= 10;
-        }
+        if      (base == 2)  { mask >>= 1; }
+        else if (base == 8)  { mask >>= 3; }
+        else if (base == 16) { mask >>= 4; }
+        else  /*base == 10*/ { mask /= 10; }
         i++;
     }
     if (numb <= 0)
@@ -94,7 +82,7 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
 {
     PGM_P p = reinterpret_cast<PGM_P>(message);
     char c = pgm_read_byte(p++);
-    while (c)
+    do
     {
         // print header
     #if defined (RF24LOG_NO_EOL)
@@ -124,13 +112,13 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
             {
                 SpecifierParsing fmt_parser;
                 c = pgm_read_byte(p++); // get ready to feed the parser
-                while (c && fmt_parser.isFlagged(c)) { c = pgm_read_byte(p++); }
-                while (c && fmt_parser.isPaddPrec(c)) { c = pgm_read_byte(p++); }
+                while (c && fmt_parser.isFlagged(c))   { c = pgm_read_byte(p++); }
+                while (c && fmt_parser.isPaddPrec(c))  { c = pgm_read_byte(p++); }
                 while (c && fmt_parser.isFmtOption(c)) { c = pgm_read_byte(p++); }
                 if (fmt_parser.specifier)
                 {
                     appendFormat(&fmt_parser, args);
-                    // fmt_parser.isFmtOption() stops parsing on a non-fmt-specifying char only
+                    // fmt_parser.isFmtOption() stops parsing on a non-fmt-specifying char
                     // if the `while(isFmtOption())` loop above iterated more than once, then
                     // we have to prevent disposing of the left over char here
                     if (fmt_parser.specifier != c)
@@ -156,7 +144,7 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
         if (c == '\n') { c = pgm_read_byte(p++); } // dispose char; we control new line feeds ourselves
         appendChar('\n');
         #endif
-    }
+    } while (c);
 }
 #endif
 
@@ -166,7 +154,7 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
                                va_list *args)
 {
     char *c = (char*)message;
-    while (*c)
+    do
     {
         // print header
     #if defined (RF24LOG_NO_EOL)
@@ -194,14 +182,14 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
             {
                 SpecifierParsing fmt_parser;
                 ++c; // get ready to feed the parser
-                while (fmt_parser.isFlagged(*c)) { ++c; }
-                while (fmt_parser.isPaddPrec(*c)) { ++c; }
-                while (fmt_parser.isFmtOption(*c)) { ++c; }
+                while (*c && fmt_parser.isFlagged(*c))   { ++c; }
+                while (*c && fmt_parser.isPaddPrec(*c))  { ++c; }
+                while (*c && fmt_parser.isFmtOption(*c)) { ++c; }
                 // fmt_parser.isFmtOption() stops parsing on a non-fmt-specifying char
                 if (fmt_parser.specifier)
                 {
                     appendFormat(&fmt_parser, args);
-                    // fmt_parser.isFmtOption() stops parsing on a non-fmt-specifying char only
+                    // fmt_parser.isFmtOption() stops parsing on a non-fmt-specifying char
                     // if the `while(isFmtOption())` loop above iterated more than once, then
                     // we have to prevent disposing of the left over char here
                     if (fmt_parser.specifier != *c)
@@ -227,7 +215,7 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
         if (*c == '\n') { ++c; } // dispose char; we control the new line feeds ourselves
         appendChar('\n');
         #endif
-    }
+    } while (*c);
 }
 
 /* *************************** AbstractStream defs **************************** */
@@ -335,7 +323,7 @@ void RF24LogAbstractStream::appendFormat(SpecifierParsing* fmt_parser, va_list *
                 uint16_t w = howWide(temp, base);
                 appendChar(fmt_parser->fill, (fmt_parser->width > w ? fmt_parser->width - w : 0));
             }
-            if (fmt_parser->isUnsigned)
+            if (fmt_parser->specifier == 'u')
             {
                 appendUInt(temp, base);
             }
@@ -401,7 +389,6 @@ bool SpecifierParsing::isFmtOption(char c)
             c == 'b')
     {
         specifier = c;
-        isUnsigned = c == 'u';
         return false; // no second option supported
     }
     else if (c == 'd' ||
@@ -409,7 +396,7 @@ bool SpecifierParsing::isFmtOption(char c)
             c == 'l')
     {
         specifier = c;
-        return true; // can also be specified as unsigned with 'u'
+        return true; // can also support a second option (like 'u')
     }
     return false;
 }
