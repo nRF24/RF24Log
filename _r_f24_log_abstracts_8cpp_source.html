@@ -205,15 +205,15 @@ $(function() {
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            }</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">        #if defined(RF24LOG_NO_EOL)</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">if</span> (c != <span class="charliteral">&#39;\n&#39;</span>) <span class="comment">// dispose char; we control the new line feeds ourselves</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">if</span> (c != <span class="charliteral">&#39;\n&#39;</span>) <span class="comment">// dispose char; we control new line feeds ourselves</span></div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">        #endif</span></div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            {</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                <a class="code" href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">appendChar</a>(c);</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            }</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            c = pgm_read_byte(p++);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        }</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;\n&#39;</span>) { c = pgm_read_byte(p++); } <span class="comment">// dispose char; we control the new line feeds ourselves</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">        #if !defined(RF24LOG_NO_EOL)</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="preprocessor">        #if !defined(RF24LOG_NO_EOL)</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;\n&#39;</span>) { c = pgm_read_byte(p++); } <span class="comment">// dispose char; we control new line feeds ourselves</span></div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <a class="code" href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">appendChar</a>(<span class="charliteral">&#39;\n&#39;</span>);</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor">        #endif</span></div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
@@ -283,8 +283,8 @@ $(function() {
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            }</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            ++c;</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        }</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keywordflow">if</span> (*c == <span class="charliteral">&#39;\n&#39;</span>) { ++c; } <span class="comment">// dispose char; we control the new line feeds ourselves</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="preprocessor">        #if !defined(RF24LOG_NO_EOL)</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor">        #if !defined(RF24LOG_NO_EOL)</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keywordflow">if</span> (*c == <span class="charliteral">&#39;\n&#39;</span>) { ++c; } <span class="comment">// dispose char; we control the new line feeds ourselves</span></div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <a class="code" href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">appendChar</a>(<span class="charliteral">&#39;\n&#39;</span>);</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">        #endif</span></div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    }</div>
@@ -378,149 +378,101 @@ $(function() {
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <a class="code" href="class_r_f24_log_abstract_stream.html#aed0c58fe5d99a5761700afafa36f9005">appendDouble</a>(va_arg(*args, <span class="keywordtype">double</span>));</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        }</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    }</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;d&#39;</span> || fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;i&#39;</span> || fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;l&#39;</span> || fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;u&#39;</span>)</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    {</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="comment">// print as integer</span></div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="keywordtype">int</span> temp = va_arg(*args, <span class="keywordtype">int</span>);</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a>)</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        {</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            uint16_t w = <a class="code" href="_r_f24_log_abstracts_8cpp.html#aa2c8b83bbe0aa0b1198bb35830fb8361">howWide</a>(temp, 10);</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            <a class="code" href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">appendChar</a>(fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a6db732b165fa420b3b908e28203adec4">fill</a>, (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a> &gt; w ? fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a> - w : 0));</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        }</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a37766edd2478434e296f7274f590a38a">isUnsigned</a>)</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        {</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            <a class="code" href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">appendUInt</a>(temp, 10);</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        }</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        {</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            <a class="code" href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">appendInt</a>(temp, 10);</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        }</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    }</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;x&#39;</span> || fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;X&#39;</span>)</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    {</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="comment">// print as integer</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="keywordtype">int</span> temp = va_arg(*args, <span class="keywordtype">int</span>);</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a>)</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        {</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            uint16_t w = <a class="code" href="_r_f24_log_abstracts_8cpp.html#aa2c8b83bbe0aa0b1198bb35830fb8361">howWide</a>(temp, 16);</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <a class="code" href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">appendChar</a>(fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a6db732b165fa420b3b908e28203adec4">fill</a>, (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a> &gt; w ? fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a> - w : 0));</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        }</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a37766edd2478434e296f7274f590a38a">isUnsigned</a>)</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        {</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            <a class="code" href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">appendUInt</a>(temp, 16);</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        }</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        {</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            <a class="code" href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">appendInt</a>(temp, 16);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        }</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <span class="comment">// print as integer</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        uint8_t base = 3; <span class="comment">// use 3 as a invalid sentinel</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;d&#39;</span> || fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;i&#39;</span> ||</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;l&#39;</span> || fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;u&#39;</span>) { base = 10; }</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;x&#39;</span> || fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;X&#39;</span>) { base = 16; }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;o&#39;</span>) { base = 8; }</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;b&#39;</span>) { base = 2; }</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        <span class="keywordflow">if</span> (base != 3) <span class="comment">// if it was a supported char</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> temp = va_arg(*args, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a>)</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            {</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                uint16_t w = <a class="code" href="_r_f24_log_abstracts_8cpp.html#aa2c8b83bbe0aa0b1198bb35830fb8361">howWide</a>(temp, base);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                <a class="code" href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">appendChar</a>(fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a6db732b165fa420b3b908e28203adec4">fill</a>, (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a> &gt; w ? fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a> - w : 0));</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            }</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a37766edd2478434e296f7274f590a38a">isUnsigned</a>)</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                <a class="code" href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">appendUInt</a>(temp, base);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            {</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                <a class="code" href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">appendInt</a>(temp, base);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            }</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        }</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    }</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;}</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="comment">/* *************************** SpecifierParsing defs **************************** */</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno"><a class="line" href="struct_specifier_parsing.html#ac6789f899228fadeb7676779e65b9e6e">  353</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="struct_specifier_parsing.html#ac6789f899228fadeb7676779e65b9e6e">SpecifierParsing::isFlagged</a>(<span class="keywordtype">char</span> c)</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;{</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;0&#39;</span>)</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        <a class="code" href="struct_specifier_parsing.html#a6db732b165fa420b3b908e28203adec4">fill</a> = <span class="charliteral">&#39;0&#39;</span>;</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    }</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;o&#39;</span>)</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    {</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        <span class="comment">// print as integer</span></div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <span class="keywordtype">int</span> temp = va_arg(*args, <span class="keywordtype">int</span>);</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a>)</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        {</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            uint16_t w = <a class="code" href="_r_f24_log_abstracts_8cpp.html#aa2c8b83bbe0aa0b1198bb35830fb8361">howWide</a>(temp, 8);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            <a class="code" href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">appendChar</a>(fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a6db732b165fa420b3b908e28203adec4">fill</a>, (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a> &gt; w ? fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a> - w : 0));</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        }</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a37766edd2478434e296f7274f590a38a">isUnsigned</a>)</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        {</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            <a class="code" href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">appendUInt</a>(temp, 8);</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        }</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        {</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            <a class="code" href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">appendInt</a>(temp, 8);</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        }</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    }</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> == <span class="charliteral">&#39;b&#39;</span>)</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    {</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="comment">// print as integer</span></div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> temp = va_arg(*args, <span class="keywordtype">int</span>);</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a>)</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        {</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;            uint16_t w = <a class="code" href="_r_f24_log_abstracts_8cpp.html#aa2c8b83bbe0aa0b1198bb35830fb8361">howWide</a>(temp, 2);</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            <a class="code" href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">appendChar</a>(fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a6db732b165fa420b3b908e28203adec4">fill</a>, (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a> &gt; w ? fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a> - w : 0));</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        }</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="keywordflow">if</span> (fmt_parser-&gt;<a class="code" href="struct_specifier_parsing.html#a37766edd2478434e296f7274f590a38a">isUnsigned</a>)</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        {</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            <a class="code" href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">appendUInt</a>(temp, 2);</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        }</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        {</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            <a class="code" href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">appendInt</a>(temp, 2);</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        }</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    }</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;}</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160; </div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="comment">/* *************************** SpecifierParsing defs **************************** */</span></div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160; </div>
-<div class="line"><a name="l00401"></a><span class="lineno"><a class="line" href="struct_specifier_parsing.html#ac6789f899228fadeb7676779e65b9e6e">  401</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="struct_specifier_parsing.html#ac6789f899228fadeb7676779e65b9e6e">SpecifierParsing::isFlagged</a>(<span class="keywordtype">char</span> c)</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;{</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;0&#39;</span>)</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    {</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        <a class="code" href="struct_specifier_parsing.html#a6db732b165fa420b3b908e28203adec4">fill</a> = <span class="charliteral">&#39;0&#39;</span>;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">bool</span>)(c == <span class="charliteral">&#39;-&#39;</span> || c == <span class="charliteral">&#39;+&#39;</span> || c == <span class="charliteral">&#39; &#39;</span> || c == <span class="charliteral">&#39;0&#39;</span>);</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;}</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno"><a class="line" href="struct_specifier_parsing.html#a6632fb60c00ab1665ce40ed3825b6572">  362</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="struct_specifier_parsing.html#a6632fb60c00ab1665ce40ed3825b6572">SpecifierParsing::isPaddPrec</a>(<span class="keywordtype">char</span> c)</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;{</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;.&#39;</span> || (c &gt; 47 &amp;&amp; c &lt; 58))</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    {</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;.&#39;</span>)</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        {</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            <a class="code" href="struct_specifier_parsing.html#afd064aef4cccff044794fe1193ff11ec">precis</a> = 0;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        }</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        {</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="struct_specifier_parsing.html#afd064aef4cccff044794fe1193ff11ec">precis</a> &gt;=0)</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            {</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                <a class="code" href="struct_specifier_parsing.html#afd064aef4cccff044794fe1193ff11ec">precis</a> = (<a class="code" href="struct_specifier_parsing.html#afd064aef4cccff044794fe1193ff11ec">precis</a> * 10) + (c - 48);</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            }</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                <a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a> = (<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a> * 10) + (c - 48);</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            }</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    }</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;}</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
+<div class="line"><a name="l00387"></a><span class="lineno"><a class="line" href="struct_specifier_parsing.html#aa2b35334f59264484b6d0588926433da">  387</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="struct_specifier_parsing.html#aa2b35334f59264484b6d0588926433da">SpecifierParsing::isFmtOption</a>(<span class="keywordtype">char</span> c)</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;{</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;s&#39;</span> ||</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    #ifdef ARDUINO_ARCH_AVR</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            c == <span class="charliteral">&#39;S&#39;</span> ||</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    #endif</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            c == <span class="charliteral">&#39;c&#39;</span> ||</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            c == <span class="charliteral">&#39;D&#39;</span> ||</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            c == <span class="charliteral">&#39;F&#39;</span> ||</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            c == <span class="charliteral">&#39;x&#39;</span> ||</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            c == <span class="charliteral">&#39;X&#39;</span> ||</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            c == <span class="charliteral">&#39;o&#39;</span> ||</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            c == <span class="charliteral">&#39;u&#39;</span> ||</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            c == <span class="charliteral">&#39;b&#39;</span>)</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    {</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        <a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> = c;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        <a class="code" href="struct_specifier_parsing.html#a37766edd2478434e296f7274f590a38a">isUnsigned</a> = c == <span class="charliteral">&#39;u&#39;</span>;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// no second option supported</span></div>
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    }</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">bool</span>)(c == <span class="charliteral">&#39;-&#39;</span> || c == <span class="charliteral">&#39;+&#39;</span> || c == <span class="charliteral">&#39; &#39;</span> || c == <span class="charliteral">&#39;0&#39;</span>);</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;}</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
-<div class="line"><a name="l00410"></a><span class="lineno"><a class="line" href="struct_specifier_parsing.html#a6632fb60c00ab1665ce40ed3825b6572">  410</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="struct_specifier_parsing.html#a6632fb60c00ab1665ce40ed3825b6572">SpecifierParsing::isPaddPrec</a>(<span class="keywordtype">char</span> c)</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;{</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;.&#39;</span> || (c &gt; 47 &amp;&amp; c &lt; 58))</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    {</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;.&#39;</span>)</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        {</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            <a class="code" href="struct_specifier_parsing.html#afd064aef4cccff044794fe1193ff11ec">precis</a> = 0;</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        }</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        {</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="struct_specifier_parsing.html#afd064aef4cccff044794fe1193ff11ec">precis</a> &gt;=0)</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            {</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                <a class="code" href="struct_specifier_parsing.html#afd064aef4cccff044794fe1193ff11ec">precis</a> = (<a class="code" href="struct_specifier_parsing.html#afd064aef4cccff044794fe1193ff11ec">precis</a> * 10) + (c - 48);</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            }</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            {</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                <a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a> = (<a class="code" href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">width</a> * 10) + (c - 48);</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;            }</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        }</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    }</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160; </div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;}</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160; </div>
-<div class="line"><a name="l00435"></a><span class="lineno"><a class="line" href="struct_specifier_parsing.html#aa2b35334f59264484b6d0588926433da">  435</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="struct_specifier_parsing.html#aa2b35334f59264484b6d0588926433da">SpecifierParsing::isFmtOption</a>(<span class="keywordtype">char</span> c)</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;{</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;s&#39;</span> ||</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    #ifdef ARDUINO_ARCH_AVR</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;            c == <span class="charliteral">&#39;S&#39;</span> ||</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    #endif</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;            c == <span class="charliteral">&#39;c&#39;</span> ||</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            c == <span class="charliteral">&#39;D&#39;</span> ||</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            c == <span class="charliteral">&#39;F&#39;</span> ||</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;            c == <span class="charliteral">&#39;x&#39;</span> ||</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            c == <span class="charliteral">&#39;X&#39;</span> ||</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;            c == <span class="charliteral">&#39;o&#39;</span> ||</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;            c == <span class="charliteral">&#39;u&#39;</span> ||</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            c == <span class="charliteral">&#39;b&#39;</span>)</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    {</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        <a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> = c;</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        <a class="code" href="struct_specifier_parsing.html#a37766edd2478434e296f7274f590a38a">isUnsigned</a> = (c == <span class="charliteral">&#39;u&#39;</span>);</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// no second option supported</span></div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    }</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;d&#39;</span> ||</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            c == <span class="charliteral">&#39;i&#39;</span> ||</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            c == <span class="charliteral">&#39;l&#39;</span>)</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    {</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;        <a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> = c;</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// can also be specified as unsigned with &#39;u&#39;</span></div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    }</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;}</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;d&#39;</span> ||</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            c == <span class="charliteral">&#39;i&#39;</span> ||</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            c == <span class="charliteral">&#39;l&#39;</span>)</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    {</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        <a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> = c;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// can also be specified as unsigned with &#39;u&#39;</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    }</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;}</div>
 <div class="ttc" id="a_r_f24_log_abstracts_8cpp_html_aa2c8b83bbe0aa0b1198bb35830fb8361"><div class="ttname"><a href="_r_f24_log_abstracts_8cpp.html#aa2c8b83bbe0aa0b1198bb35830fb8361">howWide</a></div><div class="ttdeci">uint16_t howWide(int64_t numb, uint8_t base)</div><div class="ttdoc">how wide (in characters) does it take to display a number</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_abstracts_8cpp_source.html#l00019">RF24LogAbstracts.cpp:19</a></div></div>
 <div class="ttc" id="a_r_f24_log_abstracts_8h_html"><div class="ttname"><a href="_r_f24_log_abstracts_8h.html">RF24LogAbstracts.h</a></div><div class="ttdoc">abstract classes that allow custom handlers and different output stream APIs</div></div>
 <div class="ttc" id="a_r_f24_log_handler_8h_html_a7cb23572049cfb32fa4b9f2e0c52c9d2"><div class="ttname"><a href="_r_f24_log_handler_8h.html#a7cb23572049cfb32fa4b9f2e0c52c9d2">RF24LOG_NO_EOL</a></div><div class="ttdeci">#define RF24LOG_NO_EOL</div><div class="ttdoc">macro (when defined) disables line feeds at the end of all log messages.</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_handler_8h_source.html#l00041">RF24LogHandler.h:41</a></div></div>
@@ -547,11 +499,11 @@ $(function() {
 <div class="ttc" id="astruct_specifier_parsing_html"><div class="ttname"><a href="struct_specifier_parsing.html">SpecifierParsing</a></div><div class="ttdoc">Some data about a format specifier.</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_abstracts_8h_source.html#l00037">RF24LogAbstracts.h:38</a></div></div>
 <div class="ttc" id="astruct_specifier_parsing_html_a18bfed25f62f0a94faa39100e448739b"><div class="ttname"><a href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">SpecifierParsing::specifier</a></div><div class="ttdeci">char specifier</div><div class="ttdoc">datatype specifier</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_abstracts_8h_source.html#l00075">RF24LogAbstracts.h:75</a></div></div>
 <div class="ttc" id="astruct_specifier_parsing_html_a37766edd2478434e296f7274f590a38a"><div class="ttname"><a href="struct_specifier_parsing.html#a37766edd2478434e296f7274f590a38a">SpecifierParsing::isUnsigned</a></div><div class="ttdeci">bool isUnsigned</div><div class="ttdoc">flag to explicitly represent the number as an unsigned integer</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_abstracts_8h_source.html#l00073">RF24LogAbstracts.h:73</a></div></div>
-<div class="ttc" id="astruct_specifier_parsing_html_a6632fb60c00ab1665ce40ed3825b6572"><div class="ttname"><a href="struct_specifier_parsing.html#a6632fb60c00ab1665ce40ed3825b6572">SpecifierParsing::isPaddPrec</a></div><div class="ttdeci">bool isPaddPrec(char c)</div><div class="ttdoc">is a character a valid specifier padding/precision quantity</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_abstracts_8cpp_source.html#l00410">RF24LogAbstracts.cpp:410</a></div></div>
+<div class="ttc" id="astruct_specifier_parsing_html_a6632fb60c00ab1665ce40ed3825b6572"><div class="ttname"><a href="struct_specifier_parsing.html#a6632fb60c00ab1665ce40ed3825b6572">SpecifierParsing::isPaddPrec</a></div><div class="ttdeci">bool isPaddPrec(char c)</div><div class="ttdoc">is a character a valid specifier padding/precision quantity</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_abstracts_8cpp_source.html#l00362">RF24LogAbstracts.cpp:362</a></div></div>
 <div class="ttc" id="astruct_specifier_parsing_html_a6db732b165fa420b3b908e28203adec4"><div class="ttname"><a href="struct_specifier_parsing.html#a6db732b165fa420b3b908e28203adec4">SpecifierParsing::fill</a></div><div class="ttdeci">char fill</div><div class="ttdoc">The default character used as padding.</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_abstracts_8h_source.html#l00067">RF24LogAbstracts.h:67</a></div></div>
 <div class="ttc" id="astruct_specifier_parsing_html_aa05cde9a0470a500113503074b9a4315"><div class="ttname"><a href="struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315">SpecifierParsing::width</a></div><div class="ttdeci">uint16_t width</div><div class="ttdoc">The width of the padding.</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_abstracts_8h_source.html#l00069">RF24LogAbstracts.h:69</a></div></div>
-<div class="ttc" id="astruct_specifier_parsing_html_aa2b35334f59264484b6d0588926433da"><div class="ttname"><a href="struct_specifier_parsing.html#aa2b35334f59264484b6d0588926433da">SpecifierParsing::isFmtOption</a></div><div class="ttdeci">bool isFmtOption(char c)</div><div class="ttdoc">is a character a valid/supported specifier format option</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_abstracts_8cpp_source.html#l00435">RF24LogAbstracts.cpp:435</a></div></div>
-<div class="ttc" id="astruct_specifier_parsing_html_ac6789f899228fadeb7676779e65b9e6e"><div class="ttname"><a href="struct_specifier_parsing.html#ac6789f899228fadeb7676779e65b9e6e">SpecifierParsing::isFlagged</a></div><div class="ttdeci">bool isFlagged(char c)</div><div class="ttdoc">is a character a valid specifier flag</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_abstracts_8cpp_source.html#l00401">RF24LogAbstracts.cpp:401</a></div></div>
+<div class="ttc" id="astruct_specifier_parsing_html_aa2b35334f59264484b6d0588926433da"><div class="ttname"><a href="struct_specifier_parsing.html#aa2b35334f59264484b6d0588926433da">SpecifierParsing::isFmtOption</a></div><div class="ttdeci">bool isFmtOption(char c)</div><div class="ttdoc">is a character a valid/supported specifier format option</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_abstracts_8cpp_source.html#l00387">RF24LogAbstracts.cpp:387</a></div></div>
+<div class="ttc" id="astruct_specifier_parsing_html_ac6789f899228fadeb7676779e65b9e6e"><div class="ttname"><a href="struct_specifier_parsing.html#ac6789f899228fadeb7676779e65b9e6e">SpecifierParsing::isFlagged</a></div><div class="ttdeci">bool isFlagged(char c)</div><div class="ttdoc">is a character a valid specifier flag</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_abstracts_8cpp_source.html#l00353">RF24LogAbstracts.cpp:353</a></div></div>
 <div class="ttc" id="astruct_specifier_parsing_html_afd064aef4cccff044794fe1193ff11ec"><div class="ttname"><a href="struct_specifier_parsing.html#afd064aef4cccff044794fe1193ff11ec">SpecifierParsing::precis</a></div><div class="ttdeci">int8_t precis</div><div class="ttdoc">The number of decimal places. If negative, then default of 2 places is used.</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_abstracts_8h_source.html#l00071">RF24LogAbstracts.h:71</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
