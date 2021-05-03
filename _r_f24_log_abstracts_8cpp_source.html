@@ -186,10 +186,10 @@ $(function() {
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                    <a class="code" href="class_r_f24_log_abstract_stream.html#a4f33705456e0f1c407d21da70b2a5742">appendFormat</a>(&amp;fmt_parser, args);</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                    <span class="comment">// fmt_parser.isFmtOption() stops parsing on a non-fmt-specifying char only</span></div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                    <span class="comment">// if the `while(isFmtOption())` loop above iterated more than once, then</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                    <span class="comment">// we have to dispose of the left over char here</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                    <span class="comment">// we have to prevent disposing of the left over char here</span></div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                    <span class="keywordflow">if</span> (fmt_parser.<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> != c)</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                    {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                        <a class="code" href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">appendChar</a>(c);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                        p--; <span class="comment">// let the next iteration handle it</span></div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                    }</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                }</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                <span class="keywordflow">else</span></div>
@@ -247,10 +247,10 @@ $(function() {
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                    <a class="code" href="class_r_f24_log_abstract_stream.html#a4f33705456e0f1c407d21da70b2a5742">appendFormat</a>(&amp;fmt_parser, args);</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                    <span class="comment">// fmt_parser.isFmtOption() stops parsing on a non-fmt-specifying char only</span></div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                    <span class="comment">// if the `while(isFmtOption())` loop above iterated more than once, then</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    <span class="comment">// we have to dispose of the left over char here</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    <span class="comment">// we have to prevent disposing of the left over char here</span></div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                    <span class="keywordflow">if</span> (fmt_parser.<a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> != *c)</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                        <a class="code" href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">appendChar</a>(*c);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                        --c; <span class="comment">// let the next iteration handle it</span></div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                    }</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                }</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="keywordflow">else</span></div>
@@ -471,35 +471,33 @@ $(function() {
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
 <div class="line"><a name="l00412"></a><span class="lineno"><a class="line" href="struct_specifier_parsing.html#aa2b35334f59264484b6d0588926433da">  412</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="struct_specifier_parsing.html#aa2b35334f59264484b6d0588926433da">SpecifierParsing::isFmtOption</a>(<span class="keywordtype">char</span> c)</div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;{</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;u&#39;</span>)</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    {</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        <a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> = c;</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        <a class="code" href="struct_specifier_parsing.html#a37766edd2478434e296f7274f590a38a">isUnsigned</a> = <span class="keyword">false</span>; <span class="comment">// no second option is supported</span></div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    }</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;s&#39;</span> ||</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    #ifdef ARDUINO_ARCH_AVR</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            c == <span class="charliteral">&#39;S&#39;</span> ||</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    #endif</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            c == <span class="charliteral">&#39;c&#39;</span> ||</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            c == <span class="charliteral">&#39;D&#39;</span> ||</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            c == <span class="charliteral">&#39;F&#39;</span> ||</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            c == <span class="charliteral">&#39;x&#39;</span> ||</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;            c == <span class="charliteral">&#39;X&#39;</span> ||</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            c == <span class="charliteral">&#39;o&#39;</span> ||</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            c == <span class="charliteral">&#39;b&#39;</span>)</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    {</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        <a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> = c;</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// no second option supported</span></div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    }</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;d&#39;</span> ||</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            c == <span class="charliteral">&#39;i&#39;</span> ||</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;            c == <span class="charliteral">&#39;l&#39;</span>)</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    {</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        <a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> = c;</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// can also be specified as unsigned with &#39;u&#39;</span></div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    }</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;}</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160; </div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;s&#39;</span> ||</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    #ifdef ARDUINO_ARCH_AVR</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            c == <span class="charliteral">&#39;S&#39;</span> ||</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    #endif</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            c == <span class="charliteral">&#39;c&#39;</span> ||</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            c == <span class="charliteral">&#39;D&#39;</span> ||</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            c == <span class="charliteral">&#39;F&#39;</span> ||</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            c == <span class="charliteral">&#39;x&#39;</span> ||</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            c == <span class="charliteral">&#39;X&#39;</span> ||</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            c == <span class="charliteral">&#39;o&#39;</span> ||</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            c == <span class="charliteral">&#39;u&#39;</span> ||</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            c == <span class="charliteral">&#39;b&#39;</span>)</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    {</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        <a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> = c;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        <a class="code" href="struct_specifier_parsing.html#a37766edd2478434e296f7274f590a38a">isUnsigned</a> = (c == <span class="charliteral">&#39;u&#39;</span>);</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// no second option supported</span></div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    }</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;d&#39;</span> ||</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            c == <span class="charliteral">&#39;i&#39;</span> ||</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;            c == <span class="charliteral">&#39;l&#39;</span>)</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    {</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        <a class="code" href="struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b">specifier</a> = c;</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// can also be specified as unsigned with &#39;u&#39;</span></div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    }</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;}</div>
 <div class="ttc" id="a_r_f24_log_abstracts_8cpp_html_aa2c8b83bbe0aa0b1198bb35830fb8361"><div class="ttname"><a href="_r_f24_log_abstracts_8cpp.html#aa2c8b83bbe0aa0b1198bb35830fb8361">howWide</a></div><div class="ttdeci">uint16_t howWide(int64_t numb, uint8_t base)</div><div class="ttdoc">how wide (in characters) does it take to display a number</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_abstracts_8cpp_source.html#l00025">RF24LogAbstracts.cpp:25</a></div></div>
 <div class="ttc" id="a_r_f24_log_abstracts_8h_html"><div class="ttname"><a href="_r_f24_log_abstracts_8h.html">RF24LogAbstracts.h</a></div><div class="ttdoc">abstract classes that allow custom handlers and different output stream APIs</div></div>
 <div class="ttc" id="a_r_f24_log_handler_8h_html_ab14adeae939293a495032b94f8b4576d"><div class="ttname"><a href="_r_f24_log_handler_8h.html#ab14adeae939293a495032b94f8b4576d">RF24LOG_DELIMITER</a></div><div class="ttdeci">#define RF24LOG_DELIMITER</div><div class="ttdoc">Change The Delimiter character used in the header prefix of log messages.</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_handler_8h_source.html#l00029">RF24LogHandler.h:29</a></div></div>

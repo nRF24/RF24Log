@@ -68,14 +68,10 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="autotoc_md3"></a>
-Conditional dependency</h1>
-<p>Native printf supported platforms will default to said support.</p>
-<h2><a class="anchor" id="autotoc_md4"></a>
-Arduino Platform Supported Specifiers</h2>
+Arduino Platform Supported Specifiers</h1>
 <p>Because all Arduino cores for all Arduino compatible boards don't unanimously support printf, we have a basic imitation mechanism included with <a class="el" href="class_r_f24_log_abstract_stream.html" title="A protected collection of methods that output formatted data to a stream.">RF24LogAbstractStream</a>.</p>
 <p>The format specifiers' usage: </p><div class="fragment"><div class="line">%[flags][pad_quantity][.precision_quantity]specifier</div>
-</div><!-- fragment --> <dl class="section note"><dt>Note</dt><dd>The only supported flags are zero (<code>0</code>) for padding data with zeros instead of spaces.</dd></dl>
-<p>The following list of characters that follow a % symbol (or a <code>flag</code>/<code>pad_quantity</code>/<code>precision_quantity</code> option) will signify that the corresponding argument is of a certain datatype.</p>
+</div><!-- fragment --><p>The following list of characters that follow a % symbol (or a <code>flag</code>/<code>pad_quantity</code>/<code>precision_quantity</code> option) will signify that the corresponding argument is of a certain datatype.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadRight">Specifier   </th><th class="markdownTableHeadLeft">Representation    </th></tr>
@@ -84,33 +80,37 @@ Arduino Platform Supported Specifiers</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyRight"><code>s</code> / <code>S</code>   </td><td class="markdownTableBodyLeft">a string    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyRight"><code>d</code> / <code>i</code> / <code>l</code> / <code>u</code>   </td><td class="markdownTableBodyLeft">an integer    </td></tr>
+<td class="markdownTableBodyRight"><code>d</code> / <code>i</code> / <code>l</code>   </td><td class="markdownTableBodyLeft">a signed integer    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyRight"><code>x</code> / <code>X</code>   </td><td class="markdownTableBodyLeft">a hexadecimal integer    </td></tr>
+<td class="markdownTableBodyRight"><code>du</code> / <code>iu</code> / <code>u</code> / <code>lu</code>   </td><td class="markdownTableBodyLeft">an unsigned integer    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyRight"><code>o</code>   </td><td class="markdownTableBodyLeft">an octal integer    </td></tr>
+<td class="markdownTableBodyRight"><code>x</code> / <code>X</code>   </td><td class="markdownTableBodyLeft">an unsigned hexadecimal integer    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyRight"><code>b</code>   </td><td class="markdownTableBodyLeft">a binary integer    </td></tr>
+<td class="markdownTableBodyRight"><code>o</code>   </td><td class="markdownTableBodyLeft">an unsigned octal integer    </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyRight"><code>b</code>   </td><td class="markdownTableBodyLeft">an unsigned binary integer    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyRight"><code>c</code>   </td><td class="markdownTableBodyLeft">a single character    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyRight">%   </td><td class="markdownTableBodyLeft">escapes a single % character   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md5"></a>
-Limitations</h3>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Limitations</h2>
+<p>These are the differences to standard printf parsing and our in-house printf parsing:</p>
 <ul>
-<li>Floats/Doubles will only use the <code>precision_quantity</code> as the number of decimal places. Specifying a <code>pad_quantity</code> for padding the whole numbers of floats/doubles is not supported.</li>
-<li>Only the Arduino AVR platform supports a string (from flash memory) specifier's capitol (<code>S</code>) syntax because of the special <code>__FlashStringHelper</code> implementation. All other platforms should support using <code>s</code> for strings.</li>
-<li>Specifiers that involve more than one alphabetic character are not supported. This means lu will have the same output as l (and likely the 'u' will still be taken/output as literal text).</li>
+<li>Floats/doubles will only use the <code>precision_quantity</code> as the number of decimal places. Specifying a <code>pad_quantity</code> for padding the whole numbers of floats/doubles is not supported (thus the <code>pad_quantity</code> has no affect on floats and doubles).</li>
+<li>Only the Arduino AVR platform supports a string (from flash memory) specifier's capitol (<code>S</code>) syntax because of the special <code>__FlashStringHelper</code> implementation. All other platforms support using <code>s</code> for strings.</li>
+<li>The only supported flags are zero (<code>0</code>) for padding data with zeros instead of spaces. Other flags (<code>+</code>, <code>-</code>, ) have no affect.</li>
+<li>The <code>u</code> character will enforce numeric data to be interpreted as an <code>unsigned long</code> number. Otherwise, all numeric data is represented as a signed <code>long</code> number (<code>float</code> and <code>double</code> variables are represented as a <code>double</code>).</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md6"></a>
-Padding the numbers</h3>
-<p>For each numeric data specifier, a quantity of padded characters can be specified before the specifer (but immediately after the % symbol). The default character used for padding is a space (), but putting a zero (<code>0</code>) character <code>flag</code> before the <code>padding_quantity</code> changes the padding character to zeros (<code>0</code>).</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Padding the numbers</h2>
+<p>For each numeric data specifier, a quantity of padded characters can be designated before the specifer (but immediately after the % symbol). The default character used for padding is a space (), but putting a zero (<code>0</code>) character <code>flag</code> before the <code>padding_quantity</code> changes the padding character to zeros (<code>0</code>).</p>
 <p>For example: </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> vID[] = <span class="stringliteral">&quot;specifier fmt&quot;</span>;</div>
 <div class="line"><a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(vID, <span class="stringliteral">&quot;0x%02x %%&quot;</span>, 0xf); <span class="comment">// prints:     60176; INFO  ;specifier fmt;0x0F %</span></div>
-<div class="line"><a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(vID, <span class="stringliteral">&quot;%4x&quot;</span>, 0xa0);      <span class="comment">// prints:     60176; INFO  ;specifier fmt;  A0</span></div>
-<div class="line"><a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(vID, <span class="stringliteral">&quot;%.2F&quot;</span>, 3.1459);   <span class="comment">// prints:     60176; INFO  ;specifier fmt;3.14</span></div>
-<div class="line"><a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(vID, <span class="stringliteral">&quot;%.4F&quot;</span>, 2.71);     <span class="comment">// prints:     60176; INFO  ;specifier fmt;2.7100</span></div>
+<div class="line"><a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(vID, <span class="stringliteral">&quot;%4x&quot;</span>, 0xa0);      <span class="comment">// prints:     60178; INFO  ;specifier fmt;  A0</span></div>
+<div class="line"><a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(vID, <span class="stringliteral">&quot;%.2F&quot;</span>, 3.1459);   <span class="comment">// prints:     60180; INFO  ;specifier fmt;3.14</span></div>
+<div class="line"><a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(vID, <span class="stringliteral">&quot;%.4F&quot;</span>, 2.71);     <span class="comment">// prints:     60182; INFO  ;specifier fmt;2.7100</span></div>
 <div class="ttc" id="agroup___logging_a_p_i_html_ga2e0c08b7f516dc508b491f1f3102c901"><div class="ttname"><a href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a></div><div class="ttdeci">#define RF24Log_info(vendorId, message,...)</div><div class="ttdoc">output an INFO message</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_logging_8h_source.html#l00070">RF24Logging.h:70</a></div></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
