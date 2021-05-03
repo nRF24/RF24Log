@@ -2,7 +2,7 @@
 
 ## Arduino Platform Supported Specifiers
 Because all Arduino cores for all Arduino compatible boards don't unanimously support
-printf, we have a basic imitation mechanism included with RF24LogAbstractStream.
+printf, we have a basic imitation mechanism included with RF24LogPrintfParser.
 
 The format specifiers' usage:
 ```text

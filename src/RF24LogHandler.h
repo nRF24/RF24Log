@@ -25,8 +25,21 @@
 #include <stdarg.h>
 
 /** @brief Change The Delimiter character used in the header prefix of log messages. */
-#ifndef RF24LOG_DELIMITER
+#if !defined(RF24LOG_DELIMITER)
 #define RF24LOG_DELIMITER ';'
+#endif
+
+// for some reason, these need to be declared here and
+// not on any higher level of the project
+//#define RF24LOG_NO_TIMESTAMP
+//#define RF24LOG_NO_EOL
+
+#ifdef DOXYGEN_FORCED
+/** @brief macro (when defined) disables line feeds at the end of all log messages. */
+#define RF24LOG_NO_EOL
+
+/** @brief macro (when defined) disables timestamp at the start of all log messages. */
+#define RF24LOG_NO_TIMESTAMP
 #endif
 
 /** @brief A base mechanism for handling log messages. */

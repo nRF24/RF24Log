@@ -13,12 +13,6 @@
  */
 
 #include <RF24LogAbstracts.h>
-#ifdef ARDUINO
-#include <Arduino.h> // isAlpha()
-#define isalpha(c) isAlpha(c)
-#else
-#include <cctype> // isalpha()
-#endif
 
 /* *************************** Abstract global function defs **************************** */
 
@@ -103,12 +97,19 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
     while (c)
     {
         // print header
+    #if defined (RF24LOG_NO_EOL)
+        appendChar(RF24LOG_DELIMITER);
+    #endif
         descTimeLevel(logLevel);
         appendStr(vendorId);
         appendChar(RF24LOG_DELIMITER);
 
         // print formatted message (or at least 1 line at a time)
-        while (c != 0 && c !='\n')
+        while (c
+    #if !defined(RF24LOG_NO_EOL)
+               && c !='\n'
+    #endif
+                )
         {
             if (c == '\t')
             {
@@ -138,16 +139,16 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
                 }
             }
             else
+        #if defined(RF24LOG_NO_EOL)
+            if (c != '\n') // dispose char; we control the new line feeds ourselves
+        #endif
             {
                 appendChar(c);
             }
             c = pgm_read_byte(p++);
         }
-        if (c == '\n')
-        {
-            c = pgm_read_byte(p++); // dispose char; we control the new line feeds ourselves
-        }
-        #ifndef RF24LOG_NO_EOL
+        if (c == '\n') { c = pgm_read_byte(p++); } // dispose char; we control the new line feeds ourselves
+        #if !defined(RF24LOG_NO_EOL)
         appendChar('\n');
         #endif
     }
@@ -163,12 +164,19 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
     while (*c)
     {
         // print header
+    #if defined (RF24LOG_NO_EOL)
+        appendChar(RF24LOG_DELIMITER);
+    #endif
         descTimeLevel(logLevel);
         appendStr(vendorId);
         appendChar(RF24LOG_DELIMITER);
 
         // print formatted message (or at least 1 line at a time)
-        while (*c != 0 && *c !='\n')
+        while (*c
+    #if !defined(RF24LOG_NO_EOL)
+                && *c !='\n'
+    #endif
+                )
         {
             if (*c == '\t')
             {
@@ -194,22 +202,26 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
                     }
                 }
                 else
+        #if defined(RF24LOG_NO_EOL)
+                if (*c != '\n') // dispose char; we control the new line feeds ourselves
+        #endif
                 {
                     appendChar(*c);
                 }
             }
             else
+        #if defined(RF24LOG_NO_EOL)
+            if (*c != '\n') // dispose char; we control the new line feeds ourselves
+        #endif
             {
                 appendChar(*c);
             }
             ++c;
         }
-        if (*c == '\n')
-        {
-            ++c; // dispose char; we control the new line feeds ourselves
-        }
-        #ifndef RF24LOG_NO_EOL
+        #if !defined(RF24LOG_NO_EOL)
         appendChar('\n');
+        #else
+        if (*c == '\n') { ++c; } // dispose char; we control the new line feeds ourselves
         #endif
     }
 }
@@ -218,7 +230,7 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
 
 void RF24LogAbstractStream::descTimeLevel(uint8_t logLevel)
 {
-    #ifndef RF24LOG_NO_TIMESTAMP
+    #if !defined(RF24LOG_NO_TIMESTAMP)
     appendTimestamp();
     #endif
     appendLogLevel(logLevel);
