@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['specifier_135',['specifier',['../struct_specifier_parsing.html#a18bfed25f62f0a94faa39100e448739b',1,'SpecifierParsing']]],
-  ['stream_136',['stream',['../class_arduino_print_logger.html#afc518aba1aeea255105e371aecf805a4',1,'ArduinoPrintLogger']]]
+  ['width_135',['width',['../struct_specifier_parsing.html#aa05cde9a0470a500113503074b9a4315',1,'SpecifierParsing']]]
 ];

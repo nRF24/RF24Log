@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loglevel_126',['logLevel',['../class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4',1,'RF24LogAbstractHandler']]]
+  ['precis_125',['precis',['../struct_specifier_parsing.html#afd064aef4cccff044794fe1193ff11ec',1,'SpecifierParsing']]]
 ];

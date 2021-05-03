@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['isunsigned_125',['isUnsigned',['../struct_specifier_parsing.html#a37766edd2478434e296f7274f590a38a',1,'SpecifierParsing']]]
+  ['loglevel_124',['logLevel',['../class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4',1,'RF24LogAbstractHandler']]]
 ];
