@@ -145,15 +145,15 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
             }
             else
         #if defined(RF24LOG_NO_EOL)
-            if (c != '\n') // dispose char; we control the new line feeds ourselves
+            if (c != '\n') // dispose char; we control new line feeds ourselves
         #endif
             {
                 appendChar(c);
             }
             c = pgm_read_byte(p++);
         }
-        if (c == '\n') { c = pgm_read_byte(p++); } // dispose char; we control the new line feeds ourselves
         #if !defined(RF24LOG_NO_EOL)
+        if (c == '\n') { c = pgm_read_byte(p++); } // dispose char; we control new line feeds ourselves
         appendChar('\n');
         #endif
     }
@@ -223,8 +223,8 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
             }
             ++c;
         }
-        if (*c == '\n') { ++c; } // dispose char; we control the new line feeds ourselves
         #if !defined(RF24LOG_NO_EOL)
+        if (*c == '\n') { ++c; } // dispose char; we control the new line feeds ourselves
         appendChar('\n');
         #endif
     }
@@ -318,79 +318,31 @@ void RF24LogAbstractStream::appendFormat(SpecifierParsing* fmt_parser, va_list *
             appendDouble(va_arg(*args, double));
         }
     }
-
-    else if (fmt_parser->specifier == 'd' || fmt_parser->specifier == 'i' || fmt_parser->specifier == 'l' || fmt_parser->specifier == 'u')
+    else
     {
         // print as integer
-        int temp = va_arg(*args, int);
-        if (fmt_parser->width)
+        uint8_t base = 3; // use 3 as a invalid sentinel
+        if (fmt_parser->specifier == 'd' || fmt_parser->specifier == 'i' ||
+                fmt_parser->specifier == 'l' || fmt_parser->specifier == 'u') { base = 10; }
+        else if (fmt_parser->specifier == 'x' || fmt_parser->specifier == 'X') { base = 16; }
+        else if (fmt_parser->specifier == 'o') { base = 8; }
+        else if (fmt_parser->specifier == 'b') { base = 2; }
+        if (base != 3) // if it was a supported char
         {
-            uint16_t w = howWide(temp, 10);
-            appendChar(fmt_parser->fill, (fmt_parser->width > w ? fmt_parser->width - w : 0));
-        }
-        if (fmt_parser->isUnsigned)
-        {
-            appendUInt(temp, 10);
-        }
-        else
-        {
-            appendInt(temp, 10);
-        }
-    }
-
-    else if (fmt_parser->specifier == 'x' || fmt_parser->specifier == 'X')
-    {
-        // print as integer
-        int temp = va_arg(*args, int);
-        if (fmt_parser->width)
-        {
-            uint16_t w = howWide(temp, 16);
-            appendChar(fmt_parser->fill, (fmt_parser->width > w ? fmt_parser->width - w : 0));
-        }
-        if (fmt_parser->isUnsigned)
-        {
-            appendUInt(temp, 16);
-        }
-        else
-        {
-            appendInt(temp, 16);
-        }
-    }
-    else if (fmt_parser->specifier == 'o')
-    {
-        // print as integer
-        int temp = va_arg(*args, int);
-        if (fmt_parser->width)
-        {
-            uint16_t w = howWide(temp, 8);
-            appendChar(fmt_parser->fill, (fmt_parser->width > w ? fmt_parser->width - w : 0));
-        }
-        if (fmt_parser->isUnsigned)
-        {
-            appendUInt(temp, 8);
-        }
-        else
-        {
-            appendInt(temp, 8);
-        }
-    }
-
-    else if (fmt_parser->specifier == 'b')
-    {
-        // print as integer
-        unsigned int temp = va_arg(*args, int);
-        if (fmt_parser->width)
-        {
-            uint16_t w = howWide(temp, 2);
-            appendChar(fmt_parser->fill, (fmt_parser->width > w ? fmt_parser->width - w : 0));
-        }
-        if (fmt_parser->isUnsigned)
-        {
-            appendUInt(temp, 2);
-        }
-        else
-        {
-            appendInt(temp, 2);
+            unsigned int temp = va_arg(*args, int);
+            if (fmt_parser->width)
+            {
+                uint16_t w = howWide(temp, base);
+                appendChar(fmt_parser->fill, (fmt_parser->width > w ? fmt_parser->width - w : 0));
+            }
+            if (fmt_parser->isUnsigned)
+            {
+                appendUInt(temp, base);
+            }
+            else
+            {
+                appendInt(temp, base);
+            }
         }
     }
 }
@@ -449,7 +401,7 @@ bool SpecifierParsing::isFmtOption(char c)
             c == 'b')
     {
         specifier = c;
-        isUnsigned = (c == 'u');
+        isUnsigned = c == 'u';
         return false; // no second option supported
     }
     else if (c == 'd' ||
