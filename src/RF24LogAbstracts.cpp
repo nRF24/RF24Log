@@ -291,14 +291,6 @@ void RF24LogAbstractStream::appendFormat(SpecifierParsing* fmt_parser, va_list *
     }
 #endif
 
-#if !defined(RF24_LOG_NO_BOOLALPHA)
-    else if (fmt_parser->specifier == 'B')
-    {
-        bool temp = (bool)va_arg(*args, int);
-        appendStr(temp ? "true" : "false");
-    }
-#endif
-
     else if (fmt_parser->specifier == 'c')
     {
         if (fmt_parser->width)
@@ -405,9 +397,6 @@ bool SpecifierParsing::isFmtOption(char c)
             c == 'S' ||
     #endif
             c == 'c' ||
-    #if !defined(RF24LOG_NO_BOOLALPHA)
-            c == 'B' ||
-    #endif
             c == 'D' ||
             c == 'F' ||
             c == 'x' ||

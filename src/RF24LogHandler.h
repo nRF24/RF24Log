@@ -36,7 +36,6 @@
 // #define RF24LOG_SHORT_DESC
 // #define RF24LOG_TERSE_DESC
 // #define RF24LOG_TAB_SIZE 4
-// #define RF24LOG_NO_BOOLALPHA
 
 #ifdef DOXYGEN_FORCED
 /** @brief macro (when defined) disables line feeds at the end of all log messages. */
@@ -44,9 +43,6 @@
 
 /** @brief macro (when defined) disables timestamp at the start of all log messages. */
 #define RF24LOG_NO_TIMESTAMP
-
-/** @brief macro (when defined) disables the %`B` format specifier for describing boolean data. */
-#define RF24LOG_NO_BOOLALPHA
 
 /**
  * @brief macro (when defined) uses a short description of the log levels.
