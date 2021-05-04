@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['printflogger_84',['PrintfLogger',['../class_printf_logger.html',1,'']]]
+  ['printflogger_82',['PrintfLogger',['../class_printf_logger.html',1,'']]]
 ];
