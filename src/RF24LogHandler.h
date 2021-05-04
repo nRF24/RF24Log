@@ -35,6 +35,8 @@
 // #define RF24LOG_NO_EOL
 // #define RF24LOG_SHORT_DESC
 // #define RF24LOG_TERSE_DESC
+// #define RF24LOG_TAB_SIZE 4
+// #define RF24LOG_NO_BOOLALPHA
 
 #ifdef DOXYGEN_FORCED
 /** @brief macro (when defined) disables line feeds at the end of all log messages. */
@@ -42,6 +44,42 @@
 
 /** @brief macro (when defined) disables timestamp at the start of all log messages. */
 #define RF24LOG_NO_TIMESTAMP
+
+/** @brief macro (when defined) disables the %`B` format specifier for describing boolean data. */
+#define RF24LOG_NO_BOOLALPHA
+
+/**
+ * @brief macro (when defined) uses a short description of the log levels.
+ *
+ * Descriptions with this macro defined look like
+ * @code
+ * " ERR ", "INFO1"
+ * "WARN ", "INFO7"
+ * "INFO ", "L   7"
+ * " DBG ", "L 113"
+ * @endcode
+ */
+#define RF24LOG_SHORT_DESC
+
+/**
+ * @brief macro (when defined) uses a terse (very short) description of the log levels.
+ *
+ * Descriptions with this macro defined look like
+ * @code
+ * " E ", " I1"
+ * " W ", " I7"
+ * " I ", "  7"
+ * "DB ", "113"
+ * @endcode
+ */
+#define RF24LOG_TERSE_DESC
+
+/**
+ * @brief macro (when defined) relaces al `\t` characters with a specified quantity of spaces
+ *
+ * When this macro is not defined the `\t` characters may have in consistent number of spaces between platforms.
+ */
+#define RF24LOG_TAB_SIZE 8
 #endif
 
 /** @brief A base mechanism for handling log messages. */

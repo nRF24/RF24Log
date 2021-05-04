@@ -104,11 +104,14 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
     #endif
                 )
         {
+    #if defined (RF24LOG_TAB_SIZE)
             if (c == '\t')
             {
-                appendChar(' ', 8);
+                appendChar(' ', RF24LOG_TAB_SIZE);
             }
-            else if (c == '%')
+            else
+    #endif
+            if (c == '%')
             {
                 SpecifierParsing fmt_parser;
                 c = pgm_read_byte(p++); // get ready to feed the parser
@@ -174,11 +177,14 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
     #endif
                 )
         {
+    #if defined (RF24LOG_TAB_SIZE)
             if (*c == '\t')
             {
-                appendChar(' ', 8);
+                appendChar(' ', RF24LOG_TAB_SIZE);
             }
-            else if (*c == '%')
+            else
+    #endif
+            if (*c == '%')
             {
                 SpecifierParsing fmt_parser;
                 ++c; // get ready to feed the parser
@@ -285,6 +291,14 @@ void RF24LogAbstractStream::appendFormat(SpecifierParsing* fmt_parser, va_list *
     }
 #endif
 
+#if !defined(RF24_LOG_NO_BOOLALPHA)
+    else if (fmt_parser->specifier == 'B')
+    {
+        bool temp = (bool)va_arg(*args, int);
+        appendStr(temp ? "true" : "false");
+    }
+#endif
+
     else if (fmt_parser->specifier == 'c')
     {
         if (fmt_parser->width)
@@ -297,33 +311,40 @@ void RF24LogAbstractStream::appendFormat(SpecifierParsing* fmt_parser, va_list *
     else if (fmt_parser->specifier == 'D' || fmt_parser->specifier == 'F')
     {
         // print as double
+        double temp = va_arg(*args, double);
+
+        // printf() traditionally reserves a precision of 0 to avoid printing a value of 0
+        // so, if precision is 0 and value is 0.0, then don't print and just consume arg
+        if (fmt_parser->precis == 0 && temp == 0.0) { return; }
+
         if (fmt_parser->precis >= 0)
         {
-            appendDouble(va_arg(*args, double), fmt_parser->precis);
+            appendDouble(temp, fmt_parser->precis);
         }
         else
         {
-            appendDouble(va_arg(*args, double));
+            appendDouble(temp);
         }
     }
     else
     {
         // print as integer
         uint8_t base = 3; // use 3 as a invalid sentinel
-        if (fmt_parser->specifier == 'd' || fmt_parser->specifier == 'i' ||
-                fmt_parser->specifier == 'l' || fmt_parser->specifier == 'u') { base = 10; }
+        if (fmt_parser->specifier == 'd' || fmt_parser->specifier == 'i')      { base = 10; }
         else if (fmt_parser->specifier == 'x' || fmt_parser->specifier == 'X') { base = 16; }
         else if (fmt_parser->specifier == 'o') { base = 8; }
         else if (fmt_parser->specifier == 'b') { base = 2; }
         if (base != 3) // if it was a supported char
         {
-            unsigned int temp = va_arg(*args, int);
+            long temp = va_arg(*args, int);
             if (fmt_parser->width)
             {
                 uint16_t w = howWide(temp, base);
                 appendChar(fmt_parser->fill, (fmt_parser->width > w ? fmt_parser->width - w : 0));
             }
-            if (fmt_parser->specifier == 'u')
+            if (fmt_parser->specifier == 'u' ||
+                    fmt_parser->specifier == 'x' || fmt_parser->specifier == 'X' ||
+                    fmt_parser->specifier == 'o' || fmt_parser->specifier == 'b')
             {
                 appendUInt(temp, base);
             }
@@ -331,6 +352,10 @@ void RF24LogAbstractStream::appendFormat(SpecifierParsing* fmt_parser, va_list *
             {
                 appendInt(temp, base);
             }
+        }
+        else
+        {
+            appendChar(fmt_parser->specifier);
         }
     }
 }
@@ -353,7 +378,7 @@ bool SpecifierParsing::isPaddPrec(char c)
     {
         if (c == '.')
         {
-            precis = 0;
+            precis = 0; // 0.0 value will not be output
         }
         else
         {
@@ -380,6 +405,9 @@ bool SpecifierParsing::isFmtOption(char c)
             c == 'S' ||
     #endif
             c == 'c' ||
+    #if !defined(RF24LOG_NO_BOOLALPHA)
+            c == 'B' ||
+    #endif
             c == 'D' ||
             c == 'F' ||
             c == 'x' ||
@@ -388,14 +416,19 @@ bool SpecifierParsing::isFmtOption(char c)
             c == 'u' ||
             c == 'b')
     {
-        specifier = c;
+        if (c == 'u' || c == 'x' || c == 'X' || c == 'o' || c == 'b')
+        {
+            isUnsigned = true;
+        }
+        if (c != 'u' ||c != 'h') { specifier = c; } // don't record modifiers
         return false; // no second option supported
     }
     else if (c == 'd' ||
             c == 'i' ||
-            c == 'l')
+            c == 'l' ||
+            c == 'h')
     {
-        specifier = c;
+        if (c != 'h' && c != 'l') { specifier = c; } // don't record modifiers
         return true; // can also support a second option (like 'u')
     }
     return false;

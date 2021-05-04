@@ -93,18 +93,22 @@ void loop()
     serialLogHandler.setLogLevel(level);
   }
 
-  RF24Log_warn(vendorID, "Warn internal core cache reset. error code = 0x%x%x%x%x", 0xde, 0xad, 0xbe, 0xef);
+  RF24Log_warn(vendorID, "Warn with error code = 0x%x%x%x%x", 222, 173, 190, 239);
   RF24Log_error(vendorID, "Error message with %s", "RAM string");
-  RF24Log_info(vendorID, "Info about rounding a double value %.5D", 3.14159);
+  RF24Log_info(vendorID, "Info about rounding a double value %.4D", 3.14159);
   RF24Log_debug(vendorID, "Debug precision of a double value %.4D", 2.71);
 
   RF24Log_log(RF24LogLevel::INFO + 1, vendorID, "message on sublevel INFO + 1");
   RF24Log_log(RF24LogLevel::WARN + 1, vendorID, "message on sublevel WARN + 1");
+  RF24Log_log(RF24LogLevel::INFO + 7, vendorID, "message on sublevel INFO + 7");
   RF24Log_log(RF24LogLevel::ERROR - 1, vendorID, "message on sublevel ERROR - 1");
   RF24Log_log(RF24LogLevel::DEBUG + 8, vendorID, "message on sublevel DEBUG + 8");
-
+  RF24Log_log(RF24LogLevel::INFO, vendorID, "The facts are %B", true);
   RF24Log_log(077, vendorID, "This\n\tis a multiline\n\t\tmessage that\n\tends with a\nblank line\n\n");
-  RF24Log_log(75, vendorID, "%%%%This is level 0x%02x (0b%08b or%4d)%3c", 75, 75, 75, '!');
+  RF24Log_log(75, vendorID, "%%%%This is level 0x%02x (0b%08b or%4dh)%2c", 75, 75, 75, '!');
+
+  // note negative numbers will look strange in binary, hexadecimal, and octal output if they aren't first casted as unsigned numbers
+  // RF24Log_log(-0xAA, vendorID, "0x%02x is 0b%08b is %d, but can also be %o", (uint8_t)(-0xAA), (uint8_t)(-0xAA), -0xAA, -0xAA);
 
   // print a blank line (no timestamp, level description, or vendorId)
   RF24Log_log(0, DisableVendor, "");

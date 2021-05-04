@@ -17,13 +17,14 @@ argument is of a certain datatype.
 |----------:|:------------------|
 | `F` / `D` | a double |
 | `s` / `S` | a string |
-| `d` / `i` / `l` | a signed integer |
-| `du` / `iu` / `u` / `lu` | an unsigned integer |
+| `d` / `i` / `l` / `ll` / `h` | a signed integer |
+| `du` / `iu` / `u` / `lu` / `hu` | an unsigned integer |
 | `x` / `X` | an unsigned hexadecimal integer |
 | `o` | an unsigned octal integer |
 | `b` | an unsigned binary integer |
+| `B` | a boolean value typed out<br>`0` = "false" & `1` = "true" |
 | `c` | a single character |
-| % | escapes a single % character |
+| % | escapes a single character |
 
 ### Limitations
 These are the differences to standard printf parsing and our in-house printf parsing:
@@ -37,8 +38,8 @@ These are the differences to standard printf parsing and our in-house printf par
 - The only supported flags are zero (`0`) for padding data with zeros instead of spaces.
   Other flags (`+`, `-`, ` `) have no affect.
 - The `u` character will enforce numeric data to be interpreted as an `unsigned long` number.
-Otherwise, all numeric data is represented as a signed `long` number (`float` and `double`
-variables are represented as a `double`).
+  Otherwise, all numeric data is represented as a signed `long` number (`float` and `double`
+  variables are represented as a `double`).
 
 ### Padding the numbers
 For each numeric data specifier, a quantity of padded characters can be

@@ -7,3 +7,4 @@ This logging library aims to be portable, extensible, scalable, and user friendl
 - [Supported `printf`-like specifiers](md_docs_supported_specifiers.html)
 - [Library Class Hierarchy](hierarchy.html)
 - [Library file structure](files.html)
+- [How to roll your own logger](md_docs_roll_your_logger.html)
