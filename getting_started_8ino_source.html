@@ -153,44 +153,48 @@ $(function() {
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    serialLogHandler.<a class="code" href="class_r_f24_log_abstract_handler.html#a964b4de4cae6567127b51502497f55cb">setLogLevel</a>(level);</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  }</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="group___logging_a_p_i.html#gab3b6be9f0d9d9f97dc4d9be5187fe2ca">RF24Log_warn</a>(vendorID, <span class="stringliteral">&quot;Warn internal core cache reset. error code = 0x%x%x%x%x&quot;</span>, 0xde, 0xad, 0xbe, 0xef);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="group___logging_a_p_i.html#gab3b6be9f0d9d9f97dc4d9be5187fe2ca">RF24Log_warn</a>(vendorID, <span class="stringliteral">&quot;Warn with error code = 0x%x%x%x%x&quot;</span>, 222, 173, 190, 239);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <a class="code" href="group___logging_a_p_i.html#gaa9bcf8f72ed3e2d0f1a98c1b40c5409f">RF24Log_error</a>(vendorID, <span class="stringliteral">&quot;Error message with %s&quot;</span>, <span class="stringliteral">&quot;RAM string&quot;</span>);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(vendorID, <span class="stringliteral">&quot;Info about rounding a double value %.5D&quot;</span>, 3.14159);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">RF24Log_info</a>(vendorID, <span class="stringliteral">&quot;Info about rounding a double value %.4D&quot;</span>, 3.14159);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga14adb54e78925f200b5caee1a819d88b">RF24Log_debug</a>(vendorID, <span class="stringliteral">&quot;Debug precision of a double value %.4D&quot;</span>, 2.71);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(<a class="code" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a748005382152808a72b1a9177d9dc806">RF24LogLevel::INFO</a> + 1, vendorID, <span class="stringliteral">&quot;message on sublevel INFO + 1&quot;</span>);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(<a class="code" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a74dac7ac23d5b810db6d4067f14e8676">RF24LogLevel::WARN</a> + 1, vendorID, <span class="stringliteral">&quot;message on sublevel WARN + 1&quot;</span>);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(<a class="code" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a2fd6f336d08340583bd620a7f5694c90">RF24LogLevel::ERROR</a> - 1, vendorID, <span class="stringliteral">&quot;message on sublevel ERROR - 1&quot;</span>);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(<a class="code" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a0593585da9181e972974c1274d8f2b4f">RF24LogLevel::DEBUG</a> + 8, vendorID, <span class="stringliteral">&quot;message on sublevel DEBUG + 8&quot;</span>);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(077, vendorID, <span class="stringliteral">&quot;This\n\tis a multiline\n\t\tmessage that\n\tends with a\nblank line\n\n&quot;</span>);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(75, vendorID, <span class="stringliteral">&quot;%%%%This is level 0x%02x (0b%08b or%4d)%3c&quot;</span>, 75, 75, 75, <span class="charliteral">&#39;!&#39;</span>);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="comment">// print a blank line (no timestamp, level description, or vendorId)</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(0, DisableVendor, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#ifdef ARDUINO</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  delay(5000);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#elif !defined(PICO_BUILD)</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="comment">// for non-Arduino &amp; not Pico SDK</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="comment">// time.sleep(1); // TODO</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#ifndef ARDUINO</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keywordtype">int</span> main()</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;{</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#ifdef PICO_BUILD</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  stdio_init_all(); <span class="comment">// init necessary IO for the RP2040</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  setup();</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordflow">while</span> (1) {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    loop();</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  }</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(<a class="code" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a748005382152808a72b1a9177d9dc806">RF24LogLevel::INFO</a> + 7, vendorID, <span class="stringliteral">&quot;message on sublevel INFO + 7&quot;</span>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(<a class="code" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a2fd6f336d08340583bd620a7f5694c90">RF24LogLevel::ERROR</a> - 1, vendorID, <span class="stringliteral">&quot;message on sublevel ERROR - 1&quot;</span>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(<a class="code" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a0593585da9181e972974c1274d8f2b4f">RF24LogLevel::DEBUG</a> + 8, vendorID, <span class="stringliteral">&quot;message on sublevel DEBUG + 8&quot;</span>);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(<a class="code" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a748005382152808a72b1a9177d9dc806">RF24LogLevel::INFO</a>, vendorID, <span class="stringliteral">&quot;The facts are %B&quot;</span>, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(077, vendorID, <span class="stringliteral">&quot;This\n\tis a multiline\n\t\tmessage that\n\tends with a\nblank line\n\n&quot;</span>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(75, vendorID, <span class="stringliteral">&quot;%%%%This is level 0x%02x (0b%08b or%4dh)%2c&quot;</span>, 75, 75, 75, <span class="charliteral">&#39;!&#39;</span>);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="comment">// note negative numbers will look strange in binary, hexadecimal, and octal output if they aren&#39;t first casted as unsigned numbers</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="comment">// RF24Log_log(-0xAA, vendorID, &quot;0x%02x is 0b%08b is %d, but can also be %o&quot;, (uint8_t)(-0xAA), (uint8_t)(-0xAA), -0xAA, -0xAA);</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="comment">// print a blank line (no timestamp, level description, or vendorId)</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <a class="code" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">RF24Log_log</a>(0, DisableVendor, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#ifdef ARDUINO</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  delay(5000);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#elif !defined(PICO_BUILD)</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="comment">// for non-Arduino &amp; not Pico SDK</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="comment">// time.sleep(1); // TODO</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">#ifndef ARDUINO</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keywordtype">int</span> main()</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;{</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">#ifdef PICO_BUILD</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  stdio_init_all(); <span class="comment">// init necessary IO for the RP2040</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  setup();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordflow">while</span> (1) {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    loop();</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="a_arduino_print_logger_8h_html"><div class="ttname"><a href="_arduino_print_logger_8h.html">ArduinoPrintLogger.h</a></div><div class="ttdoc">handler for Print::print() based function calls</div></div>
 <div class="ttc" id="a_o_stream_logger_8h_html"><div class="ttname"><a href="_o_stream_logger_8h.html">OStreamLogger.h</a></div><div class="ttdoc">handler for ostream based objects</div></div>
 <div class="ttc" id="a_printf_logger_8h_html"><div class="ttname"><a href="_printf_logger_8h.html">PrintfLogger.h</a></div><div class="ttdoc">handler for printf basedfunction calls</div></div>

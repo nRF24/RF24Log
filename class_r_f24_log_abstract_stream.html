@@ -107,10 +107,10 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memdesc:aae27a36f91c4f03e443e581b63252fef"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a padding character a number of times  <a href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">More...</a><br /></td></tr>
 <tr class="separator:aae27a36f91c4f03e443e581b63252fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6dcca6eb2459743d484b78a21869fb2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">appendInt</a> (long data, uint8_t base=10)=0</td></tr>
-<tr class="memdesc:ae6dcca6eb2459743d484b78a21869fb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a number  <a href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">More...</a><br /></td></tr>
+<tr class="memdesc:ae6dcca6eb2459743d484b78a21869fb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a signed (+/-) number  <a href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">More...</a><br /></td></tr>
 <tr class="separator:ae6dcca6eb2459743d484b78a21869fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b0601d83b146abd08758a5431ee0b3b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">appendUInt</a> (unsigned long data, uint8_t base=10)=0</td></tr>
-<tr class="memdesc:a3b0601d83b146abd08758a5431ee0b3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a positive number  <a href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">More...</a><br /></td></tr>
+<tr class="memdesc:a3b0601d83b146abd08758a5431ee0b3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">append an &lsquo;unsigned&rsquo; (only +) number  <a href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">More...</a><br /></td></tr>
 <tr class="separator:a3b0601d83b146abd08758a5431ee0b3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed0c58fe5d99a5761700afafa36f9005"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#aed0c58fe5d99a5761700afafa36f9005">appendDouble</a> (double data, uint8_t precision=2)=0</td></tr>
 <tr class="memdesc:aed0c58fe5d99a5761700afafa36f9005"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a floating point number  <a href="class_r_f24_log_abstract_stream.html#aed0c58fe5d99a5761700afafa36f9005">More...</a><br /></td></tr>
@@ -122,7 +122,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code>protected</code> collection of methods that output formatted data to a stream. </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8h_source.html#l00077">77</a> of file <a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8h_source.html#l00079">79</a> of file <a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aae27a36f91c4f03e443e581b63252fef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aae27a36f91c4f03e443e581b63252fef">&#9670;&nbsp;</a></span>appendChar()</h2>
@@ -261,7 +261,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00265">265</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00271">271</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
 
 </div>
 </div>
@@ -299,7 +299,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table>
 </div><div class="memdoc">
 
-<p>append a number </p>
+<p>append a signed (+/-) number </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>The numeric data </td></tr>
@@ -344,7 +344,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00232">232</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00238">238</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
 
 </div>
 </div>
@@ -418,7 +418,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table>
 </div><div class="memdoc">
 
-<p>append a positive number </p>
+<p>append an &lsquo;unsigned&rsquo; (only +) number </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>The numeric data </td></tr>
@@ -463,7 +463,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00223">223</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00229">229</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
 
 </div>
 </div>
