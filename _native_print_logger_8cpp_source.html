@@ -121,7 +121,7 @@ $(function() {
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    strftime(buffer, 20, <span class="stringliteral">&quot;%F:%H:%M:%S&quot;</span>, timeinfo);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    buffer[20] = <a class="code" href="_base_handler_8h.html#ab14adeae939293a495032b94f8b4576d">RF24LOG_DELIMITER</a>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="_native_print_logger_8h.html#a758ad569cbda7c5ddfaa902e8eed3360">printf_P</a>(buffer);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="_native_print_logger_8h.html#a758ad569cbda7c5ddfaa902e8eed3360">printf_P</a>(<span class="stringliteral">&quot;%s&quot;</span>, buffer);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">    #endif </span><span class="comment">// defined (PICO_BUILD) &amp;&amp; !defined (ARDUINO)</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
