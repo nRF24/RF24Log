@@ -21,7 +21,7 @@
 #include <RF24Loggers/PrintfLogger.h>
 
 // Create hardware serial port log handler
-PrintfLogger serialLogHandler(&printf);
+PrintfLogger serialLogHandler;
 
 #else
 #include <iostream>
@@ -99,6 +99,7 @@ int main()
     while (1)
     {
         loop();
+        sleep_ms(5000);
     }
     return 0;
 }

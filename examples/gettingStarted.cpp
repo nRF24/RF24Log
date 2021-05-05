@@ -9,6 +9,10 @@
  * library.  If this is what you want to do, use the GNU Lesser General
  * Public License instead of this License.
  */
+
+#include <string.h>
+#include <RF24Logging.h>
+
 #ifdef PICO_BUILD
 #include "pico/stdlib.h"  // printf(), sleep_ms(), getchar_timeout_us(), to_us_since_boot(), get_absolute_time()
 #include "pico/bootrom.h" // reset_usb_boot()
@@ -17,7 +21,7 @@
 #include <RF24Loggers/PrintfLogger.h>          // PrintfLogger
 
 // Create hardware serial port log handler
-PrintfLogger serialLogHandler(&printf);
+PrintfLogger serialLogHandler;
 
 #else
 #include <iostream>
@@ -26,9 +30,6 @@ PrintfLogger serialLogHandler(&printf);
 // Create hardware serial port log handler
 OStreamLogger serialLogHandler((std::ostream *)&std::cout);
 #endif
-
-#include <string.h>
-#include <RF24Logging.h>
 
 // Define global vendor id (it is stored in FLASH memory)
 const char vendorID[] = "RF24LogExample";
@@ -108,6 +109,7 @@ int main()
     while (1)
     {
         loop();
+        sleep_ms(5000);
     }
     return 0;
 }

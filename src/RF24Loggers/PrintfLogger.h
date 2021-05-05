@@ -17,20 +17,39 @@
 
 #include <RF24LogAbstracts/Parsing.h>
 
+#ifndef printf_P
+#define printf_P printf
+#endif
+
+#ifndef PSTR
+#define PSTR(x) (x)
+#endif
+
+#ifndef PROGMEM
+#define PROGMEM
+#endif
+
+#ifndef pgm_read_word
+#define pgm_read_word(p) (*(p))
+#endif
+
 /** @brief Class to manage logging messages to a printf function pointer. */
 class PrintfLogger : public RF24LogPrintfParser
 {
 public:
+    /** @brief Construct a new PrintfLogger object using stdout */
+    PrintfLogger();
+
     /**
-     * @brief Construct a new PrintfLogger object
-     * @param _stream The `printf()`-like function that ships with cstdio.
+     * @brief Construct a new PrintfLogger object using a string as a buffer
+     * @param buffer The string that will be used instead of stdout.
      */
-    PrintfLogger(int (*_stream)(const char *, ...));
+    PrintfLogger(char* buffer);
 
 private:
 
     /** @brief The internal reference to the configured callback function pointer for `printf(const char*, ...)` */
-    int (*stream)(const char *, ...);
+    char* _stream;
 
 protected:
 

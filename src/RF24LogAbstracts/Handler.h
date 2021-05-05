@@ -60,7 +60,7 @@ public:
 protected:
 
     /** The configured log level used to filter which messages are output. */
-    uint8_t logLevel;
+    uint8_t _logLevel;
 
     /**
      * write log message to its destination

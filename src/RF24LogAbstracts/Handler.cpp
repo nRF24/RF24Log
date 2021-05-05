@@ -18,7 +18,7 @@
 
 RF24LogAbstractHandler::RF24LogAbstractHandler()
 {
-    this->logLevel = RF24LogLevel::INFO;
+    _logLevel = RF24LogLevel::INFO;
 }
 
 void RF24LogAbstractHandler::log(uint8_t logLevel,
@@ -34,12 +34,12 @@ void RF24LogAbstractHandler::log(uint8_t logLevel,
 
 void RF24LogAbstractHandler::setLogLevel(uint8_t logLevel)
 {
-    this->logLevel = logLevel;
+    _logLevel = logLevel;
 }
 
 bool RF24LogAbstractHandler::isLevelEnabled(uint8_t logLevel)
 {
-    return logLevel <= this->logLevel;
+    return logLevel <= _logLevel;
 }
 
 #if defined (ARDUINO_ARCH_AVR)

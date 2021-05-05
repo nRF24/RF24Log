@@ -25,23 +25,27 @@
 #elif defined (PICO_BUILD)
 #include <pico/stdlib.h> // to_ms_since_boot(), get_absolute_time()
 #else
-#include <ctime> // for time_t, struct tm*, time(), localtime(), strftime()
+#include <ctime> // time_t, struct tm*, time(), localtime(), strftime()
 #endif
 
 #include <RF24Loggers/PrintfLogger.h>
 
-PrintfLogger::PrintfLogger(int (*_stream)(const char *, ...))
+PrintfLogger::PrintfLogger()
 {
-    stream = _stream;
+    _stream = nullptr;
 }
 
+PrintfLogger::PrintfLogger(char* buffer)
+{
+    _stream = buffer;
+}
 
 void PrintfLogger::appendTimestamp()
 {
     #if defined (ARDUINO)
-    stream("%10lu;", millis());
+    printf_P(PSTR("%10lu;"), millis());
     #elif defined(PICO_BUILD)
-    stream("%10lu;", to_ms_since_boot(get_absolute_time()));
+    printf_P(PSTR("%10lu;"), to_ms_since_boot(get_absolute_time()));
     #else // !defined (PICO_BUILD) && !defined (ARDUINO)
     char buffer[21];
     time_t rawtime;
@@ -51,7 +55,7 @@ void PrintfLogger::appendTimestamp()
 
     strftime(buffer, 20, "%F:%H:%M:%S", timeinfo);
     buffer[20] = RF24LOG_DELIMITER;
-    stream(buffer);
+    printf_P(PSTR(buffer));
     #endif // defined (PICO_BUILD) && !defined (ARDUINO)
 }
 
@@ -60,7 +64,7 @@ void PrintfLogger::appendChar(char data, uint16_t depth)
     while (depth > 0)
     {
         --depth;
-        stream(reinterpret_cast<const char*>(data));
+        printf_P(PSTR("%c"), data);
     }
 }
 
@@ -70,7 +74,7 @@ void PrintfLogger::appendInt(long data, uint8_t base)
     {
         if (!data)
         {
-            stream("0"); // output a zero
+            printf_P(PSTR("0")); // output a zero
             return;
         }
         char buffer[64];
@@ -89,15 +93,15 @@ void PrintfLogger::appendInt(long data, uint8_t base)
     }
     else if (base == 8)
     {
-        stream("%o", data);
+        printf_P(PSTR("%o"), data);
     }
     else if (base == 16)
     {
-        stream("%X", data);
+        printf_P(PSTR("%X"), data);
     }
     else
     {
-        stream("%lu", data);
+        printf_P(PSTR("%lu"), data);
     }
 }
 
@@ -107,7 +111,7 @@ void PrintfLogger::appendUInt(unsigned long data, uint8_t base)
     {
         if (!data)
         {
-            stream("0"); // output a zero
+            printf_P(PSTR("0")); // output a zero
             return;
         }
         char buffer[64];
@@ -126,26 +130,26 @@ void PrintfLogger::appendUInt(unsigned long data, uint8_t base)
     }
     else if (base == 8)
     {
-        stream("%o", data);
+        printf_P(PSTR("%o"), data);
     }
     else if (base == 16)
     {
-        stream("%X", data);
+        printf_P(PSTR("%X"), data);
     }
     else
     {
-        stream("%l", data);
+        printf_P(PSTR("%l"), data);
     }
 }
 
 void PrintfLogger::appendDouble(double data, uint8_t precision)
 {
     char fmt_buf[64];
-    sprintf(fmt_buf, "%%.%dD", precision); // prepares a fmt str ("%.nD")
-    stream(reinterpret_cast<const char*>(fmt_buf), data);
+    sprintf(fmt_buf, "%%.%dF", precision); // prepares a fmt str ("%.nF")
+    printf_P(PSTR(fmt_buf), data);
 }
 
 void PrintfLogger::appendStr(const char* data)
 {
-    stream(data);
+    printf_P("%s", data);
 }
