@@ -67,7 +67,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#friends">Friends</a> &#124;
 <a href="class_r_f24_log_abstract_handler-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">RF24LogAbstractHandler Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -77,15 +76,15 @@ $(function() {
 <p>An abstract base class for handling log messages.  
  <a href="class_r_f24_log_abstract_handler.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_handler_8h_source.html">Handler.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for RF24LogAbstractHandler:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_r_f24_log_abstract_handler.png" usemap="#RF24LogAbstractHandler_map" alt=""/>
   <map id="RF24LogAbstractHandler_map" name="RF24LogAbstractHandler_map">
-<area href="class_r_f24_log_handler.html" title="A base mechanism for handling log messages." alt="RF24LogHandler" shape="rect" coords="165,0,320,24"/>
-<area href="class_r_f24_log_printf_parser.html" alt="RF24LogPrintfParser" shape="rect" coords="165,112,320,136"/>
+<area href="class_r_f24_log_base_handler.html" title="A base mechanism for handling log messages." alt="RF24LogBaseHandler" shape="rect" coords="165,0,320,24"/>
+<area href="class_r_f24_log_printf_parser.html" title="class that holds the RF24Log&#39;s in-house printf-like parsing" alt="RF24LogPrintfParser" shape="rect" coords="165,112,320,136"/>
 <area href="class_arduino_print_logger.html" title="A log handler implementation which outputs log messages to a stream." alt="ArduinoPrintLogger" shape="rect" coords="0,168,155,192"/>
 <area href="class_o_stream_logger.html" title="Class to manage logging messages to a ostream based object." alt="OStreamLogger" shape="rect" coords="165,168,320,192"/>
 <area href="class_printf_logger.html" title="Class to manage logging messages to a printf function pointer." alt="PrintfLogger" shape="rect" coords="330,168,485,192"/>
@@ -94,6 +93,10 @@ Inheritance diagram for RF24LogAbstractHandler:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a727eba3803143b9b771abbf3b41e71c6"><td class="memItemLeft" align="right" valign="top"><a id="a727eba3803143b9b771abbf3b41e71c6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#a727eba3803143b9b771abbf3b41e71c6">RF24LogAbstractHandler</a> ()</td></tr>
+<tr class="memdesc:a727eba3803143b9b771abbf3b41e71c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets log level to <a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a748005382152808a72b1a9177d9dc806">INFO</a> upon instantiation. <br /></td></tr>
+<tr class="separator:a727eba3803143b9b771abbf3b41e71c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54660bdcc2271e75e2a07a60928b5a89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89">log</a> (uint8_t <a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a>, const char *vendorId, const char *message, va_list *args)</td></tr>
 <tr class="memdesc:a54660bdcc2271e75e2a07a60928b5a89"><td class="mdescLeft">&#160;</td><td class="mdescRight">log a message.  <a href="class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89">More...</a><br /></td></tr>
 <tr class="separator:a54660bdcc2271e75e2a07a60928b5a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,17 +112,11 @@ Protected Member Functions</h2></td></tr>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:aa4686f79ac6fded262d411f00c2478f4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a></td></tr>
 <tr class="separator:aa4686f79ac6fded262d411f00c2478f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:a94441f2bc71622b9d7c72128a0d2ec7d"><td class="memItemLeft" align="right" valign="top"><a id="a94441f2bc71622b9d7c72128a0d2ec7d"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>RF24LogAbstractStream</b></td></tr>
-<tr class="separator:a94441f2bc71622b9d7c72128a0d2ec7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An abstract base class for handling log messages. </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8h_source.html#l00146">146</a> of file <a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_handler_8h_source.html#l00029">29</a> of file <a class="el" href="_handler_8h_source.html">Handler.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a54660bdcc2271e75e2a07a60928b5a89"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a54660bdcc2271e75e2a07a60928b5a89">&#9670;&nbsp;</a></span>log()</h2>
@@ -178,9 +175,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>RF24LogAbstractStrea
   </dd>
 </dl>
 
-<p>Reimplemented from <a class="el" href="class_r_f24_log_handler.html#ad82545329939ba516d2b622dd353cb2e">RF24LogHandler</a>.</p>
+<p>Reimplemented from <a class="el" href="class_r_f24_log_base_handler.html#a1bc7b0a3f03a06e885e1838fab813c3f">RF24LogBaseHandler</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00045">45</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_handler_8cpp_source.html#l00024">24</a> of file <a class="el" href="_handler_8cpp_source.html">Handler.cpp</a>.</p>
 
 </div>
 </div>
@@ -215,11 +212,11 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>RF24LogAbstractStrea
 </dl>
 <dl class="section see"><dt>See also</dt><dd>Review the descriptions in the <a class="el" href="group__log_levels.html">Log Levels</a> </dd></dl>
 
-<p>Reimplemented from <a class="el" href="class_r_f24_log_handler.html#a7ae1378ea39e298905f51ac54a4a7d80">RF24LogHandler</a>.</p>
+<p>Reimplemented from <a class="el" href="class_r_f24_log_base_handler.html#a65c0c7cee62ba34437e8af1fbfa409b3">RF24LogBaseHandler</a>.</p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_all_log_levels_8ino-example.html#a3">AllLogLevels.ino</a>, <a class="el" href="_dual_stream_8ino-example.html#a2">DualStream.ino</a>, and <a class="el" href="getting_started_8ino-example.html#a3">gettingStarted.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8cpp_source.html#l00056">56</a> of file <a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_handler_8cpp_source.html#l00035">35</a> of file <a class="el" href="_handler_8cpp_source.html">Handler.cpp</a>.</p>
 
 </div>
 </div>
@@ -304,13 +301,13 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>RF24LogAbstractStrea
 </div><div class="memdoc">
 <p>The configured log level used to filter which messages are output. </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_f24_log_abstracts_8h_source.html#l00178">178</a> of file <a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_handler_8h_source.html#l00063">63</a> of file <a class="el" href="_handler_8h_source.html">Handler.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/<a class="el" href="_r_f24_log_abstracts_8h_source.html">RF24LogAbstracts.h</a></li>
-<li>src/<a class="el" href="_r_f24_log_abstracts_8cpp_source.html">RF24LogAbstracts.cpp</a></li>
+<li>src/RF24LogAbstracts/<a class="el" href="_handler_8h_source.html">Handler.h</a></li>
+<li>src/RF24LogAbstracts/<a class="el" href="_handler_8cpp_source.html">Handler.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['ostreamlogger_2ecpp_92',['OStreamLogger.cpp',['../_o_stream_logger_8cpp.html',1,'']]],
-  ['ostreamlogger_2eh_93',['OStreamLogger.h',['../_o_stream_logger_8h.html',1,'']]]
+  ['basehandler_2eh_97',['BaseHandler.h',['../_base_handler_8h.html',1,'']]]
 ];

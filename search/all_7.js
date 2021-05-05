@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['level_20descriptions_24',['Level Descriptions',['../group__lvl_desc.html',1,'']]],
-  ['log_25',['log',['../class_r_f24_dual_log_handler.html#aa371406aba2ec48194967a64f86d5c27',1,'RF24DualLogHandler::log()'],['../class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89',1,'RF24LogAbstractHandler::log()'],['../class_r_f24_logging.html#a197f0b717a027c511a9dc3634dbc9089',1,'RF24Logging::log()'],['../class_r_f24_log_handler.html#ad82545329939ba516d2b622dd353cb2e',1,'RF24LogHandler::log()']]],
-  ['log_20levels_26',['Log Levels',['../group__log_levels.html',1,'']]],
-  ['logging_20api_27',['Logging API',['../group___logging_a_p_i.html',1,'']]],
-  ['loglevel_28',['logLevel',['../class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4',1,'RF24LogAbstractHandler']]]
+  ['info_21',['INFO',['../group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a748005382152808a72b1a9177d9dc806',1,'RF24LogLevel.h']]],
+  ['isflagged_22',['isFlagged',['../struct_specifier_parsing.html#ac6789f899228fadeb7676779e65b9e6e',1,'SpecifierParsing']]],
+  ['isfmtoption_23',['isFmtOption',['../struct_specifier_parsing.html#aa2b35334f59264484b6d0588926433da',1,'SpecifierParsing']]],
+  ['ispaddprec_24',['isPaddPrec',['../struct_specifier_parsing.html#a6632fb60c00ab1665ce40ed3825b6572',1,'SpecifierParsing']]],
+  ['isunsigned_25',['isUnsigned',['../struct_specifier_parsing.html#a37766edd2478434e296f7274f590a38a',1,'SpecifierParsing']]]
 ];

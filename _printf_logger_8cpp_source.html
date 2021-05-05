@@ -72,9 +72,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="_printf_logger_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifdef ARDUINO</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">    #ifdef ARDUINO_ARCH_AVR</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">    #include &lt;WString.h&gt;</span> <span class="comment">// sprintf()</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#if defined (ARDUINO)</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">    #if defined (ARDUINO_ARCH_AVR)</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">    #include &lt;WString.h&gt;</span> <span class="comment">// __FlashStringHelper sprintf()</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">    #else</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">    #include &lt;string.h&gt;</span> <span class="comment">// sprintf()</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">    #endif</span></div>
@@ -82,7 +82,7 @@ $(function() {
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;cstdio&gt;</span> <span class="comment">// sprintf()</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#ifdef ARDUINO</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#if defined (ARDUINO)</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;Arduino.h&gt;</span> <span class="comment">// millis()</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#elif defined (PICO_BUILD)</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;pico/stdlib.h&gt;</span> <span class="comment">// to_ms_since_boot(), get_absolute_time()</span></div>
@@ -90,7 +90,7 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;ctime&gt;</span> <span class="comment">// for time_t, struct tm*, time(), localtime(), strftime()</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_printf_logger_8h.html">PrintfLogger.h</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_printf_logger_8h.html">RF24Loggers/PrintfLogger.h</a>&gt;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_printf_logger.html#a5ef609532997ea28cc50fe1ca18f795c">   33</a></span>&#160;<a class="code" href="class_printf_logger.html#a5ef609532997ea28cc50fe1ca18f795c">PrintfLogger::PrintfLogger</a>(<span class="keywordtype">int</span> (*_stream)(<span class="keyword">const</span> <span class="keywordtype">char</span> *, ...))</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
@@ -112,7 +112,7 @@ $(function() {
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    timeinfo = localtime(&amp;rawtime);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    strftime(buffer, 20, <span class="stringliteral">&quot;%F:%H:%M:%S&quot;</span>, timeinfo);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    buffer[20] = <a class="code" href="_r_f24_log_handler_8h.html#ab14adeae939293a495032b94f8b4576d">RF24LOG_DELIMITER</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    buffer[20] = <a class="code" href="_base_handler_8h.html#ab14adeae939293a495032b94f8b4576d">RF24LOG_DELIMITER</a>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    stream(buffer);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">    #endif </span><span class="comment">// defined (PICO_BUILD) &amp;&amp; !defined (ARDUINO)</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
@@ -211,8 +211,8 @@ $(function() {
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;{</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    stream(data);</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
-<div class="ttc" id="a_printf_logger_8h_html"><div class="ttname"><a href="_printf_logger_8h.html">PrintfLogger.h</a></div><div class="ttdoc">handler for printf basedfunction calls</div></div>
-<div class="ttc" id="a_r_f24_log_handler_8h_html_ab14adeae939293a495032b94f8b4576d"><div class="ttname"><a href="_r_f24_log_handler_8h.html#ab14adeae939293a495032b94f8b4576d">RF24LOG_DELIMITER</a></div><div class="ttdeci">#define RF24LOG_DELIMITER</div><div class="ttdoc">Change The Delimiter character used in the header prefix of log messages.</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_handler_8h_source.html#l00029">RF24LogHandler.h:29</a></div></div>
+<div class="ttc" id="a_base_handler_8h_html_ab14adeae939293a495032b94f8b4576d"><div class="ttname"><a href="_base_handler_8h.html#ab14adeae939293a495032b94f8b4576d">RF24LOG_DELIMITER</a></div><div class="ttdeci">#define RF24LOG_DELIMITER</div><div class="ttdoc">Change The Delimiter character used in the header prefix of log messages.</div><div class="ttdef"><b>Definition:</b> <a href="_base_handler_8h_source.html#l00029">BaseHandler.h:29</a></div></div>
+<div class="ttc" id="a_printf_logger_8h_html"><div class="ttname"><a href="_printf_logger_8h.html">PrintfLogger.h</a></div><div class="ttdoc">handler for printf-based function calls</div></div>
 <div class="ttc" id="aclass_printf_logger_html_a5ef609532997ea28cc50fe1ca18f795c"><div class="ttname"><a href="class_printf_logger.html#a5ef609532997ea28cc50fe1ca18f795c">PrintfLogger::PrintfLogger</a></div><div class="ttdeci">PrintfLogger(int(*_stream)(const char *,...))</div><div class="ttdoc">Construct a new PrintfLogger object.</div><div class="ttdef"><b>Definition:</b> <a href="_printf_logger_8cpp_source.html#l00033">PrintfLogger.cpp:33</a></div></div>
 <div class="ttc" id="aclass_printf_logger_html_a6f43dac0fc5ae55f0cbb29ceb9b710d9"><div class="ttname"><a href="class_printf_logger.html#a6f43dac0fc5ae55f0cbb29ceb9b710d9">PrintfLogger::appendInt</a></div><div class="ttdeci">void appendInt(long data, uint8_t base=10)</div><div class="ttdoc">append a signed (+/-) number</div><div class="ttdef"><b>Definition:</b> <a href="_printf_logger_8cpp_source.html#l00067">PrintfLogger.cpp:67</a></div></div>
 <div class="ttc" id="aclass_printf_logger_html_a9bce89c8fd5eb22795a0402141e32acc"><div class="ttname"><a href="class_printf_logger.html#a9bce89c8fd5eb22795a0402141e32acc">PrintfLogger::appendDouble</a></div><div class="ttdeci">void appendDouble(double data, uint8_t precision=2)</div><div class="ttdoc">append a floating point number</div><div class="ttdef"><b>Definition:</b> <a href="_printf_logger_8cpp_source.html#l00141">PrintfLogger.cpp:141</a></div></div>
