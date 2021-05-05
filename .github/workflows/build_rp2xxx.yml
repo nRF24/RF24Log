@@ -1,13 +1,6 @@
 name: RP2xxx build
 
-on:
-  push:
-    paths:
-      - ".github/workflows/build_rp2xxx.yml"
-
-  pull_request:
-    paths:
-      - ".github/workflows/build_rp2xxx.yml"
+on: [push, pull_request]
 
 
 env:
