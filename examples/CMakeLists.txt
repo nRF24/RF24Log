@@ -1,21 +1,3 @@
-# iterate over a list of examples by name
-set(EXAMPLES_LIST
-    gettingStarted
-    allLogLevels
-    )
-
-if (NOT PICO_SDK_PATH)
-    foreach(example ${EXAMPLES_LIST})
-        add_executable(${example} ${example}.cpp)
-
-        target_link_libraries(${example} PUBLIC
-            RF24Log
-            )
-
-    endforeach()
-    return()
-endif()
-
 cmake_minimum_required(VERSION 3.12)
 
 # Pull in SDK (must be before project)
@@ -31,18 +13,26 @@ pico_sdk_init()
 # is cloned to in your project
 include(../src/CMakeLists.txt)
 
-#[[ for each example, we have to perform the following
+# iterate over a list of examples by name
+set(EXAMPLES_LIST
+    gettingStarted
+    allLogLevels
+    )
+
+#[[ for each example, we have to perform the following:
+
 #make a target
 add_executable(gettingStarted gettingStarted.cpp)
 
 # link the necessary libs to the target
 target_link_libraries(gettingStarted PUBLIC
-    RF24
+    RF24Log
     pico_stdlib
     )
 
 # create map/bin/hex file etc.
 pico_add_extra_outputs(gettingStarted)
+
 ]]
 
 foreach(example ${EXAMPLES_LIST})
