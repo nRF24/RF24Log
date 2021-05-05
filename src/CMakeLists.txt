@@ -13,7 +13,7 @@ if (PICO_SDK_PATH)
     target_sources(RF24Log INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}/RF24Logging.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogLevel.h
-        ${CMAKE_CURRENT_LIST_DIR}/RF24LogHandler.h
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/BaseHandler.h
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts.h
         ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers/PrintfLogger.cpp

@@ -16,8 +16,8 @@
 
 #include <handler_ext/RF24DualLogHandler.h>
 
-RF24DualLogHandler::RF24DualLogHandler(RF24LogHandler *handler1,
-                                       RF24LogHandler *handler2)
+RF24DualLogHandler::RF24DualLogHandler(RF24LogBaseHandler *handler1,
+                                       RF24LogBaseHandler *handler2)
 {
     this->handler1 = handler1;
     this->handler2 = handler2;

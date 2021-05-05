@@ -12,8 +12,8 @@
  * Public License instead of this License.
  */
 #include <Arduino.h>
-#include "RF24LogLevel.h"
-#include "ArduinoPrintLogger.h"
+#include <RF24LogLevel.h>
+#include <RF24Loggers/ArduinoPrintLogger.h>
 
 
 ArduinoPrintLogger::ArduinoPrintLogger(Print *stream)
@@ -24,7 +24,7 @@ ArduinoPrintLogger::ArduinoPrintLogger(Print *stream)
 void ArduinoPrintLogger::appendTimestamp()
 {
     unsigned long now = millis();
-    uint16_t w = howWide(now);
+    uint16_t w = numbCharsToPrint(now);
     appendChar(' ', (w < 10 ? 10 - w : 0));
     appendUInt(now, 10);
     appendChar(RF24LOG_DELIMITER);

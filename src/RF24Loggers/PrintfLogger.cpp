@@ -10,9 +10,9 @@
  * library.  If this is what you want to do, use the GNU Lesser General
  * Public License instead of this License.
  */
-#ifdef ARDUINO
-    #ifdef ARDUINO_ARCH_AVR
-    #include <WString.h> // sprintf()
+#if defined (ARDUINO)
+    #if defined (ARDUINO_ARCH_AVR)
+    #include <WString.h> // __FlashStringHelper sprintf()
     #else
     #include <string.h> // sprintf()
     #endif
@@ -20,7 +20,7 @@
 #include <cstdio> // sprintf()
 #endif
 
-#ifdef ARDUINO
+#if defined (ARDUINO)
 #include <Arduino.h> // millis()
 #elif defined (PICO_BUILD)
 #include <pico/stdlib.h> // to_ms_since_boot(), get_absolute_time()
@@ -28,7 +28,7 @@
 #include <ctime> // for time_t, struct tm*, time(), localtime(), strftime()
 #endif
 
-#include "PrintfLogger.h"
+#include <RF24Loggers/PrintfLogger.h>
 
 PrintfLogger::PrintfLogger(int (*_stream)(const char *, ...))
 {

@@ -15,14 +15,14 @@
 #ifndef SRC_HANDLER_EXT_RF24DUALLOGHANDLER_H_
 #define SRC_HANDLER_EXT_RF24DUALLOGHANDLER_H_
 
-#include <RF24LogHandler.h>
+#include <RF24LogAbstracts/BaseHandler.h>
 
-/** @brief Module to extend the RF24LogHandler mechanism for redirecting to 2 different RF24LogHandler objects. */
-class RF24DualLogHandler : public RF24LogHandler
+/** @brief Module to extend the RF24LogBaseHandler mechanism for redirecting to 2 different RF24LogBaseHandler objects. */
+class RF24DualLogHandler : public RF24LogBaseHandler
 {
 private:
-    RF24LogHandler *handler1;
-    RF24LogHandler *handler2;
+    RF24LogBaseHandler *handler1;
+    RF24LogBaseHandler *handler2;
 
 public:
 
@@ -31,7 +31,7 @@ public:
      * @param handler1 An output stream handler
      * @param handler2 An output stream handler
      */
-    RF24DualLogHandler(RF24LogHandler *handler1, RF24LogHandler *handler2);
+    RF24DualLogHandler(RF24LogBaseHandler *handler1, RF24LogBaseHandler *handler2);
 
     void log(uint8_t logLevel,
              const char *vendorId,

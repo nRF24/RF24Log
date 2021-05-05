@@ -11,14 +11,14 @@
  * library.  If this is what you want to do, use the GNU Lesser General
  * Public License instead of this License.
  */
-#include "RF24Logging.h"
+#include <RF24Logging.h>
 
 RF24Logging::RF24Logging()
 {
     this->handler = nullptr;
 }
 
-void RF24Logging::setHandler(RF24LogHandler *handler)
+void RF24Logging::setHandler(RF24LogBaseHandler *handler)
 {
     this->handler = handler;
 }

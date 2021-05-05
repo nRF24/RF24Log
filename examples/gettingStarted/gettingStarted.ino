@@ -103,7 +103,7 @@ void loop()
   RF24Log_log(RF24LogLevel::INFO + 7, vendorID, "message on sublevel INFO + 7");
   RF24Log_log(RF24LogLevel::ERROR - 1, vendorID, "message on sublevel ERROR - 1");
   RF24Log_log(RF24LogLevel::DEBUG + 8, vendorID, "message on sublevel DEBUG + 8");
-  RF24Log_log(RF24LogLevel::INFO, vendorID, "The facts are %B", true);
+
   RF24Log_log(077, vendorID, "This\n\tis a multiline\n\t\tmessage that\n\tends with a\nblank line\n\n");
   RF24Log_log(75, vendorID, "%%%%This is level 0x%02x (0b%08b or%4dh)%2c", 75, 75, 75, '!');
 

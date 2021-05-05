@@ -30,7 +30,7 @@
  * - a level of 031 is the first sublevel of @ref INFO verbosity
  * - a level of 037 is the last sublevel of @ref INFO verbosity
  *
- * If the log level is configured (using RF24LogHandler::setLogLevel()) for a verbosty of `020` prevents outputting all messages designated for
+ * If the log level is configured (using RF24LogBaseHandler::setLogLevel()) for a verbosty of `020` prevents outputting all messages designated for
  * any log level greater than `020`.
  */
 enum RF24LogLevel : uint8_t
@@ -53,6 +53,8 @@ enum RF24LogLevel : uint8_t
 /**
  * @defgroup lvlDesc Level Descriptions
  * @brief Level descriptions
+ *
+ * These can be modigied using RF24LOG_SHORT_DESC or RF24LOG_TERSE_DESC macros.
  * @{
  */
 #if defined(RF24LOG_SHORT_DESC)
@@ -69,7 +71,7 @@ const char RF24LogDescInfo[]  = " I";
 const char RF24LogDescDebug[] = "DB";
 const char RF24LogDescLevel[] = "";
 
-#else
+#else // !defined(RF24LOG_*_DESC)
 /** @brief description of the @ref ERROR base level */
 const char RF24LogDescError[] = "ERROR";
 /** @brief description of the @ref WARN base level */
@@ -80,7 +82,7 @@ const char RF24LogDescInfo[] = " INFO";
 const char RF24LogDescDebug[] = "DEBUG";
 /** @brief description of the @ref DEBUG base level */
 const char RF24LogDescLevel[] = "Lvl ";
-#endif
+#endif // !defined(RF24LOG_*_DESC)
 
 /** @brief collection of the base level descriptions */
 const char * const RF24LogDescLevels[] =

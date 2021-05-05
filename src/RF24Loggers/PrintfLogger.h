@@ -1,6 +1,6 @@
 /**
  * @file PrintfLogger.h
- * @brief handler for printf basedfunction calls
+ * @brief handler for printf-based function calls
  * @date Created 2021-04-24
  * @author Brendan Doherty (2bndy5)
  * @copyright Copyright (C)
@@ -15,7 +15,7 @@
 #ifndef SRC_RF24LOGGERS_PRINTFLOGGER_H_
 #define SRC_RF24LOGGERS_PRINTFLOGGER_H_
 
-#include <RF24LogAbstracts.h>
+#include <RF24LogAbstracts/Parsing.h>
 
 /** @brief Class to manage logging messages to a printf function pointer. */
 class PrintfLogger : public RF24LogPrintfParser
@@ -29,7 +29,7 @@ public:
 
 private:
 
-    /** @brief The internal reference to the configured output stream */
+    /** @brief The internal reference to the configured callback function pointer for `printf(const char*, ...)` */
     int (*stream)(const char *, ...);
 
 protected:

@@ -1,6 +1,6 @@
 /**
  * @file RF24Logging.h
- * @brief Provides `rf24Logging` singleton for accessing the RF24Log API.
+ * @brief Provides `rf24Logging` singleton for accessing the @ref LoggingAPI.
  * @date Created 2 Oct 2020
  * @author Witold Markowski (wmarkow)
  * @copyright Copyright (C)
@@ -17,7 +17,7 @@
 #define SRC_RF24LOGGER_H_
 
 #if defined(ARDUINO_ARCH_AVR)
-#include <WString.h>
+#include <WString.h> // __FlashStringHelper
 #endif
 
 /**
@@ -27,8 +27,8 @@
  * @{
  */
 
-#include "RF24LogLevel.h"
-#include "RF24LogHandler.h"
+#include <RF24LogLevel.h>
+#include <RF24LogAbstracts/BaseHandler.h>
 
 #if defined (ARDUINO_ARCH_AVR)
     #define RF24LOG_FLASHIFY(A) F(A)
@@ -97,7 +97,7 @@ class RF24Logging
 {
 private:
     /** @brief The output stream handler configured by sethandler() */
-    RF24LogHandler *handler;
+    RF24LogBaseHandler *handler;
 
 public:
     /** @brief Initializes the handler to nullptr */
@@ -107,7 +107,7 @@ public:
      * @brief set the instance's handler
      * @param handler The log handler where the messages will be redirected.
      */
-    void setHandler(RF24LogHandler *handler);
+    void setHandler(RF24LogBaseHandler *handler);
 
     /**
      * @brief output a log message of any level
