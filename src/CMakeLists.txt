@@ -14,8 +14,11 @@ if (PICO_SDK_PATH)
         ${CMAKE_CURRENT_LIST_DIR}/RF24Logging.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogLevel.h
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/BaseHandler.h
-        ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts.h
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/common.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/Handler.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/SpecifierFormat.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/Stream.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/Parsing.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers/PrintfLogger.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers/PrintfLogger.h
         # pico_stdlib
@@ -24,6 +27,7 @@ if (PICO_SDK_PATH)
     target_include_directories(RF24Log INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}
         ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers
+        ${CMAKE_CURRENT_LIST_DIR}/RF24Abstracts
         ${CMAKE_CURRENT_LIST_DIR}/handler_ext
         )
     return()

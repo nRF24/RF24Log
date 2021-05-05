@@ -30,9 +30,18 @@ pico_add_extra_outputs(gettingStarted)
 # iterate over a list of examples by name
 set(EXAMPLES_LIST
     gettingStarted
-    AllLogLevels
+    allLogLevels
     )
 
 foreach(example ${EXAMPLES_LIST})
-    add_subdirectory(${example})
+    add_executable(${example} ${example}.cpp)
+
+    target_link_libraries(${example} PUBLIC
+        RF24Log
+        pico_stdlib
+        )
+
+    pico_enable_stdio_usb(${example} 1)
+    pico_enable_stdio_uart(${example} 0)
+    pico_add_extra_outputs(${example})
 endforeach()

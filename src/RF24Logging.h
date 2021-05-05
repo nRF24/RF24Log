@@ -42,8 +42,7 @@
     /**
      * @brief ouput an @ref ERROR message
      * @param vendorId A scoping identity of the message's origin
-     * @param message The message format string. Review [Supported `printf`-like specifiers](md_docs_supported_specifiers.html),
-     * but note that not all are supported on certain MCU architectures (eg `%%F` for floats).
+     * @param message The message format string. Review [the supported format spcifiers](md_docs_supported_specifiers.html).
      * @param ... the sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
      */
@@ -52,8 +51,7 @@
     /**
      * @brief output a message to WARN the reader
      * @param vendorId A scoping identity of the message's origin
-     * @param message The message format string. Review [Supported `printf`-like specifiers](md_docs_supported_specifiers.html),
-     * but note that not all are supported on certain MCU architectures (eg `%%F` for floats).
+     * @param message The message format string. Review [the supported format spcifiers](md_docs_supported_specifiers.html).
      * @param ... the sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
      */
@@ -62,8 +60,7 @@
     /**
      * @brief output an @ref INFO message
      * @param vendorId A scoping identity of the message's origin
-     * @param message The message format string. Review [Supported `printf`-like specifiers](md_docs_supported_specifiers.html),
-     * but note that not all are supported on certain MCU architectures (eg `%%F` for floats).
+     * @param message The message format string. Review [the supported format spcifiers](md_docs_supported_specifiers.html).
      * @param ... the sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
      */
@@ -72,8 +69,7 @@
     /**
      * @brief output a message to help developers @ref DEBUG their source code
      * @param vendorId A scoping identity of the message's origin
-     * @param message The message format string. Review [Supported `printf`-like specifiers](md_docs_supported_specifiers.html),
-     * but note that not all are supported on certain MCU architectures (eg `%%F` for floats).
+     * @param message The message format string. Review [the supported format spcifiers](md_docs_supported_specifiers.html).
      * @param ... the sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
      */
@@ -84,8 +80,7 @@
      * @sa RF24Logging::log()
      * @param logLevel the level of the logging message
      * @param vendorId A scoping identity of the message's origin
-     * @param message The message format string. Review [Supported `printf`-like specifiers](md_docs_supported_specifiers.html),
-     * but note that not all are supported on certain MCU architectures (eg `%%F` for floats).
+     * @param message The message format string. Review [the supported format spcifiers](md_docs_supported_specifiers.html).
      * @param ... the sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
      */
@@ -113,8 +108,7 @@ public:
      * @brief output a log message of any level
      * @param logLevel the level of the logging message
      * @param vendorId A scoping identity of the message's origin
-     * @param message The message format string. Review [Supported `printf`-like specifiers](md_docs_supported_specifiers.html),
-     * but note that not all are supported on certain MCU architectures (eg `%%F` for floats).
+     * @param message The message format string. Review [the supported format spcifiers](md_docs_supported_specifiers.html).
      * @param ... the sequence of variables used to replace the format specifiers in the
      * same order for which they appear in the @p message
      */
