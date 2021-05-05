@@ -17,7 +17,7 @@
 
 OStreamLogger::OStreamLogger(std::ostream *stream)
 {
-    this->stream = stream;
+    _stream = stream;
 }
 
 void OStreamLogger::appendTimestamp()
@@ -30,7 +30,7 @@ void OStreamLogger::appendTimestamp()
 
     strftime(buffer, 20, "%F:%H:%M:%S", timeinfo);
     buffer[20] = RF24LOG_DELIMITER;
-    *stream << buffer;
+    *_stream << buffer;
 }
 
 void OStreamLogger::appendChar(char data, uint16_t depth)
@@ -38,7 +38,7 @@ void OStreamLogger::appendChar(char data, uint16_t depth)
     while (depth > 0)
     {
         --depth;
-        *stream << (char)data;
+        *_stream << (char)data;
     }
 }
 
@@ -49,12 +49,12 @@ void OStreamLogger::appendInt(long data, uint8_t base)
         bool is_signed = data < 0;
         if (!data)
         {
-            *stream << '0'; // output a zero
+            *_stream << '0'; // output a zero
             return;
         }
         else if (is_signed)
         {
-            *stream << '-'; // output a negative sign
+            *_stream << '-'; // output a negative sign
         }
         char buffer[64];
         uint8_t index = 0;
@@ -67,20 +67,20 @@ void OStreamLogger::appendInt(long data, uint8_t base)
         }
         while (--index)
         {
-            *stream << buffer[index]; // dump reversed string 1 char at a time
+            *_stream << buffer[index]; // dump reversed string 1 char at a time
         }
     }
     else if (base == 8)
     {
-        *stream << std::oct << data;
+        *_stream << std::oct << data;
     }
     else if (base == 16)
     {
-        *stream << std::hex << data;
+        *_stream << std::hex << data;
     }
     else
     {
-        *stream << std::dec << data;
+        *_stream << std::dec << data;
     }
 }
 
@@ -90,7 +90,7 @@ void OStreamLogger::appendUInt(unsigned long data, uint8_t base)
     {
         if (!data)
         {
-            *stream << '0'; // output a zero
+            *_stream << '0'; // output a zero
             return;
         }
         char buffer[64];
@@ -104,31 +104,31 @@ void OStreamLogger::appendUInt(unsigned long data, uint8_t base)
         }
         while (--index)
         {
-            *stream << buffer[index]; // dump reversed string 1 char at a time
+            *_stream << buffer[index]; // dump reversed string 1 char at a time
         }
     }
     else if (base == 8)
     {
-        *stream << std::oct << data;
+        *_stream << std::oct << data;
     }
     else if (base == 16)
     {
-        *stream << std::hex << data;
+        *_stream << std::hex << data;
     }
     else
     {
-        *stream << std::dec << data;
+        *_stream << std::dec << data;
     }
 }
 
 void OStreamLogger::appendDouble(double data, uint8_t precision)
 {
-    *stream << std::fixed << stream->precision(precision) << data;
+    *_stream << std::fixed << _stream->precision(precision) << data;
 }
 
 void OStreamLogger::appendStr(const char* data)
 {
-    *stream << data;
+    *_stream << data;
 }
 
 #endif // !defined(ARDUINO)

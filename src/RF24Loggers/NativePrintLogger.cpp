@@ -1,5 +1,5 @@
 /**
- * @file PrintfLogger.cpp
+ * @file NativePrintLogger.cpp
  * @date Created 2021-04-24
  * @author Brendan Doherty (2bndy5)
  * @copyright Copyright (C)
@@ -28,19 +28,21 @@
 #include <ctime> // time_t, struct tm*, time(), localtime(), strftime()
 #endif
 
-#include <RF24Loggers/PrintfLogger.h>
+#include <RF24Loggers/NativePrintLogger.h>
 
-PrintfLogger::PrintfLogger()
+NativePrintLogger::NativePrintLogger()
 {
+#if !defined(PICO_BUILD) && !defined(ARDUINO)
     _stream = nullptr;
 }
 
-PrintfLogger::PrintfLogger(char* buffer)
+NativePrintLogger::NativePrintLogger(char* buffer)
 {
     _stream = buffer;
+#endif
 }
 
-void PrintfLogger::appendTimestamp()
+void NativePrintLogger::appendTimestamp()
 {
     #if defined (ARDUINO)
     printf_P("%10lu", millis());
@@ -61,7 +63,7 @@ void PrintfLogger::appendTimestamp()
     #endif // defined (PICO_BUILD) && !defined (ARDUINO)
 }
 
-void PrintfLogger::appendChar(char data, uint16_t depth)
+void NativePrintLogger::appendChar(char data, uint16_t depth)
 {
     while (depth > 0)
     {
@@ -70,7 +72,7 @@ void PrintfLogger::appendChar(char data, uint16_t depth)
     }
 }
 
-void PrintfLogger::appendInt(long data, uint8_t base)
+void NativePrintLogger::appendInt(long data, uint8_t base)
 {
     if (base == 2)
     {
@@ -95,11 +97,48 @@ void PrintfLogger::appendInt(long data, uint8_t base)
     }
     else if (base == 8)
     {
-        printf_P("%o", data);
+        printf_P("%o", (unsigned int)data);
     }
     else if (base == 16)
     {
-        printf_P("%X", data);
+        printf_P("%X", (unsigned int)data);
+    }
+    else
+    {
+        printf_P("%li", data);
+    }
+}
+
+void NativePrintLogger::appendUInt(unsigned long data, uint8_t base)
+{
+    if (base == 2)
+    {
+        if (!data)
+        {
+            printf_P("0"); // output a zero
+            return;
+        }
+        char buffer[64];
+        uint8_t index = 0;
+        while (data)
+        {
+            // get representation as a reversed string
+            buffer[index] = (data & 1) + 48;
+            data >>= 1;
+            ++index;
+        }
+        while (--index)
+        {
+            appendChar(buffer[index]); // dump reversed string 1 char at a time
+        }
+    }
+    else if (base == 8)
+    {
+        printf_P("%o", (unsigned int)data);
+    }
+    else if (base == 16)
+    {
+        printf_P("%X", (unsigned int)data);
     }
     else
     {
@@ -107,51 +146,14 @@ void PrintfLogger::appendInt(long data, uint8_t base)
     }
 }
 
-void PrintfLogger::appendUInt(unsigned long data, uint8_t base)
-{
-    if (base == 2)
-    {
-        if (!data)
-        {
-            printf_P("0"); // output a zero
-            return;
-        }
-        char buffer[64];
-        uint8_t index = 0;
-        while (data)
-        {
-            // get representation as a reversed string
-            buffer[index] = (data & 1) + 48;
-            data >>= 1;
-            ++index;
-        }
-        while (--index)
-        {
-            appendChar(buffer[index]); // dump reversed string 1 char at a time
-        }
-    }
-    else if (base == 8)
-    {
-        printf_P("%o", data);
-    }
-    else if (base == 16)
-    {
-        printf_P("%X", data);
-    }
-    else
-    {
-        printf_P("%l", data);
-    }
-}
-
-void PrintfLogger::appendDouble(double data, uint8_t precision)
+void NativePrintLogger::appendDouble(double data, uint8_t precision)
 {
     char fmt_buf[64];
     sprintf(fmt_buf, "%%.%dF", precision); // prepares a fmt str ("%.nF")
     printf_P(fmt_buf, data);
 }
 
-void PrintfLogger::appendStr(const char* data)
+void NativePrintLogger::appendStr(const char* data)
 {
     printf_P("%s", data);
 }

@@ -18,7 +18,7 @@
 
 ArduinoPrintLogger::ArduinoPrintLogger(Print *stream)
 {
-    this->stream = stream;
+    _stream = stream;
 }
 
 void ArduinoPrintLogger::appendTimestamp()
@@ -35,33 +35,33 @@ void ArduinoPrintLogger::appendChar(char data, uint16_t depth)
     while (depth > 0)
     {
         --depth;
-        stream->print((char)data);
+        _stream->print((char)data);
     }
 }
 
 void ArduinoPrintLogger::appendInt(long data, uint8_t base)
 {
-    stream->print((int)data, base == 2 ? BIN : (base == 8 ? OCT : (base == 16 ? HEX : DEC)));
+    _stream->print((int)data, base == 2 ? BIN : (base == 8 ? OCT : (base == 16 ? HEX : DEC)));
 }
 
 void ArduinoPrintLogger::appendUInt(unsigned long data, uint8_t base)
 {
-    stream->print((unsigned long)data, base == 2 ? BIN : (base == 8 ? OCT : (base == 16 ? HEX : DEC)));
+    _stream->print((unsigned long)data, base == 2 ? BIN : (base == 8 ? OCT : (base == 16 ? HEX : DEC)));
 }
 
 void ArduinoPrintLogger::appendDouble(double data, uint8_t precision)
 {
-    stream->print(data, precision);
+    _stream->print(data, precision);
 }
 
 void ArduinoPrintLogger::appendStr(const char* data)
 {
-    stream->print(data);
+    _stream->print(data);
 }
 
 #ifdef ARDUINO_ARCH_AVR
 void ArduinoPrintLogger::appendStr(const __FlashStringHelper* data)
 {
-    stream->print(data);
+    _stream->print(data);
 }
 #endif

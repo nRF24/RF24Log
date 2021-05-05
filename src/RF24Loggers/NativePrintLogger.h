@@ -1,5 +1,5 @@
 /**
- * @file PrintfLogger.h
+ * @file NativePrintLogger.h
  * @brief handler for printf-based function calls
  * @date Created 2021-04-24
  * @author Brendan Doherty (2bndy5)
@@ -12,32 +12,35 @@
  * Public License instead of this License.
  */
 
-#ifndef SRC_RF24LOGGERS_PRINTFLOGGER_H_
-#define SRC_RF24LOGGERS_PRINTFLOGGER_H_
+#ifndef SRC_RF24LOGGERS_NATIVEPRINTLOGGER_H_
+#define SRC_RF24LOGGERS_NATIVEPRINTLOGGER_H_
 
 #include <RF24LogAbstracts/Parsing.h>
 
+/** @brief macro pointing to the natively available `printf()` */
 #ifndef printf_P
 #define printf_P printf
 #endif
 
 /** @brief Class to manage logging messages to a printf function pointer. */
-class PrintfLogger : public RF24LogPrintfParser
+class NativePrintLogger : public RF24LogPrintfParser
 {
 public:
-    /** @brief Construct a new PrintfLogger object using stdout */
-    PrintfLogger();
+    /** @brief Construct a new NativePrintLogger object using stdout */
+    NativePrintLogger();
 
+#if !defined(PICO_BUILD) && !defined(ARDUINO)
     /**
-     * @brief Construct a new PrintfLogger object using a string as a buffer
+     * @brief Construct a new NativePrintLogger object using a string as a buffer
      * @param buffer The string that will be used instead of stdout.
      */
-    PrintfLogger(char* buffer);
+    NativePrintLogger(char* buffer);
 
-private:
+protected:
 
-    /** @brief The internal reference to the configured callback function pointer for `printf(const char*, ...)` */
+    /** @brief The internal reference to a buffer to use instead of stdout */
     char* _stream;
+#endif
 
 protected:
 
@@ -52,4 +55,4 @@ protected:
     void appendStr(const char* data);
 };
 
-#endif // SRC_RF24LOGGERS_PRINTFLOGGER_H_
+#endif // SRC_RF24LOGGERS_NATIVEPRINTLOGGER_H_

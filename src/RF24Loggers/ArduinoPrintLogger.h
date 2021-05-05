@@ -25,7 +25,7 @@ class ArduinoPrintLogger : public RF24LogPrintfParser
 protected:
 
     /** @brief The output stream */
-    Print *stream;
+    Print* _stream;
 
 public:
 

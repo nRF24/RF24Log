@@ -19,9 +19,8 @@ if (PICO_SDK_PATH)
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/SpecifierFormat.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/Stream.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/Parsing.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers/PrintfLogger.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers/PrintfLogger.h
-        # pico_stdlib
+        ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers/NativePrintLogger.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers/OStreamLogger.cpp
         )
 
     target_include_directories(RF24Log INTERFACE

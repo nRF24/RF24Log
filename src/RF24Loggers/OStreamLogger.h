@@ -31,7 +31,7 @@ public:
 private:
 
     /** The internal reference to the configured output stream */
-    std::ostream* stream;
+    std::ostream* _stream;
 
 protected:
 

@@ -26,10 +26,10 @@ ArduinoPrintLogger serialLogHandler(&Serial);
 #include "pico/stdlib.h"  // printf(), sleep_ms(), getchar_timeout_us(), to_us_since_boot(), get_absolute_time()
 #include "pico/bootrom.h" // reset_usb_boot()
 #include <tusb.h>         // tud_cdc_connected()
-#include <RF24Loggers/PrintfLogger.h>
+#include <RF24Loggers/NativePrintLogger.h>
 
 // Create hardware serial port log handler
-PrintfLogger serialLogHandler(&printf);
+NativePrintLogger serialLogHandler;
 
 #else
 #include <iostream>

@@ -35,7 +35,7 @@ void setup()
 {
   // configure serial port baudrate
   Serial.begin(115200);
-  while (!Serial) {/* some boards need this */ ; }
+  while (!Serial) { /* some boards need this */ }
 
   // set maximal log level to ALL
   rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
