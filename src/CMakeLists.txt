@@ -36,3 +36,24 @@ cmake_minimum_required(VERSION 3.15)
 
 # Set the project name to your project name, my project isn't very descriptive
 project(nRF24Log CXX)
+
+add_library(RF24Log STATIC
+    RF24Logging.cpp
+    RF24LogLevel.h
+    RF24LogAbstracts/BaseHandler.h
+    RF24LogAbstracts/common.cpp
+    RF24LogAbstracts/Handler.cpp
+    RF24LogAbstracts/SpecifierFormat.cpp
+    RF24LogAbstracts/Stream.cpp
+    RF24LogAbstracts/Parsing.cpp
+    RF24Loggers/NativePrintLogger.cpp
+    RF24Loggers/OStreamLogger.cpp
+    )
+
+
+target_include_directories(RF24Log PUBLIC
+    ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers
+    ${CMAKE_CURRENT_LIST_DIR}/RF24Abstracts
+    ${CMAKE_CURRENT_LIST_DIR}/handler_ext
+    )

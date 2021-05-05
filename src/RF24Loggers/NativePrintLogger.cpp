@@ -59,7 +59,7 @@ void NativePrintLogger::appendTimestamp()
 
     strftime(buffer, 20, "%F:%H:%M:%S", timeinfo);
     buffer[20] = RF24LOG_DELIMITER;
-    printf_P(buffer);
+    printf_P("%s", buffer);
     #endif // defined (PICO_BUILD) && !defined (ARDUINO)
 }
 
