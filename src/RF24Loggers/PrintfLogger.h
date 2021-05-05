@@ -21,18 +21,6 @@
 #define printf_P printf
 #endif
 
-#ifndef PSTR
-#define PSTR(x) (x)
-#endif
-
-#ifndef PROGMEM
-#define PROGMEM
-#endif
-
-#ifndef pgm_read_word
-#define pgm_read_word(p) (*(p))
-#endif
-
 /** @brief Class to manage logging messages to a printf function pointer. */
 class PrintfLogger : public RF24LogPrintfParser
 {

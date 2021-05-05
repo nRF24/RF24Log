@@ -43,9 +43,11 @@ PrintfLogger::PrintfLogger(char* buffer)
 void PrintfLogger::appendTimestamp()
 {
     #if defined (ARDUINO)
-    printf_P(PSTR("%10lu;"), millis());
+    printf_P("%10lu", millis());
+    printf_P("%c", RF24LOG_DELIMITER);
     #elif defined(PICO_BUILD)
-    printf_P(PSTR("%10lu;"), to_ms_since_boot(get_absolute_time()));
+    printf_P("%10lu", to_ms_since_boot(get_absolute_time()));
+    printf_P("%c", RF24LOG_DELIMITER);
     #else // !defined (PICO_BUILD) && !defined (ARDUINO)
     char buffer[21];
     time_t rawtime;
@@ -55,7 +57,7 @@ void PrintfLogger::appendTimestamp()
 
     strftime(buffer, 20, "%F:%H:%M:%S", timeinfo);
     buffer[20] = RF24LOG_DELIMITER;
-    printf_P(PSTR(buffer));
+    printf_P(buffer);
     #endif // defined (PICO_BUILD) && !defined (ARDUINO)
 }
 
@@ -64,7 +66,7 @@ void PrintfLogger::appendChar(char data, uint16_t depth)
     while (depth > 0)
     {
         --depth;
-        printf_P(PSTR("%c"), data);
+        printf_P("%c", data);
     }
 }
 
@@ -74,7 +76,7 @@ void PrintfLogger::appendInt(long data, uint8_t base)
     {
         if (!data)
         {
-            printf_P(PSTR("0")); // output a zero
+            printf_P("0"); // output a zero
             return;
         }
         char buffer[64];
@@ -93,15 +95,15 @@ void PrintfLogger::appendInt(long data, uint8_t base)
     }
     else if (base == 8)
     {
-        printf_P(PSTR("%o"), data);
+        printf_P("%o", data);
     }
     else if (base == 16)
     {
-        printf_P(PSTR("%X"), data);
+        printf_P("%X", data);
     }
     else
     {
-        printf_P(PSTR("%lu"), data);
+        printf_P("%lu", data);
     }
 }
 
@@ -111,7 +113,7 @@ void PrintfLogger::appendUInt(unsigned long data, uint8_t base)
     {
         if (!data)
         {
-            printf_P(PSTR("0")); // output a zero
+            printf_P("0"); // output a zero
             return;
         }
         char buffer[64];
@@ -130,15 +132,15 @@ void PrintfLogger::appendUInt(unsigned long data, uint8_t base)
     }
     else if (base == 8)
     {
-        printf_P(PSTR("%o"), data);
+        printf_P("%o", data);
     }
     else if (base == 16)
     {
-        printf_P(PSTR("%X"), data);
+        printf_P("%X", data);
     }
     else
     {
-        printf_P(PSTR("%l"), data);
+        printf_P("%l", data);
     }
 }
 
@@ -146,7 +148,7 @@ void PrintfLogger::appendDouble(double data, uint8_t precision)
 {
     char fmt_buf[64];
     sprintf(fmt_buf, "%%.%dF", precision); // prepares a fmt str ("%.nF")
-    printf_P(PSTR(fmt_buf), data);
+    printf_P(fmt_buf, data);
 }
 
 void PrintfLogger::appendStr(const char* data)
