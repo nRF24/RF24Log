@@ -6,8 +6,7 @@ var searchData=
   ['specifierformat_2ecpp_79',['SpecifierFormat.cpp',['../_specifier_format_8cpp.html',1,'']]],
   ['specifierformat_2eh_80',['SpecifierFormat.h',['../_specifier_format_8h.html',1,'']]],
   ['specifierparsing_81',['SpecifierParsing',['../struct_specifier_parsing.html',1,'SpecifierParsing'],['../struct_specifier_parsing.html#aa3396960c7216d9f80ac46ccb21893cb',1,'SpecifierParsing::SpecifierParsing()']]],
-  ['stream_82',['stream',['../class_arduino_print_logger.html#afc518aba1aeea255105e371aecf805a4',1,'ArduinoPrintLogger']]],
-  ['stream_2ecpp_83',['Stream.cpp',['../_stream_8cpp.html',1,'']]],
-  ['stream_2eh_84',['Stream.h',['../_stream_8h.html',1,'']]],
-  ['supported_20format_20specifiers_85',['Supported Format Specifiers',['../md_docs_supported_specifiers.html',1,'']]]
+  ['stream_2ecpp_82',['Stream.cpp',['../_stream_8cpp.html',1,'']]],
+  ['stream_2eh_83',['Stream.h',['../_stream_8h.html',1,'']]],
+  ['supported_20format_20specifiers_84',['Supported Format Specifiers',['../md_docs_supported_specifiers.html',1,'']]]
 ];

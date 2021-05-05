@@ -79,7 +79,7 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_o_stream_logger.html#a7c8efbb70c6c6cd7cf6d12c73fc77a59">   18</a></span>&#160;<a class="code" href="class_o_stream_logger.html#a7c8efbb70c6c6cd7cf6d12c73fc77a59">OStreamLogger::OStreamLogger</a>(std::ostream *stream)</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    this-&gt;stream = stream;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    _stream = stream;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_o_stream_logger.html#a31baad77b29303321f8e829792c90e49">   23</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_o_stream_logger.html#a31baad77b29303321f8e829792c90e49">OStreamLogger::appendTimestamp</a>()</div>
@@ -92,7 +92,7 @@ $(function() {
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    strftime(buffer, 20, <span class="stringliteral">&quot;%F:%H:%M:%S&quot;</span>, timeinfo);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    buffer[20] = <a class="code" href="_base_handler_8h.html#ab14adeae939293a495032b94f8b4576d">RF24LOG_DELIMITER</a>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    *stream &lt;&lt; buffer;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    *_stream &lt;&lt; buffer;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_o_stream_logger.html#a3e979d09892a586f8f458ed7b210f53e">   36</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_o_stream_logger.html#a3e979d09892a586f8f458ed7b210f53e">OStreamLogger::appendChar</a>(<span class="keywordtype">char</span> data, uint16_t depth)</div>
@@ -100,7 +100,7 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">while</span> (depth &gt; 0)</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        --depth;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        *stream &lt;&lt; (char)data;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        *_stream &lt;&lt; (char)data;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
@@ -111,12 +111,12 @@ $(function() {
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">bool</span> is_signed = data &lt; 0;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">if</span> (!data)</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            *stream &lt;&lt; <span class="charliteral">&#39;0&#39;</span>; <span class="comment">// output a zero</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            *_stream &lt;&lt; <span class="charliteral">&#39;0&#39;</span>; <span class="comment">// output a zero</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (is_signed)</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            *stream &lt;&lt; <span class="charliteral">&#39;-&#39;</span>; <span class="comment">// output a negative sign</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            *_stream &lt;&lt; <span class="charliteral">&#39;-&#39;</span>; <span class="comment">// output a negative sign</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">char</span> buffer[64];</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        uint8_t index = 0;</div>
@@ -129,20 +129,20 @@ $(function() {
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">while</span> (--index)</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            *stream &lt;&lt; buffer[index]; <span class="comment">// dump reversed string 1 char at a time</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            *_stream &lt;&lt; buffer[index]; <span class="comment">// dump reversed string 1 char at a time</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (base == 8)</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        *stream &lt;&lt; std::oct &lt;&lt; data;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        *_stream &lt;&lt; std::oct &lt;&lt; data;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (base == 16)</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        *stream &lt;&lt; std::hex &lt;&lt; data;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        *_stream &lt;&lt; std::hex &lt;&lt; data;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        *stream &lt;&lt; std::dec &lt;&lt; data;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        *_stream &lt;&lt; std::dec &lt;&lt; data;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
@@ -152,7 +152,7 @@ $(function() {
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    {</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">if</span> (!data)</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            *stream &lt;&lt; <span class="charliteral">&#39;0&#39;</span>; <span class="comment">// output a zero</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            *_stream &lt;&lt; <span class="charliteral">&#39;0&#39;</span>; <span class="comment">// output a zero</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordtype">char</span> buffer[64];</div>
@@ -166,31 +166,31 @@ $(function() {
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">while</span> (--index)</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            *stream &lt;&lt; buffer[index]; <span class="comment">// dump reversed string 1 char at a time</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            *_stream &lt;&lt; buffer[index]; <span class="comment">// dump reversed string 1 char at a time</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (base == 8)</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        *stream &lt;&lt; std::oct &lt;&lt; data;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        *_stream &lt;&lt; std::oct &lt;&lt; data;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (base == 16)</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        *stream &lt;&lt; std::hex &lt;&lt; data;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        *_stream &lt;&lt; std::hex &lt;&lt; data;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        *stream &lt;&lt; std::dec &lt;&lt; data;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        *_stream &lt;&lt; std::dec &lt;&lt; data;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
 <div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="class_o_stream_logger.html#a8baef5f18471ee46faa50a684b33e8c1">  124</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_o_stream_logger.html#a8baef5f18471ee46faa50a684b33e8c1">OStreamLogger::appendDouble</a>(<span class="keywordtype">double</span> data, uint8_t precision)</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;{</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    *stream &lt;&lt; std::fixed &lt;&lt; stream-&gt;precision(precision) &lt;&lt; data;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    *_stream &lt;&lt; std::fixed &lt;&lt; _stream-&gt;precision(precision) &lt;&lt; data;</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
 <div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="class_o_stream_logger.html#ac06915d24dc6ab8dc61cd009acc9080a">  129</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_o_stream_logger.html#ac06915d24dc6ab8dc61cd009acc9080a">OStreamLogger::appendStr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* data)</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;{</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    *stream &lt;&lt; data;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    *_stream &lt;&lt; data;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// !defined(ARDUINO)</span></div>

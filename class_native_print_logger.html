@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RF24Log: PrintfLogger Class Reference</title>
+<title>RF24Log: NativePrintLogger Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,22 +66,23 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="class_printf_logger-members.html">List of all members</a>  </div>
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="class_native_print_logger-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">PrintfLogger Class Reference</div>  </div>
+<div class="title">NativePrintLogger Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>Class to manage logging messages to a printf function pointer.  
- <a href="class_printf_logger.html#details">More...</a></p>
+ <a href="class_native_print_logger.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="_printf_logger_8h_source.html">PrintfLogger.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_native_print_logger_8h_source.html">NativePrintLogger.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for PrintfLogger:</div>
+Inheritance diagram for NativePrintLogger:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="class_printf_logger.png" usemap="#PrintfLogger_map" alt=""/>
-  <map id="PrintfLogger_map" name="PrintfLogger_map">
+  <img src="class_native_print_logger.png" usemap="#NativePrintLogger_map" alt=""/>
+  <map id="NativePrintLogger_map" name="NativePrintLogger_map">
 <area href="class_r_f24_log_printf_parser.html" title="class that holds the RF24Log&#39;s in-house printf-like parsing" alt="RF24LogPrintfParser" shape="rect" coords="82,112,237,136"/>
 <area href="class_r_f24_log_abstract_handler.html" title="An abstract base class for handling log messages." alt="RF24LogAbstractHandler" shape="rect" coords="0,56,155,80"/>
 <area href="class_r_f24_log_abstract_stream.html" title="A protected collection of methods that output formatted data to a stream." alt="RF24LogAbstractStream" shape="rect" coords="165,56,320,80"/>
@@ -91,13 +92,13 @@ Inheritance diagram for PrintfLogger:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2f29142a2cb3ed2f68879fb0fce0e38f"><td class="memItemLeft" align="right" valign="top"><a id="a2f29142a2cb3ed2f68879fb0fce0e38f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#a2f29142a2cb3ed2f68879fb0fce0e38f">PrintfLogger</a> ()</td></tr>
-<tr class="memdesc:a2f29142a2cb3ed2f68879fb0fce0e38f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_printf_logger.html" title="Class to manage logging messages to a printf function pointer.">PrintfLogger</a> object using stdout. <br /></td></tr>
-<tr class="separator:a2f29142a2cb3ed2f68879fb0fce0e38f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd6f6176310f12c7102111af6b4edc04"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#afd6f6176310f12c7102111af6b4edc04">PrintfLogger</a> (char *buffer)</td></tr>
-<tr class="memdesc:afd6f6176310f12c7102111af6b4edc04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_printf_logger.html" title="Class to manage logging messages to a printf function pointer.">PrintfLogger</a> object using a string as a buffer.  <a href="class_printf_logger.html#afd6f6176310f12c7102111af6b4edc04">More...</a><br /></td></tr>
-<tr class="separator:afd6f6176310f12c7102111af6b4edc04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5d94600acf3a6bbbbd37751d9fb88d2"><td class="memItemLeft" align="right" valign="top"><a id="af5d94600acf3a6bbbbd37751d9fb88d2"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_native_print_logger.html#af5d94600acf3a6bbbbd37751d9fb88d2">NativePrintLogger</a> ()</td></tr>
+<tr class="memdesc:af5d94600acf3a6bbbbd37751d9fb88d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_native_print_logger.html" title="Class to manage logging messages to a printf function pointer.">NativePrintLogger</a> object using stdout. <br /></td></tr>
+<tr class="separator:af5d94600acf3a6bbbbd37751d9fb88d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc90213591586e582c7e603c05d0600d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_native_print_logger.html#adc90213591586e582c7e603c05d0600d">NativePrintLogger</a> (char *buffer)</td></tr>
+<tr class="memdesc:adc90213591586e582c7e603c05d0600d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_native_print_logger.html" title="Class to manage logging messages to a printf function pointer.">NativePrintLogger</a> object using a string as a buffer.  <a href="class_native_print_logger.html#adc90213591586e582c7e603c05d0600d">More...</a><br /></td></tr>
+<tr class="separator:adc90213591586e582c7e603c05d0600d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_r_f24_log_abstract_handler"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_r_f24_log_abstract_handler')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_r_f24_log_abstract_handler.html">RF24LogAbstractHandler</a></td></tr>
 <tr class="memitem:a727eba3803143b9b771abbf3b41e71c6 inherit pub_methods_class_r_f24_log_abstract_handler"><td class="memItemLeft" align="right" valign="top"><a id="a727eba3803143b9b771abbf3b41e71c6"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#a727eba3803143b9b771abbf3b41e71c6">RF24LogAbstractHandler</a> ()</td></tr>
@@ -111,25 +112,25 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:aafbfc7eb7ab901e2e989731f09b55727"><td class="memItemLeft" align="right" valign="top"><a id="aafbfc7eb7ab901e2e989731f09b55727"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#aafbfc7eb7ab901e2e989731f09b55727">appendTimestamp</a> ()</td></tr>
-<tr class="memdesc:aafbfc7eb7ab901e2e989731f09b55727"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a timestamp <br /></td></tr>
-<tr class="separator:aafbfc7eb7ab901e2e989731f09b55727"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace47ff4489610f80f55b50296d84f49b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#ace47ff4489610f80f55b50296d84f49b">appendChar</a> (char data, uint16_t depth=1)</td></tr>
-<tr class="memdesc:ace47ff4489610f80f55b50296d84f49b"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a padding character a number of times  <a href="class_printf_logger.html#ace47ff4489610f80f55b50296d84f49b">More...</a><br /></td></tr>
-<tr class="separator:ace47ff4489610f80f55b50296d84f49b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f43dac0fc5ae55f0cbb29ceb9b710d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#a6f43dac0fc5ae55f0cbb29ceb9b710d9">appendInt</a> (long data, uint8_t base=10)</td></tr>
-<tr class="memdesc:a6f43dac0fc5ae55f0cbb29ceb9b710d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a signed (+/-) number  <a href="class_printf_logger.html#a6f43dac0fc5ae55f0cbb29ceb9b710d9">More...</a><br /></td></tr>
-<tr class="separator:a6f43dac0fc5ae55f0cbb29ceb9b710d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4d0ebc1747bac47c1cf8eed1f44aeeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#af4d0ebc1747bac47c1cf8eed1f44aeeb">appendUInt</a> (unsigned long data, uint8_t base=10)</td></tr>
-<tr class="memdesc:af4d0ebc1747bac47c1cf8eed1f44aeeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">append an &lsquo;unsigned&rsquo; (only +) number  <a href="class_printf_logger.html#af4d0ebc1747bac47c1cf8eed1f44aeeb">More...</a><br /></td></tr>
-<tr class="separator:af4d0ebc1747bac47c1cf8eed1f44aeeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bce89c8fd5eb22795a0402141e32acc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#a9bce89c8fd5eb22795a0402141e32acc">appendDouble</a> (double data, uint8_t precision=2)</td></tr>
-<tr class="memdesc:a9bce89c8fd5eb22795a0402141e32acc"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a floating point number  <a href="class_printf_logger.html#a9bce89c8fd5eb22795a0402141e32acc">More...</a><br /></td></tr>
-<tr class="separator:a9bce89c8fd5eb22795a0402141e32acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6b4073ed52778bbdfd73201316a51d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_printf_logger.html#ae6b4073ed52778bbdfd73201316a51d4">appendStr</a> (const char *data)</td></tr>
-<tr class="memdesc:ae6b4073ed52778bbdfd73201316a51d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a c-string  <a href="class_printf_logger.html#ae6b4073ed52778bbdfd73201316a51d4">More...</a><br /></td></tr>
-<tr class="separator:ae6b4073ed52778bbdfd73201316a51d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e176db3130233e863677d22b6ae5355"><td class="memItemLeft" align="right" valign="top"><a id="a5e176db3130233e863677d22b6ae5355"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_native_print_logger.html#a5e176db3130233e863677d22b6ae5355">appendTimestamp</a> ()</td></tr>
+<tr class="memdesc:a5e176db3130233e863677d22b6ae5355"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a timestamp <br /></td></tr>
+<tr class="separator:a5e176db3130233e863677d22b6ae5355"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65add4f9391c15cc1d1fe23fe9968bf2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_native_print_logger.html#a65add4f9391c15cc1d1fe23fe9968bf2">appendChar</a> (char data, uint16_t depth=1)</td></tr>
+<tr class="memdesc:a65add4f9391c15cc1d1fe23fe9968bf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a padding character a number of times  <a href="class_native_print_logger.html#a65add4f9391c15cc1d1fe23fe9968bf2">More...</a><br /></td></tr>
+<tr class="separator:a65add4f9391c15cc1d1fe23fe9968bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a747272468ec3b13a7805eeae76a96ed7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_native_print_logger.html#a747272468ec3b13a7805eeae76a96ed7">appendInt</a> (long data, uint8_t base=10)</td></tr>
+<tr class="memdesc:a747272468ec3b13a7805eeae76a96ed7"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a signed (+/-) number  <a href="class_native_print_logger.html#a747272468ec3b13a7805eeae76a96ed7">More...</a><br /></td></tr>
+<tr class="separator:a747272468ec3b13a7805eeae76a96ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bba6083efa24facae190c3ce16795bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_native_print_logger.html#a9bba6083efa24facae190c3ce16795bb">appendUInt</a> (unsigned long data, uint8_t base=10)</td></tr>
+<tr class="memdesc:a9bba6083efa24facae190c3ce16795bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">append an &lsquo;unsigned&rsquo; (only +) number  <a href="class_native_print_logger.html#a9bba6083efa24facae190c3ce16795bb">More...</a><br /></td></tr>
+<tr class="separator:a9bba6083efa24facae190c3ce16795bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdab078931aebd8da69edafc7748b52f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_native_print_logger.html#afdab078931aebd8da69edafc7748b52f">appendDouble</a> (double data, uint8_t precision=2)</td></tr>
+<tr class="memdesc:afdab078931aebd8da69edafc7748b52f"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a floating point number  <a href="class_native_print_logger.html#afdab078931aebd8da69edafc7748b52f">More...</a><br /></td></tr>
+<tr class="separator:afdab078931aebd8da69edafc7748b52f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8f9893285a2c56a37659b18ebaa57ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_native_print_logger.html#aa8f9893285a2c56a37659b18ebaa57ad">appendStr</a> (const char *data)</td></tr>
+<tr class="memdesc:aa8f9893285a2c56a37659b18ebaa57ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a c-string  <a href="class_native_print_logger.html#aa8f9893285a2c56a37659b18ebaa57ad">More...</a><br /></td></tr>
+<tr class="separator:aa8f9893285a2c56a37659b18ebaa57ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_r_f24_log_printf_parser"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_r_f24_log_printf_parser')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_r_f24_log_printf_parser.html">RF24LogPrintfParser</a></td></tr>
 <tr class="memitem:a47e693af8d708cdd92df8e5431da6136 inherit pro_methods_class_r_f24_log_printf_parser"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_printf_parser.html#a47e693af8d708cdd92df8e5431da6136">write</a> (uint8_t logLevel, const char *vendorId, const char *message, va_list *args)</td></tr>
 <tr class="separator:a47e693af8d708cdd92df8e5431da6136 inherit pro_methods_class_r_f24_log_printf_parser"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,8 +145,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a4f33705456e0f1c407d21da70b2a5742 inherit pro_methods_class_r_f24_log_abstract_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a data according to the format specifier  <a href="class_r_f24_log_abstract_stream.html#a4f33705456e0f1c407d21da70b2a5742">More...</a><br /></td></tr>
 <tr class="separator:a4f33705456e0f1c407d21da70b2a5742 inherit pro_methods_class_r_f24_log_abstract_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:aca7adfe2694a202c7697afdd76d860d4"><td class="memItemLeft" align="right" valign="top"><a id="aca7adfe2694a202c7697afdd76d860d4"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_native_print_logger.html#aca7adfe2694a202c7697afdd76d860d4">_stream</a></td></tr>
+<tr class="memdesc:aca7adfe2694a202c7697afdd76d860d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The internal reference to a buffer to use instead of stdout. <br /></td></tr>
+<tr class="separator:aca7adfe2694a202c7697afdd76d860d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_r_f24_log_abstract_handler"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_r_f24_log_abstract_handler')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_r_f24_log_abstract_handler.html">RF24LogAbstractHandler</a></td></tr>
 <tr class="memitem:a650052e3d7dea165ccfbc93e0ca267a2 inherit pro_attribs_class_r_f24_log_abstract_handler"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#a650052e3d7dea165ccfbc93e0ca267a2">_logLevel</a></td></tr>
 <tr class="separator:a650052e3d7dea165ccfbc93e0ca267a2 inherit pro_attribs_class_r_f24_log_abstract_handler"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,16 +160,16 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_all_log_levels_8ino-example.html#_a1">AllLogLevels.ino</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_printf_logger_8h_source.html#l00025">25</a> of file <a class="el" href="_printf_logger_8h_source.html">PrintfLogger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_native_print_logger_8h_source.html#l00026">26</a> of file <a class="el" href="_native_print_logger_8h_source.html">NativePrintLogger.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="afd6f6176310f12c7102111af6b4edc04"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd6f6176310f12c7102111af6b4edc04">&#9670;&nbsp;</a></span>PrintfLogger()</h2>
+<a id="adc90213591586e582c7e603c05d0600d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc90213591586e582c7e603c05d0600d">&#9670;&nbsp;</a></span>NativePrintLogger()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PrintfLogger::PrintfLogger </td>
+          <td class="memname">NativePrintLogger::NativePrintLogger </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>buffer</em></td><td>)</td>
@@ -173,7 +178,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="class_printf_logger.html" title="Class to manage logging messages to a printf function pointer.">PrintfLogger</a> object using a string as a buffer. </p>
+<p>Construct a new <a class="el" href="class_native_print_logger.html" title="Class to manage logging messages to a printf function pointer.">NativePrintLogger</a> object using a string as a buffer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">buffer</td><td>The string that will be used instead of stdout. </td></tr>
@@ -181,13 +186,13 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00038">38</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_native_print_logger_8cpp_source.html#l00039">39</a> of file <a class="el" href="_native_print_logger_8cpp_source.html">NativePrintLogger.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ace47ff4489610f80f55b50296d84f49b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace47ff4489610f80f55b50296d84f49b">&#9670;&nbsp;</a></span>appendChar()</h2>
+<a id="a65add4f9391c15cc1d1fe23fe9968bf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65add4f9391c15cc1d1fe23fe9968bf2">&#9670;&nbsp;</a></span>appendChar()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -196,7 +201,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void PrintfLogger::appendChar </td>
+          <td class="memname">void NativePrintLogger::appendChar </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -231,12 +236,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">RF24LogAbstractStream</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00064">64</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_native_print_logger_8cpp_source.html#l00066">66</a> of file <a class="el" href="_native_print_logger_8cpp_source.html">NativePrintLogger.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a9bce89c8fd5eb22795a0402141e32acc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9bce89c8fd5eb22795a0402141e32acc">&#9670;&nbsp;</a></span>appendDouble()</h2>
+<a id="afdab078931aebd8da69edafc7748b52f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdab078931aebd8da69edafc7748b52f">&#9670;&nbsp;</a></span>appendDouble()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -245,7 +250,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void PrintfLogger::appendDouble </td>
+          <td class="memname">void NativePrintLogger::appendDouble </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -280,12 +285,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#aed0c58fe5d99a5761700afafa36f9005">RF24LogAbstractStream</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00147">147</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_native_print_logger_8cpp_source.html#l00149">149</a> of file <a class="el" href="_native_print_logger_8cpp_source.html">NativePrintLogger.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a6f43dac0fc5ae55f0cbb29ceb9b710d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f43dac0fc5ae55f0cbb29ceb9b710d9">&#9670;&nbsp;</a></span>appendInt()</h2>
+<a id="a747272468ec3b13a7805eeae76a96ed7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a747272468ec3b13a7805eeae76a96ed7">&#9670;&nbsp;</a></span>appendInt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -294,7 +299,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void PrintfLogger::appendInt </td>
+          <td class="memname">void NativePrintLogger::appendInt </td>
           <td>(</td>
           <td class="paramtype">long&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -329,12 +334,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">RF24LogAbstractStream</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00073">73</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_native_print_logger_8cpp_source.html#l00075">75</a> of file <a class="el" href="_native_print_logger_8cpp_source.html">NativePrintLogger.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ae6b4073ed52778bbdfd73201316a51d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6b4073ed52778bbdfd73201316a51d4">&#9670;&nbsp;</a></span>appendStr()</h2>
+<a id="aa8f9893285a2c56a37659b18ebaa57ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8f9893285a2c56a37659b18ebaa57ad">&#9670;&nbsp;</a></span>appendStr()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -343,7 +348,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void PrintfLogger::appendStr </td>
+          <td class="memname">void NativePrintLogger::appendStr </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>data</em></td><td>)</td>
@@ -367,12 +372,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#a6c883ca4fd17889b6f99e5ac1d002558">RF24LogAbstractStream</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00154">154</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_native_print_logger_8cpp_source.html#l00156">156</a> of file <a class="el" href="_native_print_logger_8cpp_source.html">NativePrintLogger.cpp</a>.</p>
 
 </div>
 </div>
-<a id="af4d0ebc1747bac47c1cf8eed1f44aeeb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4d0ebc1747bac47c1cf8eed1f44aeeb">&#9670;&nbsp;</a></span>appendUInt()</h2>
+<a id="a9bba6083efa24facae190c3ce16795bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bba6083efa24facae190c3ce16795bb">&#9670;&nbsp;</a></span>appendUInt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -381,7 +386,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void PrintfLogger::appendUInt </td>
+          <td class="memname">void NativePrintLogger::appendUInt </td>
           <td>(</td>
           <td class="paramtype">unsigned long&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -416,13 +421,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">RF24LogAbstractStream</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_printf_logger_8cpp_source.html#l00110">110</a> of file <a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_native_print_logger_8cpp_source.html#l00112">112</a> of file <a class="el" href="_native_print_logger_8cpp_source.html">NativePrintLogger.cpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/RF24Loggers/<a class="el" href="_printf_logger_8h_source.html">PrintfLogger.h</a></li>
-<li>src/RF24Loggers/<a class="el" href="_printf_logger_8cpp_source.html">PrintfLogger.cpp</a></li>
+<li>src/RF24Loggers/<a class="el" href="_native_print_logger_8h_source.html">NativePrintLogger.h</a></li>
+<li>src/RF24Loggers/<a class="el" href="_native_print_logger_8cpp_source.html">NativePrintLogger.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
