@@ -97,21 +97,21 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#a727eba3803143b9b771abbf3b41e71c6">RF24LogAbstractHandler</a> ()</td></tr>
 <tr class="memdesc:a727eba3803143b9b771abbf3b41e71c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets log level to <a class="el" href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a748005382152808a72b1a9177d9dc806">INFO</a> upon instantiation. <br /></td></tr>
 <tr class="separator:a727eba3803143b9b771abbf3b41e71c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54660bdcc2271e75e2a07a60928b5a89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89">log</a> (uint8_t <a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a>, const char *vendorId, const char *message, va_list *args)</td></tr>
+<tr class="memitem:a54660bdcc2271e75e2a07a60928b5a89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89">log</a> (uint8_t logLevel, const char *vendorId, const char *message, va_list *args)</td></tr>
 <tr class="memdesc:a54660bdcc2271e75e2a07a60928b5a89"><td class="mdescLeft">&#160;</td><td class="mdescRight">log a message.  <a href="class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89">More...</a><br /></td></tr>
 <tr class="separator:a54660bdcc2271e75e2a07a60928b5a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a964b4de4cae6567127b51502497f55cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#a964b4de4cae6567127b51502497f55cb">setLogLevel</a> (uint8_t <a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a>)</td></tr>
+<tr class="memitem:a964b4de4cae6567127b51502497f55cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#a964b4de4cae6567127b51502497f55cb">setLogLevel</a> (uint8_t logLevel)</td></tr>
 <tr class="separator:a964b4de4cae6567127b51502497f55cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a8f50251b51562787436b0dd6cdc0e359"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#a8f50251b51562787436b0dd6cdc0e359">write</a> (uint8_t <a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a>, const char *vendorId, const char *message, va_list *args)=0</td></tr>
+<tr class="memitem:a8f50251b51562787436b0dd6cdc0e359"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#a8f50251b51562787436b0dd6cdc0e359">write</a> (uint8_t logLevel, const char *vendorId, const char *message, va_list *args)=0</td></tr>
 <tr class="separator:a8f50251b51562787436b0dd6cdc0e359"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:aa4686f79ac6fded262d411f00c2478f4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#aa4686f79ac6fded262d411f00c2478f4">logLevel</a></td></tr>
-<tr class="separator:aa4686f79ac6fded262d411f00c2478f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a650052e3d7dea165ccfbc93e0ca267a2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html#a650052e3d7dea165ccfbc93e0ca267a2">_logLevel</a></td></tr>
+<tr class="separator:a650052e3d7dea165ccfbc93e0ca267a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An abstract base class for handling log messages. </p>
@@ -280,8 +280,8 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="aa4686f79ac6fded262d411f00c2478f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4686f79ac6fded262d411f00c2478f4">&#9670;&nbsp;</a></span>logLevel</h2>
+<a id="a650052e3d7dea165ccfbc93e0ca267a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a650052e3d7dea165ccfbc93e0ca267a2">&#9670;&nbsp;</a></span>_logLevel</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -290,7 +290,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t RF24LogAbstractHandler::logLevel</td>
+          <td class="memname">uint8_t RF24LogAbstractHandler::_logLevel</td>
         </tr>
       </table>
   </td>
