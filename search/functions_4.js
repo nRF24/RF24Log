@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ostreamlogger_129',['OStreamLogger',['../class_o_stream_logger.html#a7c8efbb70c6c6cd7cf6d12c73fc77a59',1,'OStreamLogger']]]
+  ['numbcharstoprint_134',['numbCharsToPrint',['../common_8cpp.html#a2c06064452e44307d32c08845d39cda1',1,'numbCharsToPrint(int64_t numb, uint8_t base):&#160;common.cpp'],['../common_8h.html#a514766ee83e51e5016c3dfdc261c9d52',1,'numbCharsToPrint(int64_t numb, uint8_t base=10):&#160;common.cpp']]]
 ];

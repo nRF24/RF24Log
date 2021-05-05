@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ostreamlogger_86',['OStreamLogger',['../class_o_stream_logger.html',1,'']]]
+  ['ostreamlogger_89',['OStreamLogger',['../class_o_stream_logger.html',1,'']]]
 ];

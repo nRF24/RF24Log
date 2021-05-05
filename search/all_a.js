@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['parsing_2ecpp_35',['Parsing.cpp',['../_parsing_8cpp.html',1,'']]],
-  ['parsing_2eh_36',['Parsing.h',['../_parsing_8h.html',1,'']]],
-  ['precis_37',['precis',['../struct_specifier_parsing.html#afd064aef4cccff044794fe1193ff11ec',1,'SpecifierParsing']]],
-  ['printflogger_38',['PrintfLogger',['../class_printf_logger.html',1,'PrintfLogger'],['../class_printf_logger.html#a5ef609532997ea28cc50fe1ca18f795c',1,'PrintfLogger::PrintfLogger()']]],
-  ['printflogger_2ecpp_39',['PrintfLogger.cpp',['../_printf_logger_8cpp.html',1,'']]],
-  ['printflogger_2eh_40',['PrintfLogger.h',['../_printf_logger_8h.html',1,'']]]
+  ['off_34',['OFF',['../group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0aac132f2982b98bcaa3445e535a03ff75',1,'RF24LogLevel.h']]],
+  ['ostreamlogger_35',['OStreamLogger',['../class_o_stream_logger.html',1,'OStreamLogger'],['../class_o_stream_logger.html#a7c8efbb70c6c6cd7cf6d12c73fc77a59',1,'OStreamLogger::OStreamLogger()']]],
+  ['ostreamlogger_2ecpp_36',['OStreamLogger.cpp',['../_o_stream_logger_8cpp.html',1,'']]],
+  ['ostreamlogger_2eh_37',['OStreamLogger.h',['../_o_stream_logger_8h.html',1,'']]]
 ];

@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['off_31',['OFF',['../group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0aac132f2982b98bcaa3445e535a03ff75',1,'RF24LogLevel.h']]],
-  ['ostreamlogger_32',['OStreamLogger',['../class_o_stream_logger.html',1,'OStreamLogger'],['../class_o_stream_logger.html#a7c8efbb70c6c6cd7cf6d12c73fc77a59',1,'OStreamLogger::OStreamLogger()']]],
-  ['ostreamlogger_2ecpp_33',['OStreamLogger.cpp',['../_o_stream_logger_8cpp.html',1,'']]],
-  ['ostreamlogger_2eh_34',['OStreamLogger.h',['../_o_stream_logger_8h.html',1,'']]]
+  ['numbcharstoprint_33',['numbCharsToPrint',['../common_8cpp.html#a2c06064452e44307d32c08845d39cda1',1,'numbCharsToPrint(int64_t numb, uint8_t base):&#160;common.cpp'],['../common_8h.html#a514766ee83e51e5016c3dfdc261c9d52',1,'numbCharsToPrint(int64_t numb, uint8_t base=10):&#160;common.cpp']]]
 ];
