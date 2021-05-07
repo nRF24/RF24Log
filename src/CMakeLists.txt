@@ -77,7 +77,7 @@ install(FILES
 
 install(FILES
         RF24LogParts/common.cpp
-        RF24LogParts/common.h
+        RF24LogParts/Common.h
         RF24LogParts/AbstractHandler.cpp
         RF24LogParts/AbstractHandler.h
         RF24LogParts/SpecifierFormat.cpp

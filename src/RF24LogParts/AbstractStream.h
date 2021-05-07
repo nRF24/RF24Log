@@ -21,7 +21,7 @@
 #endif
 #include <stdint.h>
 #include "SpecifierFormat.h" // SpecifierParsing struct
-#include "common.h" // numbCharsToPrint()
+#include "Common.h" // numbCharsToPrint()
 
 /** @brief A `protected` collection of methods that output formatted data to a stream. */
 class RF24LogAbstractStream
