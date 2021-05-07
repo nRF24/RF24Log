@@ -15,7 +15,7 @@
 #ifndef SRC_HANDLER_EXT_RF24DUALLOGHANDLER_H_
 #define SRC_HANDLER_EXT_RF24DUALLOGHANDLER_H_
 
-#include <RF24LogAbstracts/BaseHandler.h>
+#include "../RF24LogBaseHandler.h"
 
 /** @brief Module to extend the RF24LogBaseHandler mechanism for redirecting to 2 different RF24LogBaseHandler objects. */
 class RF24DualLogHandler : public RF24LogBaseHandler

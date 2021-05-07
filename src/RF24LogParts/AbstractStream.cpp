@@ -12,9 +12,10 @@
  * Public License instead of this License.
  */
 
-#include <RF24LogAbstracts/BaseHandler.h> // RF24LOG_DELIMITER
-#include <RF24LogAbstracts/Stream.h>
-#include <RF24LogLevel.h>
+#include "../RF24LogLevel.h"
+#include "LevelDescriptions.h"
+#include "../RF24LogBaseHandler.h"
+#include "AbstractStream.h"
 
 
 /* *************************** AbstractStream defs **************************** */

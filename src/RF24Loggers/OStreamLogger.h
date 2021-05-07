@@ -16,7 +16,8 @@
 #define SRC_RF24LOGGERS_OSTREAMLOGGER_H_
 
 #include <ostream>
-#include <RF24LogAbstracts/Parsing.h>
+#include "../RF24LogParts/Parsing.h"
+#include "../RF24LogParts/LevelDescriptions.h"
 
 /** @brief Class to manage logging messages to a `ostream` based object. */
 class OStreamLogger : public RF24LogPrintfParser

@@ -1,5 +1,5 @@
 /**
- * @file RF24LogAbstracts/common.cpp
+ * @file RF24LogParts/common.cpp
  * @date Created 2 Oct 2020
  * @author Brendan Doherty (2bndy5)
  * @copyright Copyright (C)
@@ -11,7 +11,7 @@
  * Public License instead of this License.
  */
 
-#include <RF24LogAbstracts/common.h>
+#include "Common.h"
 
 /* *************************** Abstract global function defs **************************** */
 

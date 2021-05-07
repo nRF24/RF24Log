@@ -1,5 +1,5 @@
 /**
- * @file RF24LogAbstracts/common.h
+ * @file RF24LogParts/common.h
  * @brief global functions for RF24Log Abstract objects.
  * @date Created 4 May 2021
  * @author Brendan Doherty (2bndy5)

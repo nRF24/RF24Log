@@ -27,8 +27,8 @@
  * @{
  */
 
-#include <RF24LogLevel.h>
-#include <RF24LogAbstracts/BaseHandler.h>
+#include "RF24LogLevel.h"
+#include "RF24LogBaseHandler.h"
 
 #if defined (ARDUINO_ARCH_AVR)
     #define RF24LOG_FLASHIFY(A) F(A)

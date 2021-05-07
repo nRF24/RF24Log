@@ -13,15 +13,15 @@
  * Public License instead of this License.
  */
 
-#ifndef SRC_RF24ABSTRACTS_STREAM_H_
-#define SRC_RF24ABSTRACTS_STREAM_H_
+#ifndef SRC_RF24LOGPARTS_STREAM_H_
+#define SRC_RF24LOGPARTS_STREAM_H_
 
 #if defined (ARDUINO)
 #include <WString.h> // __FlashStringHelper
 #endif
 #include <stdint.h>
-#include <RF24LogAbstracts/SpecifierFormat.h> // SpecifierParsing struct
-#include <RF24LogAbstracts/common.h> // numbCharsToPrint()
+#include "SpecifierFormat.h" // SpecifierParsing struct
+#include "common.h" // numbCharsToPrint()
 
 /** @brief A `protected` collection of methods that output formatted data to a stream. */
 class RF24LogAbstractStream
@@ -52,9 +52,9 @@ protected:
     void appendFormat(SpecifierParsing* fmt_parser, va_list *args);
 
     /**
-     * @brief append a padding character a number of times
-     * @param data The char to use as padding
-     * @param depth The number of padding characters desired sequentially.
+     * @brief append a character a number of times
+     * @param data The char to use
+     * @param depth The number of times that the @p data is sequentially output.
      */
     virtual void appendChar(char data, uint16_t depth = 1) = 0;
 
@@ -89,4 +89,4 @@ protected:
 #endif
 };
 
-#endif /* SRC_RF24ABSTRACTS_STREAM_H_ */
+#endif /* SRC_RF24LOGPARTS_STREAM_H_ */

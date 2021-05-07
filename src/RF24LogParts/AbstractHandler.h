@@ -13,16 +13,16 @@
  * Public License instead of this License.
  */
 
-#ifndef SRC_RF24LOGABSTRACTS_HANDLER_H_
-#define SRC_RF24LOGABSTRACTS_HANDLER_H_
+#ifndef SRC_RF24LOGPARTS_HANDLER_H_
+#define SRC_RF24LOGPARTS_HANDLER_H_
 #if defined (ARDUINO)
 #include <WString.h> // __FlashStringHelper
 #endif
 #include <stdint.h>
 #include <stdarg.h>
 
-#include <RF24LogAbstracts/BaseHandler.h>
-#include <RF24LogLevel.h>
+#include "../RF24LogBaseHandler.h"
+#include "../RF24LogLevel.h"
 
 
 /** @brief An abstract base class for handling log messages. */
@@ -84,4 +84,4 @@ protected:
 };
 
 
-#endif /* SRC_RF24LOGABSTRACTS_HANDLER_H_ */
+#endif /* SRC_RF24LOGPARTS_HANDLER_H_ */

@@ -36,62 +36,18 @@
 enum RF24LogLevel : uint8_t
 {
     /** (`0`) the level to disable all log messages */
-    OFF = 0,
+    OFF   = 0,
     /** (`010`) the level to specify an error message */
     ERROR = 010,
     /** (`020`) the level to specify an warning message */
-    WARN = 020,
+    WARN  = 020,
     /** (`030`) the level to specify an informational message */
-    INFO = 030,
+    INFO  = 030,
     /** (`040`) the level to specify an debugging message */
     DEBUG = 040,
     /** (`0377` or `0xFF`) the level to enable all log messages (disables filtering of levels) */
-    ALL = 0xFF
+    ALL   = 0xFF
 };
 /**@} */
 
-/**
- * @defgroup lvlDesc Level Descriptions
- * @brief Level descriptions
- *
- * These can be modigied using RF24LOG_SHORT_DESC or RF24LOG_TERSE_DESC macros.
- * @{
- */
-#if defined(RF24LOG_SHORT_DESC)
-const char RF24LogDescError[] = " ERR";
-const char RF24LogDescWarn[]  = "WARN";
-const char RF24LogDescInfo[]  = "INFO";
-const char RF24LogDescDebug[] = " DBG";
-const char RF24LogDescLevel[] = "L ";
-
-#elif defined(RF24LOG_TERSE_DESC)
-const char RF24LogDescError[] = " E";
-const char RF24LogDescWarn[]  = " W";
-const char RF24LogDescInfo[]  = " I";
-const char RF24LogDescDebug[] = "DB";
-const char RF24LogDescLevel[] = "";
-
-#else // !defined(RF24LOG_*_DESC)
-/** @brief description of the @ref ERROR base level */
-const char RF24LogDescError[] = "ERROR";
-/** @brief description of the @ref WARN base level */
-const char RF24LogDescWarn[] = " WARN";
-/** @brief description of the @ref INFO base level */
-const char RF24LogDescInfo[] = " INFO";
-/** @brief description of the @ref DEBUG base level */
-const char RF24LogDescDebug[] = "DEBUG";
-/** @brief description of the @ref DEBUG base level */
-const char RF24LogDescLevel[] = "Lvl ";
-#endif // !defined(RF24LOG_*_DESC)
-
-/** @brief collection of the base level descriptions */
-const char * const RF24LogDescLevels[] =
-{
-    RF24LogDescError,
-    RF24LogDescWarn,
-    RF24LogDescInfo,
-    RF24LogDescDebug
-};
-
-/**@} */
 #endif /* SRC_RF24LOGLEVEL_H_ */

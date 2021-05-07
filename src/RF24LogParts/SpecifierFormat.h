@@ -13,8 +13,8 @@
  * Public License instead of this License.
  */
 
-#ifndef SRC_RF24ABSTRACTS_SPECIFIERFORMAT_H_
-#define SRC_RF24ABSTRACTS_SPECIFIERFORMAT_H_
+#ifndef SRC_RF24LOGPARTS_SPECIFIERFORMAT_H_
+#define SRC_RF24LOGPARTS_SPECIFIERFORMAT_H_
 
 #include <stdint.h>
 
@@ -60,4 +60,4 @@ struct SpecifierParsing
     char specifier;
 };
 
-#endif /* SRC_RF24ABSTRACTS_SPECIFIERFORMAT_H_ */
+#endif /* SRC_RF24LOGPARTS_SPECIFIERFORMAT_H_ */

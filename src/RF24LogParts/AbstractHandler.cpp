@@ -12,7 +12,7 @@
  * Public License instead of this License.
  */
 
-#include <RF24LogAbstracts/Handler.h>
+#include "AbstractHandler.h"
 
 /* *************************** AbstractHandler defs **************************** */
 

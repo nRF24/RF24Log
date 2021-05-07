@@ -1,5 +1,5 @@
 /**
- * @file RF24LogAbstracts/BaseHandler.h
+ * @file RF24LogBaseHandler.h
  * @brief inherent declarations for all handlers.
  * @date Created 2 Oct 2020
  * @author Witold Markowski (wmarkow)
@@ -13,8 +13,8 @@
  * Public License instead of this License.
  */
 
-#ifndef SRC_RF24LOGABSTRACTS_BASEHANDLER_H_
-#define SRC_RF24LOGABSTRACTS_BASEHANDLER_H_
+#ifndef SRC_RF24LOGBASEHANDLER_H_
+#define SRC_RF24LOGBASEHANDLER_H_
 
 #if defined(ARDUINO_ARCH_AVR)
 #include <WString.h> // __FlashStringHelper
@@ -30,7 +30,7 @@
 #endif
 
 // for some reason, these need to be declared here and
-// not on any higher level of the project
+// not on any higher level of the project (see doc comments below for details)
 // #define RF24LOG_NO_TIMESTAMP
 // #define RF24LOG_NO_EOL
 // #define RF24LOG_SHORT_DESC
@@ -111,4 +111,4 @@ public:
     virtual void setLogLevel(uint8_t logLevel);
 };
 
-#endif /* SRC_RF24LOGABSTRACTS_BASEHANDLER_H_ */
+#endif /* SRC_RF24LOGBASEHANDLER_H_ */

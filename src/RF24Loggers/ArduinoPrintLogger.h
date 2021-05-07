@@ -17,7 +17,8 @@
 #define SRC_RF24LOGGERS_ARDUINOPRINTLOGGER_H_
 
 #include <Print.h>
-#include <RF24LogAbstracts/Parsing.h>
+#include "../RF24LogParts/Parsing.h"
+#include "../RF24LogParts/LevelDescriptions.h"
 
 /** @brief A log handler implementation which outputs log messages to a stream. */
 class ArduinoPrintLogger : public RF24LogPrintfParser

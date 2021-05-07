@@ -13,12 +13,12 @@
  * Public License instead of this License.
  */
 
-#ifndef SRC_RF24LOGABSTRACTS_PARSING_H_
-#define SRC_RF24LOGABSTRACTS_PARSING_H_
+#ifndef SRC_RF24LOGPARTS_PARSING_H_
+#define SRC_RF24LOGPARTS_PARSING_H_
 
 #include <stdint.h>
-#include <RF24LogAbstracts/Handler.h>
-#include <RF24LogAbstracts/Stream.h>
+#include "AbstractHandler.h"
+#include "AbstractStream.h"
 
 /** @brief class that holds the RF24Log's in-house printf-like parsing */
 class RF24LogPrintfParser : public RF24LogAbstractHandler, public RF24LogAbstractStream
@@ -37,4 +37,4 @@ protected:
 #endif
 };
 
-#endif /* SRC_RF24LOGABSTRACTS_PARSING_H_ */
+#endif /* SRC_RF24LOGPARTS_PARSING_H_ */

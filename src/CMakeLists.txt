@@ -13,12 +13,12 @@ if (PICO_SDK_PATH)
     target_sources(RF24Log INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}/RF24Logging.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogLevel.h
-        ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/BaseHandler.h
-        ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/common.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/Handler.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/SpecifierFormat.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/Stream.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/RF24LogAbstracts/Parsing.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogBaseHandler.h
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/Common.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/Handler.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/SpecifierFormat.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/Stream.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/Parsing.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers/NativePrintLogger.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers/OStreamLogger.cpp
         )
@@ -26,7 +26,7 @@ if (PICO_SDK_PATH)
     target_include_directories(RF24Log INTERFACE
         ${CMAKE_CURRENT_LIST_DIR}
         ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers
-        ${CMAKE_CURRENT_LIST_DIR}/RF24Abstracts
+        ${CMAKE_CURRENT_LIST_DIR}/RF24Parts
         ${CMAKE_CURRENT_LIST_DIR}/handler_ext
         )
     return()
@@ -40,28 +40,28 @@ project(RF24Log
     VERSION 0.1.0
     )
 
-add_library(rf24Log SHARED
+add_library(rf24log SHARED
     RF24Logging.cpp
     RF24LogLevel.h
-    RF24LogAbstracts/BaseHandler.h
-    RF24LogAbstracts/common.cpp
-    RF24LogAbstracts/Handler.cpp
-    RF24LogAbstracts/SpecifierFormat.cpp
-    RF24LogAbstracts/Stream.cpp
-    RF24LogAbstracts/Parsing.cpp
+    RF24LogBaseHandler.h
+    RF24LogParts/Common.cpp
+    RF24LogParts/Handler.cpp
+    RF24LogParts/SpecifierFormat.cpp
+    RF24LogParts/Stream.cpp
+    RF24LogParts/Parsing.cpp
     RF24Loggers/NativePrintLogger.cpp
     RF24Loggers/OStreamLogger.cpp
     )
 
 
-target_include_directories(rf24Log PUBLIC
+target_include_directories(rf24log PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers
     ${CMAKE_CURRENT_LIST_DIR}/RF24Abstracts
     ${CMAKE_CURRENT_LIST_DIR}/handler_ext
     )
 
-install(TARGETS rf24Log
+install(TARGETS rf24log
     DESTINATION lib
     )
 
@@ -73,18 +73,18 @@ install(FILES
     )
 
 install(FILES
-        RF24LogAbstracts/BaseHandler.h
-        RF24LogAbstracts/common.cpp
-        RF24LogAbstracts/common.h
-        RF24LogAbstracts/Handler.cpp
-        RF24LogAbstracts/Handler.h
-        RF24LogAbstracts/SpecifierFormat.cpp
-        RF24LogAbstracts/SpecifierFormat.h
-        RF24LogAbstracts/Stream.cpp
-        RF24LogAbstracts/Stream.h
-        RF24LogAbstracts/Parsing.cpp
-        RF24LogAbstracts/Parsing.h
-    DESTINATION include/RF24Log/RF24LogAbstracts
+        RF24LogBaseHandler.h
+        RF24LogParts/common.cpp
+        RF24LogParts/common.h
+        RF24LogParts/Handler.cpp
+        RF24LogParts/Handler.h
+        RF24LogParts/SpecifierFormat.cpp
+        RF24LogParts/SpecifierFormat.h
+        RF24LogParts/Stream.cpp
+        RF24LogParts/Stream.h
+        RF24LogParts/Parsing.cpp
+        RF24LogParts/Parsing.h
+    DESTINATION include/RF24Log/RF24LogParts
     )
 
 install(FILES

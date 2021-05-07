@@ -12,7 +12,7 @@
  * Public License instead of this License.
  */
 
-#include <RF24LogAbstracts/Parsing.h>
+#include "PrintfParser.h"
 #if defined(ARDUINO_ARCH_AVR)
 #include <avr/pgmspace.h> // pgm_read_byte()
 #endif

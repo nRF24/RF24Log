@@ -15,7 +15,8 @@
 #ifndef SRC_RF24LOGGERS_NATIVEPRINTLOGGER_H_
 #define SRC_RF24LOGGERS_NATIVEPRINTLOGGER_H_
 
-#include <RF24LogAbstracts/Parsing.h>
+#include "../RF24LogParts/Parsing.h"
+#include "../RF24LogParts/LevelDescriptions.h"
 
 /** @brief macro pointing to the natively available `printf()` */
 #ifndef printf_P
@@ -28,19 +29,6 @@ class NativePrintLogger : public RF24LogPrintfParser
 public:
     /** @brief Construct a new NativePrintLogger object using stdout */
     NativePrintLogger();
-
-#if !defined(PICO_BUILD) && !defined(ARDUINO)
-    /**
-     * @brief Construct a new NativePrintLogger object using a string as a buffer
-     * @param buffer The string that will be used instead of stdout.
-     */
-    NativePrintLogger(char* buffer);
-
-protected:
-
-    /** @brief The internal reference to a buffer to use instead of stdout */
-    char* _stream;
-#endif
 
 protected:
 

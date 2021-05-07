@@ -28,18 +28,10 @@
 #include <ctime> // time_t, struct tm*, time(), localtime(), strftime()
 #endif
 
-#include <RF24Loggers/NativePrintLogger.h>
+#include "NativePrintLogger.h"
 
 NativePrintLogger::NativePrintLogger()
 {
-#if !defined(PICO_BUILD) && !defined(ARDUINO)
-    _stream = nullptr;
-}
-
-NativePrintLogger::NativePrintLogger(char* buffer)
-{
-    _stream = buffer;
-#endif
 }
 
 void NativePrintLogger::appendTimestamp()

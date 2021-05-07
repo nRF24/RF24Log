@@ -12,7 +12,7 @@
  * Public License instead of this License.
  */
 
-#include <RF24LogAbstracts/SpecifierFormat.h>
+#include "SpecifierFormat.h"
 
 
 /* *************************** SpecifierParsing defs **************************** */

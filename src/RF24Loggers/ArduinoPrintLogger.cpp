@@ -12,8 +12,8 @@
  * Public License instead of this License.
  */
 #include <Arduino.h>
-#include <RF24LogLevel.h>
-#include <RF24Loggers/ArduinoPrintLogger.h>
+#include "../RF24LogLevel.h"
+#include "ArduinoPrintLogger.h"
 
 
 ArduinoPrintLogger::ArduinoPrintLogger(Print *stream)

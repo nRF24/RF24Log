@@ -12,7 +12,7 @@
  */
 #ifndef ARDUINO
 #include <ctime> // for time_t, struct tm*, time(), localtime(), strftime()
-#include <RF24Loggers/OStreamLogger.h>
+#include "OStreamLogger.h"
 
 
 OStreamLogger::OStreamLogger(std::ostream *stream)
