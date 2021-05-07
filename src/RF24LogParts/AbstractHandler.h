@@ -1,5 +1,5 @@
 /**
- * @file Handler.h
+ * @file AbstractHandler.h
  * @brief abstract class that allows custom handlers agnostic to any output stream APIs
  * @date Created 2 Oct 2020
  * @author Witold Markowski (wmarkow)

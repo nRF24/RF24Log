@@ -1,5 +1,5 @@
 /**
- * @file Stream.h
+ * @file AbstractStream.h
  * @brief abstract class that allows using different output stream APIs
  * @date Created 4 May 2021
  * @author Brendan Doherty (2bndy5)

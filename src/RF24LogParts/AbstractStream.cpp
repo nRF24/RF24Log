@@ -1,5 +1,5 @@
 /**
- * @file Stream.cpp
+ * @file AbstractStream.cpp
  * @date Created 4 May 2021
  * @author Brendan Doherty (2bndy5)
  * @copyright Copyright (C) <br>

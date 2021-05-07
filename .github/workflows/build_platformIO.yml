@@ -40,7 +40,7 @@ jobs:
 
       matrix:
         example:
-          - "examples/gettingStarted/gettingStarted.ino"
+          - "examples/GettingStarted/GettingStarted.ino"
           - "examples/AllLogLevels/AllLogLevels.ino"
           - "examples/EmptyLogger/EmptyLogger.ino"
           - "examples/DualStream/DualStream.ino"

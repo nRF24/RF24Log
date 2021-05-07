@@ -1,5 +1,5 @@
 /**
- * @file Handler.cpp
+ * @file AbstractHandler.cpp
  * @date Created 2 Oct 2020
  * @author Witold Markowski (wmarkow)
  * @copyright Copyright (C) <br>
