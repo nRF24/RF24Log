@@ -15,8 +15,8 @@ include(../src/CMakeLists.txt)
 
 # iterate over a list of examples by name
 set(EXAMPLES_LIST
-    gettingStarted
-    allLogLevels
+    GettingStarted
+    AllLogLevels
     )
 
 #[[ for each example, we have to perform the following:
