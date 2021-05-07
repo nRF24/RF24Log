@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RF24Log: src/RF24LogAbstracts/common.h Source File</title>
+<title>RF24Log: src/RF24LogParts/AbstractHandler.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,25 +63,42 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_cffe2e044842313badd1636c2cc73fb0.html">RF24LogAbstracts</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1f885d5e320d8d676a55a13c8eabf057.html">RF24LogParts</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
-<div class="title">common.h</div>  </div>
+<div class="title">AbstractHandler.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="common_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef SRC_RF24ABSTRACT_COMMON_H_</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define SRC_RF24ABSTRACT_COMMON_H_</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;uint16_t <a class="code" href="common_8h.html#a514766ee83e51e5016c3dfdc261c9d52">numbCharsToPrint</a>(int64_t numb, uint8_t base = 10);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SRC_RF24ABSTRACT_COMMON_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="acommon_8h_html_a514766ee83e51e5016c3dfdc261c9d52"><div class="ttname"><a href="common_8h.html#a514766ee83e51e5016c3dfdc261c9d52">numbCharsToPrint</a></div><div class="ttdeci">uint16_t numbCharsToPrint(int64_t numb, uint8_t base=10)</div><div class="ttdoc">how wide (in characters) does it take to display a number</div><div class="ttdef"><b>Definition:</b> <a href="common_8cpp_source.html#l00018">common.cpp:18</a></div></div>
-</div><!-- fragment --></div><!-- contents -->
+
+<p>abstract class that allows custom handlers agnostic to any output stream APIs  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;stdarg.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="_r_f24_log_base_handler_8h_source.html">../RF24LogBaseHandler.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_r_f24_log_level_8h_source.html">../RF24LogLevel.h</a>&quot;</code><br />
+</div>
+<p><a href="_abstract_handler_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_handler.html">RF24LogAbstractHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An abstract base class for handling log messages.  <a href="class_r_f24_log_abstract_handler.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>abstract class that allows custom handlers agnostic to any output stream APIs </p>
+<dl class="section date"><dt>Date</dt><dd>Created 2 Oct 2020 </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Witold Markowski (wmarkow) </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (C) <br  />
+ 2020 Witold Markowski (wmarkow) 2021 Brendan Doherty (2bndy5) <br  />
+ This General Public License does not permit incorporating your program into proprietary programs. If your program is a subroutine library, you may consider it more useful to permit linking proprietary applications with the library. If this is what you want to do, use the GNU Lesser General Public License instead of this License. </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_abstract_handler_8h_source.html">AbstractHandler.h</a>.</p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1

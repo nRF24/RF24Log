@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['level_20descriptions_29',['Level Descriptions',['../group__lvl_desc.html',1,'']]],
-  ['log_30',['log',['../class_r_f24_dual_log_handler.html#aa371406aba2ec48194967a64f86d5c27',1,'RF24DualLogHandler::log()'],['../class_r_f24_log_base_handler.html#a1bc7b0a3f03a06e885e1838fab813c3f',1,'RF24LogBaseHandler::log()'],['../class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89',1,'RF24LogAbstractHandler::log()'],['../class_r_f24_logging.html#a197f0b717a027c511a9dc3634dbc9089',1,'RF24Logging::log()']]],
-  ['log_20levels_31',['Log Levels',['../group__log_levels.html',1,'']]],
-  ['logging_20api_32',['Logging API',['../group___logging_a_p_i.html',1,'']]]
+  ['nativeprintlogger_35',['NativePrintLogger',['../class_native_print_logger.html',1,'NativePrintLogger'],['../class_native_print_logger.html#af5d94600acf3a6bbbbd37751d9fb88d2',1,'NativePrintLogger::NativePrintLogger()']]],
+  ['nativeprintlogger_2ecpp_36',['NativePrintLogger.cpp',['../_native_print_logger_8cpp.html',1,'']]],
+  ['nativeprintlogger_2eh_37',['NativePrintLogger.h',['../_native_print_logger_8h.html',1,'']]],
+  ['numbcharstoprint_38',['numbCharsToPrint',['../_common_8cpp.html#a2c06064452e44307d32c08845d39cda1',1,'numbCharsToPrint(int64_t numb, uint8_t base):&#160;Common.cpp'],['../_common_8h.html#a514766ee83e51e5016c3dfdc261c9d52',1,'numbCharsToPrint(int64_t numb, uint8_t base=10):&#160;Common.cpp']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RF24Log: src/RF24LogAbstracts/Parsing.h Source File</title>
+<title>RF24Log: src/RF24LogParts/PrintfParser.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,21 +63,21 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_cffe2e044842313badd1636c2cc73fb0.html">RF24LogAbstracts</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1f885d5e320d8d676a55a13c8eabf057.html">RF24LogParts</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Parsing.h</div>  </div>
+<div class="title">PrintfParser.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_parsing_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#ifndef SRC_RF24LOGABSTRACTS_PARSING_H_</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define SRC_RF24LOGABSTRACTS_PARSING_H_</span></div>
+<a href="_printf_parser_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#ifndef SRC_RF24LOGPARTS_PARSING_H_</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define SRC_RF24LOGPARTS_PARSING_H_</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_handler_8h.html">RF24LogAbstracts/Handler.h</a>&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_stream_8h.html">RF24LogAbstracts/Stream.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_abstract_handler_8h.html">AbstractHandler.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_abstract_stream_8h.html">AbstractStream.h</a>&quot;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_r_f24_log_printf_parser.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_r_f24_log_printf_parser.html">RF24LogPrintfParser</a> : <span class="keyword">public</span> <a class="code" href="class_r_f24_log_abstract_handler.html">RF24LogAbstractHandler</a>, <span class="keyword">public</span> <a class="code" href="class_r_f24_log_abstract_stream.html">RF24LogAbstractStream</a></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
@@ -95,13 +95,13 @@ $(function() {
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SRC_RF24LOGABSTRACTS_PARSING_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="a_handler_8h_html"><div class="ttname"><a href="_handler_8h.html">Handler.h</a></div><div class="ttdoc">abstract class that allows custom handlers agnostic to any output stream APIs</div></div>
-<div class="ttc" id="a_stream_8h_html"><div class="ttname"><a href="_stream_8h.html">Stream.h</a></div><div class="ttdoc">abstract class that allows using different output stream APIs</div></div>
-<div class="ttc" id="aclass_r_f24_log_abstract_handler_html"><div class="ttname"><a href="class_r_f24_log_abstract_handler.html">RF24LogAbstractHandler</a></div><div class="ttdoc">An abstract base class for handling log messages.</div><div class="ttdef"><b>Definition:</b> <a href="_handler_8h_source.html#l00029">Handler.h:30</a></div></div>
-<div class="ttc" id="aclass_r_f24_log_abstract_stream_html"><div class="ttname"><a href="class_r_f24_log_abstract_stream.html">RF24LogAbstractStream</a></div><div class="ttdoc">A protected collection of methods that output formatted data to a stream.</div><div class="ttdef"><b>Definition:</b> <a href="_stream_8h_source.html#l00027">Stream.h:28</a></div></div>
-<div class="ttc" id="aclass_r_f24_log_printf_parser_html"><div class="ttname"><a href="class_r_f24_log_printf_parser.html">RF24LogPrintfParser</a></div><div class="ttdoc">class that holds the RF24Log's in-house printf-like parsing</div><div class="ttdef"><b>Definition:</b> <a href="_parsing_8h_source.html#l00024">Parsing.h:25</a></div></div>
-<div class="ttc" id="aclass_r_f24_log_printf_parser_html_a47e693af8d708cdd92df8e5431da6136"><div class="ttname"><a href="class_r_f24_log_printf_parser.html#a47e693af8d708cdd92df8e5431da6136">RF24LogPrintfParser::write</a></div><div class="ttdeci">void write(uint8_t logLevel, const char *vendorId, const char *message, va_list *args)</div><div class="ttdef"><b>Definition:</b> <a href="_parsing_8cpp_source.html#l00095">Parsing.cpp:95</a></div></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SRC_RF24LOGPARTS_PARSING_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a_abstract_handler_8h_html"><div class="ttname"><a href="_abstract_handler_8h.html">AbstractHandler.h</a></div><div class="ttdoc">abstract class that allows custom handlers agnostic to any output stream APIs</div></div>
+<div class="ttc" id="a_abstract_stream_8h_html"><div class="ttname"><a href="_abstract_stream_8h.html">AbstractStream.h</a></div><div class="ttdoc">abstract class that allows using different output stream APIs</div></div>
+<div class="ttc" id="aclass_r_f24_log_abstract_handler_html"><div class="ttname"><a href="class_r_f24_log_abstract_handler.html">RF24LogAbstractHandler</a></div><div class="ttdoc">An abstract base class for handling log messages.</div><div class="ttdef"><b>Definition:</b> <a href="_abstract_handler_8h_source.html#l00029">AbstractHandler.h:30</a></div></div>
+<div class="ttc" id="aclass_r_f24_log_abstract_stream_html"><div class="ttname"><a href="class_r_f24_log_abstract_stream.html">RF24LogAbstractStream</a></div><div class="ttdoc">A protected collection of methods that output formatted data to a stream.</div><div class="ttdef"><b>Definition:</b> <a href="_abstract_stream_8h_source.html#l00027">AbstractStream.h:28</a></div></div>
+<div class="ttc" id="aclass_r_f24_log_printf_parser_html"><div class="ttname"><a href="class_r_f24_log_printf_parser.html">RF24LogPrintfParser</a></div><div class="ttdoc">class that holds the RF24Log's in-house printf-like parsing</div><div class="ttdef"><b>Definition:</b> <a href="_printf_parser_8h_source.html#l00024">PrintfParser.h:25</a></div></div>
+<div class="ttc" id="aclass_r_f24_log_printf_parser_html_a47e693af8d708cdd92df8e5431da6136"><div class="ttname"><a href="class_r_f24_log_printf_parser.html#a47e693af8d708cdd92df8e5431da6136">RF24LogPrintfParser::write</a></div><div class="ttdeci">void write(uint8_t logLevel, const char *vendorId, const char *message, va_list *args)</div><div class="ttdef"><b>Definition:</b> <a href="_printf_parser_8cpp_source.html#l00095">PrintfParser.cpp:95</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

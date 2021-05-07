@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RF24Log: src/RF24LogAbstracts/Handler.cpp Source File</title>
+<title>RF24Log: src/RF24LogParts/AbstractHandler.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,16 +63,16 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_cffe2e044842313badd1636c2cc73fb0.html">RF24LogAbstracts</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1f885d5e320d8d676a55a13c8eabf057.html">RF24LogParts</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Handler.cpp</div>  </div>
+<div class="title">AbstractHandler.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_handler_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_handler_8h.html">RF24LogAbstracts/Handler.h</a>&gt;</span></div>
+<a href="_abstract_handler_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_abstract_handler_8h.html">AbstractHandler.h</a>&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/* *************************** AbstractHandler defs **************************** */</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
@@ -114,12 +114,12 @@ $(function() {
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a_handler_8h_html"><div class="ttname"><a href="_handler_8h.html">Handler.h</a></div><div class="ttdoc">abstract class that allows custom handlers agnostic to any output stream APIs</div></div>
-<div class="ttc" id="aclass_r_f24_log_abstract_handler_html_a54660bdcc2271e75e2a07a60928b5a89"><div class="ttname"><a href="class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89">RF24LogAbstractHandler::log</a></div><div class="ttdeci">void log(uint8_t logLevel, const char *vendorId, const char *message, va_list *args)</div><div class="ttdoc">log a message.</div><div class="ttdef"><b>Definition:</b> <a href="_handler_8cpp_source.html#l00024">Handler.cpp:24</a></div></div>
-<div class="ttc" id="aclass_r_f24_log_abstract_handler_html_a650052e3d7dea165ccfbc93e0ca267a2"><div class="ttname"><a href="class_r_f24_log_abstract_handler.html#a650052e3d7dea165ccfbc93e0ca267a2">RF24LogAbstractHandler::_logLevel</a></div><div class="ttdeci">uint8_t _logLevel</div><div class="ttdef"><b>Definition:</b> <a href="_handler_8h_source.html#l00063">Handler.h:63</a></div></div>
-<div class="ttc" id="aclass_r_f24_log_abstract_handler_html_a727eba3803143b9b771abbf3b41e71c6"><div class="ttname"><a href="class_r_f24_log_abstract_handler.html#a727eba3803143b9b771abbf3b41e71c6">RF24LogAbstractHandler::RF24LogAbstractHandler</a></div><div class="ttdeci">RF24LogAbstractHandler()</div><div class="ttdoc">Sets log level to INFO upon instantiation.</div><div class="ttdef"><b>Definition:</b> <a href="_handler_8cpp_source.html#l00019">Handler.cpp:19</a></div></div>
+<div class="ttc" id="a_abstract_handler_8h_html"><div class="ttname"><a href="_abstract_handler_8h.html">AbstractHandler.h</a></div><div class="ttdoc">abstract class that allows custom handlers agnostic to any output stream APIs</div></div>
+<div class="ttc" id="aclass_r_f24_log_abstract_handler_html_a54660bdcc2271e75e2a07a60928b5a89"><div class="ttname"><a href="class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89">RF24LogAbstractHandler::log</a></div><div class="ttdeci">void log(uint8_t logLevel, const char *vendorId, const char *message, va_list *args)</div><div class="ttdoc">log a message.</div><div class="ttdef"><b>Definition:</b> <a href="_abstract_handler_8cpp_source.html#l00024">AbstractHandler.cpp:24</a></div></div>
+<div class="ttc" id="aclass_r_f24_log_abstract_handler_html_a650052e3d7dea165ccfbc93e0ca267a2"><div class="ttname"><a href="class_r_f24_log_abstract_handler.html#a650052e3d7dea165ccfbc93e0ca267a2">RF24LogAbstractHandler::_logLevel</a></div><div class="ttdeci">uint8_t _logLevel</div><div class="ttdef"><b>Definition:</b> <a href="_abstract_handler_8h_source.html#l00063">AbstractHandler.h:63</a></div></div>
+<div class="ttc" id="aclass_r_f24_log_abstract_handler_html_a727eba3803143b9b771abbf3b41e71c6"><div class="ttname"><a href="class_r_f24_log_abstract_handler.html#a727eba3803143b9b771abbf3b41e71c6">RF24LogAbstractHandler::RF24LogAbstractHandler</a></div><div class="ttdeci">RF24LogAbstractHandler()</div><div class="ttdoc">Sets log level to INFO upon instantiation.</div><div class="ttdef"><b>Definition:</b> <a href="_abstract_handler_8cpp_source.html#l00019">AbstractHandler.cpp:19</a></div></div>
 <div class="ttc" id="aclass_r_f24_log_abstract_handler_html_a8f50251b51562787436b0dd6cdc0e359"><div class="ttname"><a href="class_r_f24_log_abstract_handler.html#a8f50251b51562787436b0dd6cdc0e359">RF24LogAbstractHandler::write</a></div><div class="ttdeci">virtual void write(uint8_t logLevel, const char *vendorId, const char *message, va_list *args)=0</div></div>
-<div class="ttc" id="aclass_r_f24_log_abstract_handler_html_a964b4de4cae6567127b51502497f55cb"><div class="ttname"><a href="class_r_f24_log_abstract_handler.html#a964b4de4cae6567127b51502497f55cb">RF24LogAbstractHandler::setLogLevel</a></div><div class="ttdeci">void setLogLevel(uint8_t logLevel)</div><div class="ttdef"><b>Definition:</b> <a href="_handler_8cpp_source.html#l00035">Handler.cpp:35</a></div></div>
+<div class="ttc" id="aclass_r_f24_log_abstract_handler_html_a964b4de4cae6567127b51502497f55cb"><div class="ttname"><a href="class_r_f24_log_abstract_handler.html#a964b4de4cae6567127b51502497f55cb">RF24LogAbstractHandler::setLogLevel</a></div><div class="ttdeci">void setLogLevel(uint8_t logLevel)</div><div class="ttdef"><b>Definition:</b> <a href="_abstract_handler_8cpp_source.html#l00035">AbstractHandler.cpp:35</a></div></div>
 <div class="ttc" id="agroup__log_levels_html_ggacc30ca4b505e752d787a523d1007a5b0a748005382152808a72b1a9177d9dc806"><div class="ttname"><a href="group__log_levels.html#ggacc30ca4b505e752d787a523d1007a5b0a748005382152808a72b1a9177d9dc806">INFO</a></div><div class="ttdeci">@ INFO</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_level_8h_source.html#l00045">RF24LogLevel.h:45</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

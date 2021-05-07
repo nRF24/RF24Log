@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RF24Log: src/RF24LogAbstracts/Parsing.h File Reference</title>
+<title>RF24Log: src/RF24LogParts/Common.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,40 +63,79 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_cffe2e044842313badd1636c2cc73fb0.html">RF24LogAbstracts</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1f885d5e320d8d676a55a13c8eabf057.html">RF24LogParts</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Parsing.h File Reference</div>  </div>
+<div class="title">Common.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Mechanisms for parsing the log messages before they are output to a stream.  
+<p>global functions for RF24Log Abstract objects.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &lt;<a class="el" href="_handler_8h_source.html">RF24LogAbstracts/Handler.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="_stream_8h_source.html">RF24LogAbstracts/Stream.h</a>&gt;</code><br />
 </div>
-<p><a href="_parsing_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="_common_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_printf_parser.html">RF24LogPrintfParser</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">class that holds the RF24Log's in-house printf-like parsing  <a href="class_r_f24_log_printf_parser.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a514766ee83e51e5016c3dfdc261c9d52"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_common_8h.html#a514766ee83e51e5016c3dfdc261c9d52">numbCharsToPrint</a> (int64_t numb, uint8_t base=10)</td></tr>
+<tr class="memdesc:a514766ee83e51e5016c3dfdc261c9d52"><td class="mdescLeft">&#160;</td><td class="mdescRight">how wide (in characters) does it take to display a number  <a href="_common_8h.html#a514766ee83e51e5016c3dfdc261c9d52">More...</a><br /></td></tr>
+<tr class="separator:a514766ee83e51e5016c3dfdc261c9d52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Mechanisms for parsing the log messages before they are output to a stream. </p>
+<div class="textblock"><p>global functions for RF24Log Abstract objects. </p>
 <dl class="section date"><dt>Date</dt><dd>Created 4 May 2021 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Brendan Doherty (2bndy5) </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (C) 2020 Witold Markowski (wmarkow) 2021 Brendan Doherty (2bndy5) <br  />
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (C) <br  />
+ 2021 Brendan Doherty (2bndy5) <br  />
  This General Public License does not permit incorporating your program into proprietary programs. If your program is a subroutine library, you may consider it more useful to permit linking proprietary applications with the library. If this is what you want to do, use the GNU Lesser General Public License instead of this License. </dd></dl>
 
-<p class="definition">Definition in file <a class="el" href="_parsing_8h_source.html">Parsing.h</a>.</p>
-</div></div><!-- contents -->
+<p class="definition">Definition in file <a class="el" href="_common_8h_source.html">Common.h</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a514766ee83e51e5016c3dfdc261c9d52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a514766ee83e51e5016c3dfdc261c9d52">&#9670;&nbsp;</a></span>numbCharsToPrint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t numbCharsToPrint </td>
+          <td>(</td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>numb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>base</em> = <code>10</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>how wide (in characters) does it take to display a number </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numb</td><td>The number to represent </td></tr>
+    <tr><td class="paramname">base</td><td>The base counting scheme. Defaults to 10 for decimal counting system </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_common_8cpp_source.html#l00018">18</a> of file <a class="el" href="_common_8cpp_source.html">Common.cpp</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1

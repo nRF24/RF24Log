@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fill_20',['fill',['../struct_specifier_parsing.html#a6db732b165fa420b3b908e28203adec4',1,'SpecifierParsing']]]
+  ['how_20to_20create_20your_20own_20handler_24',['How to create your own handler',['../md_docs_roll_your_logger.html',1,'']]]
 ];

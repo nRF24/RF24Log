@@ -74,7 +74,7 @@ $(function() {
 <p>A <code>protected</code> collection of methods that output formatted data to a stream.  
  <a href="class_r_f24_log_abstract_stream.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="_stream_8h_source.html">Stream.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_abstract_stream_8h_source.html">AbstractStream.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for RF24LogAbstractStream:</div>
 <div class="dyncontent">
@@ -104,7 +104,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memdesc:a4f33705456e0f1c407d21da70b2a5742"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a data according to the format specifier  <a href="class_r_f24_log_abstract_stream.html#a4f33705456e0f1c407d21da70b2a5742">More...</a><br /></td></tr>
 <tr class="separator:a4f33705456e0f1c407d21da70b2a5742"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae27a36f91c4f03e443e581b63252fef"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">appendChar</a> (char data, uint16_t depth=1)=0</td></tr>
-<tr class="memdesc:aae27a36f91c4f03e443e581b63252fef"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a padding character a number of times  <a href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">More...</a><br /></td></tr>
+<tr class="memdesc:aae27a36f91c4f03e443e581b63252fef"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a character a number of times  <a href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">More...</a><br /></td></tr>
 <tr class="separator:aae27a36f91c4f03e443e581b63252fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6dcca6eb2459743d484b78a21869fb2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">appendInt</a> (long data, uint8_t base=10)=0</td></tr>
 <tr class="memdesc:ae6dcca6eb2459743d484b78a21869fb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a signed (+/-) number  <a href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">More...</a><br /></td></tr>
@@ -122,7 +122,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code>protected</code> collection of methods that output formatted data to a stream. </p>
 
-<p class="definition">Definition at line <a class="el" href="_stream_8h_source.html#l00027">27</a> of file <a class="el" href="_stream_8h_source.html">Stream.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_abstract_stream_8h_source.html#l00027">27</a> of file <a class="el" href="_abstract_stream_8h_source.html">AbstractStream.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aae27a36f91c4f03e443e581b63252fef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aae27a36f91c4f03e443e581b63252fef">&#9670;&nbsp;</a></span>appendChar()</h2>
@@ -158,11 +158,11 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table>
 </div><div class="memdoc">
 
-<p>append a padding character a number of times </p>
+<p>append a character a number of times </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td>The char to use as padding </td></tr>
-    <tr><td class="paramname">depth</td><td>The number of padding characters desired sequentially. </td></tr>
+    <tr><td class="paramname">data</td><td>The char to use </td></tr>
+    <tr><td class="paramname">depth</td><td>The number of times that the <code>data</code> is sequentially output. </td></tr>
   </table>
   </dd>
 </dl>
@@ -261,7 +261,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_stream_8cpp_source.html#l00064">64</a> of file <a class="el" href="_stream_8cpp_source.html">Stream.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_abstract_stream_8cpp_source.html#l00065">65</a> of file <a class="el" href="_abstract_stream_8cpp_source.html">AbstractStream.cpp</a>.</p>
 
 </div>
 </div>
@@ -344,7 +344,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_stream_8cpp_source.html#l00031">31</a> of file <a class="el" href="_stream_8cpp_source.html">Stream.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_abstract_stream_8cpp_source.html#l00032">32</a> of file <a class="el" href="_abstract_stream_8cpp_source.html">AbstractStream.cpp</a>.</p>
 
 </div>
 </div>
@@ -463,13 +463,13 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_stream_8cpp_source.html#l00022">22</a> of file <a class="el" href="_stream_8cpp_source.html">Stream.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_abstract_stream_8cpp_source.html#l00023">23</a> of file <a class="el" href="_abstract_stream_8cpp_source.html">AbstractStream.cpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/RF24LogAbstracts/<a class="el" href="_stream_8h_source.html">Stream.h</a></li>
-<li>src/RF24LogAbstracts/<a class="el" href="_stream_8cpp_source.html">Stream.cpp</a></li>
+<li>src/RF24LogParts/<a class="el" href="_abstract_stream_8h_source.html">AbstractStream.h</a></li>
+<li>src/RF24LogParts/<a class="el" href="_abstract_stream_8cpp_source.html">AbstractStream.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
