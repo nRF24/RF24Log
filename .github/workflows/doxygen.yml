@@ -32,7 +32,7 @@ jobs:
         echo "PROJECT_NUMBER = ${{ steps.latest_ver.outputs.release }}" >> doxygenAction
         echo "@INCLUDE = doxygenAction" >> Doxyfile
     - name: build doxygen
-      uses: mattnotmitt/doxygen-action@debug
+      uses: mattnotmitt/doxygen-action@v1
       with:
           working-directory: '.'
           doxyfile-path: './Doxyfile'
