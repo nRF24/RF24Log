@@ -3,7 +3,7 @@
  * @brief handler extention to manage 2 handlers
  * @date Created 30 Mar 2021
  * @author Witold Markowski (wmarkow)
- * @copyright Copyright (C)
+ * @copyright Copyright (C) <br>
  *     2020    Witold Markowski (wmarkow) <br>
  * This General Public License does not permit incorporating your program into
  * proprietary programs.  If your program is a subroutine library, you may

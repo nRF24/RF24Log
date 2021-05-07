@@ -3,7 +3,7 @@
  * @brief Order of log levels and filtering
  * @date Created 2 Oct 2020
  * @author Witold Markowski (wmarkow)
- * @copyright Copyright (C)
+ * @copyright Copyright (C) <br>
  *      2020        Witold Markowski (wmarkow)
  *      2021        Brendan Doherty (2bndy5) <br>
  * This General Public License does not permit incorporating your program into

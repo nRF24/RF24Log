@@ -3,7 +3,7 @@
  * @brief handler for ostream based objects
  * @date Created 2021-04-24
  * @author Brendan Doherty (2bndy5)
- * @copyright Copyright (C)
+ * @copyright Copyright (C) <br>
  *     2021    Brendan Doherty (2bndy5) <br>
  * This General Public License does not permit incorporating your program into
  * proprietary programs.  If your program is a subroutine library, you may
@@ -16,7 +16,7 @@
 #define SRC_RF24LOGGERS_OSTREAMLOGGER_H_
 
 #include <ostream>
-#include "../RF24LogParts/Parsing.h"
+#include "../RF24LogParts/PrintfParser.h"
 #include "../RF24LogParts/LevelDescriptions.h"
 
 /** @brief Class to manage logging messages to a `ostream` based object. */

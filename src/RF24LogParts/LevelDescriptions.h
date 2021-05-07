@@ -3,7 +3,7 @@
  * @author Brendan Doherty (2bndy5)
  * @brief A collection of constants used to describe a particular logging level
  * @date Created 2021-05-06
- * @copyright Copyright (C)
+ * @copyright Copyright (C) <br>
  *      2020        Witold Markowski (wmarkow)
  *      2021        Brendan Doherty (2bndy5) <br>
  * This General Public License does not permit incorpor ating your program into

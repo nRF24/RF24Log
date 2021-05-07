@@ -1,9 +1,9 @@
 /**
- * @file Parsing.h
+ * @file PrintfParser.h
  * @brief Mechanisms for parsing the log messages before they are output to a stream
  * @date Created 4 May 2021
  * @author Brendan Doherty (2bndy5)
- * @copyright Copyright (C)
+ * @copyright Copyright (C) <br>
  *      2020        Witold Markowski (wmarkow)
  *      2021        Brendan Doherty (2bndy5) <br>
  * This General Public License does not permit incorporating your program into

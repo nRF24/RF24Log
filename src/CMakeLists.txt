@@ -15,10 +15,10 @@ if (PICO_SDK_PATH)
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogLevel.h
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogBaseHandler.h
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/Common.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/Handler.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/AbstractHandler.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/SpecifierFormat.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/Stream.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/Parsing.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/AbstractStream.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/PrintfParser.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers/NativePrintLogger.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers/OStreamLogger.cpp
         )
@@ -45,10 +45,10 @@ add_library(rf24log SHARED
     RF24LogLevel.h
     RF24LogBaseHandler.h
     RF24LogParts/Common.cpp
-    RF24LogParts/Handler.cpp
+    RF24LogParts/AbstractHandler.cpp
     RF24LogParts/SpecifierFormat.cpp
-    RF24LogParts/Stream.cpp
-    RF24LogParts/Parsing.cpp
+    RF24LogParts/AbstractStream.cpp
+    RF24LogParts/PrintfParser.cpp
     RF24Loggers/NativePrintLogger.cpp
     RF24Loggers/OStreamLogger.cpp
     )
@@ -76,14 +76,14 @@ install(FILES
         RF24LogBaseHandler.h
         RF24LogParts/common.cpp
         RF24LogParts/common.h
-        RF24LogParts/Handler.cpp
-        RF24LogParts/Handler.h
+        RF24LogParts/AbstractHandler.cpp
+        RF24LogParts/AbstractHandler.h
         RF24LogParts/SpecifierFormat.cpp
         RF24LogParts/SpecifierFormat.h
-        RF24LogParts/Stream.cpp
-        RF24LogParts/Stream.h
-        RF24LogParts/Parsing.cpp
-        RF24LogParts/Parsing.h
+        RF24LogParts/AbstractStream.cpp
+        RF24LogParts/AbstractStream.h
+        RF24LogParts/PrintfParser.cpp
+        RF24LogParts/PrintfParser.h
     DESTINATION include/RF24Log/RF24LogParts
     )
 

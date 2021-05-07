@@ -2,7 +2,7 @@
  * @file RF24LogParts/common.cpp
  * @date Created 2 Oct 2020
  * @author Brendan Doherty (2bndy5)
- * @copyright Copyright (C)
+ * @copyright Copyright (C) <br>
  *      2021        Brendan Doherty (2bndy5) <br>
  * This General Public License does not permit incorporating your program into
  * proprietary programs.  If your program is a subroutine library, you may

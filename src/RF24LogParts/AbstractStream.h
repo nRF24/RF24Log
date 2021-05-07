@@ -3,7 +3,7 @@
  * @brief abstract class that allows using different output stream APIs
  * @date Created 4 May 2021
  * @author Brendan Doherty (2bndy5)
- * @copyright Copyright (C)
+ * @copyright Copyright (C) <br>
  *      2020        Witold Markowski (wmarkow)
  *      2021        Brendan Doherty (2bndy5) <br>
  * This General Public License does not permit incorporating your program into

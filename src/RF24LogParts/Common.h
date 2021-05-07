@@ -3,7 +3,7 @@
  * @brief global functions for RF24Log Abstract objects.
  * @date Created 4 May 2021
  * @author Brendan Doherty (2bndy5)
- * @copyright Copyright (C)
+ * @copyright Copyright (C) <br>
  *      2021        Brendan Doherty (2bndy5) <br>
  * This General Public License does not permit incorporating your program into
  * proprietary programs.  If your program is a subroutine library, you may

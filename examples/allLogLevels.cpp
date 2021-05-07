@@ -2,7 +2,7 @@
  * @file allLogLevels.cpp
  * @author Brendan Doherty (2bndy5)
  * @date Created 2021-05-04
- * @copyright Copyright (C)
+ * @copyright Copyright (C) <br>
  *    2021        Brendan Doherty (2bndy5) <br>
  * This General Public License does not permit incorporating your program into
  * proprietary programs.  If your program is a subroutine library, you may
@@ -12,20 +12,20 @@
  */
 
 #include <string.h>
-#include <RF24Logging.h>
+#include "RF24Logging.h"
 
 #if defined (PICO_BUILD)
 #include "pico/stdlib.h"  // printf(), sleep_ms(), getchar_timeout_us(), to_us_since_boot(), get_absolute_time()
 #include "pico/bootrom.h" // reset_usb_boot()
 #include <tusb.h>         // tud_cdc_connected()
-#include <RF24Loggers/NativePrintLogger.h>
+#include "RF24Loggers/NativePrintLogger.h"
 
 // Create hardware serial port log handler
 NativePrintLogger serialLogHandler;
 
 #else
 #include <iostream>
-#include <RF24Loggers/OStreamLogger.h>
+#include "RF24Loggers/OStreamLogger.h"
 
 // Create hardware serial port log handler
 OStreamLogger serialLogHandler((std::ostream*)&std::cout);
