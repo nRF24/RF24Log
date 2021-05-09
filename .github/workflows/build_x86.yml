@@ -1,0 +1,46 @@
+name: RP2xxx build
+
+on: [push, pull_request]
+
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        os:
+          - "windows-latest"
+          - "ubuntu-latest"
+
+    steps:
+    - name: checkout RF24Log lib
+      uses: actions/checkout@v2
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{ github.workspace }}/build
+
+    - name: Configure CMake for Ubuntu
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      working-directory: ${{ github.workspace }}/build
+      run: cmake ../src -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+
+    - name: Configure CMake for Windows
+      if: ${{ matrix.os == 'windows-latest' }}
+      working-directory: ${{ github.workspace }}/build
+      run: cmake ../src -G "NMake Makefiles"  -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+
+    - name: Build lib
+      working-directory: ${{ github.workspace }}/build
+      run: cmake --build .
+
+    -name: Install lib
+      working-directory: ${{ github.workspace }}/build
+      # this step requires sudo (on Linux) or administator privledges (on Windows)
+      run: cmake --install .

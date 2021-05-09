@@ -93,13 +93,13 @@ public:
     virtual void log(uint8_t logLevel,
                      const char *vendorId,
                      const char *message,
-                     va_list *args);
+                     va_list *args) = 0;
 
 #if defined (ARDUINO_ARCH_AVR)
     virtual void log(uint8_t logLevel,
                      const __FlashStringHelper *vendorId,
                      const __FlashStringHelper *message,
-                     va_list *args);
+                     va_list *args) = 0;
 #endif
 
     /**
@@ -108,7 +108,7 @@ public:
      * are output.
      * @see Review the descriptions in the @ref logLevels
      */
-    virtual void setLogLevel(uint8_t logLevel);
+    virtual void setLogLevel(uint8_t logLevel) = 0;
 };
 
 #endif /* SRC_RF24LOGBASEHANDLER_H_ */
