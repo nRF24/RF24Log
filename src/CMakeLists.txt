@@ -17,7 +17,7 @@ if (PICO_SDK_PATH)
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/Common.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/LevelDescriptions.h
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/AbstractHandler.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/SpecifierFormat.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/FormatSpecifier.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/AbstractStream.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24LogParts/PrintfParser.cpp
         ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers/NativePrintLogger.cpp
@@ -30,6 +30,7 @@ if (PICO_SDK_PATH)
         ${CMAKE_CURRENT_LIST_DIR}/RF24Parts
         ${CMAKE_CURRENT_LIST_DIR}/handler_ext
         )
+
     return()
 endif()
 
@@ -48,7 +49,7 @@ add_library(rf24log SHARED
     RF24LogParts/Common.cpp
     RF24LogParts/LevelDescriptions.h
     RF24LogParts/AbstractHandler.cpp
-    RF24LogParts/SpecifierFormat.cpp
+    RF24LogParts/FormatSpecifier.cpp
     RF24LogParts/AbstractStream.cpp
     RF24LogParts/PrintfParser.cpp
     RF24Loggers/NativePrintLogger.cpp
@@ -81,8 +82,8 @@ install(FILES
         RF24LogParts/LevelDescriptions.h
         RF24LogParts/AbstractHandler.cpp
         RF24LogParts/AbstractHandler.h
-        RF24LogParts/SpecifierFormat.cpp
-        RF24LogParts/SpecifierFormat.h
+        RF24LogParts/FormatSpecifier.cpp
+        RF24LogParts/FormatSpecifier.h
         RF24LogParts/AbstractStream.cpp
         RF24LogParts/AbstractStream.h
         RF24LogParts/PrintfParser.cpp
