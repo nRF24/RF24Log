@@ -40,7 +40,7 @@ jobs:
       working-directory: ${{ github.workspace }}/build
       run: cmake --build .
 
-    -name: Install lib
+    - name: Install lib
       working-directory: ${{ github.workspace }}/build
       # this step requires sudo (on Linux) or administator privledges (on Windows)
       run: cmake --install .
