@@ -37,8 +37,8 @@ cmake_minimum_required(VERSION 3.15)
 
 # Set the project name to your project name
 project(RF24Log
-    VERSION 0.1.0
     LANGUAGES C CXX
+    VERSION 0.1.0
     )
 
 add_library(rf24log SHARED
@@ -78,6 +78,7 @@ install(FILES
 install(FILES
         RF24LogParts/Common.cpp
         RF24LogParts/Common.h
+        RF24LogParts/LevelDescriptions.h
         RF24LogParts/AbstractHandler.cpp
         RF24LogParts/AbstractHandler.h
         RF24LogParts/SpecifierFormat.cpp

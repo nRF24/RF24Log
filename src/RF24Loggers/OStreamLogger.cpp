@@ -24,21 +24,20 @@ void OStreamLogger::appendTimestamp()
 {
     char buffer[21];
     time_t rawtime;
-    struct tm* timeinfo;
     time(&rawtime);
-    timeinfo = localtime(&rawtime);
 
-    strftime(buffer, 20, "%F:%H:%M:%S", timeinfo);
-    buffer[20] = RF24LOG_DELIMITER;
+    strftime(buffer, 20, "%F:%H:%M:%S", localtime(&rawtime));
+    buffer[19] = RF24LOG_DELIMITER;
+    buffer[20] = 0;
     *_stream << buffer;
 }
 
 void OStreamLogger::appendChar(char data, uint16_t depth)
 {
-    while (depth > 0)
+    while (depth)
     {
         --depth;
-        *_stream << (char)data;
+        *_stream << data;
     }
 }
 
@@ -113,7 +112,7 @@ void OStreamLogger::appendUInt(unsigned long data, uint8_t base)
     }
     else if (base == 16)
     {
-        *_stream << std::hex << data;
+        *_stream << std::hex << std::uppercase << data;
     }
     else
     {
@@ -123,7 +122,12 @@ void OStreamLogger::appendUInt(unsigned long data, uint8_t base)
 
 void OStreamLogger::appendDouble(double data, uint8_t precision)
 {
-    *_stream << std::fixed << _stream->precision(precision) << data;
+    std::streamsize prev_precision = _stream->precision(precision);
+    _stream->setf(std::ios::fixed, std::ios::floatfield);
+    *_stream << data;
+    _stream->precision(prev_precision);
+    _stream->unsetf(std::ios::floatfield);
+    _stream->unsetf(std::ios::fixed);
 }
 
 void OStreamLogger::appendStr(const char* data)
