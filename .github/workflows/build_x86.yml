@@ -1,6 +1,6 @@
-name: RP2xxx build
+name: x86 build
 
-on: [push, pull_request]
+on: [push]
 
 
 env:
