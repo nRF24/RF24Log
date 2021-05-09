@@ -1,5 +1,5 @@
 /**
- * @file SpecifierFormat.h
+ * @file FormatSpecifier.h
  * @brief generic struct that allows customization of a printf-like parser
  * @date Created 4 May 2021
  * @author Brendan Doherty (2bndy5)
@@ -13,19 +13,19 @@
  * Public License instead of this License.
  */
 
-#ifndef SRC_RF24LOGPARTS_SPECIFIERFORMAT_H_
-#define SRC_RF24LOGPARTS_SPECIFIERFORMAT_H_
+#ifndef SRC_RF24LOGPARTS_FORMATSPECIFIER_H_
+#define SRC_RF24LOGPARTS_FORMATSPECIFIER_H_
 
 #include <stdint.h>
 
 /** @brief Some data about a format specifier */
-struct SpecifierParsing
+struct FormatSpecifier
 {
     /**
      * @brief Construct a new Specifier Flags object
      * @param pad The default char used when padding data
      */
-    SpecifierParsing(char pad = ' ') : fill(pad), width(0), precis(-1), isUnsigned(false), specifier(0) {};
+    FormatSpecifier(char pad = ' ') : fill(pad), width(0), precis(-1), isUnsigned(false), specifier(0) {};
 
     /**
      * @brief is a character a valid specifier flag
@@ -60,4 +60,4 @@ struct SpecifierParsing
     char specifier;
 };
 
-#endif /* SRC_RF24LOGPARTS_SPECIFIERFORMAT_H_ */
+#endif /* SRC_RF24LOGPARTS_FORMATSPECIFIER_H_ */

@@ -62,7 +62,7 @@ void RF24LogAbstractStream::appendLogLevel(uint8_t logLevel)
     appendChar(RF24LOG_DELIMITER);
 }
 
-void RF24LogAbstractStream::appendFormat(SpecifierParsing* fmt_parser, va_list *args)
+void RF24LogAbstractStream::appendFormat(FormatSpecifier* fmt_parser, va_list *args)
 {
     if (fmt_parser->specifier == 's')
     {

@@ -1,5 +1,5 @@
 /**
- * @file SpecifierFormat.cpp
+ * @file FormatSpecifier.cpp
  * @date Created 4 May 2021
  * @author Brendan Doherty (2bndy5)
  * @copyright Copyright (C) <br>
@@ -12,12 +12,12 @@
  * Public License instead of this License.
  */
 
-#include "SpecifierFormat.h"
+#include "FormatSpecifier.h"
 
 
-/* *************************** SpecifierParsing defs **************************** */
+/* *************************** FormatSpecifier defs **************************** */
 
-bool SpecifierParsing::isFlagged(char c)
+bool FormatSpecifier::isFlagged(char c)
 {
     if (c == '0')
     {
@@ -26,7 +26,7 @@ bool SpecifierParsing::isFlagged(char c)
     return (bool)(c == '-' || c == '+' || c == ' ' || c == '0');
 }
 
-bool SpecifierParsing::isPaddPrec(char c)
+bool FormatSpecifier::isPaddPrec(char c)
 {
     if (c == '.' || (c > 47 && c < 58))
     {
@@ -51,7 +51,7 @@ bool SpecifierParsing::isPaddPrec(char c)
 
 }
 
-bool SpecifierParsing::isFmtOption(char c)
+bool FormatSpecifier::isFmtOption(char c)
 {
 
     if (c == 's' ||

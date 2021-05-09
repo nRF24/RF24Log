@@ -17,7 +17,7 @@
 #include <avr/pgmspace.h> // pgm_read_byte()
 #endif
 
-/* *************************** PrintfParser defs **************************** */
+#include "FormatSpecifier.h" // FormatSpecifier struct
 
 #if defined(ARDUINO_ARCH_AVR)
 void RF24LogPrintfParser::write(uint8_t logLevel,
@@ -51,7 +51,7 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
         {
             if (c == '%')
             {
-                SpecifierParsing fmt_parser;
+                FormatSpecifier fmt_parser;
                 c = pgm_read_byte(p++); // get ready to feed the parser
                 while (c && fmt_parser.isFlagged(c))   { c = pgm_read_byte(p++); }
                 while (c && fmt_parser.isPaddPrec(c))  { c = pgm_read_byte(p++); }
@@ -120,7 +120,7 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
         {
             if (*c == '%')
             {
-                SpecifierParsing fmt_parser;
+                FormatSpecifier fmt_parser;
                 ++c; // get ready to feed the parser
                 while (*c && fmt_parser.isFlagged(*c))   { ++c; }
                 while (*c && fmt_parser.isPaddPrec(*c))  { ++c; }

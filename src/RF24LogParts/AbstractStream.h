@@ -20,7 +20,7 @@
 #include <WString.h> // __FlashStringHelper
 #endif
 #include <stdint.h>
-#include "SpecifierFormat.h" // SpecifierParsing struct
+#include "FormatSpecifier.h" // FormatSpecifier struct
 #include "Common.h" // numbCharsToPrint()
 
 /** @brief A `protected` collection of methods that output formatted data to a stream. */
@@ -49,7 +49,7 @@ protected:
      * @param fmt_parser The object of prefixed specifier options/flags
      * @param args The sequence of args
      */
-    void appendFormat(SpecifierParsing* fmt_parser, va_list *args);
+    void appendFormat(FormatSpecifier* fmt_parser, va_list *args);
 
     /**
      * @brief append a character a number of times
