@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['isunsigned_149',['isUnsigned',['../struct_specifier_parsing.html#a37766edd2478434e296f7274f590a38a',1,'SpecifierParsing']]]
+  ['isunsigned_149',['isUnsigned',['../struct_format_specifier.html#a56ad0aff7e5f166d86a3203ae14c7062',1,'FormatSpecifier']]]
 ];

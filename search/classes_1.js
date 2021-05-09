@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nativeprintlogger_90',['NativePrintLogger',['../class_native_print_logger.html',1,'']]]
+  ['formatspecifier_90',['FormatSpecifier',['../struct_format_specifier.html',1,'']]]
 ];

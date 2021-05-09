@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['log_135',['log',['../class_r_f24_dual_log_handler.html#aa371406aba2ec48194967a64f86d5c27',1,'RF24DualLogHandler::log()'],['../class_r_f24_log_base_handler.html#a59283a813d5f0af55996618ae1dcbab7',1,'RF24LogBaseHandler::log()'],['../class_r_f24_logging.html#a197f0b717a027c511a9dc3634dbc9089',1,'RF24Logging::log()'],['../class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89',1,'RF24LogAbstractHandler::log()']]]
+  ['isflagged_133',['isFlagged',['../struct_format_specifier.html#a91577cc7d54023986c89a1c4c783d419',1,'FormatSpecifier']]],
+  ['isfmtoption_134',['isFmtOption',['../struct_format_specifier.html#ab8b36f631f30603ab1042351e2696dd5',1,'FormatSpecifier']]],
+  ['ispaddprec_135',['isPaddPrec',['../struct_format_specifier.html#a31c472519d18461ddaa081df95553454',1,'FormatSpecifier']]]
 ];

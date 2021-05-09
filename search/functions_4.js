@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['nativeprintlogger_136',['NativePrintLogger',['../class_native_print_logger.html#af5d94600acf3a6bbbbd37751d9fb88d2',1,'NativePrintLogger']]],
-  ['numbcharstoprint_137',['numbCharsToPrint',['../_common_8cpp.html#a2c06064452e44307d32c08845d39cda1',1,'numbCharsToPrint(int64_t numb, uint8_t base):&#160;Common.cpp'],['../_common_8h.html#a514766ee83e51e5016c3dfdc261c9d52',1,'numbCharsToPrint(int64_t numb, uint8_t base=10):&#160;Common.cpp']]]
+  ['log_136',['log',['../class_r_f24_dual_log_handler.html#aa371406aba2ec48194967a64f86d5c27',1,'RF24DualLogHandler::log()'],['../class_r_f24_log_base_handler.html#a59283a813d5f0af55996618ae1dcbab7',1,'RF24LogBaseHandler::log()'],['../class_r_f24_logging.html#a197f0b717a027c511a9dc3634dbc9089',1,'RF24Logging::log()'],['../class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89',1,'RF24LogAbstractHandler::log()']]]
 ];
