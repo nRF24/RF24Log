@@ -67,7 +67,7 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_r_f24_log_base_handler-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">RF24LogBaseHandler Class Reference</div>  </div>
+<div class="title">RF24LogBaseHandler Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -92,19 +92,19 @@ Inheritance diagram for RF24LogBaseHandler:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1bc7b0a3f03a06e885e1838fab813c3f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_base_handler.html#a1bc7b0a3f03a06e885e1838fab813c3f">log</a> (uint8_t logLevel, const char *vendorId, const char *message, va_list *args)</td></tr>
-<tr class="memdesc:a1bc7b0a3f03a06e885e1838fab813c3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">log a message.  <a href="class_r_f24_log_base_handler.html#a1bc7b0a3f03a06e885e1838fab813c3f">More...</a><br /></td></tr>
-<tr class="separator:a1bc7b0a3f03a06e885e1838fab813c3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65c0c7cee62ba34437e8af1fbfa409b3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_base_handler.html#a65c0c7cee62ba34437e8af1fbfa409b3">setLogLevel</a> (uint8_t logLevel)</td></tr>
-<tr class="separator:a65c0c7cee62ba34437e8af1fbfa409b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59283a813d5f0af55996618ae1dcbab7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_base_handler.html#a59283a813d5f0af55996618ae1dcbab7">log</a> (uint8_t logLevel, const char *vendorId, const char *message, va_list *args)=0</td></tr>
+<tr class="memdesc:a59283a813d5f0af55996618ae1dcbab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">log a message.  <a href="class_r_f24_log_base_handler.html#a59283a813d5f0af55996618ae1dcbab7">More...</a><br /></td></tr>
+<tr class="separator:a59283a813d5f0af55996618ae1dcbab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05a67bd549dce582b5ac6015f43fd019"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_base_handler.html#a05a67bd549dce582b5ac6015f43fd019">setLogLevel</a> (uint8_t logLevel)=0</td></tr>
+<tr class="separator:a05a67bd549dce582b5ac6015f43fd019"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A base mechanism for handling log messages. </p>
 
 <p class="definition">Definition at line <a class="el" href="_r_f24_log_base_handler_8h_source.html#l00082">82</a> of file <a class="el" href="_r_f24_log_base_handler_8h_source.html">RF24LogBaseHandler.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1bc7b0a3f03a06e885e1838fab813c3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1bc7b0a3f03a06e885e1838fab813c3f">&#9670;&nbsp;</a></span>log()</h2>
+<a id="a59283a813d5f0af55996618ae1dcbab7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59283a813d5f0af55996618ae1dcbab7">&#9670;&nbsp;</a></span>log()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -144,7 +144,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -160,12 +160,12 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89">RF24LogAbstractHandler</a>, and <a class="el" href="class_r_f24_dual_log_handler.html#aa371406aba2ec48194967a64f86d5c27">RF24DualLogHandler</a>.</p>
+<p>Implemented in <a class="el" href="class_r_f24_log_abstract_handler.html#a54660bdcc2271e75e2a07a60928b5a89">RF24LogAbstractHandler</a>, and <a class="el" href="class_r_f24_dual_log_handler.html#aa371406aba2ec48194967a64f86d5c27">RF24DualLogHandler</a>.</p>
 
 </div>
 </div>
-<a id="a65c0c7cee62ba34437e8af1fbfa409b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65c0c7cee62ba34437e8af1fbfa409b3">&#9670;&nbsp;</a></span>setLogLevel()</h2>
+<a id="a05a67bd549dce582b5ac6015f43fd019"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05a67bd549dce582b5ac6015f43fd019">&#9670;&nbsp;</a></span>setLogLevel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -183,7 +183,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -195,7 +195,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd>Review the descriptions in the <a class="el" href="group__log_levels.html">Log Levels</a> </dd></dl>
 
-<p>Reimplemented in <a class="el" href="class_r_f24_log_abstract_handler.html#a964b4de4cae6567127b51502497f55cb">RF24LogAbstractHandler</a>, and <a class="el" href="class_r_f24_dual_log_handler.html#ad81db68291bcdf1fa253ca1fdf700901">RF24DualLogHandler</a>.</p>
+<p>Implemented in <a class="el" href="class_r_f24_log_abstract_handler.html#a964b4de4cae6567127b51502497f55cb">RF24LogAbstractHandler</a>, and <a class="el" href="class_r_f24_dual_log_handler.html#ad81db68291bcdf1fa253ca1fdf700901">RF24DualLogHandler</a>.</p>
 
 </div>
 </div>
