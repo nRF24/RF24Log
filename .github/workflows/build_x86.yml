@@ -64,4 +64,4 @@ jobs:
         cd build_examples
         cmake ../examples
         cmake --build .
-        ls
+        file ./GettingStarted

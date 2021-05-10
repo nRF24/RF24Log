@@ -9,11 +9,10 @@ set(EXAMPLES_LIST
 option(USE_PICO_SDK "Use the Pico SDK to build the RF24Log lib's examples" OFF)
 
 if (USE_PICO_SDK)
-
-    project(pico_examples C CXX ASM)
-
     # Pull in SDK (must be before project)
     include(pico_sdk_import.cmake)
+
+    project(pico_examples C CXX ASM)
 
     # Initialize the Pico SDK
     pico_sdk_init()
