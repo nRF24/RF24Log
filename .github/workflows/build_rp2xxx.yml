@@ -57,7 +57,7 @@ jobs:
       working-directory: ${{ github.workspace }}/build
       env:
         PICO_SDK_PATH: ${{ github.workspace }}/pico-sdk
-      run: cmake ../examples -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DPICO_BOARD=${{ matrix.board }}
+      run: cmake ../examples -DUSE_PICO_SDK=ON -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DPICO_BOARD=${{ matrix.board }}
 
     - name: Build
       working-directory: ${{ github.workspace }}/build

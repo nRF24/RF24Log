@@ -2,7 +2,6 @@ name: x86 build
 
 on: [push]
 
-
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
@@ -57,3 +56,12 @@ jobs:
       working-directory: ${{ github.workspace }}/build
       # this step requires sudo (on Linux) or administator privledges (on Windows)
       run: cmake --install .
+
+    - name: Compile the examples for Ubuntu
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: |
+        mkdir build_examples
+        cd build_examples
+        cmake ../examples
+        cmake --build .
+        ls

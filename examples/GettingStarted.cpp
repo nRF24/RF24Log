@@ -11,21 +11,21 @@
  */
 
 #include <string.h>
-#include "RF24Logging.h"
+#include <RF24Log/RF24Logging.h>
 
 #ifdef PICO_BUILD
 #include "pico/stdlib.h"  // printf(), sleep_ms(), getchar_timeout_us(), to_us_since_boot(), get_absolute_time()
 #include "pico/bootrom.h" // reset_usb_boot()
 #include <tusb.h>         // tud_cdc_connected()
 
-#include "RF24Loggers/NativePrintLogger.h"
+#include <RF24Log/RF24Loggers/NativePrintLogger.h>
 
 // Create hardware serial port log handler
 NativePrintLogger serialLogHandler;
 
 #else
 #include <iostream>
-#include "RF24Loggers/OStreamLogger.h"
+#include <RF24Log/RF24Loggers/OStreamLogger.h>
 
 // Create hardware serial port log handler
 OStreamLogger serialLogHandler((std::ostream*)&std::cout);
@@ -56,10 +56,9 @@ void setup()
 void loop()
 {
     uint8_t level = 0;
-    char input;
 
 #if defined(PICO_BUILD)
-    input = getchar_timeout_us(5000); // get char from buffer for user input after 5 sec
+    char input = getchar_timeout_us(5000); // get char from buffer for user input after 5 sec
     while (input != PICO_ERROR_TIMEOUT && input >= 48 && input < 56)
     {
         level <<= 3;

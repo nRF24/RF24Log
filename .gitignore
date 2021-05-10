@@ -65,4 +65,4 @@ docs/xml/
 DS_Store/
 
 # CMake stuff
-build/
+*build*/

@@ -71,7 +71,7 @@ void RF24LogAbstractStream::appendFormat(FormatSpecifier* fmt_parser, va_list *a
         // warning: ISO C++17 does not allow 'register' storage class specifier [-Wregister]
         register char *str_p = (char *)va_arg(*args, int);
         #else
-        char *str_p = (char *)va_arg(*args, int);
+        const char *str_p = va_arg(*args, char*);
         #endif
         appendStr(str_p);
     }

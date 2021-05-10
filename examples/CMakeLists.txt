@@ -1,49 +1,55 @@
 cmake_minimum_required(VERSION 3.12)
 
-# Pull in SDK (must be before project)
-include(pico_sdk_import.cmake)
-
-project(pico_examples C CXX ASM)
-
-# Initialize the Pico SDK
-pico_sdk_init()
-
-# In YOUR project, include RF24's CMakeLists.txt
-# giving the path depending on where the library
-# is cloned to in your project
-include(../src/CMakeLists.txt)
-
 # iterate over a list of examples by name
 set(EXAMPLES_LIST
     GettingStarted
     AllLogLevels
     )
 
-#[[ for each example, we have to perform the following:
+option(USE_PICO_SDK "Use the Pico SDK to build the RF24Log lib's examples" OFF)
 
-#make a target
-add_executable(gettingStarted gettingStarted.cpp)
+if (USE_PICO_SDK)
 
-# link the necessary libs to the target
-target_link_libraries(gettingStarted PUBLIC
-    RF24Log
-    pico_stdlib
-    )
+    project(pico_examples C CXX ASM)
 
-# create map/bin/hex file etc.
-pico_add_extra_outputs(gettingStarted)
+    # Pull in SDK (must be before project)
+    include(pico_sdk_import.cmake)
 
-]]
+    # Initialize the Pico SDK
+    pico_sdk_init()
 
-foreach(example ${EXAMPLES_LIST})
-    add_executable(${example} ${example}.cpp)
+    # In YOUR project, include RF24's CMakeLists.txt
+    # giving the path depending on where the library
+    # is cloned to in your project
+    include(../src/CMakeLists.txt)
 
-    target_link_libraries(${example} PUBLIC
-        RF24Log
-        pico_stdlib
-        )
+    foreach(example ${EXAMPLES_LIST})
+        #make a target
+        add_executable(${example} ${example}.cpp)
 
-    pico_enable_stdio_usb(${example} 1)
-    pico_enable_stdio_uart(${example} 0)
-    pico_add_extra_outputs(${example})
-endforeach()
+        # link the necessary libs to the target
+        target_link_libraries(${example} PUBLIC
+            RF24Log
+            pico_stdlib
+            )
+
+        # enable serial output over USB instead of RX/TX GPIO pins
+        pico_enable_stdio_usb(${example} 1)
+        pico_enable_stdio_uart(${example} 0)
+
+        # create map/bin/hex file etc.
+        pico_add_extra_outputs(${example})
+    endforeach()
+
+else() # if NOT USE_PICO_SDK
+
+    project(RF24LogExamples)
+
+    foreach(example ${EXAMPLES_LIST})
+        #make a target
+        add_executable(${example} ${example}.cpp)
+
+        # link the RF24Log lib to the target
+        target_link_libraries(${example} PUBLIC rf24log) # this command looks for the installed librf24log.so
+    endforeach()
+endif()
