@@ -131,7 +131,7 @@ $(function() {
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="comment">// warning: ISO C++17 does not allow &#39;register&#39; storage class specifier [-Wregister]</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">register</span> <span class="keywordtype">char</span> *str_p = (<span class="keywordtype">char</span> *)va_arg(*args, <span class="keywordtype">int</span>);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">        #else</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">char</span> *str_p = (<span class="keywordtype">char</span> *)va_arg(*args, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span> *str_p = va_arg(*args, <span class="keywordtype">char</span>*);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">        #endif</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="class_r_f24_log_abstract_stream.html#a6c883ca4fd17889b6f99e5ac1d002558">appendStr</a>(str_p);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
