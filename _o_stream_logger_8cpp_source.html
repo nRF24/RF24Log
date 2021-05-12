@@ -163,9 +163,9 @@ $(function() {
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            data &gt;&gt;= 1;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            ++index;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">while</span> (--index)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">while</span> (index)</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            *_stream &lt;&lt; buffer[index]; <span class="comment">// dump reversed string 1 char at a time</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            *_stream &lt;&lt; buffer[--index]; <span class="comment">// dump reversed string 1 char at a time</span></div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (base == 8)</div>
