@@ -73,7 +73,7 @@ void loop()
   RF24Log_log(75, vendorID, "%%%%This is level 0x%02x (0b%08b or%4dh)%2c", 75, 75, 75, '!');
 
   // note negative numbers will look strange in binary, hexadecimal, and octal output if they aren't first casted as unsigned numbers
-  RF24Log_log((uint8_t)-0xAA, vendorID, "0x%02x is 0b%08b is %d, but can also be %o", (uint8_t)(-0xAA), (uint8_t)(-0xAA), -0xAA, -0xAA);
+  RF24Log_log((uint8_t)(-0xAA), vendorID, "0x%02x is 0b%08b is %d, but can also be %o", (uint8_t)(-0xAA), (uint8_t)(-0xAA), -0xAA, -0xAA);
 
   // print a blank line (no timestamp, level description, or vendorId)
   RF24Log_log(0, DisableVendor, "");
