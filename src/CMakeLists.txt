@@ -34,15 +34,26 @@ if (PICO_SDK_PATH)
     return()
 endif()
 
+#################################
+# build for x86/x84 platforms
+
 cmake_minimum_required(VERSION 3.15)
 
 # Set the project name to your project name
-project(RF24Log
-    LANGUAGES C CXX
-    VERSION 0.1.0
-    )
+project(RF24Log_lib C CXX)
 
-add_library(rf24log SHARED
+add_compile_options(-Ofast -Wall -pthread)
+
+include(cmake/PreventInSourceBuilds.cmake)
+
+# set a variable to reuse the target name
+set(LibTargetName rf24log) # this var is used in the GetLibVersion.cmake module
+
+# get library version number (major, minor, patch) from Arduino IDE's required library.properties file
+include(cmake/GetLibVersion.cmake)
+message("RF24 library version: ${${LibTargetName}_VERSION_STRING}")
+
+add_library(${LibTargetName} SHARED
     RF24Logging.cpp
     RF24LogBaseHandler.h
     RF24LogLevel.h
@@ -57,14 +68,14 @@ add_library(rf24log SHARED
     )
 
 
-target_include_directories(rf24log PUBLIC
+target_include_directories(${LibTargetName} PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_LIST_DIR}/RF24Loggers
     ${CMAKE_CURRENT_LIST_DIR}/RF24Parts
     ${CMAKE_CURRENT_LIST_DIR}/handler_ext
     )
 
-install(TARGETS rf24log
+install(TARGETS ${LibTargetName}
     DESTINATION lib
     )
 

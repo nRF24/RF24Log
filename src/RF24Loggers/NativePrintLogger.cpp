@@ -119,9 +119,9 @@ void NativePrintLogger::appendUInt(unsigned long data, uint8_t base)
             data >>= 1;
             ++index;
         }
-        while (--index)
+        while (index)
         {
-            appendChar(buffer[index]); // dump reversed string 1 char at a time
+            appendChar(buffer[--index]); // dump reversed string 1 char at a time
         }
     }
     else if (base == 8)
