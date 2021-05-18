@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['how_20to_20create_20your_20own_20handler_177',['How to create your own handler',['../md_docs_roll_your_logger.html',1,'']]]
+  ['how_20to_20create_20your_20own_20handler_176',['How to create your own handler',['../md_docs_roll_your_logger.html',1,'']]]
 ];
