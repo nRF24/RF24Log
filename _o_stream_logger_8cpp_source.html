@@ -110,14 +110,14 @@ $(function() {
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/****************************************************************************/</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">void</span> OStreamLogger::appendInt(<span class="keywordtype">long</span> <span class="keywordtype">long</span> data)</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_o_stream_logger.html#ad7b7e00f6023b42c2b05e70c6fbb3e64">   51</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_o_stream_logger.html#ad7b7e00f6023b42c2b05e70c6fbb3e64">OStreamLogger::appendInt</a>(<span class="keywordtype">long</span> data)</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    *_stream &lt;&lt; std::dec &lt;&lt; data;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">/****************************************************************************/</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> OStreamLogger::appendUInt(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> data, uint8_t base)</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_o_stream_logger.html#adca50c4860e24eb94347cde20bf5bf0e">   58</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_o_stream_logger.html#adca50c4860e24eb94347cde20bf5bf0e">OStreamLogger::appendUInt</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> data, uint8_t base)</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span> (base == 2)</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
@@ -177,6 +177,8 @@ $(function() {
 <div class="ttc" id="aclass_o_stream_logger_html_a7c8efbb70c6c6cd7cf6d12c73fc77a59"><div class="ttname"><a href="class_o_stream_logger.html#a7c8efbb70c6c6cd7cf6d12c73fc77a59">OStreamLogger::OStreamLogger</a></div><div class="ttdeci">OStreamLogger(std::ostream *stream)</div><div class="ttdoc">Construct a new OStreamLogger object.</div><div class="ttdef"><b>Definition:</b> <a href="_o_stream_logger_8cpp_source.html#l00019">OStreamLogger.cpp:19</a></div></div>
 <div class="ttc" id="aclass_o_stream_logger_html_a8baef5f18471ee46faa50a684b33e8c1"><div class="ttname"><a href="class_o_stream_logger.html#a8baef5f18471ee46faa50a684b33e8c1">OStreamLogger::appendDouble</a></div><div class="ttdeci">void appendDouble(double data, uint8_t precision=2)</div><div class="ttdoc">append a floating point number</div><div class="ttdef"><b>Definition:</b> <a href="_o_stream_logger_8cpp_source.html#l00095">OStreamLogger.cpp:95</a></div></div>
 <div class="ttc" id="aclass_o_stream_logger_html_ac06915d24dc6ab8dc61cd009acc9080a"><div class="ttname"><a href="class_o_stream_logger.html#ac06915d24dc6ab8dc61cd009acc9080a">OStreamLogger::appendStr</a></div><div class="ttdeci">void appendStr(const char *data)</div><div class="ttdoc">append a c-string</div><div class="ttdef"><b>Definition:</b> <a href="_o_stream_logger_8cpp_source.html#l00105">OStreamLogger.cpp:105</a></div></div>
+<div class="ttc" id="aclass_o_stream_logger_html_ad7b7e00f6023b42c2b05e70c6fbb3e64"><div class="ttname"><a href="class_o_stream_logger.html#ad7b7e00f6023b42c2b05e70c6fbb3e64">OStreamLogger::appendInt</a></div><div class="ttdeci">void appendInt(long data)</div><div class="ttdoc">append a signed (+/-) number</div><div class="ttdef"><b>Definition:</b> <a href="_o_stream_logger_8cpp_source.html#l00051">OStreamLogger.cpp:51</a></div></div>
+<div class="ttc" id="aclass_o_stream_logger_html_adca50c4860e24eb94347cde20bf5bf0e"><div class="ttname"><a href="class_o_stream_logger.html#adca50c4860e24eb94347cde20bf5bf0e">OStreamLogger::appendUInt</a></div><div class="ttdeci">void appendUInt(unsigned long data, uint8_t base=10)</div><div class="ttdoc">append an ‘unsigned’ (only +) number</div><div class="ttdef"><b>Definition:</b> <a href="_o_stream_logger_8cpp_source.html#l00058">OStreamLogger.cpp:58</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
