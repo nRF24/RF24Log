@@ -10,19 +10,10 @@
  * library.  If this is what you want to do, use the GNU Lesser General
  * Public License instead of this License.
  */
-#if defined (ARDUINO)
-    #if defined (ARDUINO_ARCH_AVR)
-    #include <WString.h> // __FlashStringHelper sprintf()
-    #else
-    #include <string.h> // sprintf()
-    #endif
-#else
+#ifndef ARDUINO
 #include <cstdio> // sprintf()
-#endif
 
-#if defined (ARDUINO)
-#include <Arduino.h> // millis()
-#elif defined (PICO_BUILD)
+#if defined (PICO_BUILD)
 #include <pico/stdlib.h> // to_ms_since_boot(), get_absolute_time()
 #else
 #include <ctime> // time_t, struct tm*, time(), localtime(), strftime()
@@ -30,16 +21,17 @@
 
 #include "NativePrintLogger.h"
 
+/****************************************************************************/
+
 NativePrintLogger::NativePrintLogger()
 {
 }
 
+/****************************************************************************/
+
 void NativePrintLogger::appendTimestamp()
 {
-    #if defined (ARDUINO)
-    printf_P("%10lu", millis());
-    printf_P("%c", RF24LOG_DELIMITER);
-    #elif defined(PICO_BUILD)
+    #if defined(PICO_BUILD)
     printf_P("%10lu", to_ms_since_boot(get_absolute_time()));
     printf_P("%c", RF24LOG_DELIMITER);
     #else // !defined (PICO_BUILD) && !defined (ARDUINO)
@@ -55,6 +47,8 @@ void NativePrintLogger::appendTimestamp()
     #endif // defined (PICO_BUILD) && !defined (ARDUINO)
 }
 
+/****************************************************************************/
+
 void NativePrintLogger::appendChar(char data, uint16_t depth)
 {
     while (depth > 0)
@@ -64,44 +58,17 @@ void NativePrintLogger::appendChar(char data, uint16_t depth)
     }
 }
 
-void NativePrintLogger::appendInt(long data, uint8_t base)
+/****************************************************************************/
+
+void NativePrintLogger::appendInt(long long data)
 {
-    if (base == 2)
-    {
-        if (!data)
-        {
-            printf_P("0"); // output a zero
-            return;
-        }
-        char buffer[64];
-        uint8_t index = 0;
-        while (data)
-        {
-            // get representation as a reversed string
-            buffer[index] = (data & 1) + 48;
-            data >>= 1;
-            ++index;
-        }
-        while (--index)
-        {
-            appendChar(buffer[index]); // dump reversed string 1 char at a time
-        }
-    }
-    else if (base == 8)
-    {
-        printf_P("%o", (unsigned int)data);
-    }
-    else if (base == 16)
-    {
-        printf_P("%X", (unsigned int)data);
-    }
-    else
-    {
-        printf_P("%li", data);
-    }
+
+    printf_P("%li", (long)data);
 }
 
-void NativePrintLogger::appendUInt(unsigned long data, uint8_t base)
+/****************************************************************************/
+
+void NativePrintLogger::appendUInt(unsigned long long data, uint8_t base)
 {
     if (base == 2)
     {
@@ -134,9 +101,11 @@ void NativePrintLogger::appendUInt(unsigned long data, uint8_t base)
     }
     else
     {
-        printf_P("%lu", data);
+        printf_P("%lu", (unsigned long)data);
     }
 }
+
+/****************************************************************************/
 
 void NativePrintLogger::appendDouble(double data, uint8_t precision)
 {
@@ -145,7 +114,11 @@ void NativePrintLogger::appendDouble(double data, uint8_t precision)
     printf_P(fmt_buf, data);
 }
 
+/****************************************************************************/
+
 void NativePrintLogger::appendStr(const char* data)
 {
     printf_P("%s", data);
 }
+
+#endif /* ARDUINO */

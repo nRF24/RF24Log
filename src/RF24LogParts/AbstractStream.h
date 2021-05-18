@@ -61,9 +61,8 @@ protected:
     /**
      * @brief append a signed (+/-) number
      * @param data The numeric data
-     * @param base The base counting scheme. Defaults to 10 for decimal counting system
      */
-    virtual void appendInt(long data, uint8_t base = 10) = 0;
+    virtual void appendInt(long data) = 0;
 
     /**
      * @brief append an `unsigned' (only +) number

@@ -17,8 +17,7 @@
 #include "../RF24LogBaseHandler.h"
 #include "AbstractStream.h"
 
-
-/* *************************** AbstractStream defs **************************** */
+/****************************************************************************/
 
 void RF24LogAbstractStream::descTimeLevel(uint8_t logLevel)
 {
@@ -28,6 +27,8 @@ void RF24LogAbstractStream::descTimeLevel(uint8_t logLevel)
     #endif
     appendLogLevel(logLevel);
 }
+
+/****************************************************************************/
 
 void RF24LogAbstractStream::appendLogLevel(uint8_t logLevel)
 {
@@ -62,6 +63,8 @@ void RF24LogAbstractStream::appendLogLevel(uint8_t logLevel)
     appendChar(RF24LOG_DELIMITER);
 }
 
+/****************************************************************************/
+
 void RF24LogAbstractStream::appendFormat(FormatSpecifier* fmt_parser, va_list *args)
 {
     if (fmt_parser->specifier == 's')
@@ -71,7 +74,7 @@ void RF24LogAbstractStream::appendFormat(FormatSpecifier* fmt_parser, va_list *a
         // warning: ISO C++17 does not allow 'register' storage class specifier [-Wregister]
         register char *str_p = (char *)va_arg(*args, int);
         #else
-        const char *str_p = va_arg(*args, char*);
+        const char *str_p = va_arg(*args, char *);
         #endif
         appendStr(str_p);
     }
@@ -95,7 +98,7 @@ void RF24LogAbstractStream::appendFormat(FormatSpecifier* fmt_parser, va_list *a
         appendChar((char)va_arg(*args, int));
     }
 
-    else if (fmt_parser->specifier == 'D' || fmt_parser->specifier == 'F')
+    else if (fmt_parser->specifier == 'D' || fmt_parser->specifier == 'F' || fmt_parser->specifier == 'f')
     {
         // print as double
         double temp = va_arg(*args, double);
@@ -124,21 +127,25 @@ void RF24LogAbstractStream::appendFormat(FormatSpecifier* fmt_parser, va_list *a
         else if (fmt_parser->specifier == 'b') { base = 2; }
         if (base != 3) // if it was a supported char
         {
-            long temp = va_arg(*args, int);
+            int temp = va_arg(*args, int);
             if (fmt_parser->width)
             {
                 uint16_t w = numbCharsToPrint(temp, base);
                 appendChar(fmt_parser->fill, (fmt_parser->width > w ? fmt_parser->width - w : 0));
             }
-            if (fmt_parser->specifier == 'u' ||
-                    fmt_parser->specifier == 'x' || fmt_parser->specifier == 'X' ||
-                    fmt_parser->specifier == 'o' || fmt_parser->specifier == 'b')
+            if (fmt_parser->length & 0x80) // if explicitly unsigned
             {
-                appendUInt(temp, base);
+                if (fmt_parser->length == 16) { appendUInt((unsigned short)temp, base); }
+                else if (fmt_parser->length == 8)  { appendUInt((unsigned char)temp, base); }
+                // *most* arduino platforms may not support 64-bit-length integers
+                else /* assumes a 32 bit length */ { appendUInt((unsigned long)temp, base); }
             }
             else
             {
-                appendInt(temp, base);
+                if (fmt_parser->length == 16) { appendInt((short)temp); }
+                else if (fmt_parser->length == 8)  { appendInt((char)temp); }
+                // *most* arduino platforms may not support 64-bit-length integers
+                else /* assumes a 32 bit length */ { appendInt((long)temp); }
             }
         }
         else

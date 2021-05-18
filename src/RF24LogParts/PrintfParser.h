@@ -25,15 +25,15 @@ class RF24LogPrintfParser : public RF24LogAbstractHandler, public RF24LogAbstrac
 {
 protected:
     void write(uint8_t logLevel,
-                       const char *vendorId,
-                       const char *message,
-                       va_list *args);
+               const char *vendorId,
+               const char *message,
+               va_list *args);
 
 #if defined (ARDUINO_ARCH_AVR)
     void write(uint8_t logLevel,
-                       const __FlashStringHelper *vendorId,
-                       const __FlashStringHelper *message,
-                       va_list *args);
+               const __FlashStringHelper *vendorId,
+               const __FlashStringHelper *message,
+               va_list *args);
 #endif
 };
 

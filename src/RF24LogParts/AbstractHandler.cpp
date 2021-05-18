@@ -14,12 +14,14 @@
 
 #include "AbstractHandler.h"
 
-/* *************************** AbstractHandler defs **************************** */
+/****************************************************************************/
 
 RF24LogAbstractHandler::RF24LogAbstractHandler()
 {
     _logLevel = RF24LogLevel::INFO;
 }
+
+/****************************************************************************/
 
 void RF24LogAbstractHandler::log(uint8_t logLevel,
                                  const char *vendorId,
@@ -32,15 +34,21 @@ void RF24LogAbstractHandler::log(uint8_t logLevel,
     }
 }
 
+/****************************************************************************/
+
 void RF24LogAbstractHandler::setLogLevel(uint8_t logLevel)
 {
     _logLevel = logLevel;
 }
 
+/****************************************************************************/
+
 bool RF24LogAbstractHandler::isLevelEnabled(uint8_t logLevel)
 {
     return logLevel <= _logLevel;
 }
+
+/****************************************************************************/
 
 #if defined (ARDUINO_ARCH_AVR)
 void RF24LogAbstractHandler::log(uint8_t logLevel,

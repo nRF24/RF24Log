@@ -13,15 +13,21 @@
  */
 #include <RF24Logging.h>
 
+/****************************************************************************/
+
 RF24Logging::RF24Logging()
 {
     this->handler = nullptr;
 }
 
+/****************************************************************************/
+
 void RF24Logging::setHandler(RF24LogBaseHandler *handler)
 {
     this->handler = handler;
 }
+
+/****************************************************************************/
 
 void RF24Logging::log(uint8_t logLevel, const char *vendorId, const char *message, ...)
 {
@@ -33,6 +39,8 @@ void RF24Logging::log(uint8_t logLevel, const char *vendorId, const char *messag
         va_end(args);
     }
 }
+
+/****************************************************************************/
 
 #if defined (ARDUINO_ARCH_AVR)
 void RF24Logging::log(uint8_t logLevel, const __FlashStringHelper *vendorId, const __FlashStringHelper *message, ...)
@@ -47,5 +55,7 @@ void RF24Logging::log(uint8_t logLevel, const __FlashStringHelper *vendorId, con
 }
 #endif
 
-// default logger instance
+/****************************************************************************/
+
+/** @brief default logger instance */
 RF24Logging rf24Logging;

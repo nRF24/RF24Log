@@ -11,15 +11,19 @@
  * library.  If this is what you want to do, use the GNU Lesser General
  * Public License instead of this License.
  */
-#include <Arduino.h>
+#include <Arduino.h> // millis()
 #include "../RF24LogLevel.h"
 #include "ArduinoPrintLogger.h"
+#include <stdio.h> // size_t
 
+/****************************************************************************/
 
 ArduinoPrintLogger::ArduinoPrintLogger(Print *stream)
 {
     _stream = stream;
 }
+
+/****************************************************************************/
 
 void ArduinoPrintLogger::appendTimestamp()
 {
@@ -30,6 +34,8 @@ void ArduinoPrintLogger::appendTimestamp()
     appendChar(RF24LOG_DELIMITER);
 }
 
+/****************************************************************************/
+
 void ArduinoPrintLogger::appendChar(char data, uint16_t depth)
 {
     while (depth > 0)
@@ -39,25 +45,35 @@ void ArduinoPrintLogger::appendChar(char data, uint16_t depth)
     }
 }
 
-void ArduinoPrintLogger::appendInt(long data, uint8_t base)
+/****************************************************************************/
+
+void ArduinoPrintLogger::appendInt(long data)
 {
-    _stream->print((int)data, base == 2 ? BIN : (base == 8 ? OCT : (base == 16 ? HEX : DEC)));
+    _stream->print((long)data);
 }
+
+/****************************************************************************/
 
 void ArduinoPrintLogger::appendUInt(unsigned long data, uint8_t base)
 {
-    _stream->print((unsigned long)data, base == 2 ? BIN : (base == 8 ? OCT : (base == 16 ? HEX : DEC)));
+    _stream->print((unsigned long)data, (int)base);
 }
+
+/****************************************************************************/
 
 void ArduinoPrintLogger::appendDouble(double data, uint8_t precision)
 {
     _stream->print(data, precision);
 }
 
+/****************************************************************************/
+
 void ArduinoPrintLogger::appendStr(const char* data)
 {
     _stream->print(data);
 }
+
+/****************************************************************************/
 
 #ifdef ARDUINO_ARCH_AVR
 void ArduinoPrintLogger::appendStr(const __FlashStringHelper* data)

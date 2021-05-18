@@ -19,6 +19,8 @@
 
 #include "FormatSpecifier.h" // FormatSpecifier struct
 
+/****************************************************************************/
+
 #if defined(ARDUINO_ARCH_AVR)
 void RF24LogPrintfParser::write(uint8_t logLevel,
                                 const __FlashStringHelper *vendorId,
@@ -91,6 +93,8 @@ void RF24LogPrintfParser::write(uint8_t logLevel,
     } while (c);
 }
 #endif
+
+/****************************************************************************/
 
 void RF24LogPrintfParser::write(uint8_t logLevel,
                                 const char *vendorId,

@@ -42,7 +42,7 @@ protected:
     /************************************************/
     void appendTimestamp();
     void appendChar(char data, uint16_t depth = 1);
-    void appendInt(long data, uint8_t base = 10);
+    void appendInt(long data);
     void appendUInt(unsigned long data, uint8_t base = 10);
     void appendDouble(double data, uint8_t precision = 2);
     void appendStr(const char* data);

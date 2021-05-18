@@ -13,7 +13,7 @@
 
 #include "Common.h"
 
-/* *************************** Abstract global function defs **************************** */
+/****************************************************************************/
 
 uint16_t numbCharsToPrint(int64_t numb, uint8_t base)
 {

@@ -14,11 +14,14 @@
 #include <ctime> // for time_t, struct tm*, time(), localtime(), strftime()
 #include "OStreamLogger.h"
 
+/****************************************************************************/
 
 OStreamLogger::OStreamLogger(std::ostream *stream)
 {
     _stream = stream;
 }
+
+/****************************************************************************/
 
 void OStreamLogger::appendTimestamp()
 {
@@ -32,6 +35,8 @@ void OStreamLogger::appendTimestamp()
     *_stream << buffer;
 }
 
+/****************************************************************************/
+
 void OStreamLogger::appendChar(char data, uint16_t depth)
 {
     while (depth)
@@ -41,49 +46,16 @@ void OStreamLogger::appendChar(char data, uint16_t depth)
     }
 }
 
-void OStreamLogger::appendInt(long data, uint8_t base)
+/****************************************************************************/
+
+void OStreamLogger::appendInt(long long data)
 {
-    if (base == 2)
-    {
-        bool is_signed = data < 0;
-        if (!data)
-        {
-            *_stream << '0'; // output a zero
-            return;
-        }
-        else if (is_signed)
-        {
-            *_stream << '-'; // output a negative sign
-        }
-        char buffer[64];
-        uint8_t index = 0;
-        while (data)
-        {
-            // get representation as a reversed string
-            buffer[index] = (data & 1) + 48;
-            data >>= 1;
-            ++index;
-        }
-        while (--index)
-        {
-            *_stream << buffer[index]; // dump reversed string 1 char at a time
-        }
-    }
-    else if (base == 8)
-    {
-        *_stream << std::oct << data;
-    }
-    else if (base == 16)
-    {
-        *_stream << std::hex << data;
-    }
-    else
-    {
-        *_stream << std::dec << data;
-    }
+    *_stream << std::dec << data;
 }
 
-void OStreamLogger::appendUInt(unsigned long data, uint8_t base)
+/****************************************************************************/
+
+void OStreamLogger::appendUInt(unsigned long long data, uint8_t base)
 {
     if (base == 2)
     {

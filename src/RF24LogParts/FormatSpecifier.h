@@ -25,7 +25,7 @@ struct FormatSpecifier
      * @brief Construct a new Specifier Flags object
      * @param pad The default char used when padding data
      */
-    FormatSpecifier(char pad = ' ') : fill(pad), width(0), precis(-1), isUnsigned(false), specifier(0) {};
+    FormatSpecifier(char pad = ' ') : fill(pad), width(0), precis(-1), length(0), specifier(0) {};
 
     /**
      * @brief is a character a valid specifier flag
@@ -54,8 +54,13 @@ struct FormatSpecifier
     uint16_t width;
     /** @brief The number of decimal places. If negative, then default of 2 places is used. */
     int8_t precis;
-    /** @brief flag to explicitly represent the number as an unsigned integer */
-    bool isUnsigned;
+    /**
+     * @brief bit-length of the data (only applies to integer numbers)
+     *
+     * If the most-significant bit is asserted, then the formatted data is
+     * treated as though it is `unsigned`.
+     */
+    uint8_t length;
     /** @brief datatype specifier */
     char specifier;
 };

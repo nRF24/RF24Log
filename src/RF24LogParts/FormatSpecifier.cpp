@@ -14,8 +14,7 @@
 
 #include "FormatSpecifier.h"
 
-
-/* *************************** FormatSpecifier defs **************************** */
+/****************************************************************************/
 
 bool FormatSpecifier::isFlagged(char c)
 {
@@ -25,6 +24,8 @@ bool FormatSpecifier::isFlagged(char c)
     }
     return (bool)(c == '-' || c == '+' || c == ' ' || c == '0');
 }
+
+/****************************************************************************/
 
 bool FormatSpecifier::isPaddPrec(char c)
 {
@@ -51,6 +52,8 @@ bool FormatSpecifier::isPaddPrec(char c)
 
 }
 
+/****************************************************************************/
+
 bool FormatSpecifier::isFmtOption(char c)
 {
 
@@ -60,26 +63,34 @@ bool FormatSpecifier::isFmtOption(char c)
     #endif
             c == 'c' ||
             c == 'D' ||
+            c == 'f' ||
             c == 'F' ||
             c == 'x' ||
             c == 'X' ||
             c == 'o' ||
             c == 'u' ||
+            c == 'd' ||
+            c == 'i' ||
             c == 'b')
     {
         if (c == 'u' || c == 'x' || c == 'X' || c == 'o' || c == 'b')
         {
-            isUnsigned = true;
+            length |= 0x80;
         }
-        if (c != 'u' ||c != 'h') { specifier = c; } // don't record modifiers
+        specifier = c;
         return false; // no second option supported
     }
-    else if (c == 'd' ||
-            c == 'i' ||
-            c == 'l' ||
-            c == 'h')
+    else if (c == 'l' || c == 'h')
     {
-        if (c != 'h' && c != 'l') { specifier = c; } // don't record modifiers
+        if (length & 0x30) // second encountered length modifier
+        {
+            length = (length & 0x80) | (c == 'l' ? (length & 0x30) << 1 : (length & 0x30) >> 1);
+
+        }
+        else // first encountered length modifier
+        {
+            length = (length & 0x80) | (c == 'l' ? 32 : 16);
+        }
         return true; // can also support a second option (like 'u')
     }
     return false;

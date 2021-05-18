@@ -22,7 +22,6 @@
 
 /**
  * @defgroup LoggingAPI Logging API
- *
  * @brief simple helper macros for user access to logging output via the @ref rf24Logging object.
  * @{
  */
