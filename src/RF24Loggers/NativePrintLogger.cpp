@@ -60,7 +60,7 @@ void NativePrintLogger::appendChar(char data, uint16_t depth)
 
 /****************************************************************************/
 
-void NativePrintLogger::appendInt(long long data)
+void NativePrintLogger::appendInt(long data)
 {
 
     printf_P("%li", (long)data);
@@ -68,7 +68,7 @@ void NativePrintLogger::appendInt(long long data)
 
 /****************************************************************************/
 
-void NativePrintLogger::appendUInt(unsigned long long data, uint8_t base)
+void NativePrintLogger::appendUInt(unsigned long data, uint8_t base)
 {
     if (base == 2)
     {

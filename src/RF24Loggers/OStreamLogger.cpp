@@ -48,14 +48,14 @@ void OStreamLogger::appendChar(char data, uint16_t depth)
 
 /****************************************************************************/
 
-void OStreamLogger::appendInt(long long data)
+void OStreamLogger::appendInt(long data)
 {
     *_stream << std::dec << data;
 }
 
 /****************************************************************************/
 
-void OStreamLogger::appendUInt(unsigned long long data, uint8_t base)
+void OStreamLogger::appendUInt(unsigned long data, uint8_t base)
 {
     if (base == 2)
     {
