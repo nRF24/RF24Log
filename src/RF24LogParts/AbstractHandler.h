@@ -28,13 +28,12 @@
 /** @brief An abstract base class for handling log messages. */
 class RF24LogAbstractHandler : public RF24LogBaseHandler
 {
-
 private:
 
     /**
      * @brief is logging enabled for a certain level?
      * @param logLevel The Log level to test if enabled.
-     * @return true if the log messages are enabled for the specified @p logLevel; false otherwise.
+     * @return true if the log messages are enabled for the specified @p logLevel ; false otherwise.
      */
     bool isLevelEnabled(uint8_t logLevel);
 

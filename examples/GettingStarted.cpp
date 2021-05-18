@@ -40,8 +40,7 @@ void setup()
 {
 #if defined(PICO_BUILD)
     // wait here until the CDC ACM (serial port emulation) is connected
-    while (!tud_cdc_connected())
-    {
+    while (!tud_cdc_connected()) {
         sleep_ms(10);
     }
 #endif
@@ -51,29 +50,11 @@ void setup()
     // set serial port handler
     rf24Logging.setHandler(&serialLogHandler);
 
-    RF24Log_info(vendorID, "RF24Log/examples/gettingStarted");
+    RF24Log_info(vendorID, "RF24Log/examples/gettingStarted%\n");
 }
 
 void loop()
 {
-    uint8_t level = 0;
-
-#if defined(PICO_BUILD)
-    char input = getchar_timeout_us(5000); // get char from buffer for user input after 5 sec
-    while (input != PICO_ERROR_TIMEOUT && input >= 48 && input < 56)
-    {
-        level <<= 3;
-        level += input - 48;
-        input = getchar_timeout_us(1000); // get char from buffer for user input after 1 sec
-    }
-#endif // platform specific user input
-
-    if (level)
-    {
-        RF24Log_log(0, DisableVendor, "Set log level (in octal) to %o\n", level);
-        serialLogHandler.setLogLevel(level);
-    }
-
     RF24Log_warn(vendorID, "Warn with error code = 0x%x%x%x%x", 222, 173, 190, 239);
     RF24Log_error(vendorID, "Error message with %s", "RAM string");
     RF24Log_info(vendorID, "Info about rounding a double value %.4D", 3.14159);
@@ -89,16 +70,35 @@ void loop()
     RF24Log_log(75, vendorID, "%%%%This is level 0x%02x (0b%08b or%4d)%2c", 75, 75, 75, '!');
 
     // note negative numbers will look strange in binary, hexadecimal, and octal output if they aren't first casted as unsigned numbers
-    RF24Log_log((uint8_t)-0xAA, vendorID, "0x%02x is 0b%08b is %d, but can also be %o", (uint8_t)(-0xAA), (uint8_t)(-0xAA), -0xAA, -0xAA);
+    RF24Log_log((uint8_t)(-0xAA), vendorID, "0x%02x is 0b%08b is %d, but can also be %o", (uint8_t)(-0xAA), (uint8_t)(-0xAA), -0xAA, -0xAA);
 
-    // print a blank line (no timestamp, level description, or vendorId)
-    RF24Log_log(0, DisableVendor, "");
-
-#if !defined(PICO_BUILD)
-    // for non-Arduino & not Pico SDK
-    // time.sleep(5); // TODO
+    // get input from user
+    // NOTE: level 0 skips outputting the timestamp and level description
+    RF24Log_log(0, DisableVendor, "\nEnter a log level (in octal form) to demonstrate filtering messages\n");
+#if defined (PICO_BUILD)
+    uint8_t level = 0;
+#else
+    int level = 0;
 #endif
-}
+
+#if defined(PICO_BUILD)
+    char input = getchar_timeout_us(5000); // get char from buffer for user input after 5 sec
+    if (input != PICO_ERROR_TIMEOUT) {
+        while (input >= 48 && input < 56) {
+            level <<= 3;
+            level += input - 48;
+            input = getchar_timeout_us(1000); // get char from buffer for user input after 1 sec
+        }
+        RF24Log_log(0, DisableVendor, "Setting log level (in octal) to %o", level);
+        serialLogHandler.setLogLevel(level);
+    }
+#else
+    RF24Log_log(0, DisableVendor, "Press Ctrl+C to quit.");
+    std::cin >> std::oct >> level;
+    RF24Log_log(0, DisableVendor, "Setting log level (in octal) to %o", level);
+    serialLogHandler.setLogLevel(level);
+#endif // platform specific user input
+} // end loop()
 
 int main()
 {
@@ -106,14 +106,12 @@ int main()
     stdio_init_all(); // init necessary IO for the RP2040
 #endif
     setup();
-#ifdef PICO_BUILD
     while (1)
     {
-#endif
         loop();
 #ifdef PICO_BUILD
         sleep_ms(5000);
-    }
 #endif
+    }
     return 0;
 }

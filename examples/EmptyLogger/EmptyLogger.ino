@@ -12,9 +12,8 @@
  * Public License instead of this License.
  */
 
-#include <Arduino.h>
 #include <string.h>
-
+#include <Arduino.h>
 #include <RF24Logging.h>
 #include <RF24Loggers/ArduinoPrintLogger.h>
 
@@ -28,14 +27,14 @@ void setup()
 {
   // configure serial port baudrate
   Serial.begin(115200);
-  while (!Serial) {/* some boards need this */ ; }
+  while (!Serial) {/* some boards need this */}
 
   // DO NOT set serial port log handler
   // rf24Logging.setHandler(&rf24SerialLogHandler);
 
   Serial.println("There is no handler defined. Nothing should be logged.");
 
-  RF24Log_info(vendorID, "RF24Log/examples/EmptyLogger");
+  RF24Log_info(vendorID, "RF24Log/examples/EmptyLogger%\n");
 }
 
 void loop()

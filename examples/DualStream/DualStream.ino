@@ -12,83 +12,74 @@
  * Public License instead of this License.
  */
 
-#include <Arduino.h>
 #include <string.h>
-
+#include <Arduino.h>
 #include <RF24Logging.h>
 #include <RF24Loggers/ArduinoPrintLogger.h>
-#include <handler_ext/RF24DualLogHandler.h>
+#include <handler_ext/RF24LogDualHandler.h>
 
 // Create first hardware serial port log handler
-ArduinoPrintLogger rf24SerialLogHandler1(&Serial);
+ArduinoPrintLogger serialLogHandler1(&Serial);
 
 // Create second hardware serial port log handler
-ArduinoPrintLogger rf24SerialLogHandler2(&Serial);
+ArduinoPrintLogger serialLogHandler2(&Serial);
 
-RF24DualLogHandler rf24DualLogHandler(&rf24SerialLogHandler1, &rf24SerialLogHandler2);
+RF24LogDualHandler dualHandler(&serialLogHandler1, &serialLogHandler2);
 
 // Define global vendor id (it is stored in FLASH memory)
 const char PROGMEM vendorID[] = "RF24LogExample";
 const char PROGMEM DisableVendor[] = ""; // vendorId needs to be a flash string on AVR architecture
 
+// we will use this variable to control the filtering of log messages for the second handler
+uint8_t level = RF24LogLevel::ALL;
+
 void setup()
 {
   // configure serial port baudrate
   Serial.begin(115200);
-  while (!Serial) { /* some boards need this */ }
+  while (!Serial) {/* some boards need this */}
 
-  // set maximal log level to ALL
-  rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
-  // set serial port handler
-  rf24Logging.setHandler(&rf24DualLogHandler);
+  // set maximal log level to ALL (for both handlers)
+  dualHandler.setLogLevel(RF24LogLevel::ALL);
+  // set serial port handler (to only 1 handler)
+  rf24Logging.setHandler(&serialLogHandler1);
 
-  RF24Log_info(vendorID, "RF24Log/examples/DualLogger");
+  RF24Log_info(vendorID, "RF24Log/examples/DualLogger%\n");
 }
 
 void loop()
 {
-  // set log level for both Handlers
-  rf24DualLogHandler.setLogLevel(RF24LogLevel::ALL);
+  // set serial port handler (to both handlers)
+  rf24Logging.setHandler(&dualHandler);
+  bool is_2nd_handler_enabled_for_info;
+#if defined (RF24LOG_REVERSE_LVL_ORDER)
+  is_2nd_handler_enabled_for_info = level > RF24LogLevel::INFO;
+#else
+  is_2nd_handler_enabled_for_info = level < RF24LogLevel::INFO;
+#endif
+  RF24Log_info(vendorID,
+               "This info message should be logged %s because serialLogHandler2 verbosity is %o.",
+               (is_2nd_handler_enabled_for_info ? "once" : "twice"),
+               level);
 
-  uint8_t level = 0;
-  char input;
+  // set serial port handler (to only 1 handler)
+  rf24Logging.setHandler(&serialLogHandler1);
+  RF24Log_debug(vendorID, "This debug message should be logged once.");
 
-#ifdef ARDUINO
+  // NOTE: level 0 skips outputting the timestamp and level description
+  RF24Log_log(0, DisableVendor, "\nEnter a log level (in octal form) to demonstrate filtering messages (for the second handler)\n");
+
+  delay(5000);
+
   if (Serial.available()) {
-    input = Serial.read();
+    level = 0; // reset value for the following arithmatic
+    char input = Serial.read();
     while (Serial.available() && input >= 48 && input < 56) {
       level <<= 3;
       level += input - 48;
       input = Serial.read();
     }
+    RF24Log_log(0, DisableVendor, "Setting log level (in octal) to %o (for the second handler)", level);
+    serialLogHandler2.setLogLevel(level);
   }
-#elif defined (PICO_BUILD)
-  input = getchar_timeout_us(5000); // get char from buffer for user input after 5 sec
-  while (input != PICO_ERROR_TIMEOUT && input >= 48 && input < 56) {
-    level <<= 3;
-    level += input - 48;
-    input = getchar_timeout_us(1000); // get char from buffer for user input after 1 sec
-  }
-#endif // platform specific user input
-
-  if (level) {
-    RF24Log_log(0, DisableVendor, "Set log level (in octal) to %o\n", level);
-    rf24SerialLogHandler2.setLogLevel(level); // set log level only for handler2
-  }
-
-  RF24Log_info(vendorID, "This message should be logged %s.", "twice");
-  RF24Log_warn(vendorID, "This warn message should be logged %s.", "twice");
-  RF24Log_info(vendorID, "This info message should be logged %s.", "twice");
-  RF24Log_debug(vendorID, "This debug message should NOT be logged %s.");
-
-  // print a blank line (no timestamp, level description, or vendorId)
-  RF24Log_log(0, DisableVendor, "");
-
-#ifdef ARDUINO
-
-  delay(5000);
-#elif !defined(PICO_BUILD)
-  // for non-Arduino & not Pico SDK
-  // time.sleep(1); // TODO
-#endif
 }

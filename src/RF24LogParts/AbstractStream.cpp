@@ -33,8 +33,11 @@ void RF24LogAbstractStream::descTimeLevel(uint8_t logLevel)
 void RF24LogAbstractStream::appendLogLevel(uint8_t logLevel)
 {
     uint8_t subLevel = logLevel & 0x07;
-
+#if defined (RF24LOG_REVERSE_LVL_ORDER)
+    if (logLevel >= RF24LogLevel::DEBUG && logLevel <= RF24LogLevel::ERROR + 7)
+#else
     if (logLevel >= RF24LogLevel::ERROR && logLevel <= RF24LogLevel::DEBUG + 7)
+#endif
     {
         uint8_t logIndex = ((logLevel & 0x38) >> 3) - 1;
         appendStr(RF24LogDescLevels[logIndex]);

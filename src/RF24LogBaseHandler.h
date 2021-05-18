@@ -33,8 +33,6 @@
 // not on any higher level of the project (see doc comments below for details)
 // #define RF24LOG_NO_TIMESTAMP
 // #define RF24LOG_NO_EOL
-// #define RF24LOG_SHORT_DESC
-// #define RF24LOG_TERSE_DESC
 // #define RF24LOG_TAB_SIZE 4
 
 #ifdef DOXYGEN_FORCED
@@ -43,32 +41,6 @@
 
 /** @brief macro (when defined) disables timestamp at the start of all log messages. */
 #define RF24LOG_NO_TIMESTAMP
-
-/**
- * @brief macro (when defined) uses a short description of the log levels.
- *
- * Descriptions with this macro defined look like
- * @code
- * " ERR ", "INFO1"
- * "WARN ", "INFO7"
- * "INFO ", "L   7"
- * " DBG ", "L 113"
- * @endcode
- */
-#define RF24LOG_SHORT_DESC
-
-/**
- * @brief macro (when defined) uses a terse (very short) description of the log levels.
- *
- * Descriptions with this macro defined look like
- * @code
- * " E ", " I1"
- * " W ", " I7"
- * " I ", "  7"
- * "DB ", "113"
- * @endcode
- */
-#define RF24LOG_TERSE_DESC
 
 /**
  * @brief macro (when defined) relaces all `\t` characters with a specified quantity of spaces

@@ -1,5 +1,5 @@
 /**
- * @file RF24DualLogHandler.cpp
+ * @file RF24LogDualHandler.cpp
  *
  * Created on: 30 Mar 2021
  *     Author: Witold Markowski (wmarkow)
@@ -14,16 +14,16 @@
  * Public License instead of this License.
  */
 
-#include "RF24DualLogHandler.h"
+#include "RF24LogDualHandler.h"
 
-RF24DualLogHandler::RF24DualLogHandler(RF24LogBaseHandler *handler1,
+RF24LogDualHandler::RF24LogDualHandler(RF24LogBaseHandler *handler1,
                                        RF24LogBaseHandler *handler2)
 {
     this->handler1 = handler1;
     this->handler2 = handler2;
 }
 
-void RF24DualLogHandler::log(uint8_t logLevel,
+void RF24LogDualHandler::log(uint8_t logLevel,
                              const char *vendorId,
                              const char *message,
                              va_list *args)
@@ -36,16 +36,17 @@ void RF24DualLogHandler::log(uint8_t logLevel,
     // redirect logs to wrapped handlers
     handler1->log(logLevel, vendorId, message, args);
     handler2->log(logLevel, vendorId, message, &args2);
+    va_end(args2);
 }
 
-void RF24DualLogHandler::setLogLevel(uint8_t logLevel)
+void RF24LogDualHandler::setLogLevel(uint8_t logLevel)
 {
     handler1->setLogLevel(logLevel);
     handler2->setLogLevel(logLevel);
 }
 
 #if defined (ARDUINO_ARCH_AVR)
-void RF24DualLogHandler::log(uint8_t logLevel,
+void RF24LogDualHandler::log(uint8_t logLevel,
                              const __FlashStringHelper *vendorId,
                              const __FlashStringHelper *message,
                              va_list *args)
@@ -58,5 +59,6 @@ void RF24DualLogHandler::log(uint8_t logLevel,
     // redirect logs to wrapped handlers
     handler1->log(logLevel, vendorId, message, args);
     handler2->log(logLevel, vendorId, message, &args2);
+    va_end(args2);
 }
 #endif

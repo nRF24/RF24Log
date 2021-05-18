@@ -22,6 +22,9 @@
  * @brief Order of logging levels
  * @{
  */
+
+// #define RF24LOG_REVERSE_LVL_ORDER
+
 /**
  * @brief the predefined logging levels
  *
@@ -37,6 +40,13 @@ enum RF24LogLevel : uint8_t
 {
     /** (`0`) the level to disable all log messages */
     OFF   = 0,
+#if defined (RF24LOG_REVERSE_LVL_ORDER)
+    ERROR = 040,
+    WARN  = 030,
+    INFO  = 020,
+    DEBUG = 010,
+    ALL   = 1
+#else
     /** (`010`) the level to specify an error message */
     ERROR = 010,
     /** (`020`) the level to specify an warning message */
@@ -47,7 +57,23 @@ enum RF24LogLevel : uint8_t
     DEBUG = 040,
     /** (`0377` or `0xFF`) the level to enable all log messages (disables filtering of levels) */
     ALL   = 0xFF
+#endif
 };
+
+#if defined (DOXYGEN_FORCED)
+/**
+ * @brief a macro that (if defined) will reverse the order of the log levels
+ *
+ * This macro simply changes the values assigned to the enumeration values:
+ * - ERROR = 040
+ * - WARN  = 030
+ * - INFO  = 020
+ * - DEBUG = 010
+ * - ALL   = 1
+ */
+#define RF24LOG_REVERSE_LVL_ORDER
+#endif
+
 /**@} */
 
 #endif /* SRC_RF24LOGLEVEL_H_ */

@@ -1,5 +1,5 @@
 /**
- * @file RF24DualLogHandler.h
+ * @file RF24LogDualHandler.h
  * @brief handler extention to manage 2 handlers
  * @date Created 30 Mar 2021
  * @author Witold Markowski (wmarkow)
@@ -18,7 +18,7 @@
 #include "../RF24LogBaseHandler.h"
 
 /** @brief Module to extend the RF24LogBaseHandler mechanism for redirecting to 2 different RF24LogBaseHandler objects. */
-class RF24DualLogHandler : public RF24LogBaseHandler
+class RF24LogDualHandler : public RF24LogBaseHandler
 {
 private:
     RF24LogBaseHandler *handler1;
@@ -31,7 +31,7 @@ public:
      * @param handler1 An output stream handler
      * @param handler2 An output stream handler
      */
-    RF24DualLogHandler(RF24LogBaseHandler *handler1, RF24LogBaseHandler *handler2);
+    RF24LogDualHandler(RF24LogBaseHandler *handler1, RF24LogBaseHandler *handler2);
 
     void log(uint8_t logLevel,
              const char *vendorId,

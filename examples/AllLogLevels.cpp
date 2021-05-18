@@ -25,7 +25,8 @@
 NativePrintLogger serialLogHandler;
 
 #else
-#include <iostream>
+#include <iostream> // std:: cout, std::cin, std::ostream
+#include <stdint.h> // uint8_t
 #include <RF24Log/RF24Logging.h>
 #include <RF24Log/RF24Loggers/OStreamLogger.h>
 
@@ -41,8 +42,7 @@ void setup()
 {
 #if defined(PICO_BUILD)
     // wait here until the CDC ACM (serial port emulation) is connected
-    while (!tud_cdc_connected())
-    {
+    while (!tud_cdc_connected()) {
         sleep_ms(10);
     }
 #endif
@@ -52,44 +52,47 @@ void setup()
     // set serial port handler
     rf24Logging.setHandler(&serialLogHandler);
 
-    RF24Log_info(vendorID, "RF24Log/examples/AllLogLevelsLogger");
+    RF24Log_info(vendorID, "RF24Log/examples/AllLogLevelsLogger%\n");
 }
 
 void loop()
 {
+
+    uint8_t lvl = 0;
+    do
+    {
+        RF24Log_log(lvl, vendorID, "A log message from %s on level %3d", "loop()", lvl);
+        lvl++;
+    } while (lvl);
+
+    // get input from user
+    // NOTE: level 0 skips outputting the timestamp and level description
+    RF24Log_log(0, DisableVendor, "\nEnter a log level (in octal form) to demonstrate filtering messages\n");
+#if defined (PICO_BUILD)
     uint8_t level = 0;
+#else
+    int level = 0;
+#endif
 
 #if defined(PICO_BUILD)
     char input = getchar_timeout_us(5000); // get char from buffer for user input after 5 sec
-    while (input != PICO_ERROR_TIMEOUT && input >= 48 && input < 56)
-    {
-        level <<= 3;
-        level += input - 48;
-        input = getchar_timeout_us(1000); // get char from buffer for user input after 1 sec
-    }
-#endif // platform specific user input
-
-    if (level)
-    {
-        RF24Log_log(0, DisableVendor, "Set log level (in octal) to %o\n", level);
+    if (input != PICO_ERROR_TIMEOUT) {
+        while (input >= 48 && input < 56) {
+            level <<= 3;
+            level += input - 48;
+            input = getchar_timeout_us(1000); // get char from buffer for user input after 1 sec
+        }
+        RF24Log_log(0, DisableVendor, "Setting log level (in octal) to %o", level);
         serialLogHandler.setLogLevel(level);
     }
+#else
+    RF24Log_log(0, DisableVendor, "Press Ctrl+C to quit.");
+    std::cin >> std::oct >> level;
+    RF24Log_log(0, DisableVendor, "Setting log level (in octal) to %o", level);
+    serialLogHandler.setLogLevel(level);
+#endif // platform specific user input
+} // end loop()
 
-    level = 0;
-    do
-    {
-        RF24Log_log(level, vendorID, "A log message from %s on level %3d", "loop()", level);
-        level++;
-    } while (level);
-
-    // print a blank line (no timestamp, level description, or vendorId)
-    RF24Log_log(0, DisableVendor, "");
-
-#if !defined(PICO_BUILD)
-    // for non-Arduino & not Pico SDK
-    // time.sleep(1); // TODO
-#endif
-}
 
 int main()
 {
@@ -97,14 +100,11 @@ int main()
     stdio_init_all(); // init necessary IO for the RP2040
 #endif
     setup();
-#ifdef PICO_BUILD
-    while (1)
-    {
-#endif
+    while (1) {
         loop();
 #ifdef PICO_BUILD
         sleep_ms(5000);
-    }
 #endif
+    }
     return 0;
 }
