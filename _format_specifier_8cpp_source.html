@@ -74,83 +74,94 @@ $(function() {
 <a href="_format_specifier_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_format_specifier_8h.html">FormatSpecifier.h</a>&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/* *************************** FormatSpecifier defs **************************** */</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="struct_format_specifier.html#a91577cc7d54023986c89a1c4c783d419">   20</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="struct_format_specifier.html#a91577cc7d54023986c89a1c4c783d419">FormatSpecifier::isFlagged</a>(<span class="keywordtype">char</span> c)</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;0&#39;</span>)</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="struct_format_specifier.html#aded3b73c060a32f43fd197c834780ff2">fill</a> = <span class="charliteral">&#39;0&#39;</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">bool</span>)(c == <span class="charliteral">&#39;-&#39;</span> || c == <span class="charliteral">&#39;+&#39;</span> || c == <span class="charliteral">&#39; &#39;</span> || c == <span class="charliteral">&#39;0&#39;</span>);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="struct_format_specifier.html#a31c472519d18461ddaa081df95553454">   29</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="struct_format_specifier.html#a31c472519d18461ddaa081df95553454">FormatSpecifier::isPaddPrec</a>(<span class="keywordtype">char</span> c)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;.&#39;</span> || (c &gt; 47 &amp;&amp; c &lt; 58))</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;.&#39;</span>)</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <a class="code" href="struct_format_specifier.html#ac35449d1a706bd2f9bd0ecfb17e07689">precis</a> = 0; <span class="comment">// 0.0 value will not be output</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="struct_format_specifier.html#ac35449d1a706bd2f9bd0ecfb17e07689">precis</a> &gt;=0)</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <a class="code" href="struct_format_specifier.html#ac35449d1a706bd2f9bd0ecfb17e07689">precis</a> = (<a class="code" href="struct_format_specifier.html#ac35449d1a706bd2f9bd0ecfb17e07689">precis</a> * 10) + (c - 48);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                <a class="code" href="struct_format_specifier.html#a4099613997a8a6f965a7701dcd02e1a1">width</a> = (<a class="code" href="struct_format_specifier.html#a4099613997a8a6f965a7701dcd02e1a1">width</a> * 10) + (c - 48);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="struct_format_specifier.html#ab8b36f631f30603ab1042351e2696dd5">   54</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="struct_format_specifier.html#ab8b36f631f30603ab1042351e2696dd5">FormatSpecifier::isFmtOption</a>(<span class="keywordtype">char</span> c)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/****************************************************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="struct_format_specifier.html#a91577cc7d54023986c89a1c4c783d419">   19</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="struct_format_specifier.html#a91577cc7d54023986c89a1c4c783d419">FormatSpecifier::isFlagged</a>(<span class="keywordtype">char</span> c)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;0&#39;</span>)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="struct_format_specifier.html#aded3b73c060a32f43fd197c834780ff2">fill</a> = <span class="charliteral">&#39;0&#39;</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">bool</span>)(c == <span class="charliteral">&#39;-&#39;</span> || c == <span class="charliteral">&#39;+&#39;</span> || c == <span class="charliteral">&#39; &#39;</span> || c == <span class="charliteral">&#39;0&#39;</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/****************************************************************************/</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="struct_format_specifier.html#a31c472519d18461ddaa081df95553454">   30</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="struct_format_specifier.html#a31c472519d18461ddaa081df95553454">FormatSpecifier::isPaddPrec</a>(<span class="keywordtype">char</span> c)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;.&#39;</span> || (c &gt; 47 &amp;&amp; c &lt; 58))</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;.&#39;</span>)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <a class="code" href="struct_format_specifier.html#ac35449d1a706bd2f9bd0ecfb17e07689">precis</a> = 0; <span class="comment">// 0.0 value will not be output</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="struct_format_specifier.html#ac35449d1a706bd2f9bd0ecfb17e07689">precis</a> &gt;=0)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <a class="code" href="struct_format_specifier.html#ac35449d1a706bd2f9bd0ecfb17e07689">precis</a> = (<a class="code" href="struct_format_specifier.html#ac35449d1a706bd2f9bd0ecfb17e07689">precis</a> * 10) + (c - 48);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <a class="code" href="struct_format_specifier.html#a4099613997a8a6f965a7701dcd02e1a1">width</a> = (<a class="code" href="struct_format_specifier.html#a4099613997a8a6f965a7701dcd02e1a1">width</a> * 10) + (c - 48);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/****************************************************************************/</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;s&#39;</span> ||</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    #ifdef ARDUINO_ARCH_AVR</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            c == <span class="charliteral">&#39;S&#39;</span> ||</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    #endif</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            c == <span class="charliteral">&#39;c&#39;</span> ||</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            c == <span class="charliteral">&#39;D&#39;</span> ||</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            c == <span class="charliteral">&#39;F&#39;</span> ||</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            c == <span class="charliteral">&#39;x&#39;</span> ||</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            c == <span class="charliteral">&#39;X&#39;</span> ||</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            c == <span class="charliteral">&#39;o&#39;</span> ||</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            c == <span class="charliteral">&#39;u&#39;</span> ||</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            c == <span class="charliteral">&#39;b&#39;</span>)</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;u&#39;</span> || c == <span class="charliteral">&#39;x&#39;</span> || c == <span class="charliteral">&#39;X&#39;</span> || c == <span class="charliteral">&#39;o&#39;</span> || c == <span class="charliteral">&#39;b&#39;</span>)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <a class="code" href="struct_format_specifier.html#a56ad0aff7e5f166d86a3203ae14c7062">isUnsigned</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span> (c != <span class="charliteral">&#39;u&#39;</span> ||c != <span class="charliteral">&#39;h&#39;</span>) { <a class="code" href="struct_format_specifier.html#a7df091aee13cce764dae2d99bb54a657">specifier</a> = c; } <span class="comment">// don&#39;t record modifiers</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// no second option supported</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;d&#39;</span> ||</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            c == <span class="charliteral">&#39;i&#39;</span> ||</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            c == <span class="charliteral">&#39;l&#39;</span> ||</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            c == <span class="charliteral">&#39;h&#39;</span>)</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">if</span> (c != <span class="charliteral">&#39;h&#39;</span> &amp;&amp; c != <span class="charliteral">&#39;l&#39;</span>) { <a class="code" href="struct_format_specifier.html#a7df091aee13cce764dae2d99bb54a657">specifier</a> = c; } <span class="comment">// don&#39;t record modifiers</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// can also support a second option (like &#39;u&#39;)</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="struct_format_specifier.html#ab8b36f631f30603ab1042351e2696dd5">   57</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="struct_format_specifier.html#ab8b36f631f30603ab1042351e2696dd5">FormatSpecifier::isFmtOption</a>(<span class="keywordtype">char</span> c)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;s&#39;</span> ||</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    #ifdef ARDUINO_ARCH_AVR</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            c == <span class="charliteral">&#39;S&#39;</span> ||</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    #endif</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            c == <span class="charliteral">&#39;c&#39;</span> ||</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            c == <span class="charliteral">&#39;D&#39;</span> ||</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            c == <span class="charliteral">&#39;f&#39;</span> ||</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            c == <span class="charliteral">&#39;F&#39;</span> ||</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            c == <span class="charliteral">&#39;x&#39;</span> ||</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            c == <span class="charliteral">&#39;X&#39;</span> ||</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            c == <span class="charliteral">&#39;o&#39;</span> ||</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            c == <span class="charliteral">&#39;u&#39;</span> ||</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            c == <span class="charliteral">&#39;d&#39;</span> ||</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            c == <span class="charliteral">&#39;i&#39;</span> ||</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            c == <span class="charliteral">&#39;b&#39;</span>)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;u&#39;</span> || c == <span class="charliteral">&#39;x&#39;</span> || c == <span class="charliteral">&#39;X&#39;</span> || c == <span class="charliteral">&#39;o&#39;</span> || c == <span class="charliteral">&#39;b&#39;</span>)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <a class="code" href="struct_format_specifier.html#a00a30968210d5877a82fcb204a31aee7">length</a> |= 0x80;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="struct_format_specifier.html#a7df091aee13cce764dae2d99bb54a657">specifier</a> = c;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// no second option supported</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;l&#39;</span> || c == <span class="charliteral">&#39;h&#39;</span>)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="struct_format_specifier.html#a00a30968210d5877a82fcb204a31aee7">length</a> &amp; 0x30) <span class="comment">// second encountered length modifier</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <a class="code" href="struct_format_specifier.html#a00a30968210d5877a82fcb204a31aee7">length</a> = (<a class="code" href="struct_format_specifier.html#a00a30968210d5877a82fcb204a31aee7">length</a> &amp; 0x80) | (c == <span class="charliteral">&#39;l&#39;</span> ? (<a class="code" href="struct_format_specifier.html#a00a30968210d5877a82fcb204a31aee7">length</a> &amp; 0x30) &lt;&lt; 1 : (<a class="code" href="struct_format_specifier.html#a00a30968210d5877a82fcb204a31aee7">length</a> &amp; 0x30) &gt;&gt; 1);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">else</span> <span class="comment">// first encountered length modifier</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <a class="code" href="struct_format_specifier.html#a00a30968210d5877a82fcb204a31aee7">length</a> = (<a class="code" href="struct_format_specifier.html#a00a30968210d5877a82fcb204a31aee7">length</a> &amp; 0x80) | (c == <span class="charliteral">&#39;l&#39;</span> ? 32 : 16);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// can also support a second option (like &#39;u&#39;)</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
 <div class="ttc" id="a_format_specifier_8h_html"><div class="ttname"><a href="_format_specifier_8h.html">FormatSpecifier.h</a></div><div class="ttdoc">generic struct that allows customization of a printf-like parser</div></div>
-<div class="ttc" id="astruct_format_specifier_html_a31c472519d18461ddaa081df95553454"><div class="ttname"><a href="struct_format_specifier.html#a31c472519d18461ddaa081df95553454">FormatSpecifier::isPaddPrec</a></div><div class="ttdeci">bool isPaddPrec(char c)</div><div class="ttdoc">is a character a valid specifier padding/precision quantity</div><div class="ttdef"><b>Definition:</b> <a href="_format_specifier_8cpp_source.html#l00029">FormatSpecifier.cpp:29</a></div></div>
+<div class="ttc" id="astruct_format_specifier_html_a00a30968210d5877a82fcb204a31aee7"><div class="ttname"><a href="struct_format_specifier.html#a00a30968210d5877a82fcb204a31aee7">FormatSpecifier::length</a></div><div class="ttdeci">uint8_t length</div><div class="ttdoc">bit-length of the data (only applies to integer numbers)</div><div class="ttdef"><b>Definition:</b> <a href="_format_specifier_8h_source.html#l00063">FormatSpecifier.h:63</a></div></div>
+<div class="ttc" id="astruct_format_specifier_html_a31c472519d18461ddaa081df95553454"><div class="ttname"><a href="struct_format_specifier.html#a31c472519d18461ddaa081df95553454">FormatSpecifier::isPaddPrec</a></div><div class="ttdeci">bool isPaddPrec(char c)</div><div class="ttdoc">is a character a valid specifier padding/precision quantity</div><div class="ttdef"><b>Definition:</b> <a href="_format_specifier_8cpp_source.html#l00030">FormatSpecifier.cpp:30</a></div></div>
 <div class="ttc" id="astruct_format_specifier_html_a4099613997a8a6f965a7701dcd02e1a1"><div class="ttname"><a href="struct_format_specifier.html#a4099613997a8a6f965a7701dcd02e1a1">FormatSpecifier::width</a></div><div class="ttdeci">uint16_t width</div><div class="ttdoc">The width of the padding.</div><div class="ttdef"><b>Definition:</b> <a href="_format_specifier_8h_source.html#l00054">FormatSpecifier.h:54</a></div></div>
-<div class="ttc" id="astruct_format_specifier_html_a56ad0aff7e5f166d86a3203ae14c7062"><div class="ttname"><a href="struct_format_specifier.html#a56ad0aff7e5f166d86a3203ae14c7062">FormatSpecifier::isUnsigned</a></div><div class="ttdeci">bool isUnsigned</div><div class="ttdoc">flag to explicitly represent the number as an unsigned integer</div><div class="ttdef"><b>Definition:</b> <a href="_format_specifier_8h_source.html#l00058">FormatSpecifier.h:58</a></div></div>
-<div class="ttc" id="astruct_format_specifier_html_a7df091aee13cce764dae2d99bb54a657"><div class="ttname"><a href="struct_format_specifier.html#a7df091aee13cce764dae2d99bb54a657">FormatSpecifier::specifier</a></div><div class="ttdeci">char specifier</div><div class="ttdoc">datatype specifier</div><div class="ttdef"><b>Definition:</b> <a href="_format_specifier_8h_source.html#l00060">FormatSpecifier.h:60</a></div></div>
-<div class="ttc" id="astruct_format_specifier_html_a91577cc7d54023986c89a1c4c783d419"><div class="ttname"><a href="struct_format_specifier.html#a91577cc7d54023986c89a1c4c783d419">FormatSpecifier::isFlagged</a></div><div class="ttdeci">bool isFlagged(char c)</div><div class="ttdoc">is a character a valid specifier flag</div><div class="ttdef"><b>Definition:</b> <a href="_format_specifier_8cpp_source.html#l00020">FormatSpecifier.cpp:20</a></div></div>
-<div class="ttc" id="astruct_format_specifier_html_ab8b36f631f30603ab1042351e2696dd5"><div class="ttname"><a href="struct_format_specifier.html#ab8b36f631f30603ab1042351e2696dd5">FormatSpecifier::isFmtOption</a></div><div class="ttdeci">bool isFmtOption(char c)</div><div class="ttdoc">is a character a valid/supported specifier format option</div><div class="ttdef"><b>Definition:</b> <a href="_format_specifier_8cpp_source.html#l00054">FormatSpecifier.cpp:54</a></div></div>
+<div class="ttc" id="astruct_format_specifier_html_a7df091aee13cce764dae2d99bb54a657"><div class="ttname"><a href="struct_format_specifier.html#a7df091aee13cce764dae2d99bb54a657">FormatSpecifier::specifier</a></div><div class="ttdeci">char specifier</div><div class="ttdoc">datatype specifier</div><div class="ttdef"><b>Definition:</b> <a href="_format_specifier_8h_source.html#l00065">FormatSpecifier.h:65</a></div></div>
+<div class="ttc" id="astruct_format_specifier_html_a91577cc7d54023986c89a1c4c783d419"><div class="ttname"><a href="struct_format_specifier.html#a91577cc7d54023986c89a1c4c783d419">FormatSpecifier::isFlagged</a></div><div class="ttdeci">bool isFlagged(char c)</div><div class="ttdoc">is a character a valid specifier flag</div><div class="ttdef"><b>Definition:</b> <a href="_format_specifier_8cpp_source.html#l00019">FormatSpecifier.cpp:19</a></div></div>
+<div class="ttc" id="astruct_format_specifier_html_ab8b36f631f30603ab1042351e2696dd5"><div class="ttname"><a href="struct_format_specifier.html#ab8b36f631f30603ab1042351e2696dd5">FormatSpecifier::isFmtOption</a></div><div class="ttdeci">bool isFmtOption(char c)</div><div class="ttdoc">is a character a valid/supported specifier format option</div><div class="ttdef"><b>Definition:</b> <a href="_format_specifier_8cpp_source.html#l00057">FormatSpecifier.cpp:57</a></div></div>
 <div class="ttc" id="astruct_format_specifier_html_ac35449d1a706bd2f9bd0ecfb17e07689"><div class="ttname"><a href="struct_format_specifier.html#ac35449d1a706bd2f9bd0ecfb17e07689">FormatSpecifier::precis</a></div><div class="ttdeci">int8_t precis</div><div class="ttdoc">The number of decimal places. If negative, then default of 2 places is used.</div><div class="ttdef"><b>Definition:</b> <a href="_format_specifier_8h_source.html#l00056">FormatSpecifier.h:56</a></div></div>
 <div class="ttc" id="astruct_format_specifier_html_aded3b73c060a32f43fd197c834780ff2"><div class="ttname"><a href="struct_format_specifier.html#aded3b73c060a32f43fd197c834780ff2">FormatSpecifier::fill</a></div><div class="ttdeci">char fill</div><div class="ttdoc">The default character used as padding.</div><div class="ttdef"><b>Definition:</b> <a href="_format_specifier_8h_source.html#l00052">FormatSpecifier.h:52</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

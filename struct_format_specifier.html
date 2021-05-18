@@ -106,10 +106,9 @@ uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_format_specifier.html#ac35449d1a706bd2f9bd0ecfb17e07689">precis</a></td></tr>
 <tr class="memdesc:ac35449d1a706bd2f9bd0ecfb17e07689"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of decimal places. If negative, then default of 2 places is used. <br /></td></tr>
 <tr class="separator:ac35449d1a706bd2f9bd0ecfb17e07689"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56ad0aff7e5f166d86a3203ae14c7062"><td class="memItemLeft" align="right" valign="top"><a id="a56ad0aff7e5f166d86a3203ae14c7062"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_format_specifier.html#a56ad0aff7e5f166d86a3203ae14c7062">isUnsigned</a></td></tr>
-<tr class="memdesc:a56ad0aff7e5f166d86a3203ae14c7062"><td class="mdescLeft">&#160;</td><td class="mdescRight">flag to explicitly represent the number as an unsigned integer <br /></td></tr>
-<tr class="separator:a56ad0aff7e5f166d86a3203ae14c7062"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00a30968210d5877a82fcb204a31aee7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_format_specifier.html#a00a30968210d5877a82fcb204a31aee7">length</a></td></tr>
+<tr class="memdesc:a00a30968210d5877a82fcb204a31aee7"><td class="mdescLeft">&#160;</td><td class="mdescRight">bit-length of the data (only applies to integer numbers)  <a href="struct_format_specifier.html#a00a30968210d5877a82fcb204a31aee7">More...</a><br /></td></tr>
+<tr class="separator:a00a30968210d5877a82fcb204a31aee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7df091aee13cce764dae2d99bb54a657"><td class="memItemLeft" align="right" valign="top"><a id="a7df091aee13cce764dae2d99bb54a657"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_format_specifier.html#a7df091aee13cce764dae2d99bb54a657">specifier</a></td></tr>
 <tr class="memdesc:a7df091aee13cce764dae2d99bb54a657"><td class="mdescLeft">&#160;</td><td class="mdescRight">datatype specifier <br /></td></tr>
@@ -182,7 +181,7 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the <code>c</code> param is a valid option; false otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_format_specifier_8cpp_source.html#l00020">20</a> of file <a class="el" href="_format_specifier_8cpp_source.html">FormatSpecifier.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_format_specifier_8cpp_source.html#l00019">19</a> of file <a class="el" href="_format_specifier_8cpp_source.html">FormatSpecifier.cpp</a>.</p>
 
 </div>
 </div>
@@ -211,7 +210,7 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the <code>c</code> param could be followed by another option; false otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_format_specifier_8cpp_source.html#l00054">54</a> of file <a class="el" href="_format_specifier_8cpp_source.html">FormatSpecifier.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_format_specifier_8cpp_source.html#l00057">57</a> of file <a class="el" href="_format_specifier_8cpp_source.html">FormatSpecifier.cpp</a>.</p>
 
 </div>
 </div>
@@ -240,7 +239,27 @@ char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the <code>c</code> param is a valid option; false otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_format_specifier_8cpp_source.html#l00029">29</a> of file <a class="el" href="_format_specifier_8cpp_source.html">FormatSpecifier.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_format_specifier_8cpp_source.html#l00030">30</a> of file <a class="el" href="_format_specifier_8cpp_source.html">FormatSpecifier.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a00a30968210d5877a82fcb204a31aee7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00a30968210d5877a82fcb204a31aee7">&#9670;&nbsp;</a></span>length</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t FormatSpecifier::length</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>bit-length of the data (only applies to integer numbers) </p>
+<p>If the most-significant bit is asserted, then the formatted data is treated as though it is <code>unsigned</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_format_specifier_8h_source.html#l00063">63</a> of file <a class="el" href="_format_specifier_8h_source.html">FormatSpecifier.h</a>.</p>
 
 </div>
 </div>

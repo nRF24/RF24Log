@@ -106,9 +106,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:aae27a36f91c4f03e443e581b63252fef"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">appendChar</a> (char data, uint16_t depth=1)=0</td></tr>
 <tr class="memdesc:aae27a36f91c4f03e443e581b63252fef"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a character a number of times  <a href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">More...</a><br /></td></tr>
 <tr class="separator:aae27a36f91c4f03e443e581b63252fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6dcca6eb2459743d484b78a21869fb2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">appendInt</a> (long data, uint8_t base=10)=0</td></tr>
-<tr class="memdesc:ae6dcca6eb2459743d484b78a21869fb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a signed (+/-) number  <a href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">More...</a><br /></td></tr>
-<tr class="separator:ae6dcca6eb2459743d484b78a21869fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bad6b3989d129ab396a98f3e99df863"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#a5bad6b3989d129ab396a98f3e99df863">appendInt</a> (long data)=0</td></tr>
+<tr class="memdesc:a5bad6b3989d129ab396a98f3e99df863"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a signed (+/-) number  <a href="class_r_f24_log_abstract_stream.html#a5bad6b3989d129ab396a98f3e99df863">More...</a><br /></td></tr>
+<tr class="separator:a5bad6b3989d129ab396a98f3e99df863"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b0601d83b146abd08758a5431ee0b3b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">appendUInt</a> (unsigned long data, uint8_t base=10)=0</td></tr>
 <tr class="memdesc:a3b0601d83b146abd08758a5431ee0b3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">append an &lsquo;unsigned&rsquo; (only +) number  <a href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">More...</a><br /></td></tr>
 <tr class="separator:a3b0601d83b146abd08758a5431ee0b3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -261,12 +261,12 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_abstract_stream_8cpp_source.html#l00065">65</a> of file <a class="el" href="_abstract_stream_8cpp_source.html">AbstractStream.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_abstract_stream_8cpp_source.html#l00068">68</a> of file <a class="el" href="_abstract_stream_8cpp_source.html">AbstractStream.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ae6dcca6eb2459743d484b78a21869fb2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6dcca6eb2459743d484b78a21869fb2">&#9670;&nbsp;</a></span>appendInt()</h2>
+<a id="a5bad6b3989d129ab396a98f3e99df863"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bad6b3989d129ab396a98f3e99df863">&#9670;&nbsp;</a></span>appendInt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -278,18 +278,8 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
           <td class="memname">virtual void RF24LogAbstractStream::appendInt </td>
           <td>(</td>
           <td class="paramtype">long&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>base</em> = <code>10</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -303,12 +293,11 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>The numeric data </td></tr>
-    <tr><td class="paramname">base</td><td>The base counting scheme. Defaults to 10 for decimal counting system </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_o_stream_logger.html#a0b4f4b42093f11ccb1fa475cadf697a1">OStreamLogger</a>, <a class="el" href="class_native_print_logger.html#a747272468ec3b13a7805eeae76a96ed7">NativePrintLogger</a>, and <a class="el" href="class_arduino_print_logger.html#a4be7d37890ecfbbf8ce86cb7db7926c0">ArduinoPrintLogger</a>.</p>
+<p>Implemented in <a class="el" href="class_arduino_print_logger.html#a2fde51af1c208622fdc323c0ec6b6a76">ArduinoPrintLogger</a>.</p>
 
 </div>
 </div>
@@ -344,7 +333,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_abstract_stream_8cpp_source.html#l00032">32</a> of file <a class="el" href="_abstract_stream_8cpp_source.html">AbstractStream.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_abstract_stream_8cpp_source.html#l00033">33</a> of file <a class="el" href="_abstract_stream_8cpp_source.html">AbstractStream.cpp</a>.</p>
 
 </div>
 </div>
@@ -427,7 +416,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_o_stream_logger.html#adca50c4860e24eb94347cde20bf5bf0e">OStreamLogger</a>, <a class="el" href="class_native_print_logger.html#a9bba6083efa24facae190c3ce16795bb">NativePrintLogger</a>, and <a class="el" href="class_arduino_print_logger.html#a8fcbe8037e8099b9273cd5de163ff542">ArduinoPrintLogger</a>.</p>
+<p>Implemented in <a class="el" href="class_arduino_print_logger.html#a8fcbe8037e8099b9273cd5de163ff542">ArduinoPrintLogger</a>.</p>
 
 </div>
 </div>
@@ -463,7 +452,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_abstract_stream_8cpp_source.html#l00023">23</a> of file <a class="el" href="_abstract_stream_8cpp_source.html">AbstractStream.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_abstract_stream_8cpp_source.html#l00022">22</a> of file <a class="el" href="_abstract_stream_8cpp_source.html">AbstractStream.cpp</a>.</p>
 
 </div>
 </div>

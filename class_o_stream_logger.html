@@ -114,12 +114,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a3e979d09892a586f8f458ed7b210f53e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_stream_logger.html#a3e979d09892a586f8f458ed7b210f53e">appendChar</a> (char data, uint16_t depth=1)</td></tr>
 <tr class="memdesc:a3e979d09892a586f8f458ed7b210f53e"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a character a number of times  <a href="class_o_stream_logger.html#a3e979d09892a586f8f458ed7b210f53e">More...</a><br /></td></tr>
 <tr class="separator:a3e979d09892a586f8f458ed7b210f53e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b4f4b42093f11ccb1fa475cadf697a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_stream_logger.html#a0b4f4b42093f11ccb1fa475cadf697a1">appendInt</a> (long data, uint8_t base=10)</td></tr>
-<tr class="memdesc:a0b4f4b42093f11ccb1fa475cadf697a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a signed (+/-) number  <a href="class_o_stream_logger.html#a0b4f4b42093f11ccb1fa475cadf697a1">More...</a><br /></td></tr>
-<tr class="separator:a0b4f4b42093f11ccb1fa475cadf697a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adca50c4860e24eb94347cde20bf5bf0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_stream_logger.html#adca50c4860e24eb94347cde20bf5bf0e">appendUInt</a> (unsigned long data, uint8_t base=10)</td></tr>
-<tr class="memdesc:adca50c4860e24eb94347cde20bf5bf0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">append an &lsquo;unsigned&rsquo; (only +) number  <a href="class_o_stream_logger.html#adca50c4860e24eb94347cde20bf5bf0e">More...</a><br /></td></tr>
-<tr class="separator:adca50c4860e24eb94347cde20bf5bf0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1979cc6042e226bd41daaa6ba8bcaea"><td class="memItemLeft" align="right" valign="top"><a id="ab1979cc6042e226bd41daaa6ba8bcaea"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>appendInt</b> (long long data)</td></tr>
+<tr class="separator:ab1979cc6042e226bd41daaa6ba8bcaea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2bb8f381fc371f0a79f15ddb659b8b2"><td class="memItemLeft" align="right" valign="top"><a id="af2bb8f381fc371f0a79f15ddb659b8b2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>appendUInt</b> (unsigned long long data, uint8_t base=10)</td></tr>
+<tr class="separator:af2bb8f381fc371f0a79f15ddb659b8b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8baef5f18471ee46faa50a684b33e8c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_stream_logger.html#a8baef5f18471ee46faa50a684b33e8c1">appendDouble</a> (double data, uint8_t precision=2)</td></tr>
 <tr class="memdesc:a8baef5f18471ee46faa50a684b33e8c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a floating point number  <a href="class_o_stream_logger.html#a8baef5f18471ee46faa50a684b33e8c1">More...</a><br /></td></tr>
 <tr class="separator:a8baef5f18471ee46faa50a684b33e8c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,6 +139,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:accf2a0a8f016b59dfe50d95738685690 inherit pro_methods_class_r_f24_log_abstract_stream"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#accf2a0a8f016b59dfe50d95738685690">appendFormat</a> (<a class="el" href="struct_format_specifier.html">FormatSpecifier</a> *fmt_parser, va_list *args)</td></tr>
 <tr class="memdesc:accf2a0a8f016b59dfe50d95738685690 inherit pro_methods_class_r_f24_log_abstract_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">output a data according to the format specifier  <a href="class_r_f24_log_abstract_stream.html#accf2a0a8f016b59dfe50d95738685690">More...</a><br /></td></tr>
 <tr class="separator:accf2a0a8f016b59dfe50d95738685690 inherit pro_methods_class_r_f24_log_abstract_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bad6b3989d129ab396a98f3e99df863 inherit pro_methods_class_r_f24_log_abstract_stream"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#a5bad6b3989d129ab396a98f3e99df863">appendInt</a> (long data)=0</td></tr>
+<tr class="memdesc:a5bad6b3989d129ab396a98f3e99df863 inherit pro_methods_class_r_f24_log_abstract_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a signed (+/-) number  <a href="class_r_f24_log_abstract_stream.html#a5bad6b3989d129ab396a98f3e99df863">More...</a><br /></td></tr>
+<tr class="separator:a5bad6b3989d129ab396a98f3e99df863 inherit pro_methods_class_r_f24_log_abstract_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b0601d83b146abd08758a5431ee0b3b inherit pro_methods_class_r_f24_log_abstract_stream"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">appendUInt</a> (unsigned long data, uint8_t base=10)=0</td></tr>
+<tr class="memdesc:a3b0601d83b146abd08758a5431ee0b3b inherit pro_methods_class_r_f24_log_abstract_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">append an &lsquo;unsigned&rsquo; (only +) number  <a href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">More...</a><br /></td></tr>
+<tr class="separator:a3b0601d83b146abd08758a5431ee0b3b inherit pro_methods_class_r_f24_log_abstract_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -177,7 +183,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00018">18</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00019">19</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
 
 </div>
 </div>
@@ -227,7 +233,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#aae27a36f91c4f03e443e581b63252fef">RF24LogAbstractStream</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00035">35</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00040">40</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
 
 </div>
 </div>
@@ -276,56 +282,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#aed0c58fe5d99a5761700afafa36f9005">RF24LogAbstractStream</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00123">123</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a0b4f4b42093f11ccb1fa475cadf697a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b4f4b42093f11ccb1fa475cadf697a1">&#9670;&nbsp;</a></span>appendInt()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void OStreamLogger::appendInt </td>
-          <td>(</td>
-          <td class="paramtype">long&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>base</em> = <code>10</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>append a signed (+/-) number </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td>The numeric data </td></tr>
-    <tr><td class="paramname">base</td><td>The base counting scheme. Defaults to 10 for decimal counting system </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#ae6dcca6eb2459743d484b78a21869fb2">RF24LogAbstractStream</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00044">44</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00095">95</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
 
 </div>
 </div>
@@ -363,56 +320,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#a6c883ca4fd17889b6f99e5ac1d002558">RF24LogAbstractStream</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00133">133</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
-
-</div>
-</div>
-<a id="adca50c4860e24eb94347cde20bf5bf0e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adca50c4860e24eb94347cde20bf5bf0e">&#9670;&nbsp;</a></span>appendUInt()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void OStreamLogger::appendUInt </td>
-          <td>(</td>
-          <td class="paramtype">unsigned long&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>base</em> = <code>10</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>append an &lsquo;unsigned&rsquo; (only +) number </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td>The numeric data </td></tr>
-    <tr><td class="paramname">base</td><td>The base counting scheme. Defaults to 10 for decimal counting system </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="class_r_f24_log_abstract_stream.html#a3b0601d83b146abd08758a5431ee0b3b">RF24LogAbstractStream</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00086">86</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_o_stream_logger_8cpp_source.html#l00105">105</a> of file <a class="el" href="_o_stream_logger_8cpp_source.html">OStreamLogger.cpp</a>.</p>
 
 </div>
 </div>
