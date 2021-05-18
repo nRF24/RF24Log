@@ -86,7 +86,7 @@ void loop()
     RF24Log_log(RF24LogLevel::DEBUG + 8, vendorID, "message on sublevel DEBUG + 8");
 
     RF24Log_log(077, vendorID, "This\n\tis a multiline\n\t\tmessage that\n\tends with a\nblank line\n\n");
-    RF24Log_log(75, vendorID, "%%%%This is level 0x%02x (0b%08b or%4dh)%2c", 75, 75, 75, '!');
+    RF24Log_log(75, vendorID, "%%%%This is level 0x%02x (0b%08b or%4d)%2c", 75, 75, 75, '!');
 
     // note negative numbers will look strange in binary, hexadecimal, and octal output if they aren't first casted as unsigned numbers
     RF24Log_log((uint8_t)-0xAA, vendorID, "0x%02x is 0b%08b is %d, but can also be %o", (uint8_t)(-0xAA), (uint8_t)(-0xAA), -0xAA, -0xAA);
