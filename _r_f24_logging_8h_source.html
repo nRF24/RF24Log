@@ -75,58 +75,60 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#ifndef SRC_RF24LOGGER_H_</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define SRC_RF24LOGGER_H_</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#if defined(ARDUINO_ARCH_AVR)</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#if defined (ARDUINO_ARCH_AVR)</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;WString.h&gt;</span> <span class="comment">// __FlashStringHelper</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_r_f24_log_level_8h.html">RF24LogLevel.h</a>&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_r_f24_log_base_handler_8h.html">RF24LogBaseHandler.h</a>&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#if defined (ARDUINO_ARCH_AVR)</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">    #define RF24LOG_FLASHIFY(A) F(A)</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">    #define RF24Log_error(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::ERROR, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">    #define RF24Log_warn(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::WARN, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">    #define RF24Log_info(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::INFO, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">    #define RF24Log_debug(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::DEBUG, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">    #define RF24Log_log(logLevel, vendorId, message, ...) (rf24Logging.log(logLevel, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="group___logging_a_p_i.html#gaa9bcf8f72ed3e2d0f1a98c1b40c5409f">   48</a></span>&#160;<span class="preprocessor">    #define RF24Log_error(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::ERROR, vendorId, message, ##__VA_ARGS__))</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="group___logging_a_p_i.html#gab3b6be9f0d9d9f97dc4d9be5187fe2ca">   57</a></span>&#160;<span class="preprocessor">    #define RF24Log_warn(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::WARN, vendorId, message, ##__VA_ARGS__))</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">   66</a></span>&#160;<span class="preprocessor">    #define RF24Log_info(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::INFO, vendorId, message, ##__VA_ARGS__))</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="group___logging_a_p_i.html#ga14adb54e78925f200b5caee1a819d88b">   75</a></span>&#160;<span class="preprocessor">    #define RF24Log_debug(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::DEBUG, vendorId, message, ##__VA_ARGS__))</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">   86</a></span>&#160;<span class="preprocessor">    #define RF24Log_log(logLevel, vendorId, message, ...) (rf24Logging.log(logLevel, vendorId, message, ##__VA_ARGS__))</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_r_f24_logging.html">   90</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_r_f24_logging.html">RF24Logging</a></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;{</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="class_r_f24_log_base_handler.html">RF24LogBaseHandler</a> *handler;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="class_r_f24_logging.html#a8326d01f37e4f7cd33eab97398060935">RF24Logging</a>();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_r_f24_logging.html#af7fe2277501fdcc0c5731f7d721f7723">setHandler</a>(<a class="code" href="class_r_f24_log_base_handler.html">RF24LogBaseHandler</a> *handler);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_r_f24_logging.html#a197f0b717a027c511a9dc3634dbc9089">log</a>(uint8_t logLevel, <span class="keyword">const</span> <span class="keywordtype">char</span> *vendorId, <span class="keyword">const</span> <span class="keywordtype">char</span> *message, ...);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#if defined (ARDUINO_ARCH_AVR)</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_r_f24_logging.html#a197f0b717a027c511a9dc3634dbc9089">log</a>(uint8_t logLevel, <span class="keyword">const</span> __FlashStringHelper *vendorId, <span class="keyword">const</span> __FlashStringHelper *message, ...);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;};</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">extern</span> <a class="code" href="class_r_f24_logging.html">RF24Logging</a> <a class="code" href="group___logging_a_p_i.html#gab335c779efc8aa9cf199825986ed87a9">rf24Logging</a>;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SRC_RF24LOGGER_H_ */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_r_f24_log_level_8h.html">RF24LogLevel.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_r_f24_log_base_handler_8h.html">RF24LogBaseHandler.h</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#if defined (ARDUINO_ARCH_AVR)</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">    #define RF24LOG_FLASHIFY(A) F(A)</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">    #define RF24Log_error(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::ERROR, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">    #define RF24Log_warn(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::WARN, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">    #define RF24Log_info(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::INFO, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">    #define RF24Log_debug(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::DEBUG, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">    #define RF24Log_log(logLevel, vendorId, message, ...) (rf24Logging.log(logLevel, (const __FlashStringHelper*)(vendorId), RF24LOG_FLASHIFY(message), ##__VA_ARGS__))</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="group___logging_a_p_i.html#gaa9bcf8f72ed3e2d0f1a98c1b40c5409f">   50</a></span>&#160;<span class="preprocessor">    #define RF24Log_error(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::ERROR, vendorId, message, ##__VA_ARGS__))</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="group___logging_a_p_i.html#gab3b6be9f0d9d9f97dc4d9be5187fe2ca">   59</a></span>&#160;<span class="preprocessor">    #define RF24Log_warn(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::WARN, vendorId, message, ##__VA_ARGS__))</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="group___logging_a_p_i.html#ga2e0c08b7f516dc508b491f1f3102c901">   68</a></span>&#160;<span class="preprocessor">    #define RF24Log_info(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::INFO, vendorId, message, ##__VA_ARGS__))</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="group___logging_a_p_i.html#ga14adb54e78925f200b5caee1a819d88b">   77</a></span>&#160;<span class="preprocessor">    #define RF24Log_debug(vendorId, message, ...) (rf24Logging.log(RF24LogLevel::DEBUG, vendorId, message, ##__VA_ARGS__))</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="group___logging_a_p_i.html#ga04b17e399c677818d69abd5f5d37e9ef">   88</a></span>&#160;<span class="preprocessor">    #define RF24Log_log(logLevel, vendorId, message, ...) (rf24Logging.log(logLevel, vendorId, message, ##__VA_ARGS__))</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="class_r_f24_logging.html">   92</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_r_f24_logging.html">RF24Logging</a></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;{</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="class_r_f24_log_base_handler.html">RF24LogBaseHandler</a> *handler;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="class_r_f24_logging.html#a8326d01f37e4f7cd33eab97398060935">RF24Logging</a>();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_r_f24_logging.html#af7fe2277501fdcc0c5731f7d721f7723">setHandler</a>(<a class="code" href="class_r_f24_log_base_handler.html">RF24LogBaseHandler</a> *handler);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_r_f24_logging.html#a197f0b717a027c511a9dc3634dbc9089">log</a>(uint8_t logLevel, <span class="keyword">const</span> <span class="keywordtype">char</span> *vendorId, <span class="keyword">const</span> <span class="keywordtype">char</span> *message, ...);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#if defined (ARDUINO_ARCH_AVR)</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_r_f24_logging.html#a197f0b717a027c511a9dc3634dbc9089">log</a>(uint8_t logLevel, <span class="keyword">const</span> __FlashStringHelper *vendorId, <span class="keyword">const</span> __FlashStringHelper *message, ...);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;};</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">extern</span> <a class="code" href="class_r_f24_logging.html">RF24Logging</a> <a class="code" href="group___logging_a_p_i.html#gab335c779efc8aa9cf199825986ed87a9">rf24Logging</a>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SRC_RF24LOGGER_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
 <div class="ttc" id="a_r_f24_log_base_handler_8h_html"><div class="ttname"><a href="_r_f24_log_base_handler_8h.html">RF24LogBaseHandler.h</a></div><div class="ttdoc">inherent declarations for all handlers.</div></div>
 <div class="ttc" id="a_r_f24_log_level_8h_html"><div class="ttname"><a href="_r_f24_log_level_8h.html">RF24LogLevel.h</a></div><div class="ttdoc">Order of log levels and filtering.</div></div>
 <div class="ttc" id="aclass_r_f24_log_base_handler_html"><div class="ttname"><a href="class_r_f24_log_base_handler.html">RF24LogBaseHandler</a></div><div class="ttdoc">A base mechanism for handling log messages.</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_log_base_handler_8h_source.html#l00054">RF24LogBaseHandler.h:55</a></div></div>
-<div class="ttc" id="aclass_r_f24_logging_html"><div class="ttname"><a href="class_r_f24_logging.html">RF24Logging</a></div><div class="ttdoc">This is the end-user's access point into the world of logging messages.</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_logging_8h_source.html#l00090">RF24Logging.h:91</a></div></div>
+<div class="ttc" id="aclass_r_f24_logging_html"><div class="ttname"><a href="class_r_f24_logging.html">RF24Logging</a></div><div class="ttdoc">This is the end-user's access point into the world of logging messages.</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_logging_8h_source.html#l00092">RF24Logging.h:93</a></div></div>
 <div class="ttc" id="aclass_r_f24_logging_html_a197f0b717a027c511a9dc3634dbc9089"><div class="ttname"><a href="class_r_f24_logging.html#a197f0b717a027c511a9dc3634dbc9089">RF24Logging::log</a></div><div class="ttdeci">void log(uint8_t logLevel, const char *vendorId, const char *message,...)</div><div class="ttdoc">output a log message of any level</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_logging_8cpp_source.html#l00032">RF24Logging.cpp:32</a></div></div>
 <div class="ttc" id="aclass_r_f24_logging_html_a8326d01f37e4f7cd33eab97398060935"><div class="ttname"><a href="class_r_f24_logging.html#a8326d01f37e4f7cd33eab97398060935">RF24Logging::RF24Logging</a></div><div class="ttdeci">RF24Logging()</div><div class="ttdoc">Initializes the handler to nullptr.</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_logging_8cpp_source.html#l00018">RF24Logging.cpp:18</a></div></div>
 <div class="ttc" id="aclass_r_f24_logging_html_af7fe2277501fdcc0c5731f7d721f7723"><div class="ttname"><a href="class_r_f24_logging.html#af7fe2277501fdcc0c5731f7d721f7723">RF24Logging::setHandler</a></div><div class="ttdeci">void setHandler(RF24LogBaseHandler *handler)</div><div class="ttdoc">set the instance's handler</div><div class="ttdef"><b>Definition:</b> <a href="_r_f24_logging_8cpp_source.html#l00025">RF24Logging.cpp:25</a></div></div>
