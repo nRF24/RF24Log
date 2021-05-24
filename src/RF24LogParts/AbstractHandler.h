@@ -15,9 +15,13 @@
 
 #ifndef SRC_RF24LOGPARTS_HANDLER_H_
 #define SRC_RF24LOGPARTS_HANDLER_H_
-#if defined (ARDUINO)
+
+#if defined (ARDUINO_ARCH_AVR)
 #include <WString.h> // __FlashStringHelper
+#else
+#include <string.h>
 #endif
+
 #include <stdint.h>
 #include <stdarg.h>
 

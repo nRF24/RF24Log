@@ -16,9 +16,12 @@
 #ifndef SRC_RF24LOGPARTS_STREAM_H_
 #define SRC_RF24LOGPARTS_STREAM_H_
 
-#if defined (ARDUINO)
+#if defined (ARDUINO_ARCH_AVR)
 #include <WString.h> // __FlashStringHelper
+#else
+#include <string.h>
 #endif
+
 #include <stdint.h>
 #include "FormatSpecifier.h" // FormatSpecifier struct
 #include "Common.h" // numbCharsToPrint()
