@@ -1,0 +1,48 @@
+name: x86 build
+
+on: [push]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  make_deb_pkg:
+    runs-on: ubuntu-latest
+
+    # strategy:
+    #   fail-fast: false
+
+    #   matrix:
+    #     compiler-arch:
+    #       - "arm"
+
+    steps:
+      - name: checkout RF24Log lib
+        uses: actions/checkout@v2
+
+      - name: provide toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install binutils-arm-linux-gnueabi gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+
+      - name: Create Build Environment
+        run: cmake -E make_directory ${{ github.workspace }}/build
+
+      - name: Configure CMake for Ubuntu
+        working-directory: ${{ github.workspace }}/build
+        run: cmake ../src -D CMAKE_BUILD_TYPE=$BUILD_TYPE -D BUILD_DEB_PKG=ON
+
+      - name: Build lib
+        working-directory: ${{ github.workspace }}/build
+        run: cmake --build .
+
+      - name: Install & package lib
+        working-directory: ${{ github.workspace }}/build
+        run: cmake --install .
+
+      - name: Save artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: "deb_pkg"
+          path: ${{ github.workspace }}/build/*.deb
