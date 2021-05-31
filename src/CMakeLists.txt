@@ -137,7 +137,8 @@ if(CMAKE_HOST_UNIX AND "${CMAKE_CROSSCOMPILING}" STREQUAL "FALSE" AND NOT BUILD_
     install(CODE "execute_process(COMMAND ldconfig)")
 endif()
 
-# prepare to build a debian package
+# prepare & build a debian package
 if(BUILD_DEB_PKG)
+    # This needs to be last so that the files are installed to the DEB_PKG_DIR in the CMAKE_BINARY_DIR
     include(cmake/createDebianPkg.cmake)
 endif()
