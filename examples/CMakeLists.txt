@@ -44,11 +44,14 @@ else() # if NOT USE_PICO_SDK
 
     project(RF24LogExamples)
 
+    find_library(RF24Log rf24log)
+    message(STATUS "using RF24Log at: ${RF24Log}")
+
     foreach(example ${EXAMPLES_LIST})
         #make a target
         add_executable(${example} ${example}.cpp)
 
         # link the RF24Log lib to the target
-        target_link_libraries(${example} PUBLIC rf24log) # this command looks for the installed librf24log.so
+        target_link_libraries(${example} PUBLIC ${RF24Log}) # this command looks for the installed librf24log.so
     endforeach()
 endif()

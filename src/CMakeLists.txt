@@ -101,11 +101,6 @@ target_link_libraries(${LibTargetName} INTERFACE
     project_warnings
     )
 
-# prepare to build a debian package
-if(BUILD_DEB_PKG)
-    include(cmake/createDebianPkg.cmake)
-endif()
-
 ###########################
 # target install rules for the RF24Log lib
 ###########################
@@ -140,4 +135,9 @@ install(FILES
 if(CMAKE_HOST_UNIX AND "${CMAKE_CROSSCOMPILING}" STREQUAL "FALSE" AND NOT BUILD_DEB_PKG)
     install(CODE "message(STATUS \"Updating ldconfig\")")
     install(CODE "execute_process(COMMAND ldconfig)")
+endif()
+
+# prepare to build a debian package
+if(BUILD_DEB_PKG)
+    include(cmake/createDebianPkg.cmake)
 endif()

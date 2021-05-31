@@ -47,7 +47,7 @@ jobs:
 
       - name: Install & package lib
         working-directory: ${{ github.workspace }}/build
-        run: cmake --install .
+        run: sudo cmake --install .
 
       - name: Save artifact
         uses: actions/upload-artifact@v2
