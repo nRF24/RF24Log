@@ -1,5 +1,5 @@
 Package: ${LibName}
-Version: ${${LibTargetName}_VERSION_STRING}
+Version: ${${LibName}_VERSION_STRING}
 Architecture: ${TARGET_ARCH}
 Maintainer: ${LibMaintainer}
 Description: ${LibDescription}

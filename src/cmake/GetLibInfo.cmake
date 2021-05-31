@@ -32,9 +32,9 @@ string(REGEX REPLACE "^[0-9]+\\.([0-9]+).*" "\\1" VERSION_MINOR "${VERSION}")
 string(REGEX REPLACE "^[0-9]+\\.[0-9]+\\.([0-9]+).*" "\\1" VERSION_PATCH "${VERSION}")
 
 # this is the library version
-set(${LibTargetName}_VERSION_MAJOR ${VERSION_MAJOR})
-set(${LibTargetName}_VERSION_MINOR ${VERSION_MINOR})
-set(${LibTargetName}_VERSION_PATCH ${VERSION_PATCH})
-set(${LibTargetName}_VERSION_STRING ${${LibTargetName}_VERSION_MAJOR}.${${LibTargetName}_VERSION_MINOR}.${${LibTargetName}_VERSION_PATCH})
+set(${LibName}_VERSION_MAJOR ${VERSION_MAJOR})
+set(${LibName}_VERSION_MINOR ${VERSION_MINOR})
+set(${LibName}_VERSION_PATCH ${VERSION_PATCH})
+set(${LibName}_VERSION_STRING ${${LibName}_VERSION_MAJOR}.${${LibName}_VERSION_MINOR}.${${LibName}_VERSION_PATCH})
 
-message(STATUS "RF24Log library version: ${${LibTargetName}_VERSION_STRING}")
+message(STATUS "${LibName} library version: ${${LibName}_VERSION_STRING}")
