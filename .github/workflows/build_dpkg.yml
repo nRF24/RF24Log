@@ -1,4 +1,4 @@
-name: x86 build
+name: dpkg-deb
 
 on: [push]
 
