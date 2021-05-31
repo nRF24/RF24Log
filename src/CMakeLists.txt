@@ -101,6 +101,13 @@ target_link_libraries(${LibTargetName} INTERFACE
     project_warnings
     )
 
+set_target_properties(
+    ${LibTargetName}
+    PROPERTIES
+    SOVERSION ${${LibName}_VERSION_MAJOR}
+    VERSION ${${LibName}_VERSION_STRING}
+    )
+
 ###########################
 # target install rules for the RF24Log lib
 ###########################
