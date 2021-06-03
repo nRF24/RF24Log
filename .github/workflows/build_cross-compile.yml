@@ -14,16 +14,16 @@ jobs:
       fail-fast: false
 
       matrix:
-        toolchain-file:
-          - "cmake/toolchain_arm.cmake"
-          - "none"
+        toolchain:
+          - "arm"
+          - "default"
 
     steps:
       - name: checkout RF24Log lib
         uses: actions/checkout@v2
 
-      - name: provide toolchain
-        if: ${{ matrix.toolchain-file != 'none' }}
+      - name: provide toolchain (for arm)
+        if: ${{ matrix.toolchain == 'arm' }}
         run: |
           sudo apt-get update
           sudo apt-get install binutils-arm-linux-gnueabi gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
@@ -32,22 +32,24 @@ jobs:
         run: cmake -E make_directory ${{ github.workspace }}/build
 
       - name: Configure CMake (with default compilers)
-        if: ${{ matrix.toolchain-file == 'none' }}
+        if: ${{ matrix.toolchain == 'default' }}
         working-directory: ${{ github.workspace }}/build
-        run: cmake ../src -D CMAKE_BUILD_TYPE=$BUILD_TYPE -D BUILD_DEB_PKG=ON
+        run: cmake ../src -D CMAKE_BUILD_TYPE=$BUILD_TYPE
 
       - name: Configure CMake (with toolchain compilers)
-        if: ${{ matrix.toolchain-file != 'none' }}
+        if: ${{ matrix.toolchain != 'default' }}
         working-directory: ${{ github.workspace }}/build
-        run: cmake ../src -D CMAKE_BUILD_TYPE=$BUILD_TYPE -D BUILD_DEB_PKG=ON -D CMAKE_TOOLCHAIN_FILE=${{ matrix.toolchain-file }}
+        run: |
+          cmake ../src -D CMAKE_BUILD_TYPE=$BUILD_TYPE \
+          -D CMAKE_TOOLCHAIN_FILE=cmake/toolchains/${{ matrix.toolchain }}.cmake
 
       - name: Build lib
         working-directory: ${{ github.workspace }}/build
         run: cmake --build .
 
-      - name: Install & package lib
+      - name: package lib
         working-directory: ${{ github.workspace }}/build
-        run: sudo cmake --install .
+        run: sudo cpack
 
       - name: Save artifact
         uses: actions/upload-artifact@v2

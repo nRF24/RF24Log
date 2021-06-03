@@ -3,7 +3,7 @@
 if (PICO_SDK_PATH)
     # If so, load the relevant CMakeLists-file but don't do anything else
 
-    project(nRF24Log C CXX ASM)
+    project(RF24Log C CXX ASM)
     set(CMAKE_C_STANDARD 11)
     set(CMAKE_CXX_STANDARD 17)
 
@@ -43,7 +43,7 @@ cmake_minimum_required(VERSION 3.15)
 option(BUILD_DEB_PKG "set to on to build a debian package" OFF)
 
 # Set the project name to your project name
-project(RF24Log_lib C CXX)
+project(RF24Log C CXX)
 include(cmake/StandardProjectSettings.cmake)
 include(cmake/PreventInSourceBuilds.cmake)
 
@@ -71,6 +71,9 @@ set_project_warnings(project_warnings)
 
 # get library info from Arduino IDE's required library.properties file
 include(cmake/GetLibInfo.cmake) # sets the variable LibTargetName
+
+# setup CPack options
+include(cmake/CPackInfo.cmake)
 
 ###########################
 # create target for bulding the RF24Log lib
@@ -139,13 +142,7 @@ install(FILES
     )
 
 # CMAKE_CROSSCOMPILING is only TRUE when CMAKE_TOOLCHAIN_FILE is specified via CLI
-if(CMAKE_HOST_UNIX AND "${CMAKE_CROSSCOMPILING}" STREQUAL "FALSE" AND NOT BUILD_DEB_PKG)
+if(CMAKE_HOST_UNIX AND "${CMAKE_CROSSCOMPILING}" STREQUAL "FALSE")
     install(CODE "message(STATUS \"Updating ldconfig\")")
     install(CODE "execute_process(COMMAND ldconfig)")
-endif()
-
-# prepare & build a debian package
-if(BUILD_DEB_PKG)
-    # This needs to be last so that the files are installed to the DEB_PKG_DIR in the CMAKE_BINARY_DIR
-    include(cmake/createDebianPkg.cmake)
 endif()
