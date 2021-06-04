@@ -1,5 +1,9 @@
 # This module will build a debian compatible package to install - handy for cross-compiling
 
+if(NOT PKG_REV)
+    set(PKG_REV "1")
+endif()
+
 # get target arch if not cross-compiling
 if(NOT TARGET_ARCH) # TARGET_ARCH is defined only in the toolchain_<ARCH_TYPE>.cmake files
     if(WIN32)
@@ -21,7 +25,7 @@ endif()
 
 # assemble a debian package filename from known info
 include(InstallRequiredSystemLibraries)
-set(CPACK_PACKAGE_FILE_NAME "lib${LibTargetName}_${${LibName}_VERSION_STRING}-1_${TARGET_ARCH}")
+set(CPACK_PACKAGE_FILE_NAME "lib${LibTargetName}_${${LibName}_VERSION_STRING}-${PKG_REV}_${TARGET_ARCH}")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/../LICENSE")
 set(CPACK_PACKAGE_VERSION_MAJOR "${${LibName}_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${${LibName}_VERSION_MINOR}")
@@ -39,7 +43,7 @@ if(NOT WIN32)
     ###############################
     # info specific rpm (fedora) packages
     ###############################
-    set(CPACK_RPM_FILE_NAME "lib${LibTargetName}-${${LibName}_VERSION_STRING}-1.${TARGET_ARCH}.rpm")
+    set(CPACK_RPM_FILE_NAME "lib${LibTargetName}-${${LibName}_VERSION_STRING}-${PKG_REV}.${TARGET_ARCH}.rpm")
     set(CPACK_RPM_PACKAGE_ARCHITECTURE ${TARGET_ARCH})
     set(CPACK_RPM_PACKAGE_LICENSE "GPLv2.0")
     set(CPACK_RPM_PACKAGE_VENDOR "Humanity")
