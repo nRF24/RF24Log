@@ -69,12 +69,12 @@ jobs:
         run: cmake -E make_directory ${{ github.workspace }}/build
 
       - name: Configure CMake
-        if: ${{ matrix.toolchain.compiler == 'default' }}
+        if: ${{ matrix.toolchain.compiler == 'default' || matrix.os == 'windows-latest' }}
         working-directory: ${{ github.workspace }}/build
         run: cmake ../src -D CMAKE_BUILD_TYPE=$BUILD_TYPE
 
       - name: Configure CMake (with toolchain compilers)
-        if: ${{ matrix.toolchain.compiler != 'default' }}
+        if: ${{ matrix.toolchain.compiler != 'default' && matrix.os != 'windows-latest'}}
         working-directory: ${{ github.workspace }}/build
         run: |
           cmake ../src -D CMAKE_BUILD_TYPE=$BUILD_TYPE \
