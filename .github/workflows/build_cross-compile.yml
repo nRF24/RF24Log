@@ -1,4 +1,4 @@
-name: Cross-Compile & package
+name: Cross-Compile and package
 
 on: [push]
 
