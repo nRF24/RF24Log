@@ -1,7 +1,7 @@
 # This module will build a debian compatible package to install - handy for cross-compiling
 
 # get target arch if not cross-compiling
-if(NOT DEFINED TARGET_ARCH) # TARGET_ARCH is defined only in the toolchain_<ARCH_TYPE>.cmake files
+if(NOT TARGET_ARCH) # TARGET_ARCH is defined only in the toolchain_<ARCH_TYPE>.cmake files
     if(WIN32)
         set(TARGET_ARCH $ENV{PROCESSOR_ARCHITECTURE})
     else()
