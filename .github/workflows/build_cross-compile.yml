@@ -1,4 +1,4 @@
-name: CrossCompile deb packages
+name: Cross-Compile & package
 
 on: [push]
 
