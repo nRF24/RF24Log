@@ -7,7 +7,7 @@ env:
   BUILD_TYPE: Release
 
 jobs:
-  make_deb_pkg:
+  test_lib_and_examples:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -16,11 +16,16 @@ jobs:
       matrix:
         os: ["ubuntu-latest"]
         toolchain:
-          - "arm"
-          - "aarch64"
-          - "x86_64"
-          - "i686"
-          - "default" # github runner is hosted on a "amd64"
+          - compiler: "arm"
+            usr_dir: "arm-linux-gnueabihf"
+          - compiler: "aarch64"
+            usr_dir: "aarch64-linux-gnu"
+          - compiler: "x86_64"
+            usr_dir: "x86_64-linux-gnux32"
+          - compiler: "i686"
+            usr_dir: "i686-linux-gnu"
+          - compiler: "default" # github runner is hosted on a "amd64"
+            usr_dir: "local"
         include:
           - os: "windows-latest"
             toolchain: "default"
@@ -35,25 +40,25 @@ jobs:
         run: sudo apt-get install rpm
 
       - name: provide toolchain (for x86_64)
-        if: ${{ matrix.toolchain == 'x86_64' }}
+        if: ${{ matrix.toolchain.compiler == 'x86_64' }}
         run: |
           sudo apt-get update
           sudo apt-get install gcc-x86-64-linux-gnux32 g++-x86-64-linux-gnux32
 
       - name: provide toolchain (for i686)
-        if: ${{ matrix.toolchain == 'i686' }}
+        if: ${{ matrix.toolchain.compiler == 'i686' }}
         run: |
           sudo apt-get update
           sudo apt-get install gcc-i686-linux-gnu g++-i686-linux-gnu
 
       - name: provide toolchain (for aarch64)
-        if: ${{ matrix.toolchain == 'aarch64' }}
+        if: ${{ matrix.toolchain.compiler == 'aarch64' }}
         run: |
           sudo apt-get update
           sudo apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
 
       - name: provide toolchain (for arm)
-        if: ${{ matrix.toolchain == 'arm' }}
+        if: ${{ matrix.toolchain.compiler == 'arm' }}
         run: |
           sudo apt-get update
           sudo apt-get install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
@@ -61,17 +66,18 @@ jobs:
       - name: Create Build Environment
         run: cmake -E make_directory ${{ github.workspace }}/build
 
-      - name: Configure CMake (with default compilers)
-        if: ${{ matrix.toolchain == 'default' }}
+      - name: Configure CMake
+        if: ${{ matrix.toolchain.compiler == 'default' }}
         working-directory: ${{ github.workspace }}/build
         run: cmake ../src -D CMAKE_BUILD_TYPE=$BUILD_TYPE
 
       - name: Configure CMake (with toolchain compilers)
-        if: ${{ matrix.toolchain != 'default' }}
+        if: ${{ matrix.toolchain.compiler != 'default' }}
         working-directory: ${{ github.workspace }}/build
         run: |
           cmake ../src -D CMAKE_BUILD_TYPE=$BUILD_TYPE \
-          -D CMAKE_TOOLCHAIN_FILE=cmake/toolchains/${{ matrix.toolchain }}.cmake
+          -D CMAKE_INSTALL_PREFIX=/usr/${{ matrix.toolchain.usr_dir }} \
+          -D CMAKE_TOOLCHAIN_FILE=cmake/toolchains/${{ matrix.toolchain.compiler }}.cmake
 
       - name: Build lib
         working-directory: ${{ github.workspace }}/build
@@ -90,3 +96,25 @@ jobs:
           path: |
             ${{ github.workspace }}/build/*.deb
             ${{ github.workspace }}/build/*.rpm
+
+      - name: Install lib for Ubuntu
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        working-directory: ${{ github.workspace }}/build
+        # this step requires sudo (on Linux) or administator privledges (on Windows)
+        run: sudo cmake --install .
+
+      - name: Install lib for Windows
+        if: ${{ matrix.os == 'windows-latest' }}
+        working-directory: ${{ github.workspace }}/build
+        # this step requires sudo (on Linux) or administator privledges (on Windows)
+        run: cmake --install .
+
+      - name: Compile the examples for Ubuntu
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: |
+          mkdir build_examples
+          cd build_examples
+          cmake ../examples  -D CMAKE_BUILD_TYPE=$BUILD_TYPE \
+          -D CMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/src/cmake/toolchains/${{ matrix.toolchain.compiler }}.cmake
+          cmake --build .
+          file ./GettingStarted
