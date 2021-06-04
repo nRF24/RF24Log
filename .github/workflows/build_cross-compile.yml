@@ -37,6 +37,10 @@ jobs:
       - name: checkout RF24Log lib
         uses: actions/checkout@v2
 
+      - name: Install Visual Studio Tools (for Windows)
+        if: ${{ matrix.os == 'windows-latest' }}
+        uses: seanmiddleditch/gha-setup-vsdevenv@master
+
       - name: install rpmbuild
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: sudo apt-get install rpm
