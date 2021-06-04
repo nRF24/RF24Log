@@ -27,7 +27,7 @@ set(CPACK_PACKAGE_VERSION_MAJOR "${${LibName}_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${${LibName}_VERSION_MINOR}")
 set(CPACK_PACKAGE_VERSION_PATCH "${${LibName}_VERSION_PATCH}")
 
-if(NOT CMAKE_CROSSCOMPILING AND NOT WIN32)
+if(NOT WIN32)
     ###############################
     # info specific debian packages
     ###############################
