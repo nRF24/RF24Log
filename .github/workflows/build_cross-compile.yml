@@ -17,7 +17,11 @@ jobs:
         os: ["ubuntu-latest"]
         toolchain:
           - "arm"
-          - "default"
+          - "aarch64"
+          - "x86_64"
+          - "i686"
+          - "avr"
+          - "default" # github runner is hosted on a "amd64"
         include:
           - os: "windows-latest"
             toolchain: "default"
@@ -31,11 +35,36 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: sudo apt-get install rpm
 
+      - name: provide toolchain (for avr)
+        if: ${{ matrix.toolchain == 'avr' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install gcc-avr g++-avr
+
+      - name: provide toolchain (for x86_64)
+        if: ${{ matrix.toolchain == 'x86_64' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install gcc-x86-64-linux-gnu32 g++-x86-64-linux-gnu32
+
+      - name: provide toolchain (for i686)
+        if: ${{ matrix.toolchain == 'i686' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install gcc-i686-linux-gnu g++-i686-linux-gnu
+
+      - name: provide toolchain (for aarch64)
+        if: ${{ matrix.toolchain == 'aarch64' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+
+        gcc-aarch64-linux-gnu
       - name: provide toolchain (for arm)
         if: ${{ matrix.toolchain == 'arm' }}
         run: |
           sudo apt-get update
-          sudo apt-get install binutils-arm-linux-gnueabi gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+          sudo apt-get install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
 
       - name: Create Build Environment
         run: cmake -E make_directory ${{ github.workspace }}/build
@@ -65,7 +94,7 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest'}}
         uses: actions/upload-artifact@v2
         with:
-          name: "deb_pkg_RF24Log"
+          name: "pkg_RF24Log"
           path: |
             ${{ github.workspace }}/build/*.deb
             ${{ github.workspace }}/build/*.rpm
