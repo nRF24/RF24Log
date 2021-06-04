@@ -1,4 +1,4 @@
-name: dpkg-deb
+name: CrossCompile deb packages
 
 on: [push]
 
@@ -8,19 +8,28 @@ env:
 
 jobs:
   make_deb_pkg:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     strategy:
       fail-fast: false
 
       matrix:
+        os: ["ubuntu-latest"]
         toolchain:
           - "arm"
           - "default"
+        include:
+          - os: "windows-latest"
+            toolchain: "default"
+
 
     steps:
       - name: checkout RF24Log lib
         uses: actions/checkout@v2
+
+      - name: install rpmbuild
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: sudo apt-get rpm
 
       - name: provide toolchain (for arm)
         if: ${{ matrix.toolchain == 'arm' }}
@@ -48,6 +57,7 @@ jobs:
         run: cmake --build .
 
       - name: package lib
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         working-directory: ${{ github.workspace }}/build
         run: sudo cpack
 
@@ -55,4 +65,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: "deb_pkg_RF24Log"
-          path: ${{ github.workspace }}/build/*.deb
+          path: |
+            ${{ github.workspace }}/build/*.deb
+            ${{ github.workspace }}/build/*.rpm
