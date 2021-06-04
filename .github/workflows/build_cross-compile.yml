@@ -29,7 +29,7 @@ jobs:
 
       - name: install rpmbuild
         if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: sudo apt-get rpm
+        run: sudo apt-get install rpm
 
       - name: provide toolchain (for arm)
         if: ${{ matrix.toolchain == 'arm' }}
