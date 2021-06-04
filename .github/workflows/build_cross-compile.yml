@@ -28,7 +28,9 @@ jobs:
             usr_dir: "local"
         include:
           - os: "windows-latest"
-            toolchain: "default"
+            toolchain:
+              - compiler: "default"
+                usr_dir: "Program Files(x86)"
 
 
     steps:
