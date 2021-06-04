@@ -35,17 +35,11 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: sudo apt-get install rpm
 
-      - name: provide toolchain (for avr)
-        if: ${{ matrix.toolchain == 'avr' }}
-        run: |
-          sudo apt-get update
-          sudo apt-get install gcc-avr g++-avr
-
       - name: provide toolchain (for x86_64)
         if: ${{ matrix.toolchain == 'x86_64' }}
         run: |
           sudo apt-get update
-          sudo apt-get install gcc-x86-64-linux-gnu32 g++-x86-64-linux-gnu32
+          sudo apt-get install gcc-x86-64-linux-gnux32 g++-x86-64-linux-gnux32
 
       - name: provide toolchain (for i686)
         if: ${{ matrix.toolchain == 'i686' }}
