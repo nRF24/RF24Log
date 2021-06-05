@@ -105,18 +105,16 @@ jobs:
         with:
           name: "pkg_RF24Log"
           path: |
-            ${{ github.workspace }}/build/*.deb
-            ${{ github.workspace }}/build/*.rpm
+            ${{ github.workspace }}/build/pkgs/*.deb
+            ${{ github.workspace }}/build/pkgs/*.rpm
 
       - name: Upload Release assets
-        uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/') && (matrix.toolchain.compiler == 'armhf' || matrix.toolchain.compiler == 'arm64')
-        with:
-          files: |
-            ${{ github.workspace }}/build/*.deb
-            ${{ github.workspace }}/build/*.rpm
+        uses: csexton/release-asset-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          pattern: ${{ github.workspace }}/build/pkgs/librf24*
 
       - name: Install lib for Ubuntu
         if: ${{ matrix.os == 'ubuntu-latest' }}
