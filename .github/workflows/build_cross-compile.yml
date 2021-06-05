@@ -109,10 +109,10 @@ jobs:
             ${{ github.workspace }}/build/pkgs/*.rpm
 
       - name: Upload Release assets
-        if: startsWith(github.ref, 'refs/tags/') && (matrix.toolchain.compiler == 'armhf' || matrix.toolchain.compiler == 'arm64')
+        if: github.event_name == 'release' && (matrix.toolchain.compiler == 'armhf' || matrix.toolchain.compiler == 'arm64')
         uses: csexton/release-asset-action@v2
         with:
-          pattern: ${{ github.workspace }}/build/pkgs/librf24*
+          pattern: "${{ github.workspace }}/build/pkgs/librf24*"
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install lib for Ubuntu
