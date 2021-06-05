@@ -1,0 +1,21 @@
+{
+  "name": "RF24Log",
+  "keywords": "log, logging, logger",
+  "description": "A logging library for all platforms.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nRF24/RF24Log.git"
+  },
+  "version": "0.1.0",
+  "frameworks": "arduino",
+  "platforms": [
+    "atmelavr",
+    "atmelsam",
+    "teensy",
+    "atmelmegaavr",
+    "espressif32",
+    "espressif8266",
+    "linux_arm",
+    "ststm32"
+  ]
+}

@@ -1,0 +1,38 @@
+Release/RF24Log.elf:     file format elf32-avr
+00000252 l     F .text	00000006 _ZN22RF24AbstractLogHandler11setLogLevelEh
+000004c8 l     F .text	00000022 _ZN22RF24AbstractLogHandler3logEhPK19__FlashStringHelperS2_PPv
+000004ea l     F .text	00000022 _ZN22RF24AbstractLogHandler3logEhPKcS1_PPv
+0000050c l     F .text	00000050 _ZN10RF24Logger5errorEPKcS1_z.constprop.15
+008003f7 l     O .bss	00000002 rf24Logger
+0000055c l     F .text	00000050 _ZN10RF24Logger4warnEPKcS1_z.constprop.14
+000005ac l     F .text	00000050 _ZN10RF24Logger4infoEPKcS1_z.constprop.13
+000005fc l     F .text	00000050 _ZN10RF24Logger5debugEPKcS1_z.constprop.12
+0000064c l     F .text	00000050 _ZN10RF24Logger3logEhPKcS1_z.constprop.11
+0000069c l     F .text	00000050 _ZN10RF24Logger5errorEPK19__FlashStringHelperS2_z.constprop.10
+000006ec l     F .text	00000050 _ZN10RF24Logger4warnEPK19__FlashStringHelperS2_z.constprop.9
+0000073c l     F .text	00000050 _ZN10RF24Logger4infoEPK19__FlashStringHelperS2_z.constprop.8
+0000078c l     F .text	00000050 _ZN10RF24Logger5debugEPK19__FlashStringHelperS2_z.constprop.7
+000007dc l     F .text	00000050 _ZN10RF24Logger3logEhPK19__FlashStringHelperS2_z.constprop.6
+00000922 l     F .text	00000268 _ZN20RF24StreamLogHandler12appendFormatEcPPv
+00000b8a l     F .text	0000008e _ZN20RF24StreamLogHandler14appendLogLevelEh
+00800118 l     O .data	00000008 _ZL13rf24LogLevels
+00000c18 l     F .text	00000082 _ZN20RF24StreamLogHandler15appendTimestampEv
+00000c9a l     F .text	000000b2 _ZN20RF24StreamLogHandler5writeEhPK19__FlashStringHelperS2_PPv
+00000d4c l     F .text	000000a6 _ZN20RF24StreamLogHandler5writeEhPKcS1_PPv
+00000f36 l     F .text	00000080 _GLOBAL__I_65535_0_RF24AbstractLogHandler.cpp.o.1928
+008003f2 l     O .bss	00000005 rf24SerialLogHandler
+00800141 l     O .data	0000000e _ZTV20RF24StreamLogHandler
+00800100 l     O .data	00000006 _ZL17rf24logLevelDebug
+00800106 l     O .data	00000006 _ZL16rf24logLevelInfo
+0080010c l     O .data	00000006 _ZL16rf24logLevelWarn
+00800112 l     O .data	00000006 _ZL17rf24logLevelError
+
+Core:
+.bss  0x002
+.data 0x000
+.text 0x320
+
+Stream handler:
+.bss  0x005
+.data 0x02E
+.text 0x59A

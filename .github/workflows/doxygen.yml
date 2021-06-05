@@ -1,0 +1,42 @@
+name: DoxyGen build
+
+on: [pull_request, push, release]
+#  pull_request:
+#    branches:
+#      - master
+#  push:
+#    branches:
+#      - master
+#  release:
+#    branches:
+#      - master
+#    types:
+#      - published
+#      - edited
+
+jobs:
+  build-doxygen:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: get latest release version number
+      id: latest_ver
+      run: echo "::set-output name=release::$(awk -F "=" '/version/ {print $2}' library.properties)"
+    - name: overwrite doxygen tags
+      run: |
+        touch doxygenAction
+        echo "PROJECT_NUMBER = ${{ steps.latest_ver.outputs.release }}" >> doxygenAction
+        echo "@INCLUDE = doxygenAction" >> Doxyfile
+    - name: build doxygen
+      uses: mattnotmitt/doxygen-action@v1
+      with:
+          working-directory: '.'
+          doxyfile-path: './Doxyfile'
+    - name: upload to github pages
+      # if: ${{ github.event_name == 'release'}}
+      if: ${{ github.event_name == 'push'}}
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/html

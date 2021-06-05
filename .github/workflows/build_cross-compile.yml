@@ -1,0 +1,141 @@
+name: Cross-Compile & package
+
+on: [pull_request, push, release]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  test_lib_and_examples:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        os: ["ubuntu-latest"]
+        toolchain:
+          - compiler: "armhf"
+            usr_dir: "arm-linux-gnueabihf"
+          - compiler: "arm64"
+            usr_dir: "aarch64-linux-gnu"
+          - compiler: "x86_64"
+            usr_dir: "x86_64-linux-gnux32"
+          - compiler: "i686"
+            usr_dir: "i686-linux-gnu"
+          - compiler: "default" # github runner is hosted on a "amd64"
+            usr_dir: "local"
+        include:
+          - os: "windows-latest"
+            toolchain:
+              compiler: "default"
+              usr_dir: "Program Files(x86)"
+
+
+    steps:
+      - name: checkout RF24Log lib
+        uses: actions/checkout@v2
+
+      - name: Install Visual Studio Tools (for Windows)
+        if: ${{ matrix.os == 'windows-latest' }}
+        uses: seanmiddleditch/gha-setup-vsdevenv@master
+
+      - name: install rpmbuild
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: sudo apt-get install rpm
+
+      - name: provide toolchain (for x86_64)
+        if: ${{ matrix.toolchain.compiler == 'x86_64' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install gcc-x86-64-linux-gnux32 g++-x86-64-linux-gnux32
+
+      - name: provide toolchain (for i686)
+        if: ${{ matrix.toolchain.compiler == 'i686' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install gcc-i686-linux-gnu g++-i686-linux-gnu
+
+      - name: provide toolchain (for arm64)
+        if: ${{ matrix.toolchain.compiler == 'arm64' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+
+      - name: provide toolchain (for armhf)
+        if: ${{ matrix.toolchain.compiler == 'armhf' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+
+      - name: Create Build Environment
+        run: cmake -E make_directory ${{ github.workspace }}/build
+
+      - name: Configure CMake
+        if: ${{ matrix.toolchain.compiler == 'default' && matrix.os != 'windows-latest' }}
+        working-directory: ${{ github.workspace }}/build
+        run: cmake ../src -D CMAKE_BUILD_TYPE=$BUILD_TYPE
+
+      - name: Configure CMake (for Windows)
+        if: ${{ matrix.os == 'windows-latest' }}
+        working-directory: ${{ github.workspace }}/build
+        run: cmake ../src -G "NMake Makefiles"
+
+      - name: Configure CMake (with toolchain compilers)
+        if: ${{ matrix.toolchain.compiler != 'default' && matrix.os != 'windows-latest'}}
+        working-directory: ${{ github.workspace }}/build
+        run: |
+          cmake ../src -D CMAKE_BUILD_TYPE=$BUILD_TYPE \
+          -D CMAKE_INSTALL_PREFIX=/usr/${{ matrix.toolchain.usr_dir }} \
+          -D CMAKE_TOOLCHAIN_FILE=cmake/toolchains/${{ matrix.toolchain.compiler }}.cmake
+
+      - name: Build lib
+        working-directory: ${{ github.workspace }}/build
+        run: cmake --build .
+
+      - name: package lib
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        working-directory: ${{ github.workspace }}/build
+        run: sudo cpack
+
+      - name: Save artifact
+        if: ${{ matrix.os == 'ubuntu-latest'}}
+        uses: actions/upload-artifact@v2
+        with:
+          name: "pkg_RF24Log"
+          path: |
+            ${{ github.workspace }}/build/*.deb
+            ${{ github.workspace }}/build/*.rpm
+
+      - name: Upload Release assets
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            ${{ github.workspace }}/build/*.deb
+            ${{ github.workspace }}/build/*.rpm
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install lib for Ubuntu
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        working-directory: ${{ github.workspace }}/build
+        # this step requires sudo (on Linux) or administator privledges (on Windows)
+        run: sudo cmake --install .
+
+      - name: Install lib for Windows
+        if: ${{ matrix.os == 'windows-latest' }}
+        working-directory: ${{ github.workspace }}/build
+        # this step requires sudo (on Linux) or administator privledges (on Windows)
+        run: cmake --install .
+
+      - name: Compile the examples for Ubuntu
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: |
+          mkdir build_examples
+          cd build_examples
+          cmake ../examples  -D CMAKE_BUILD_TYPE=$BUILD_TYPE \
+          -D CMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/src/cmake/toolchains/${{ matrix.toolchain.compiler }}.cmake
+          cmake --build .
+          file ./GettingStarted
