@@ -1,6 +1,11 @@
 name: Cross-Compile & package
 
-on: [pull_request, push, release]
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+  release:
+    types: [published, edited]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
