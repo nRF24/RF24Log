@@ -17,12 +17,11 @@ argument is of a certain datatype.
 |----------:|:------------------|
 | `F` / `D` | a double |
 | `s` / `S` | a string |
-| `d` / `i` / `l` / `ll` / `h` | a signed integer |
+| `d` / `i` | a signed integer |
 | `du` / `iu` / `u` / `lu` / `hu` | an unsigned integer |
 | `x` / `X` | an unsigned hexadecimal integer |
 | `o` | an unsigned octal integer |
 | `b` | an unsigned binary integer |
-| `B` | a boolean value typed out<br>`0` = "false" & `1` = "true" |
 | `c` | a single character |
 | % | escapes a single character |
 
