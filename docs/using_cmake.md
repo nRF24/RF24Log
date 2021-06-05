@@ -80,7 +80,7 @@ sudo rm -r /usr/local/include/RF24Log
    ```
 7. Build the examples
 
-   Navigate to the _examples_linux_ directory
+   Navigate to the _examples_ directory
    ```shell
    cd ../examples
    ```
