@@ -30,6 +30,7 @@ set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/../LICENSE")
 set(CPACK_PACKAGE_VERSION_MAJOR "${${LibName}_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${${LibName}_VERSION_MINOR}")
 set(CPACK_PACKAGE_VERSION_PATCH "${${LibName}_VERSION_PATCH}")
+set(CPACK_PACKAGE_DIRECTORY "${CMAKE_BINARY_DIR}/pkgs") # for easy uploading to github releases
 
 if(NOT WIN32)
     ###############################

@@ -1,6 +1,11 @@
 name: Cross-Compile & package
 
-on: [pull_request, push, release]
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+  release:
+    types: [published, edited]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -105,18 +110,15 @@ jobs:
         with:
           name: "pkg_RF24Log"
           path: |
-            ${{ github.workspace }}/build/*.deb
-            ${{ github.workspace }}/build/*.rpm
+            ${{ github.workspace }}/build/pkgs/*.deb
+            ${{ github.workspace }}/build/pkgs/*.rpm
 
       - name: Upload Release assets
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        if: github.event_name == 'release' && (matrix.toolchain.compiler == 'armhf' || matrix.toolchain.compiler == 'arm64')
+        uses: csexton/release-asset-action@master
         with:
-          files: |
-            ${{ github.workspace }}/build/*.deb
-            ${{ github.workspace }}/build/*.rpm
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          pattern: "${{ github.workspace }}/build/pkgs/librf24*"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install lib for Ubuntu
         if: ${{ matrix.os == 'ubuntu-latest' }}
