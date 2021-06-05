@@ -36,11 +36,11 @@ instructions to incorporate RF24* libs into your project.
    ```
 2. Configure CMake for your desired build type and specific RP2040-based board
    ```shell
-   cmake ../examples_pico -DCMAKE_BUILD_TYPE=Release -DPICO_BOARD=pico
+   cmake ../examples -DUSE_PICO_SDK=ON -DCMAKE_BUILD_TYPE=Release -DPICO_BOARD=pico
    ```
    Or if building on a Windows PC:
    ```shell
-   cmake -G "NMake Makefiles" ../examples  -DUSE_PICO_SDK=ON -DCMAKE_BUILD_TYPE=Release -DPICO_BOARD=pico
+   cmake -G "NMake Makefiles" ../examples -DUSE_PICO_SDK=ON -DCMAKE_BUILD_TYPE=Release -DPICO_BOARD=pico
    ```
    @warning The  `-DUSE_PICO_SDK=ON` option is required! Otherwise, the examples will be built for
    Linux/Windows platforms because the examples' code is cross-compatible.<br>
