@@ -110,7 +110,7 @@ jobs:
 
       - name: Upload Release assets
         if: github.event_name == 'release' && (matrix.toolchain.compiler == 'armhf' || matrix.toolchain.compiler == 'arm64')
-        uses: csexton/release-asset-action@v2
+        uses: csexton/release-asset-action@debug
         with:
           pattern: "${{ github.workspace }}/build/pkgs/librf24*"
           github-token: ${{ secrets.GITHUB_TOKEN }}
