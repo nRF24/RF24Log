@@ -83,8 +83,8 @@ Building the RF24Log examples for the Pico SDK</h1>
 <div class="line">mkdir build</div>
 <div class="line">cd build</div>
 </div><!-- fragment --></li>
-<li>Configure CMake for your desired build type and specific RP2040-based board <div class="fragment"><div class="line">cmake ../examples_pico -DCMAKE_BUILD_TYPE=Release -DPICO_BOARD=pico</div>
-</div><!-- fragment --> Or if building on a Windows PC: <div class="fragment"><div class="line">cmake -G &quot;NMake Makefiles&quot; ../examples  -DUSE_PICO_SDK=ON -DCMAKE_BUILD_TYPE=Release -DPICO_BOARD=pico</div>
+<li>Configure CMake for your desired build type and specific RP2040-based board <div class="fragment"><div class="line">cmake ../examples -DUSE_PICO_SDK=ON -DCMAKE_BUILD_TYPE=Release -DPICO_BOARD=pico</div>
+</div><!-- fragment --> Or if building on a Windows PC: <div class="fragment"><div class="line">cmake -G &quot;NMake Makefiles&quot; ../examples -DUSE_PICO_SDK=ON -DCMAKE_BUILD_TYPE=Release -DPICO_BOARD=pico</div>
 </div><!-- fragment --> <dl class="section warning"><dt>Warning</dt><dd>The <code>-DUSE_PICO_SDK=ON</code> option is required! Otherwise, the examples will be built for Linux/Windows platforms because the examples' code is cross-compatible.<br  />
 </dd></dl>
 The supported RP2040-based boards are listed in header files in the Pico SDK repository's <a href="https://github.com/raspberrypi/pico-sdk/tree/master/src/boards/include/boards">pico-sdk/src/boards/include/boards/&lt;board_name&gt;.h files</a>. If the <code>-DPICO_BOARD</code> option is not specified, then the Pico SDK will default to building for the Raspberry Pi Pico board.</li>
