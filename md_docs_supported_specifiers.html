@@ -67,7 +67,7 @@ $(function() {
 <div class="title">Supported Format Specifiers </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md6"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md10"></a>
 Arduino Platform Supported Specifiers</h1>
 <p>Because all Arduino cores for all Arduino compatible boards don't unanimously support printf, we have a basic imitation mechanism included with <a class="el" href="class_r_f24_log_printf_parser.html" title="class that holds the RF24Log&#39;s in-house printf-like parsing">RF24LogPrintfParser</a>.</p>
 <p>The format specifiers' usage: </p><div class="fragment"><div class="line">%[flags][pad_quantity][.precision_quantity]specifier</div>
@@ -80,7 +80,7 @@ Arduino Platform Supported Specifiers</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyRight"><code>s</code> / <code>S</code>   </td><td class="markdownTableBodyLeft">a string    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyRight"><code>d</code> / <code>i</code> / <code>l</code> / <code>ll</code> / <code>h</code>   </td><td class="markdownTableBodyLeft">a signed integer    </td></tr>
+<td class="markdownTableBodyRight"><code>d</code> / <code>i</code>   </td><td class="markdownTableBodyLeft">a signed integer    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyRight"><code>du</code> / <code>iu</code> / <code>u</code> / <code>lu</code> / <code>hu</code>   </td><td class="markdownTableBodyLeft">an unsigned integer    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -90,14 +90,11 @@ Arduino Platform Supported Specifiers</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyRight"><code>b</code>   </td><td class="markdownTableBodyLeft">an unsigned binary integer    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyRight"><code>B</code>   </td><td class="markdownTableBodyLeft">a boolean value typed out<br  />
-<code>0</code> = "false" &amp; <code>1</code> = "true"    </td></tr>
-<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyRight"><code>c</code>   </td><td class="markdownTableBodyLeft">a single character    </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyRight">%   </td><td class="markdownTableBodyLeft">escapes a single character   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Limitations</h2>
 <p>These are the differences to standard printf parsing and our in-house printf parsing:</p>
 <ul>
@@ -106,7 +103,7 @@ Limitations</h2>
 <li>The only supported flags are zero (<code>0</code>) for padding data with zeros instead of spaces. Other flags (<code>+</code>, <code>-</code>, ) have no affect.</li>
 <li>The <code>u</code> character will enforce numeric data to be interpreted as an <code>unsigned long</code> number. Otherwise, all numeric data is represented as a signed <code>long</code> number (<code>float</code> and <code>double</code> variables are represented as a <code>double</code>).</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Padding the numbers</h2>
 <p>For each numeric data specifier, a quantity of padded characters can be designated before the specifer (but immediately after the % symbol). The default character used for padding is a space (), but putting a zero (<code>0</code>) character <code>flag</code> before the <code>padding_quantity</code> changes the padding character to zeros (<code>0</code>).</p>
 <p>For example: </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> vID[] = <span class="stringliteral">&quot;specifier fmt&quot;</span>;</div>
