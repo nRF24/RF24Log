@@ -57,17 +57,10 @@ const char RF24LogDescLevel[] = "Lvl ";
 /** @brief collection of the base level descriptions */
 const char * const RF24LogDescLevels[] =
 {
-#if defined RF24LOG_REVERSE_LVL_ORDER
-    RF24LogDescDebug,
-    RF24LogDescInfo,
-    RF24LogDescWarn,
-    RF24LogDescError
-#else
     RF24LogDescError,
     RF24LogDescWarn,
     RF24LogDescInfo,
     RF24LogDescDebug
-#endif
 };
 
 #ifdef DOXYGEN_FORCED

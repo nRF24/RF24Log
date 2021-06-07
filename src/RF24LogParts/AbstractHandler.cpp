@@ -60,9 +60,5 @@ void RF24LogAbstractHandler::setLogLevel(uint8_t logLevel)
 
 bool RF24LogAbstractHandler::isLevelEnabled(uint8_t logLevel)
 {
-#if defined (RF24LOG_REVERSE_LVL_ORDER)
-    return !logLevel || logLevel >= _logLevel;
-#else
     return logLevel <= _logLevel;
-#endif
 }

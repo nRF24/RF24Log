@@ -52,11 +52,7 @@ void loop()
   // set serial port handler (to both handlers)
   rf24Logging.setHandler(&dualHandler);
   bool is_2nd_handler_enabled_for_info;
-#if defined (RF24LOG_REVERSE_LVL_ORDER)
-  is_2nd_handler_enabled_for_info = level > RF24LogLevel::INFO;
-#else
   is_2nd_handler_enabled_for_info = level < RF24LogLevel::INFO;
-#endif
   RF24Log_info(vendorID,
                "This info message should be logged %s because serialLogHandler2 verbosity is %o.",
                (is_2nd_handler_enabled_for_info ? "once" : "twice"),
