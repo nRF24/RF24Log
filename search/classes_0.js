@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['arduinoprintlogger_93',['ArduinoPrintLogger',['../class_arduino_print_logger.html',1,'']]]
+  ['arduinoprintlogger_92',['ArduinoPrintLogger',['../class_arduino_print_logger.html',1,'']]]
 ];

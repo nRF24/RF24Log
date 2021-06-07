@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">RF24Log
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.1.3</span>
    </div>
    <div id="projectbrief">Unified logging library</div>
   </td>
@@ -103,26 +103,19 @@ $(function() {
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="group__lvl_desc.html#ga65ceea577fa79d5f25b5216c71b1e00a">   58</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> * <span class="keyword">const</span> <a class="code" href="group__lvl_desc.html#ga65ceea577fa79d5f25b5216c71b1e00a">RF24LogDescLevels</a>[] =</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#if defined RF24LOG_REVERSE_LVL_ORDER</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="group__lvl_desc.html#gaf01646345188e2aa9652dce1057daa26">RF24LogDescDebug</a>,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="group__lvl_desc.html#gad4f832c9b3af5039d5d3917a5c0abbbe">RF24LogDescError</a>,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="group__lvl_desc.html#gae9f0127641ac03b27a59126a72468de1">RF24LogDescWarn</a>,</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="group__lvl_desc.html#gacc0fc43df6ef8fbfa5a58b602ffe17b0">RF24LogDescInfo</a>,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="group__lvl_desc.html#gae9f0127641ac03b27a59126a72468de1">RF24LogDescWarn</a>,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="group__lvl_desc.html#gad4f832c9b3af5039d5d3917a5c0abbbe">RF24LogDescError</a></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="group__lvl_desc.html#gad4f832c9b3af5039d5d3917a5c0abbbe">RF24LogDescError</a>,</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="group__lvl_desc.html#gae9f0127641ac03b27a59126a72468de1">RF24LogDescWarn</a>,</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="group__lvl_desc.html#gacc0fc43df6ef8fbfa5a58b602ffe17b0">RF24LogDescInfo</a>,</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="group__lvl_desc.html#gaf01646345188e2aa9652dce1057daa26">RF24LogDescDebug</a></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#ifdef DOXYGEN_FORCED</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="group__lvl_desc.html#ga765fcf96217e8ac5afa5a7d54d2f18ad">   85</a></span>&#160;<span class="preprocessor">#define RF24LOG_SHORT_DESC</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="group__lvl_desc.html#ga1a6c7f1f510710f88d14a856548bb568">   98</a></span>&#160;<span class="preprocessor">#define RF24LOG_TERSE_DESC</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SRC_RF24LOGPARTS_LEVELDESCRIPTION_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="group__lvl_desc.html#gaf01646345188e2aa9652dce1057daa26">RF24LogDescDebug</a></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#ifdef DOXYGEN_FORCED</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="group__lvl_desc.html#ga765fcf96217e8ac5afa5a7d54d2f18ad">   78</a></span>&#160;<span class="preprocessor">#define RF24LOG_SHORT_DESC</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="group__lvl_desc.html#ga1a6c7f1f510710f88d14a856548bb568">   91</a></span>&#160;<span class="preprocessor">#define RF24LOG_TERSE_DESC</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SRC_RF24LOGPARTS_LEVELDESCRIPTION_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="agroup__lvl_desc_html_ga21539ead9c02b71be2739ec508cfd739"><div class="ttname"><a href="group__lvl_desc.html#ga21539ead9c02b71be2739ec508cfd739">RF24LogDescLevel</a></div><div class="ttdeci">const char RF24LogDescLevel[]</div><div class="ttdoc">description of the DEBUG base level</div><div class="ttdef"><b>Definition:</b> <a href="_level_descriptions_8h_source.html#l00054">LevelDescriptions.h:54</a></div></div>
 <div class="ttc" id="agroup__lvl_desc_html_ga65ceea577fa79d5f25b5216c71b1e00a"><div class="ttname"><a href="group__lvl_desc.html#ga65ceea577fa79d5f25b5216c71b1e00a">RF24LogDescLevels</a></div><div class="ttdeci">const char *const RF24LogDescLevels[]</div><div class="ttdoc">collection of the base level descriptions</div><div class="ttdef"><b>Definition:</b> <a href="_level_descriptions_8h_source.html#l00058">LevelDescriptions.h:58</a></div></div>
 <div class="ttc" id="agroup__lvl_desc_html_gacc0fc43df6ef8fbfa5a58b602ffe17b0"><div class="ttname"><a href="group__lvl_desc.html#gacc0fc43df6ef8fbfa5a58b602ffe17b0">RF24LogDescInfo</a></div><div class="ttdeci">const char RF24LogDescInfo[]</div><div class="ttdoc">description of the INFO base level</div><div class="ttdef"><b>Definition:</b> <a href="_level_descriptions_8h_source.html#l00050">LevelDescriptions.h:50</a></div></div>

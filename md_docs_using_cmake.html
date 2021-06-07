@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">RF24Log
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.1.3</span>
    </div>
    <div id="projectbrief">Unified logging library</div>
   </td>
@@ -135,7 +135,7 @@ Installing the library remotely</h2>
 <p>To install remotely, you can create an installable package file using CMake's built-in program called CPack. </p><div class="fragment"><div class="line">cmake ../src -D CMAKE_TOOLCHAIN_FILE=cmake/toolchains/armhf.cmake</div>
 <div class="line">make</div>
 <div class="line">cpack</div>
-</div><!-- fragment --><p> This will create a deb file and a rpm file that you can use to install to your target machine (see the above instructions about using a package manager). </p>
+</div><!-- fragment --><p> This will create a deb file and a rpm file in a new sub-directory called "pkgs" within the build directory. You can use to install to your target machine (see the above instructions about using a package manager). </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
